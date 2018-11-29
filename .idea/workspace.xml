@@ -6,7 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20f92a19-b2a6-4067-a6e1-8960877eae14" name="Default" comment="" />
+    <list default="true" id="20f92a19-b2a6-4067-a6e1-8960877eae14" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Starbot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Starbot.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -46,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Starbot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="79" column="48" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="48" />
+            <state relative-caret-position="476">
+              <caret line="80" column="17" lean-forward="true" selection-start-line="80" selection-start-column="17" selection-end-line="80" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -96,6 +102,9 @@
       <replace>channel.sendMessage</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -113,6 +122,9 @@
     <option name="width" value="1297" />
     <option name="height" value="1398" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -127,7 +139,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Alan/Google Drive/Documents/IntelliJ/starbot/src/main/java/Responses.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -189,23 +201,23 @@
       <option name="presentableId" value="Default" />
       <updated>1534400557558</updated>
       <workItem from="1543459523867" duration="97000" />
+      <workItem from="1543459823887" duration="307000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97000" />
+    <option name="totallyTimeSpent" value="404000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1018" y="0" width="1037" height="1118" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34493348" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.3531218" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Designer" order="4" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32929292" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32385787" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997986" />
@@ -219,8 +231,8 @@
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="Run with VisualVM" order="12" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="13" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="right" id="Palette&#9;" order="0" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.121878125" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32917082" />
@@ -228,6 +240,8 @@
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,13 +270,7 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/Arrays.java" />
-    <entry file="file://$PROJECT_DIR$/../starbot-legacy/src/main/java/Starbot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="239" column="37" lean-forward="true" selection-start-line="239" selection-start-column="37" selection-end-line="239" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../starbot-legacy/src/main/java/Starbot.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.7.1_393/6dfb9d28e8d4a5b14ee1ab53db21cae21d9d179b/JDA-3.7.1_393-sources.jar!/net/dv8tion/jda/core/entities/Channel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -361,8 +369,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Starbot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="79" column="48" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="48" />
+        <state relative-caret-position="476">
+          <caret line="80" column="17" lean-forward="true" selection-start-line="80" selection-start-column="17" selection-end-line="80" selection-end-column="17" />
         </state>
       </provider>
     </entry>

@@ -56,7 +56,7 @@ public class Starbot {
     // updates my nickname based on how many hours are left until ultimate
     public class SmashUltimateNicknameUpdater implements Runnable {
 
-        final LocalDateTime ULTIMATE_RELEASE = LocalDateTime.of(2018, 12, 7, 0, 0);
+        final LocalDateTime ULTIMATE_RELEASE = LocalDateTime.of(2018, 12, 6, 21, 0);
 
         LocalDateTime previousUpdate = null;
 
@@ -70,7 +70,15 @@ public class Starbot {
                     }
                     Thread.sleep(10000);
                 }
-                System.out.println("Ultimate is out, right?");
+                // mention me, Alex and Shang
+                Guild dingusCrew = jda.getGuildById(175372417194000384L);
+                Member me = dingusCrew.getMemberById(478706068223164416L);
+                Member alex = dingusCrew.getMemberById(175049231709634560L);
+                Member shang = dingusCrew.getMemberById(210924920010571776L);
+                TextChannel whohastheanswers = dingusCrew.getTextChannelById(175372417194000384L);
+                for (int i = 0; i < 10; i++) {
+                    whohastheanswers.sendMessage(me.getAsMention() + alex.getAsMention() + shang.getAsMention() + "**SMASH ULTIMATE IS OUT**").queue();
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 // send me a message saying we fucked up
