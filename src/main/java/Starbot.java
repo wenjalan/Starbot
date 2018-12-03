@@ -6,6 +6,7 @@ import net.dv8tion.jda.core.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import net.dv8tion.jda.core.managers.AudioManager;
+import net.dv8tion.jda.core.managers.ChannelManager;
 import net.dv8tion.jda.core.managers.GuildController;
 import net.dv8tion.jda.core.managers.Presence;
 
@@ -66,6 +67,7 @@ public class Starbot {
                 for (LocalDateTime now = LocalDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST"))); now.isBefore(ULTIMATE_RELEASE); now = LocalDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")))) {
                     if (previousUpdate == null || Math.abs(Duration.between(now, previousUpdate).toMinutes()) >= 1) {
                         update(now);
+                        updateChannelName(now);
                         previousUpdate = now;
                     }
                     Thread.sleep(10000);
@@ -114,6 +116,29 @@ public class Starbot {
 
             // send me a message
             // me.getUser().openPrivateChannel().complete().sendMessage("Changed to " + nickname).complete();
+        }
+
+        // updates the channel name in Lakeside
+        private void updateChannelName(LocalDateTime now) {
+            // calculate the duration between now and the release of smash ultimate
+            Duration duration = Duration.between(now, ULTIMATE_RELEASE);
+            // get the days
+            long days = duration.toDays();
+            duration = duration.minusDays(days);
+            // get the hours
+            long hours = duration.toHours();
+            duration = duration.minusHours(hours);
+            // get the minutes
+            long minutes = duration.toMinutes();
+
+            // create the channel name
+            String channelName = "ultimate-" + days + "d-" + hours + "h-" + minutes + "m";
+
+            // set the channel name in Lakeside
+            Guild lakeSide = jda.getGuildById(419598386933530636L);
+            Channel ultimateChannel = lakeSide.getTextChannelById(518972817153458178L);
+            ChannelManager manager = ultimateChannel.getManager();
+            manager.setName(channelName).queue();
         }
 
     }
