@@ -7,8 +7,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20f92a19-b2a6-4067-a6e1-8960877eae14" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Starbot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Starbot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Audio$AudioPlayerSendHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Audio$ResultHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Audio$TrackScheduler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Audio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$15.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$17.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/KeyPhrase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Responses.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Starbot$MessageListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Starbot$SmashUltimateNicknameUpdater.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Starbot.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -49,8 +77,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Starbot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="888">
-              <caret line="179" column="62" lean-forward="true" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
+            <state relative-caret-position="391">
+              <caret line="79" column="98" lean-forward="true" selection-start-line="79" selection-start-column="98" selection-end-line="79" selection-end-column="98" />
             </state>
           </provider>
         </entry>
@@ -58,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
+            <state relative-caret-position="4369">
               <caret line="270" column="68" selection-start-line="270" selection-start-column="30" selection-end-line="270" selection-end-column="68" />
             </state>
           </provider>
@@ -115,9 +143,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1271" />
-    <option name="width" value="1298" />
-    <option name="height" value="1399" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -127,18 +156,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="starbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -209,17 +228,18 @@
       <workItem from="1543459523867" duration="97000" />
       <workItem from="1543459823887" duration="561000" />
       <workItem from="1543803544457" duration="1110000" />
+      <workItem from="1543864049616" duration="189000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1768000" />
+    <option name="totallyTimeSpent" value="1957000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17632368" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1785235" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -360,10 +380,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/time/Duration.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/time/Duration.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.7.1_393/6dfb9d28e8d4a5b14ee1ab53db21cae21d9d179b/JDA-3.7.1_393-sources.jar!/net/dv8tion/jda/core/entities/Channel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="468" column="33" selection-start-line="468" selection-start-column="33" selection-end-line="468" selection-end-column="33" />
+        <state relative-caret-position="216">
+          <caret line="246" column="19" selection-start-line="246" selection-start-column="19" selection-end-line="246" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Starbot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="79" column="98" lean-forward="true" selection-start-line="79" selection-start-column="98" selection-end-line="79" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4369">
+          <caret line="270" column="68" selection-start-line="270" selection-start-column="30" selection-end-line="270" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -378,27 +413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1411">
           <caret line="83" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="270" column="68" selection-start-line="270" selection-start-column="30" selection-end-line="270" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.7.1_393/6dfb9d28e8d4a5b14ee1ab53db21cae21d9d179b/JDA-3.7.1_393-sources.jar!/net/dv8tion/jda/core/entities/Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="246" column="19" selection-start-line="246" selection-start-column="19" selection-end-line="246" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Starbot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="888">
-          <caret line="179" column="62" lean-forward="true" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
         </state>
       </provider>
     </entry>
