@@ -74,6 +74,15 @@ public class KeyPhrase {
             map.put("i'm not gonna be any kind of support", "we ended up losing and it's all your fault");
 
             map.put("anime is trash", "and so are you");
+            map.put("yoshi", "**IRS OPEN UP**");
+            map.put("dab", "get the fuck out");
+            map.put("uwu", "someone get the hose");
+            map.put("owo", "talk like a proper human being right now or I will smack you with this here board");
+            map.put("baka", "you're a fucking retard");
+            map.put("oniichan", "where's my fucking belt");
+            map.put("onii-chan", "where's my fucking belt");
+            map.put("yuru camp", "(￣▽￣)");
+            map.put("java has a function for that", "SHUT THE FUCK UP JASON");
 
             return map;
         } else {
