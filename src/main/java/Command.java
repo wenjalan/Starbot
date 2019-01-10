@@ -1,6 +1,8 @@
-import com.google.cloud.translate.Translate;
-import com.google.cloud.translate.TranslateOptions;
-import com.google.cloud.translate.Translation;
+//import com.google.cloud.translate.Translate;
+//import com.google.cloud.translate.Translate.TranslateOption;
+//import com.google.cloud.translate.TranslateOptions;
+//import com.google.cloud.translate.Translation;
+
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.*;
@@ -364,26 +366,26 @@ public enum Command {
             AudioManager audioManager = e.getGuild().getAudioManager();
             audioManager.closeAudioConnection();
         }
-    },
-
-    jp {
-        // translates the comment into japanese
-        @Override
-        public void run(MessageReceivedEvent e, String[] args) {
-            String query = Arrays.stream(args).collect(Collectors.joining(" "));
-            if (query.length() < 300) {
-                // System.out.println(query);
-                Translate translate = TranslateOptions.getDefaultInstance().getService();
-                Translation translation = translate.translate(
-                        query,
-                        Translate.TranslateOption.sourceLanguage("en"),
-                        Translate.TranslateOption.targetLanguage("ja"));
-                query = translation.getTranslatedText();
-                // System.out.println(query);
-                e.getChannel().sendMessage(query).queue();
-            }
-        }
     };
+
+//    jp {
+//        // translates the comment into japanese
+//        @Override
+//        public void run(MessageReceivedEvent e, String[] args) {
+//            String query = Arrays.stream(args).collect(Collectors.joining(" "));
+//            if (query.length() < 300) {
+//                // System.out.println(query);
+//                Translate translate = TranslateOptions.getDefaultInstance().getService();
+//                Translation translation = translate.translate(
+//                        query,
+//                        Translate.TranslateOption.sourceLanguage("en"),
+//                        Translate.TranslateOption.targetLanguage("ja"));
+//                query = translation.getTranslatedText();
+//                // System.out.println(query);
+//                e.getChannel().sendMessage(query).queue();
+//            }
+//        }
+//    };
 
     // executes when the command is called
     public abstract void run(MessageReceivedEvent e, String[] args);

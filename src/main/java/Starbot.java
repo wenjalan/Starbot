@@ -44,8 +44,8 @@ public class Starbot {
 
             jda.awaitReady();
 
-            Thread t = new Thread(new SmashUltimateNicknameUpdater());
-            t.start();
+//            Thread t = new Thread(new SmashUltimateNicknameUpdater());
+//            t.start();
 
         } catch (Exception e) {
             System.err.println("Failed to log in! Was the bot token correct?");
@@ -54,94 +54,94 @@ public class Starbot {
         }
     }
 
-    // updates my nickname based on how many hours are left until ultimate
-    public class SmashUltimateNicknameUpdater implements Runnable {
+//    // updates my nickname based on how many hours are left until ultimate
+//    public class SmashUltimateNicknameUpdater implements Runnable {
+//
+//        final LocalDateTime ULTIMATE_RELEASE = LocalDateTime.of(2018, 12, 6, 21, 0);
+//
+//        LocalDateTime previousUpdate = null;
+//
+//        @Override
+//        public void run() {
+//            try {
+//                for (LocalDateTime now = LocalDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST"))); now.isBefore(ULTIMATE_RELEASE); now = LocalDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")))) {
+//                    if (previousUpdate == null || Math.abs(Duration.between(now, previousUpdate).toMinutes()) >= 1) {
+//                        update(now);
+//                        updateChannelName(now);
+//                        previousUpdate = now;
+//                    }
+//                    Thread.sleep(10000);
+//                }
+//                // mention me, Alex and Shang
+//                Guild dingusCrew = jda.getGuildById(175372417194000384L);
+//                Member me = dingusCrew.getMemberById(478706068223164416L);
+//                Member alex = dingusCrew.getMemberById(175049231709634560L);
+//                Member shang = dingusCrew.getMemberById(210924920010571776L);
+//                TextChannel whohastheanswers = dingusCrew.getTextChannelById(175372417194000384L);
+//                for (int i = 0; i < 10; i++) {
+//                    whohastheanswers.sendMessage(me.getAsMention() + alex.getAsMention() + shang.getAsMention() + "**SMASH ULTIMATE IS OUT**").queue();
+//                }
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//                // send me a message saying we fucked up
+//                // get me
+//                User me = jda.getUserById(478706068223164416L);
+//                // send me a message
+//                me.openPrivateChannel().complete().sendMessage("Hey we fucked up or ultimate is out").complete();
+//            }
+//        }
 
-        final LocalDateTime ULTIMATE_RELEASE = LocalDateTime.of(2018, 12, 6, 21, 0);
+//        // updates my nickname
+//        private void update(LocalDateTime now) {
+//            // calculate the duration between now and the release of smash ultimate
+//            Duration duration = Duration.between(now, ULTIMATE_RELEASE);
+//            // get the days
+//            long days = duration.toDays();
+//            duration = duration.minusDays(days);
+//            // get the hours
+//            long hours = duration.toHours();
+//            duration = duration.minusHours(hours);
+//            // get the minutes
+//            long minutes = duration.toMinutes();
+//
+//            // create the niokname
+//            String nickname = days + "d " + hours + "h " + minutes + "m until Ultimate";
+//
+//            // set the nickname in The dingus crew
+//            Guild dingusCrew = jda.getGuildById(175372417194000384L);
+//            // get me
+//            Member me = dingusCrew.getMemberById(478706068223164416L);
+//            // set my nickname
+//            dingusCrew.getController().setNickname(me, nickname).complete();
+//
+//            // send me a message
+//            // me.getUser().openPrivateChannel().complete().sendMessage("Changed to " + nickname).complete();
+//        }
 
-        LocalDateTime previousUpdate = null;
-
-        @Override
-        public void run() {
-            try {
-                for (LocalDateTime now = LocalDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST"))); now.isBefore(ULTIMATE_RELEASE); now = LocalDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")))) {
-                    if (previousUpdate == null || Math.abs(Duration.between(now, previousUpdate).toMinutes()) >= 1) {
-                        update(now);
-                        updateChannelName(now);
-                        previousUpdate = now;
-                    }
-                    Thread.sleep(10000);
-                }
-                // mention me, Alex and Shang
-                Guild dingusCrew = jda.getGuildById(175372417194000384L);
-                Member me = dingusCrew.getMemberById(478706068223164416L);
-                Member alex = dingusCrew.getMemberById(175049231709634560L);
-                Member shang = dingusCrew.getMemberById(210924920010571776L);
-                TextChannel whohastheanswers = dingusCrew.getTextChannelById(175372417194000384L);
-                for (int i = 0; i < 10; i++) {
-                    whohastheanswers.sendMessage(me.getAsMention() + alex.getAsMention() + shang.getAsMention() + "**SMASH ULTIMATE IS OUT**").queue();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                // send me a message saying we fucked up
-                // get me
-                User me = jda.getUserById(478706068223164416L);
-                // send me a message
-                me.openPrivateChannel().complete().sendMessage("Hey we fucked up or ultimate is out").complete();
-            }
-        }
-
-        // updates my nickname
-        private void update(LocalDateTime now) {
-            // calculate the duration between now and the release of smash ultimate
-            Duration duration = Duration.between(now, ULTIMATE_RELEASE);
-            // get the days
-            long days = duration.toDays();
-            duration = duration.minusDays(days);
-            // get the hours
-            long hours = duration.toHours();
-            duration = duration.minusHours(hours);
-            // get the minutes
-            long minutes = duration.toMinutes();
-
-            // create the niokname
-            String nickname = days + "d " + hours + "h " + minutes + "m until Ultimate";
-
-            // set the nickname in The dingus crew
-            Guild dingusCrew = jda.getGuildById(175372417194000384L);
-            // get me
-            Member me = dingusCrew.getMemberById(478706068223164416L);
-            // set my nickname
-            dingusCrew.getController().setNickname(me, nickname).complete();
-
-            // send me a message
-            // me.getUser().openPrivateChannel().complete().sendMessage("Changed to " + nickname).complete();
-        }
-
-        // updates the channel name in Lakeside
-        private void updateChannelName(LocalDateTime now) {
-            // calculate the duration between now and the release of smash ultimate
-            Duration duration = Duration.between(now, ULTIMATE_RELEASE);
-            // get the days
-            long days = duration.toDays();
-            duration = duration.minusDays(days);
-            // get the hours
-            long hours = duration.toHours();
-            duration = duration.minusHours(hours);
-            // get the minutes
-            long minutes = duration.toMinutes();
-
-            // create the channel name
-            String channelName = "ultimate-" + days + "d-" + hours + "h-" + minutes + "m";
-
-            // set the channel name in Lakeside
-            Guild lakeSide = jda.getGuildById(419598386933530636L);
-            Channel ultimateChannel = lakeSide.getTextChannelById(518972817153458178L);
-            ChannelManager manager = ultimateChannel.getManager();
-            manager.setName(channelName).queue();
-        }
-
-    }
+//        // updates the channel name in Lakeside
+//        private void updateChannelName(LocalDateTime now) {
+//            // calculate the duration between now and the release of smash ultimate
+//            Duration duration = Duration.between(now, ULTIMATE_RELEASE);
+//            // get the days
+//            long days = duration.toDays();
+//            duration = duration.minusDays(days);
+//            // get the hours
+//            long hours = duration.toHours();
+//            duration = duration.minusHours(hours);
+//            // get the minutes
+//            long minutes = duration.toMinutes();
+//
+//            // create the channel name
+//            String channelName = "ultimate-" + days + "d-" + hours + "h-" + minutes + "m";
+//
+//            // set the channel name in Lakeside
+//            Guild lakeSide = jda.getGuildById(419598386933530636L);
+//            Channel ultimateChannel = lakeSide.getTextChannelById(518972817153458178L);
+//            ChannelManager manager = ultimateChannel.getManager();
+//            manager.setName(channelName).queue();
+//        }
+//
+//    }
 
     // message listener
     public class MessageListener extends ListenerAdapter {
