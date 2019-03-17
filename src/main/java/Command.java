@@ -366,6 +366,46 @@ public enum Command {
             AudioManager audioManager = e.getGuild().getAudioManager();
             audioManager.closeAudioConnection();
         }
+    },
+
+    nword {
+        // kicks justin from the dingus crew
+        @Override
+        public void run(MessageReceivedEvent e, String[] args) {
+            // check if we're in the dingus crew
+            if (e.getGuild().getIdLong() == 175372417194000384L) {
+                // check if the person has the power to kick
+                if (e.getMember().hasPermission(Permission.KICK_MEMBERS)) {
+                    // kick justin
+                    Member justin = e.getGuild().getMemberById(175104183119249408L);
+                    // get his nick name
+                    String nickname = justin.getNickname();
+                    // if his name is a number, increment it by 1 and store it
+                    try {
+                        Starbot.justinBans = Integer.parseInt(nickname);
+                    } catch (NumberFormatException ex) {
+                        // do nothing I guess
+                    }
+                    e.getGuild().getController().kick(justin).reason("" + Starbot.justinBans).complete();
+                    Starbot.justinBans++;
+
+                    // send justin an invite
+                    String invite = e.getTextChannel().createInvite().setMaxUses(1).complete().getURL();
+                    justin.getUser().openPrivateChannel().complete().sendMessage(invite).queue();
+                }
+            }
+        }
+    },
+
+    commands {
+        @Override
+        public void run(MessageReceivedEvent e, String[] args) {
+            String commands = "";
+            for (Command c : Command.values()) {
+                commands += c.name() + "\n";
+            }
+            e.getChannel().sendMessage(commands).queue();
+        }
     };
 
 //    jp {

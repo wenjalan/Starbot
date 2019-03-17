@@ -2,6 +2,7 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.entities.*;
+import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -35,6 +36,7 @@ public class Starbot {
             jda = new JDABuilder(AccountType.BOT)
                     .setToken(botToken)
                     .addEventListener(new MessageListener())
+                    .addEventListener(new ServerEventListener())
                     // .addEventListener(new VoiceChannelEventListener())
                     .build();
             // print that we've started successfully
@@ -51,6 +53,20 @@ public class Starbot {
             System.err.println("Failed to log in! Was the bot token correct?");
             e.printStackTrace();
             System.exit(1);
+        }
+    }
+
+    public static int justinBans = 0;
+
+    public class ServerEventListener extends ListenerAdapter {
+        // on justin rejoin
+        @Override
+        public void onGuildMemberJoin(GuildMemberJoinEvent e) {
+            // check if the server is the dingus crew and the user is justin
+            if (e.getGuild().getIdLong() == 175372417194000384L && e.getUser().getIdLong() == 175104183119249408L) {
+                // update his nick name
+                e.getGuild().getController().setNickname(e.getMember(), "" + justinBans).queue();
+            }
         }
     }
 

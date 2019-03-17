@@ -7,36 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20f92a19-b2a6-4067-a6e1-8960877eae14" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/starbot_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Audio$AudioPlayerSendHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Audio$ResultHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Audio$TrackScheduler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Audio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$14.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$15.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$16.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$17.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/KeyPhrase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Responses.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Starbot$MessageListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Starbot$SmashUltimateNicknameUpdater.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Starbot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/starbot_jar/starbot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/starbot_jar/starbot.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starbot/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starbot/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starbot/Starbot$MessageListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starbot/Starbot$MessageListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starbot/Starbot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starbot/Starbot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starbot/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Starbot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Starbot.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -77,12 +56,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Starbot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-              <folding>
-                <element signature="e#838#839#0" expanded="true" />
-                <element signature="e#874#875#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="289">
+              <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.7.1_393/6dfb9d28e8d4a5b14ee1ab53db21cae21d9d179b/JDA-3.7.1_393-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -90,10 +74,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5769">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="6409">
+              <caret line="393" column="97" selection-start-line="393" selection-start-column="97" selection-end-line="393" selection-end-column="97" />
               <folding>
-                <element signature="e#0#16167#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -147,7 +130,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,6 +159,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -187,9 +170,9 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Alan/Google Drive/Documents/IntelliJ/starbot/src/main/java/Responses.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547092596331" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548660461592" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -213,7 +196,7 @@
         <env name="GOOGLE_APPLICATION_CREDENTIALS" value="C:\Users\wenja\Starbot-190109195124.json" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="Starbot" />
-      <module name="starbot_main" />
+      <module name="Starbot" />
       <option name="PROGRAM_PARAMETERS" value="NDcwODIyNzU0MjYyNzEyMzI5.DuYmZg.uzhff0VfGRL8Cyf7KeNxfrwwTOc" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -259,17 +242,21 @@
       <workItem from="1547090811675" duration="44000" />
       <workItem from="1547090909990" duration="591000" />
       <workItem from="1547091521731" duration="1146000" />
+      <workItem from="1547252457079" duration="599000" />
+      <workItem from="1548644484090" duration="1993000" />
+      <workItem from="1548658941321" duration="1481000" />
+      <workItem from="1549773865634" duration="171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4595000" />
+    <option name="totallyTimeSpent" value="8839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18631369" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19430569" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -292,7 +279,6 @@
       <window_info anchor="bottom" id="Debug with VisualVM" order="13" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
-      <window_info anchor="right" id="Google Cloud Storage" />
       <window_info anchor="right" id="Palette&#9;" order="0" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.121878125" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32917082" />
@@ -304,6 +290,7 @@
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" id="Google Cloud Storage" order="11" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,13 +360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.7.1_393/6dfb9d28e8d4a5b14ee1ab53db21cae21d9d179b/JDA-3.7.1_393-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="235" column="32" selection-start-line="235" selection-start-column="16" selection-end-line="235" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.7.1_393/6dfb9d28e8d4a5b14ee1ab53db21cae21d9d179b/JDA-3.7.1_393-sources.jar!/net/dv8tion/jda/core/AccountType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -437,24 +417,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Command.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5769">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#16167#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Starbot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        <state relative-caret-position="289">
+          <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.7.1_393/6dfb9d28e8d4a5b14ee1ab53db21cae21d9d179b/JDA-3.7.1_393-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6409">
+          <caret line="393" column="97" selection-start-line="393" selection-start-column="97" selection-end-line="393" selection-end-column="97" />
           <folding>
-            <element signature="e#838#839#0" expanded="true" />
-            <element signature="e#874#875#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -470,7 +459,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
