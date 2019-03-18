@@ -7,8 +7,11 @@ import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import wenjalan.starbot.Starbot;
+import wenjalan.starbot.engines.CommandEngine;
 import wenjalan.starbot.engines.KeyPhraseEngine;
 import wenjalan.starbot.engines.ResponseEngine;
+
+import java.util.Arrays;
 
 // listens to messages sent in guilds
 public class MessageListener extends ListenerAdapter {
@@ -57,9 +60,23 @@ public class MessageListener extends ListenerAdapter {
             // if the message is a command
             else if (isCommand(e.getMessage().getContentRaw())) {
                 // handle the command
-                MessageChannel channel = e.getChannel();
-                String response = "ooh that's a command";
-                channel.sendMessage(response).queue();
+//                MessageChannel channel = e.getChannel();
+//                String response = "ooh that's a command";
+//                channel.sendMessage(response).queue();
+
+                // get the query
+                String query = e.getMessage().getContentRaw().substring(1);
+                String[] tokens = query.split("\\s+");
+
+                // search for a matching command
+                for (CommandEngine.Command command : CommandEngine.Command.values()) {
+                    // if the command matches, run it
+                    if (command.name().equalsIgnoreCase(tokens[0])) {
+                        command.run(e, Arrays.copyOfRange(tokens, 1, tokens.length));
+                        break;
+                    }
+                }
+
             }
             // if the message contains a keyphrase
             else if (hasKeyPhrase(e.getMessage().getContentRaw())) {
@@ -79,6 +96,15 @@ public class MessageListener extends ListenerAdapter {
     // returns true if the message has a keyphrase
     protected boolean hasKeyPhrase(String query) {
         return keyPhraseEngine.hasKeyPhrase(query.toLowerCase());
+    }
+
+    // accessors
+    public ResponseEngine getResponseEngine() {
+        return this.responseEngine;
+    }
+
+    public KeyPhraseEngine getKeyPhraseEngine() {
+        return this.keyPhraseEngine;
     }
 
 }
