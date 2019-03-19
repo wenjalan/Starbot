@@ -6,9 +6,12 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import wenjalan.starbot.listeners.MessageListener;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+
+import static wenjalan.starbot.listeners.MessageListener.COMMAND_PREFIX;
 
 // contains all the commands and their implementations
 public class CommandEngine {
@@ -23,13 +26,65 @@ public class CommandEngine {
 
     public enum Command {
 
-//        clear {
-//            // clears the last n messages
-//            @Override
-//            public void run(MessageReceivedEvent e, String[] args) {
-//
-//            }
-//        },
+        clear {
+            // clears the last n messages
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // check for permissions
+                if (!e.getGuild().getMember(e.getJDA().getSelfUser()).hasPermission(
+                        Permission.MESSAGE_HISTORY,
+                        Permission.MESSAGE_MANAGE
+                )) {
+                    // send an error into chat
+                    e.getTextChannel().sendMessage("give me perms.").queue();
+                    return;
+                }
+
+                // default message clearing
+                int victims = 10;
+                try {
+                    victims = Integer.parseInt(args[0]);
+                } catch (NumberFormatException ex) {
+                    // do nothing
+                }
+
+                // get the channel
+                TextChannel channel = e.getTextChannel();
+
+                // announce
+                channel.sendMessage("clearing " + victims + " messages...").queue();
+
+                // get messages
+                List<Message> history = channel.getHistory().getRetrievedHistory();
+
+                // iterate
+                Iterator<Message> iter = history.iterator();
+                int deleted = 0;
+                Message msg;
+                while (iter.hasNext() && deleted <= victims) {
+                    // get the next message
+                    msg = iter.next();
+
+                    // if message came from Starbot
+                    if (msg.getAuthor().getIdLong() == e.getJDA().getSelfUser().getIdLong()) {
+                        // delete it
+                        msg.delete().queue();
+                    }
+                    // if the message is a command
+                    else if (MessageListener.isCommand(msg.getContentRaw())) {
+                        // delete it
+                        msg.delete().queue();
+                    }
+                    // if the message mentions Starbot
+                    else if (msg.getMentionedUsers().contains(e.getJDA().getSelfUser())) {
+                        // delete it
+                        msg.delete().queue();
+                    }
+                }
+                // send a done message
+                channel.sendMessage("done").queue();
+            }
+        },
 
         mute {
             // mutes the mentioned users

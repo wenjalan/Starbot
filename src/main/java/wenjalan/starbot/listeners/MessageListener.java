@@ -89,7 +89,7 @@ public class MessageListener extends ListenerAdapter {
     }
 
     // returns true if the message starts with the command prefix
-    protected boolean isCommand(String query) {
+    public static boolean isCommand(String query) {
         return query.startsWith(COMMAND_PREFIX);
     }
 
