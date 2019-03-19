@@ -120,6 +120,9 @@ public class DingusCrew {
             if (e.getUser().getIdLong() == Users.JUSTIN) {
                 // update his nickname with the recent most count
                 e.getGuild().getController().setNickname(e.getMember(), "" + justin_kicks).queue();
+
+                // give him his role back
+                e.getGuild().getController().addSingleRoleToMember(e.getMember(), e.getGuild().getRoleById(292906691425730560L)).queue();
             }
         }
 
