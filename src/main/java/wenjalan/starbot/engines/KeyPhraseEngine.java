@@ -75,6 +75,7 @@ public class KeyPhraseEngine {
 
         map.put("furry", "stop it. get some help.");
         map.put("nuzzles", "where're your parents?");
+        map.put("hit or miss", "i guess they never miss, huh?");
 
         // return the map
         return map;
