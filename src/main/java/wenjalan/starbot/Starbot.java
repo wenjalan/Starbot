@@ -6,7 +6,6 @@ import wenjalan.starbot.engines.KeyPhraseEngine;
 import wenjalan.starbot.engines.ResponseEngine;
 import wenjalan.starbot.listeners.MessageListener;
 
-import javax.security.auth.login.LoginException;
 import java.util.Scanner;
 
 // the main Starbot class, contains main() and the JDA setup

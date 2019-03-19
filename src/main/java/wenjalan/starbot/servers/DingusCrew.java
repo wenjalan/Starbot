@@ -1,6 +1,7 @@
 package wenjalan.starbot.servers;
 
 import net.dv8tion.jda.core.Permission;
+import net.dv8tion.jda.core.entities.Invite;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -83,6 +84,14 @@ public class DingusCrew {
 
                 // kick Justin
                 e.getGuild().getController().kick(justin).reason("insufficient permissions: you don't have the nword pass" + justin_kicks).queue();
+
+                // send him an invite to the server
+                String invite = e.getTextChannel().createInvite()
+                        .setMaxAge(1000)
+                        .setMaxUses(1)
+                        .complete()
+                        .getURL();
+                justin.getUser().openPrivateChannel().complete().sendMessage(invite).queue();
             }
         };
 
