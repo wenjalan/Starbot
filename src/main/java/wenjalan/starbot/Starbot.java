@@ -5,6 +5,8 @@ import net.dv8tion.jda.core.JDABuilder;
 import wenjalan.starbot.engines.KeyPhraseEngine;
 import wenjalan.starbot.engines.ResponseEngine;
 import wenjalan.starbot.listeners.MessageListener;
+import wenjalan.starbot.listeners.ServerEventListener;
+import wenjalan.starbot.servers.DingusCrew;
 
 import java.util.Scanner;
 
@@ -66,7 +68,14 @@ public class Starbot {
 
         // build the JDA with our listeners
         this.jda = builder
+                // default listeners
                 .addEventListener(new MessageListener(this))
+                .addEventListener(new ServerEventListener(this))
+
+                // dingus crew listeners
+                .addEventListener(new DingusCrew.DingusCrewMessageListener(this))
+                .addEventListener(new DingusCrew.DingusCrewEventListener(this))
+
                 .build()
                 .awaitReady();
 

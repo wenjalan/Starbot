@@ -1,7 +1,6 @@
 package wenjalan.starbot.servers;
 
 import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Invite;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -22,7 +21,7 @@ public class DingusCrew {
     public static int justin_kicks = 0;
 
     // MessageListener
-    public class DingusCrewMessageListener extends MessageListener {
+    public static class DingusCrewMessageListener extends MessageListener {
 
         // constructor
         public DingusCrewMessageListener(Starbot starbot) {
@@ -59,7 +58,7 @@ public class DingusCrew {
     }
 
     // Commands
-    public enum DingusCommands {
+    public static enum DingusCommands {
 
         nword {
             // kicks Justin from the server, sends him an invite, and increments his name by 1
@@ -100,7 +99,12 @@ public class DingusCrew {
     }
 
     // ServerEventListener
-    public class DingusCrewEventListener extends ServerEventListener {
+    public static class DingusCrewEventListener extends ServerEventListener {
+
+        // constructor
+        public DingusCrewEventListener(Starbot starbot) {
+            super(starbot);
+        }
 
         @Override
         public void onGuildMemberJoin(GuildMemberJoinEvent e) {
