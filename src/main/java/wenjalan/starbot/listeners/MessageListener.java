@@ -1,9 +1,7 @@
 package wenjalan.starbot.listeners;
 
-import net.dv8tion.jda.core.entities.Channel;
 import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.MessageChannel;
-import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import wenjalan.starbot.Starbot;
@@ -59,11 +57,6 @@ public class MessageListener extends ListenerAdapter {
             }
             // if the message is a command
             else if (isCommand(e.getMessage().getContentRaw())) {
-                // handle the command
-//                MessageChannel channel = e.getChannel();
-//                String response = "ooh that's a command";
-//                channel.sendMessage(response).queue();
-
                 // get the query
                 String query = e.getMessage().getContentRaw().substring(1);
                 String[] tokens = query.split("\\s+");
@@ -76,7 +69,6 @@ public class MessageListener extends ListenerAdapter {
                         break;
                     }
                 }
-
             }
             // if the message contains a keyphrase
             else if (hasKeyPhrase(e.getMessage().getContentRaw())) {

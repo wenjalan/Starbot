@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-import static wenjalan.starbot.listeners.MessageListener.COMMAND_PREFIX;
-
 // contains all the commands and their implementations
 public class CommandEngine {
 
@@ -155,50 +153,6 @@ public class CommandEngine {
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
                 e.getChannel().sendMessage("You make terrible decisions: " + e.getJDA().asBot().getInviteUrl()).complete();
-            }
-        },
-
-        grade {
-            // gives a grade based on an integer
-            // method provided by Fran
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                TextChannel channel = e.getTextChannel();
-
-                double grade = -1.0;
-                try {
-                    grade = Double.parseDouble(args[0]);
-                } catch (NumberFormatException ex) {
-                    // do nothing, lmao
-                }
-
-                if(grade > 100.0) {
-                    channel.sendMessage("IB doesn't give extra credit. You're a cheater.").queue();
-                } else if(grade >= 92.0) {
-                    channel.sendMessage("Nice! That's an A!").queue();
-                } else if(grade >= 88.0) {
-                    channel.sendMessage("Good stuff, that's an A-!").queue();
-                } else if(grade >= 84.0) {
-                    channel.sendMessage("YOU'RE A FAILURE. IB STUDENTS ONLY GET A'S AND THAT'S A B+!").queue();
-                } else if(grade >= 80.0) {
-                    channel.sendMessage("Don't let the haters get you down, that B is solid!").queue();
-                } else if(grade >= 76.0) {
-                    channel.sendMessage("Hey, B- is B range and B range is best range.").queue();
-                } else if(grade >= 72.0) {
-                    channel.sendMessage("Things may be looking rough, but ain't no C+ ever held you down!").queue();
-                } else if(grade >= 68.0) {
-                    channel.sendMessage("You've got some work to do, but a C isn't the end of the world.").queue();
-                } else if(grade >= 64.0) {
-                    channel.sendMessage("Yikes, that C- might sting!").queue();
-                } else if(grade >= 60.0) {
-                    channel.sendMessage("A D+. Are you even trying?").queue();
-                } else if(grade >= 52.0) {
-                    channel.sendMessage("Hang in there, even a D is redeemable!").queue();
-                } else if(grade >= 0) {
-                    channel.sendMessage("Oh. An F. I'm sorry friend.").queue();
-                } else {
-                    channel.sendMessage("Literally how...?").queue();
-                }
             }
         },
 
