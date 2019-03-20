@@ -1,6 +1,7 @@
 package wenjalan.starbot.servers;
 
 import net.dv8tion.jda.core.Permission;
+import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -31,6 +32,9 @@ public class DingusCrew {
         // onMessageReceived
         @Override
         public void onMessageReceived(MessageReceivedEvent e) {
+            // if the message wasn't sent from a guild, return
+            if (!e.isFromType(ChannelType.TEXT)) return;
+
             // check if this is The Dingus Crew
             if (e.getGuild().getIdLong() != DingusCrew.ID_LONG) {
                 return;

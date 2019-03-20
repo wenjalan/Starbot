@@ -7,6 +7,7 @@ import wenjalan.starbot.engines.ResponseEngine;
 import wenjalan.starbot.listeners.MessageListener;
 import wenjalan.starbot.listeners.ServerEventListener;
 import wenjalan.starbot.servers.DingusCrew;
+import wenjalan.starbot.servers.LakesideLounge;
 
 import java.util.Scanner;
 
@@ -79,12 +80,21 @@ public class Starbot {
                 .build()
                 .awaitReady();
 
+        // start a-sync stuff
+        // Lakeside Lounge //
+        // Channel topic updater
+        new Thread(new LakesideLounge.ChannelDescriptionUpdater(this)).start();
+
         // announce that Starbot is ready and print an invite
         System.out.println("Starbot started successfully!");
         System.out.println("Invite: " + jda.asBot().getInviteUrl());
     }
 
     // accessors
+    public JDA jda() {
+        return this.jda;
+    }
+
     public KeyPhraseEngine getKeyPhraseEngine() {
         return this.keyPhraseEngine;
     }

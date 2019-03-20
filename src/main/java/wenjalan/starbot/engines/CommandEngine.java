@@ -42,7 +42,7 @@ public class CommandEngine {
                 // default message clearing
                 int victims = 10;
                 try {
-                    victims = Integer.parseInt(args[0]);
+                    if (args.length > 0) victims = Integer.parseInt(args[0]);
                 } catch (NumberFormatException ex) {
                     // do nothing
                 }
@@ -54,13 +54,16 @@ public class CommandEngine {
                 channel.sendMessage("clearing " + victims + " messages...").queue();
 
                 // get messages
-                List<Message> history = channel.getHistory().getRetrievedHistory();
+                List<Message> history = channel.getHistory().retrievePast(victims).complete();
+
+                // feedback
+                // channel.sendMessage("retrieved " + history.size() + " messages").queue();
 
                 // iterate
                 Iterator<Message> iter = history.iterator();
                 int deleted = 0;
                 Message msg;
-                while (iter.hasNext() && deleted <= victims) {
+                while (iter.hasNext()) {
                     // get the next message
                     msg = iter.next();
 
@@ -68,20 +71,23 @@ public class CommandEngine {
                     if (msg.getAuthor().getIdLong() == e.getJDA().getSelfUser().getIdLong()) {
                         // delete it
                         msg.delete().queue();
+                        deleted++;
                     }
                     // if the message is a command
                     else if (MessageListener.isCommand(msg.getContentRaw())) {
                         // delete it
                         msg.delete().queue();
+                        deleted++;
                     }
                     // if the message mentions Starbot
                     else if (msg.getMentionedUsers().contains(e.getJDA().getSelfUser())) {
                         // delete it
                         msg.delete().queue();
+                        deleted++;
                     }
                 }
                 // send a done message
-                channel.sendMessage("done").queue();
+                channel.sendMessage("deleted " + deleted + " messages").queue();
             }
         },
 
