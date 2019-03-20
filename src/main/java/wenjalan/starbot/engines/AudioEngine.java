@@ -172,11 +172,13 @@ public class AudioEngine {
 
         // pauses a track
         public void pause() {
+            isPlaying = false;
             audioPlayer.setPaused(true);
         }
 
         // resumes a track
         public void resume() {
+            isPlaying = true;
             audioPlayer.setPaused(false);
         }
 
@@ -198,6 +200,11 @@ public class AudioEngine {
         // sets volume
         public void setVolume(int volume) {
             audioPlayer.setVolume(volume);
+        }
+
+        // returns if we're playing something
+        public boolean isPlaying() {
+            return isPlaying;
         }
 
         // returns the info of the track that's playing

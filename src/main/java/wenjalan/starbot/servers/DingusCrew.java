@@ -5,11 +5,17 @@ import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
+import net.dv8tion.jda.core.managers.GuildController;
 import wenjalan.starbot.Starbot;
 import wenjalan.starbot.Users;
+import wenjalan.starbot.engines.AudioEngine;
 import wenjalan.starbot.listeners.MessageListener;
 import wenjalan.starbot.listeners.ServerEventListener;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 
 // features specific to the Dingus Crew Server
@@ -104,7 +110,42 @@ public class DingusCrew {
                         .getURL();
                 justin.getUser().openPrivateChannel().complete().sendMessage(invite).queue();
             }
+        },
+
+        play {
+            // extra functionality of the !play command for The Dingus Crew
+            // kicks the author if it's 8:00 PM - 8:10 PM
+            // kicks the author if the number of times music has been played (50, 100, 150) is a multiple of 50
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // code runs in conjunction with code in CommandEngine
+                playCount++;
+
+                // if this is a multiple of 50, or it's 8:00 to 8:15 PM, kick the author
+                LocalDateTime now = LocalDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")));
+                int hour = now.getHour();
+                int minute = now.getMinute();
+                if (playCount % 50 == 0 || (hour == 20 && minute <= 15)) {
+                    try {
+                        // kick the author
+                        Member author = e.getMember();
+                        GuildController controller = e.getGuild().getController();
+                        controller.kick(author, "no.").queue();
+
+                        // pause playback if playing
+                        AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();
+                        if (handler.isPlaying()) {
+                            handler.pause();
+                        }
+                        handler.pause();
+                    } catch (InsufficientPermissionException ex) {
+                        e.getTextChannel().sendMessage("no.").queue();
+                    }
+                }
+            }
         };
+
+        protected int playCount = 0;
 
         public abstract void run(MessageReceivedEvent e, String[] args);
 
