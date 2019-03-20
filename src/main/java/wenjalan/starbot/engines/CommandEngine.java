@@ -328,6 +328,12 @@ public class CommandEngine {
                     return;
                 }
 
+                // if no args were specified, quit
+                if (args.length == 0) {
+                    e.getChannel().sendMessage("to WHAT?").queue();
+                    return;
+                }
+
                 // parse args
                 try {
                     // get new volume

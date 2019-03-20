@@ -19,6 +19,9 @@ import java.util.Queue;
 
 public class AudioEngine {
 
+    // the default volume
+    public static final int DEFAULT_VOLUME = 30;
+
     // the Queue of Tracks to play
     protected Queue<AudioTrack> queue;
 
@@ -61,6 +64,9 @@ public class AudioEngine {
 
         // setup send handler
         this.sendHandler = new SendHandler(audioPlayer);
+
+        // set default volume
+        this.sendHandler.setVolume(DEFAULT_VOLUME);
     }
 
     // accessors
