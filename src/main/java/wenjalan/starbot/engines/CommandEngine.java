@@ -95,6 +95,14 @@ public class CommandEngine {
             // mutes the mentioned users
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
+                // check for permissions
+                if (!e.getGuild().getMember(e.getJDA().getSelfUser()).hasPermission(
+                        Permission.VOICE_MUTE_OTHERS
+                )) {
+                    e.getTextChannel().sendMessage("give me perms").queue();
+                    return;
+                }
+
                 // get the mentioned members
                 List<Member> members;
                 // if @everyone was mentioned
@@ -133,7 +141,7 @@ public class CommandEngine {
             // sends a link to the source code as "help"
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                e.getTextChannel().sendMessage("good luck: https://pastebin.com/VCGG9vqK").queue();
+                e.getTextChannel().sendMessage("good luck: https://github.com/wenjalan/Starbot/blob/master/src/main/java/wenjalan/starbot/engines/CommandEngine.java").queue();
             }
         },
 
@@ -159,7 +167,7 @@ public class CommandEngine {
             // sends the invite into the chat
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                e.getChannel().sendMessage("You make terrible decisions: " + e.getJDA().asBot().getInviteUrl()).complete();
+                e.getChannel().sendMessage(e.getJDA().asBot().getInviteUrl() + " you make terrible decisions").complete();
             }
         },
 
@@ -315,7 +323,7 @@ public class CommandEngine {
             }
         },
 
-        setVolume {
+        volume {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {

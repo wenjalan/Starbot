@@ -77,6 +77,14 @@ public class DingusCrew {
                     return;
                 }
 
+                // check if the author has perms to kick
+                if (!e.getGuild().getMember(e.getAuthor()).hasPermission(
+                        Permission.KICK_MEMBERS
+                )) {
+                    e.getChannel().sendMessage("you don't have perms").queue();
+                    return;
+                }
+
                 // record the number of times Justin's been kicked
                 Member justin = e.getGuild().getMemberById(Users.JUSTIN);
                 try {
