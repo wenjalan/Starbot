@@ -10,9 +10,9 @@ import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.sedmelluq.discord.lavaplayer.track.playback.AudioFrame;
 import net.dv8tion.jda.core.audio.AudioSendHandler;
-import wenjalan.starbot.listeners.MessageListener;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -25,9 +25,6 @@ public class AudioEngine {
     // if something's playing
     protected boolean isPlaying;
 
-    // the MessageListener this AudioEngine is being used by
-    protected MessageListener messageListener;
-
     // the AudioPlayerManager
     protected AudioPlayerManager audioPlayerManager;
 
@@ -37,9 +34,11 @@ public class AudioEngine {
     // the TrackScheduler
     protected TrackScheduler trackScheduler;
 
+    // the SendHandler
+    protected SendHandler sendHandler;
+
     // constructor
-    public AudioEngine(MessageListener messageListener) {
-        this.messageListener = messageListener;
+    public AudioEngine() {
         init();
     }
 
@@ -52,51 +51,21 @@ public class AudioEngine {
         this.queue = new LinkedList<>();
 
         // setup audio manager and player
-        audioPlayerManager = new DefaultAudioPlayerManager();
+        this.audioPlayerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(audioPlayerManager);
         this.audioPlayer = audioPlayerManager.createPlayer();
 
         // setup scheduler
         this.trackScheduler = new TrackScheduler(audioPlayer);
-        audioPlayer.addListener(trackScheduler);
+        this.audioPlayer.addListener(trackScheduler);
+
+        // setup send handler
+        this.sendHandler = new SendHandler(audioPlayer);
     }
 
-    // resumes playback
-    public void play() {
-        // if paused, resume
-        if (audioPlayer.isPaused()) {
-            audioPlayer.setPaused(false);
-        }
-    }
-
-    // plays a track
-    public void play(String url) {
-        queue(url);
-        next();
-    }
-
-    // queues a track given a url
-    public void queue(String url) {
-        audioPlayerManager.loadItem(url, new ResultHandler());
-    }
-
-    // skips a track
-    public void skip() {
-        next();
-    }
-
-    // sets volume
-    public void setVolume(int volume) {
-        audioPlayer.setVolume(volume);
-    }
-
-    // plays the next track
-    protected void next() {
-        // play the next track if there is one
-        if (!queue.isEmpty()) {
-            AudioTrack track = queue.remove();
-            audioPlayer.startTrack(track, false);
-        }
+    // accessors
+    public SendHandler sendHandler() {
+        return this.sendHandler;
     }
 
     // TrackScheduler
@@ -117,9 +86,10 @@ public class AudioEngine {
 
         @Override
         public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
+            isPlaying = false;
             // start the next track
             if (endReason.mayStartNext) {
-                next();
+                sendHandler.next();
             }
         }
 
@@ -135,7 +105,7 @@ public class AudioEngine {
 
             // play it
             if (!isPlaying) {
-                next();
+                sendHandler.next();
             }
         }
 
@@ -186,6 +156,81 @@ public class AudioEngine {
         @Override
         public boolean isOpus() {
             return true;
+        }
+
+        // plays a track
+        public void play(String url) {
+            queue(url);
+            next();
+        }
+
+        // pauses a track
+        public void pause() {
+            audioPlayer.setPaused(true);
+        }
+
+        // resumes a track
+        public void resume() {
+            audioPlayer.setPaused(false);
+        }
+
+        // clears the queue
+        public void clearQueue() {
+            queue.clear();
+        }
+
+        // queues a track given a url
+        public void queue(String url) {
+            audioPlayerManager.loadItem(url, new ResultHandler());
+        }
+
+        // skips a track
+        public void skip() {
+            next();
+        }
+
+        // sets volume
+        public void setVolume(int volume) {
+            audioPlayer.setVolume(volume);
+        }
+
+        // returns the info of the track that's playing
+        public String playing() {
+            AudioTrack track = audioPlayer.getPlayingTrack();
+            if (track == null) {
+                return "nothing.";
+            }
+            else {
+                AudioTrackInfo info = track.getInfo();
+                return info.title + " by " + info.author;
+            }
+        }
+
+        // plays the next track
+        protected void next() {
+            // stop playing this track
+            audioPlayer.stopTrack();
+            // play the next track if there is one
+            if (!queue.isEmpty()) {
+                AudioTrack track = queue.remove();
+                audioPlayer.startTrack(track, false);
+                isPlaying = true;
+            }
+        }
+
+        // gets the Queue as a String
+        public String getQueueToString() {
+            if (queue.isEmpty()) return "nothing's queued.";
+            else {
+                LinkedList<AudioTrack> tracks = new LinkedList<>(queue);
+                String ret = "";
+                for (int i = 0; i < tracks.size() && i < 20; i++) {
+                    AudioTrackInfo info = tracks.get(i).getInfo();
+                    ret += (i + 1) + ": " + info.title + " by " + info.author + "\n";
+                }
+                if (tracks.size() > 20) ret += "+ " + (tracks.size() - 20) + " more";
+                return ret;
+            }
         }
 
     }
