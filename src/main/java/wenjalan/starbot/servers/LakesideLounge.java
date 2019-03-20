@@ -34,9 +34,11 @@ public class LakesideLounge {
                 // the last numerical hour we updated the desc
                 int lastUpdateHour = -1;
                 // now
-                LocalDateTime now = LocalDateTime.now(zoneId);
+                LocalDateTime now;
                 // loop forever
                 for (;;) {
+                    // update now
+                    now = LocalDateTime.now(zoneId);
                     // if the hour now is different from the last one
                     if (now.getHour() != lastUpdateHour) {
                         // update
