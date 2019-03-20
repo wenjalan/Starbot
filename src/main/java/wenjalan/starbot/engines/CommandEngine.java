@@ -171,6 +171,38 @@ public class CommandEngine {
             }
         },
 
+        lofi {
+            // makes the bot join and start playing lofi beats
+            // https://www.youtube.com/watch?v=hHW1oY26kxQ
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // check if we're already connected
+                if (!voiceChannelConnected(e.getGuild())) {
+                    // check if the author is in a VoiceChannel
+                    VoiceChannel voiceChannel = e.getMember().getVoiceState().getChannel();
+
+                    // if none, quit
+                    if (voiceChannel == null) {
+                        e.getChannel().sendMessage("fucking where").queue();
+                        return;
+                    }
+
+                    // otherwise, join
+                    // create an AudioEngine for this guild
+                    createAudioEngine(e.getGuild(), voiceChannel);
+
+                    // sout
+                    System.out.println("connected to " + voiceChannel.getName() + " in " + e.getGuild().getName() + " for audio playback");
+                }
+
+                // get the SendHandler
+                AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();
+
+                // play lofi beats 24/7 to study and chill to
+                handler.play("https://www.youtube.com/watch?v=hHW1oY26kxQ");
+            }
+        },
+
         joinup {
             // creates a new AudioEngine to play audio
             @Override
@@ -191,9 +223,7 @@ public class CommandEngine {
                 }
 
                 // create an AudioEngine for this guild
-                AudioManager audioManager = e.getGuild().getAudioManager();
-                audioManager.setSendingHandler(new AudioEngine().sendHandler());
-                audioManager.openAudioConnection(voiceChannel);
+                createAudioEngine(e.getGuild(), voiceChannel);
 
                 // sout
                 System.out.println("connected to " + voiceChannel.getName() + " in " + e.getGuild().getName() + " for audio playback");
@@ -204,14 +234,14 @@ public class CommandEngine {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // get the SendHandler
                 AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();
@@ -232,14 +262,14 @@ public class CommandEngine {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // get the SendHandler
                 AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();
@@ -251,14 +281,14 @@ public class CommandEngine {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // get the SendHandler
                 AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();
@@ -270,14 +300,14 @@ public class CommandEngine {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // get the SendHandler
                 AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();
@@ -289,14 +319,14 @@ public class CommandEngine {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // get the SendHandler
                 AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();
@@ -308,14 +338,14 @@ public class CommandEngine {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // get the SendHandler
                 AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();
@@ -327,14 +357,14 @@ public class CommandEngine {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // if no args were specified, quit
                 if (args.length == 0) {
@@ -366,14 +396,14 @@ public class CommandEngine {
             // pauses track playback
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // send whatever's playing
                 // get the SendHandler
@@ -386,14 +416,14 @@ public class CommandEngine {
             // disconnects the AudioEngine if connected
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if the bot is in a VoiceChannel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
-                // if none, quit
-                if (voiceChannel == null) {
+                // check if we're in a voice channel
+                if (!voiceChannelConnected(e.getGuild())) {
                     e.getChannel().sendMessage("fucking how").queue();
                     return;
                 }
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // disconnect the AudioManager
                 AudioManager audioManager = e.getGuild().getAudioManager();
@@ -417,6 +447,20 @@ public class CommandEngine {
 
         // executes when the command is called
         public abstract void run(MessageReceivedEvent e, String[] args);
+
+        // creates an AudioEngine for a VoiceChannel
+        protected AudioEngine createAudioEngine(Guild g, VoiceChannel channel) {
+            AudioManager manager = g.getAudioManager();
+            AudioEngine engine = new AudioEngine();
+            manager.setSendingHandler(engine.sendHandler());
+            manager.openAudioConnection(channel);
+            return engine;
+        }
+
+        // checks if the bot is in a voice channel
+        protected boolean voiceChannelConnected(Guild g) {
+            return g.getAudioManager().getConnectedChannel() == null;
+        }
 
     }
 

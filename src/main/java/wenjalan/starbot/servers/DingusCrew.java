@@ -62,7 +62,7 @@ public class DingusCrew {
     }
 
     // Commands
-    public static enum DingusCommands {
+    public enum DingusCommands {
 
         nword {
             // kicks Justin from the server, sends him an invite, and increments his name by 1
