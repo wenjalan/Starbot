@@ -15,14 +15,7 @@ import java.util.stream.Collectors;
 // contains all the commands and their implementations
 public class CommandEngine {
 
-    // the MessageListener this CommandEngine belongs to
-    protected MessageListener messageListener;
-
-    // constructor
-    public CommandEngine(MessageListener messageListener) {
-        this.messageListener = messageListener;
-    }
-
+    // the available commands and their implementations
     public enum Command {
 
         clear {
@@ -448,7 +441,11 @@ public class CommandEngine {
         // executes when the command is called
         public abstract void run(MessageReceivedEvent e, String[] args);
 
-        // creates an AudioEngine for a VoiceChannel
+        ////////////////////
+        // Shared Methods //
+        ////////////////////
+
+        // creates an AudioEngine for a VoiceChannel in a Guild
         protected AudioEngine createAudioEngine(Guild g, VoiceChannel channel) {
             AudioManager manager = g.getAudioManager();
             AudioEngine engine = new AudioEngine();
@@ -457,7 +454,7 @@ public class CommandEngine {
             return engine;
         }
 
-        // checks if the bot is in a voice channel
+        // checks if the bot is in a voice channel in this guild
         protected boolean voiceChannelConnected(Guild g) {
             return g.getAudioManager().getConnectedChannel() == null;
         }

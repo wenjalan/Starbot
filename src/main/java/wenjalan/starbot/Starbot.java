@@ -2,6 +2,7 @@ package wenjalan.starbot;
 
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.entities.SelfUser;
 import wenjalan.starbot.engines.KeyPhraseEngine;
 import wenjalan.starbot.engines.ResponseEngine;
 import wenjalan.starbot.listeners.MessageListener;
