@@ -102,7 +102,7 @@ public class CommandEngine {
                 if (args[0].equalsIgnoreCase("all")) {
                     // if the user doesn't have admin, return
                     if (!e.getMember().hasPermission(Permission.ADMINISTRATOR)) {
-                        e.getTextChannel().sendMessage("You don't have admin.").queue();
+                        e.getTextChannel().sendMessage("you're not important enough").queue();
                         return;
                     }
                     members = e.getMember().getVoiceState().getChannel().getMembers();
@@ -111,7 +111,7 @@ public class CommandEngine {
                 else {
                     // if the user doesn't have mute permissions, return
                     if (!e.getMember().hasPermission(Permission.VOICE_MUTE_OTHERS)) {
-                        e.getTextChannel().sendMessage("You don't have permission.").queue();
+                        e.getTextChannel().sendMessage("you're not important enough.").queue();
                         return;
                     }
                     members = e.getMessage().getMentionedMembers();
@@ -142,7 +142,7 @@ public class CommandEngine {
             // echoes the message back at the user
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                e.getTextChannel().sendMessage(Arrays.stream(args).collect(Collectors.joining(" "))).queue();
+                e.getTextChannel().sendMessage(String.join(" ", args)).queue();
             }
         },
 
@@ -160,7 +160,8 @@ public class CommandEngine {
             // sends the invite into the chat
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                e.getChannel().sendMessage(e.getJDA().asBot().getInviteUrl() + " you make terrible decisions").complete();
+                e.getChannel().sendMessage("you make terrible decisions").complete();
+                e.getChannel().sendMessage(e.getJDA().asBot().getInviteUrl()).complete();
             }
         },
 

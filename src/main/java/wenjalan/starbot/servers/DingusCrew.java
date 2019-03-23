@@ -100,7 +100,7 @@ public class DingusCrew {
                 }
 
                 // kick Justin
-                e.getGuild().getController().kick(justin).reason("insufficient permissions: you don't have the nword pass" + justin_kicks).queue();
+                e.getGuild().getController().kick(justin).reason("insufficient permissions: you don't have the nword pass (" + justin_kicks + ")").queue();
 
                 // send him an invite to the server
                 String invite = e.getTextChannel().createInvite()

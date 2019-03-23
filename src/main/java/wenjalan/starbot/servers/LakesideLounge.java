@@ -3,7 +3,6 @@ package wenjalan.starbot.servers;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.managers.GuildController;
 import wenjalan.starbot.Starbot;
 import wenjalan.starbot.Users;
 
