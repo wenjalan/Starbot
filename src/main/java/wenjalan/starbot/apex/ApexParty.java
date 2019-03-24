@@ -64,7 +64,7 @@ public class ApexParty {
                 }
 
                 // destroy the party
-                ApexPartyManager.getManager(guild).getParties().remove(this);
+                ApexPartyManager.removePartyFromGuild(this.guild, this);
                 return;
             }
         }

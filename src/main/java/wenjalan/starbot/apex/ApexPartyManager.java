@@ -15,30 +15,53 @@ public class ApexPartyManager {
 
     // adds a new party to the guild
     public static void addPartyToGuild(Guild g, ApexParty p) {
+        if (!hasManager(g)) {
+            createManager(g);
+        }
         Manager manager = getManager(g);
         manager.getParties().add(p);
     }
 
     // removes a party from the guild
     public static void removePartyFromGuild(Guild g, ApexParty p) {
+        if (!hasManager(g)) {
+            createManager(g);
+        }
         Manager manager = getManager(g);
         manager.getParties().remove(p);
     }
 
     // adds a player to the guild
     public static void addPlayerToGuild(Guild g, ApexPlayer p) {
+        if (!hasManager(g)) {
+            createManager(g);
+        }
         Manager manager = getManager(g);
         manager.getPlayers().add(p);
     }
 
     // removes a player from the guild
     public static void removePlayerFromGuild(Guild g, ApexPlayer p) {
+        if (!hasManager(g)) {
+            createManager(g);
+        }
         Manager manager = getManager(g);
         manager.getPlayers().remove(p);
     }
 
+    // creates a manager for a guild
+    private static void createManager(Guild g) {
+        Manager m = new Manager(g);
+        managers.put(g, m);
+    }
+
+    // removes a manager from a guild
+    private static void removeManager(Guild g) {
+        managers.remove(g);
+    }
+
     // an instance of a Manager class
-    public class Manager {
+    public static class Manager {
 
         // the Guild this Manager is managing
         protected Guild guild;
@@ -73,9 +96,14 @@ public class ApexPartyManager {
     }
 
     // helpers //
-    // returns the manager of a guild
+    // returns the manager of a guild, null if none
     protected static Manager getManager(Guild g) {
         return managers.get(g);
+    }
+
+    // returns if a Guild has a Manager
+    protected static boolean hasManager(Guild g) {
+        return managers.containsKey(g);
     }
 
     // returns a list of parties that have open slots
