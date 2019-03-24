@@ -1,8 +1,10 @@
 # Starbot
-A sassy little chatbot named Starbot.
+A sassy little chatbot named Starbot
 
 # Features
-Literally none. Why would you ever invite him to your server?
+Constantly degrades all members in a server
+Yells at people who say dumb things
+Plays funky fresh music, but only if you're nice
 
 # Bugs
-All of them.
+All of them
