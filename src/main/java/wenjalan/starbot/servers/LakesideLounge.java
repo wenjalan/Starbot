@@ -13,6 +13,7 @@ public class LakesideLounge {
 
     // server id
     public static final long ID_LONG = 419598386933530636L;
+    public static final String ID_STRING = "419598386933530636";
 
     // update the main channel description with a random response
     public static class ChannelDescriptionUpdater implements Runnable {
@@ -66,7 +67,11 @@ public class LakesideLounge {
             } while (description.length() >= 1000);
 
             // update it in Lakeside
-            Guild lakeside = starbot.jda().getGuildById(ID_LONG);
+            Guild lakeside = starbot.jda().getGuildById(ID_STRING);
+            if (lakeside == null) {
+                System.err.println("couldn't find lakeside lounge.");
+                return;
+            }
             TextChannel lounge = lakeside.getTextChannelById(419598386933530638L);
             lounge.getManager().setTopic(description).queue();
         }

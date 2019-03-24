@@ -93,6 +93,10 @@ public class AudioEngine {
         @Override
         public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
             isPlaying = false;
+
+            // sout
+            System.out.println("track " + track.getInfo().title + " ended");
+
             // start the next track
             if (endReason.mayStartNext) {
                 sendHandler.next();

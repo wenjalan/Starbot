@@ -7,6 +7,7 @@ import wenjalan.starbot.engines.KeyPhraseEngine;
 import wenjalan.starbot.engines.ResponseEngine;
 import wenjalan.starbot.listeners.MessageListener;
 import wenjalan.starbot.listeners.ServerEventListener;
+import wenjalan.starbot.listeners.ShutdownListener;
 import wenjalan.starbot.servers.DingusCrew;
 import wenjalan.starbot.servers.LakesideLounge;
 
@@ -73,6 +74,7 @@ public class Starbot {
                 // default listeners
                 .addEventListener(new MessageListener(this))
                 .addEventListener(new ServerEventListener(this))
+                .addEventListener(new ShutdownListener())
 
                 // dingus crew listeners
                 .addEventListener(new DingusCrew.DingusCrewMessageListener(this))
