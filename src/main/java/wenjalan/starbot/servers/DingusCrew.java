@@ -3,6 +3,7 @@ package wenjalan.starbot.servers;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
@@ -175,7 +176,14 @@ public class DingusCrew {
                 e.getGuild().getController().setNickname(e.getMember(), "" + justin_kicks).queue();
 
                 // give him his role back
-                e.getGuild().getController().addSingleRoleToMember(e.getMember(), e.getGuild().getRoleById(292906691425730560L)).queue();
+                // Role serverAsshole = e.getGuild().getRoleById(292906691425730560L);
+                Role serverAsshole = e.getGuild().getRolesByName("The server asshole", true).get(0);
+
+                if (serverAsshole == null) {
+                    System.err.println("couldn't find justin's role to give it back");
+                    return;
+                }
+                e.getGuild().getController().addRolesToMember(e.getMember(), serverAsshole).queue();
             }
         }
 

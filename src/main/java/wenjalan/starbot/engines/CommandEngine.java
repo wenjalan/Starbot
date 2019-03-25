@@ -167,42 +167,39 @@ public class CommandEngine {
 
         lofi {
             // makes the bot join and start playing lofi beats
-            // https://www.youtube.com/watch?v=hHW1oY26kxQ
+            // https://www.twitch.tv/chillhopmusic
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // get the handler
-                AudioEngine.SendHandler handler = getSendHandler(e.getGuild());
+                // play the pillar man theme
+                wakeUpAndPlay(e, "https://www.twitch.tv/chillhopmusic");
+            }
+        },
 
-                // if none
-                if (handler == null) {
-                    // connect a new AudioEngine
-                    // check if the author is in a VoiceChannel
-                    VoiceChannel voiceChannel = e.getMember().getVoiceState().getChannel();
+        awaken {
+            // plays the Pillar Man Theme from JoJo's Bizarre Adventure
+            // https://www.youtube.com/watch?v=XUhVCoTsBaM
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // play the pillar man theme
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=XUhVCoTsBaM");
+            }
+        },
 
-                    // if none, quit
-                    if (voiceChannel == null) {
-                        e.getChannel().sendMessage("fucking where").queue();
-                        return;
-                    }
+        shinydays {
+            // plays Shiny Days from Yuru Camp
+            // https://www.youtube.com/watch?v=DCr-r0ZP9P8
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=DCr-r0ZP9P8");
+            }
+        },
 
-                    // create an AudioEngine for this guild
-                    createAudioEngine(e.getGuild(), voiceChannel);
-
-                    // sout
-                    System.out.println("connected to " + voiceChannel.getName() + " in " + e.getGuild().getName() + " for audio playback");
-
-                    // retrieve the handler again
-                    handler = getSendHandler(e.getGuild());
-
-                    // serr if still null
-                    if (handler == null) {
-                        System.err.println("couldn't find the SendHandler to play lofi.");
-                        return;
-                    }
-                }
-
-                // play lofi beats 24/7 to study and chill to
-                handler.play("https://www.youtube.com/watch?v=hHW1oY26kxQ");
+        monstercat {
+            // plays the Monstercat Radio 24/7
+            // https://www.twitch.tv/monstercat
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.twitch.tv/monstercat");
             }
         },
 
@@ -466,7 +463,46 @@ public class CommandEngine {
 
         // checks if the bot is in a voice channel in this guild
         protected boolean voiceChannelConnected(Guild g) {
-            return g.getAudioManager().getConnectedChannel() == null;
+            User starbot = g.getJDA().getSelfUser();
+            return g.getMember(starbot).getVoiceState().getChannel() != null;
+        }
+
+        // makes the bot join and immediately start playing something
+        // starts playing the query if the bot's already in
+        protected void wakeUpAndPlay(MessageReceivedEvent e, String query) {
+            // get the handler
+            AudioEngine.SendHandler handler = getSendHandler(e.getGuild());
+
+            // if none
+            if (handler == null) {
+                // connect a new AudioEngine
+                // check if the author is in a VoiceChannel
+                VoiceChannel voiceChannel = e.getMember().getVoiceState().getChannel();
+
+                // if none, quit
+                if (voiceChannel == null) {
+                    e.getChannel().sendMessage("fucking where").queue();
+                    return;
+                }
+
+                // create an AudioEngine for this guild
+                AudioEngine engine = createAudioEngine(e.getGuild(), voiceChannel);
+
+                // sout
+                System.out.println("connected to " + voiceChannel.getName() + " in " + e.getGuild().getName() + " for audio playback");
+
+                // retrieve the handler again
+                handler = engine.sendHandler();
+
+                // serr if still null
+                if (handler == null) {
+                    System.err.println("couldn't find the SendHandler to play lofi.");
+                    return;
+                }
+            }
+
+            // play lofi beats 24/7 to study and chill to
+            handler.play(query);
         }
 
     }

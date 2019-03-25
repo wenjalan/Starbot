@@ -95,12 +95,18 @@ public class AudioEngine {
             isPlaying = false;
 
             // sout
-            System.out.println("track " + track.getInfo().title + " ended");
+            System.out.println("track " + track.getInfo().title + " ended: " + endReason.name());
 
             // start the next track
             if (endReason.mayStartNext) {
                 sendHandler.next();
             }
+        }
+
+        @Override
+        public void onTrackException(AudioPlayer player, AudioTrack track, FriendlyException exception) {
+            System.err.println("threw an exception while playing a track:");
+            exception.printStackTrace();
         }
 
     }
