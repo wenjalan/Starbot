@@ -6,16 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e2b7c7-ceab-45af-ab2e-49ca11c319a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java" afterDir="false" />
-    </list>
+    <list default="true" id="69e2b7c7-ceab-45af-ab2e-49ca11c319a8" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -61,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="57" column="46" lean-forward="true" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+            <state relative-caret-position="884">
+              <caret line="71" column="32" lean-forward="true" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -247,7 +238,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553477356077" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553477409508" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -309,12 +300,12 @@
       <workItem from="1553374268796" duration="591000" />
       <workItem from="1553460876023" duration="2842000" />
       <workItem from="1553470952006" duration="601000" />
-      <workItem from="1553472043477" duration="4980000" />
+      <workItem from="1553472043477" duration="5186000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36686000" />
+    <option name="totallyTimeSpent" value="36892000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
@@ -632,8 +623,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="57" column="46" lean-forward="true" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+        <state relative-caret-position="884">
+          <caret line="71" column="32" lean-forward="true" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
         </state>
       </provider>
     </entry>
