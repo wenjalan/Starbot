@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import wenjalan.starbot.Starbot;
+import wenjalan.starbot.Users;
 import wenjalan.starbot.engines.CommandEngine;
 import wenjalan.starbot.engines.KeyPhraseEngine;
 import wenjalan.starbot.engines.ResponseEngine;
@@ -40,6 +41,16 @@ public class MessageListener extends ListenerAdapter {
 
         // if the message is from a dm
         if (e.isFromType(ChannelType.PRIVATE)) {
+            // if the message was from me, check if it's a request to kill
+            if (e.getAuthor().getIdLong() == Users.ALAN) {
+                // if the message contains "die", die
+                if (e.getMessage().getContentRaw().toLowerCase().contains("die")) {
+                    // send a message
+                    e.getChannel().sendMessage("committing self-isekai...").queue();
+                    e.getJDA().shutdown();
+                }
+            }
+
             // respond to it with a response
             MessageChannel channel = e.getChannel();
             String response = responseEngine.getNextResponse();
