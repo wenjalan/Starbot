@@ -48,6 +48,7 @@ public class MessageListener extends ListenerAdapter {
                     // send a message
                     e.getChannel().sendMessage("committing self-isekai...").queue();
                     e.getJDA().shutdown();
+                    return;
                 }
             }
 

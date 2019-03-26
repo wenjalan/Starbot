@@ -185,6 +185,16 @@ public class CommandEngine {
             }
         },
 
+        fireplace {
+            // plays a fireplace sound
+            // https://www.youtube.com/watch?v=UgHKb_7884o
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // play the video
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=UgHKb_7884o");
+            }
+        },
+
         shinydays {
             // plays Shiny Days from Yuru Camp
             // https://www.youtube.com/watch?v=DCr-r0ZP9P8
@@ -445,7 +455,7 @@ public class CommandEngine {
         ////////////////////
 
         // creates an AudioEngine for a VoiceChannel in a Guild
-        protected AudioEngine createAudioEngine(Guild g, VoiceChannel channel) {
+        public static AudioEngine createAudioEngine(Guild g, VoiceChannel channel) {
             AudioManager manager = g.getAudioManager();
             AudioEngine engine = new AudioEngine();
             manager.setSendingHandler(engine.sendHandler());
@@ -454,7 +464,7 @@ public class CommandEngine {
         }
 
         // returns the SendHandler of a Guild, null if none
-        protected AudioEngine.SendHandler getSendHandler(Guild g) {
+        public static AudioEngine.SendHandler getSendHandler(Guild g) {
             if (voiceChannelConnected(g)) {
                 return (AudioEngine.SendHandler) g.getAudioManager().getSendingHandler();
             }
@@ -462,7 +472,7 @@ public class CommandEngine {
         }
 
         // checks if the bot is in a voice channel in this guild
-        protected boolean voiceChannelConnected(Guild g) {
+        protected static boolean voiceChannelConnected(Guild g) {
             User starbot = g.getJDA().getSelfUser();
             return g.getMember(starbot).getVoiceState().getChannel() != null;
         }
