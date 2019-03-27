@@ -30,6 +30,11 @@ public class LakesideLounge {
         // when someone joins a voice channel
         @Override
         public void onGuildVoiceJoin(GuildVoiceJoinEvent e) {
+            // if it's the bot, don't do anything
+            if (e.getMember().getUser().getIdLong() == e.getJDA().getSelfUser().getIdLong()) {
+                return;
+            }
+
             // check if the channel is #fireplace
             if (e.getChannelJoined().getIdLong() != FIREPLACE_ID_LONG) {
                 // return
@@ -37,7 +42,7 @@ public class LakesideLounge {
             }
 
             // if it is, start playing a fireplace video
-            playFireplace(e.getGuild(), e.getChannelJoined());
+            playFireplace(e.getGuild(), e.getGuild().getVoiceChannelById(FIREPLACE_ID_LONG));
         }
 
         // plays a fireplace sound
@@ -45,7 +50,7 @@ public class LakesideLounge {
             // get the handler
             AudioEngine.SendHandler handler = CommandEngine.Command.getSendHandler(g);
 
-            // if none
+            // if none, connect
             if (handler == null) {
                 // connect a new AudioEngine
                 // check if the author is in a VoiceChannel
@@ -72,9 +77,13 @@ public class LakesideLounge {
                     return;
                 }
             }
+            // otherwise, check if we're already playing something
+            else if (handler.isPlaying()) {
+                return;
+            }
 
             // play fireplace
-            handler.play("https://www.youtube.com/watch?v=UgHKb_7884o");
+            handler.play("https://www.twitch.tv/chillhopmusic");
         }
     }
 

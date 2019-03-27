@@ -185,16 +185,6 @@ public class CommandEngine {
             }
         },
 
-        fireplace {
-            // plays a fireplace sound
-            // https://www.youtube.com/watch?v=UgHKb_7884o
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                // play the video
-                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=UgHKb_7884o");
-            }
-        },
-
         shinydays {
             // plays Shiny Days from Yuru Camp
             // https://www.youtube.com/watch?v=DCr-r0ZP9P8

@@ -80,6 +80,9 @@ public class Starbot {
                 .addEventListener(new DingusCrew.DingusCrewMessageListener(this))
                 .addEventListener(new DingusCrew.DingusCrewEventListener(this))
 
+                // lakeside listeners
+                .addEventListener(new LakesideLounge.FireplaceListener())
+
                 .build()
                 .awaitReady();
 
