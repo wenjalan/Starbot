@@ -4,6 +4,7 @@ import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.ChannelType;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
@@ -139,6 +140,17 @@ public class DingusCrew {
                             handler.pause();
                         }
                         handler.pause();
+
+                        // send the author an invite
+                        User user = author.getUser();
+
+                        // send him an invite to the server
+                        String invite = e.getTextChannel().createInvite()
+                                .setMaxAge(1000)
+                                .setMaxUses(1)
+                                .complete()
+                                .getURL();
+                        user.openPrivateChannel().complete().sendMessage(invite).queue();
                     } catch (InsufficientPermissionException ex) {
                         e.getTextChannel().sendMessage("no.").queue();
                     }
