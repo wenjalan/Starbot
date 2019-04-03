@@ -123,16 +123,21 @@ public class DingusCrew {
                 // code runs in conjunction with code in CommandEngine
                 playCount++;
 
-                // if this is a multiple of 50, or it's 8:00 to 8:15 PM, kick the author
+                // if this is a multiple of 100, or it's 8:00 to 8:15 PM, kick the author
                 LocalDateTime now = LocalDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")));
                 int hour = now.getHour();
                 int minute = now.getMinute();
-                if (playCount % 50 == 0 || (hour == 20 && minute <= 15)) {
+                if (playCount % 100 == 0 || (hour == 20 && minute <= 15)) {
                     try {
                         // kick the author
                         Member author = e.getMember();
                         GuildController controller = e.getGuild().getController();
-                        controller.kick(author, "no.").queue();
+                        if (playCount % 100 == 0) {
+                            controller.kick(author, "#" + playCount).queue();
+                        }
+                        else {
+                            controller.kick(author, "no.").queue();
+                        }
 
                         // pause playback if playing
                         AudioEngine.SendHandler handler = (AudioEngine.SendHandler) e.getGuild().getAudioManager().getSendingHandler();

@@ -71,7 +71,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/MessageListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
+            <state relative-caret-position="680">
               <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -83,8 +83,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
+            <state relative-caret-position="245">
+              <caret line="137" column="30" lean-forward="true" selection-start-line="137" selection-start-column="30" selection-end-line="137" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -157,8 +157,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,6 +239,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,17 +313,18 @@
       <workItem from="1553615164101" duration="1361000" />
       <workItem from="1553708179927" duration="1106000" />
       <workItem from="1554133020820" duration="193000" />
+      <workItem from="1554313416807" duration="165000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40069000" />
+    <option name="totallyTimeSpent" value="40234000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13557047" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1375839" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -581,6 +582,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/LakesideLounge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#ChannelDescriptionUpdater#0;class#LakesideLounge#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/responses.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2057">
+          <caret line="121" column="50" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/Starbot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
@@ -603,6 +622,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/MessageListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -615,38 +644,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/LakesideLounge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#ChannelDescriptionUpdater#0;class#LakesideLounge#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/MessageListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/responses.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2057">
-          <caret line="121" column="50" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
+        <state relative-caret-position="245">
+          <caret line="137" column="30" lean-forward="true" selection-start-line="137" selection-start-column="30" selection-end-line="137" selection-end-column="30" />
         </state>
       </provider>
     </entry>
