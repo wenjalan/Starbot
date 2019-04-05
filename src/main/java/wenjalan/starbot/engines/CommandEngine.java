@@ -185,6 +185,80 @@ public class CommandEngine {
             }
         },
 
+        ramen {
+            // plays ramen king, but like, the loli version
+            // https://www.youtube.com/watch?v=7oFI8sJ_o8c
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // play the ramen video (oh dear god)
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=7oFI8sJ_o8c");
+            }
+        },
+
+        dejavu {
+            // plays deja vu from initial d
+            // https://www.youtube.com/watch?v=dv13gl0a-FA
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=dv13gl0a-FA");
+            }
+        },
+
+        badtime {
+            // plays megalovania
+            // https://www.youtube.com/watch?v=ZcoqR9Bwx1Y
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=ZcoqR9Bwx1Y");
+            }
+        },
+
+        bitch {
+            // plays a video of joseph joestar screaming "son of a bitch"
+            // https://www.youtube.com/watch?v=dr_X2GlAbKw
+            // https://cdn.discordapp.com/attachments/559486195214712833/563564995263201282/JoJos_Bizarre_Adventure_-_Joseph_Joestar_-_SON_OF_A_BITCH_1.mp3
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://cdn.discordapp.com/attachments/559486195214712833/563564995263201282/JoJos_Bizarre_Adventure_-_Joseph_Joestar_-_SON_OF_A_BITCH_1.mp3");
+            }
+        },
+
+        omg {
+            // plays a clip of joseph joestar screaming "oh my god"
+            // https://www.youtube.com/watch?v=70utG1L5bfU
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=70utG1L5bfU");
+            }
+        },
+
+        ohno {
+            // plays a clip of joseph joestar screaming "oh no"
+            // https://www.youtube.com/watch?v=vl6gthDSIRU
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=vl6gthDSIRU");
+            }
+        },
+
+        ohshit {
+            // plays a clip of joseph joestar screaming "oh shit"
+            // https://cdn.discordapp.com/attachments/559486195214712833/563566101590573076/oh-shit_2_1.mp3
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://cdn.discordapp.com/attachments/559486195214712833/563566101590573076/oh-shit_2_1.mp3");
+            }
+        },
+
+        chuchuyeah {
+            // plays aozora no rhapsody
+            // https://www.youtube.com/watch?v=maKok2RItxM
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=maKok2RItxM");
+            }
+        },
+
         shinydays {
             // plays Shiny Days from Yuru Camp
             // https://www.youtube.com/watch?v=DCr-r0ZP9P8

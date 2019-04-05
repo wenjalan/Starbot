@@ -87,7 +87,7 @@ public class AudioEngine {
 
         @Override
         public void onTrackStart(AudioPlayer player, AudioTrack track) {
-            System.out.println("now playing " + track.getInfo().title + " by " + track.getInfo().author);
+            System.out.println("now playing " + track.getInfo().title + " by " + track.getInfo().author + " from " + track.getInfo().uri);
         }
 
         @Override
