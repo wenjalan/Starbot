@@ -13,6 +13,9 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.sedmelluq.discord.lavaplayer.track.playback.AudioFrame;
 import net.dv8tion.jda.core.audio.AudioSendHandler;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.VoiceChannel;
+import net.dv8tion.jda.core.managers.AudioManager;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -40,8 +43,12 @@ public class AudioEngine {
     // the SendHandler
     protected SendHandler sendHandler;
 
+    // the Guild this instance of AudioManager is playing in
+    protected final Guild guild;
+
     // constructor
-    public AudioEngine() {
+    public AudioEngine(Guild g) {
+        this.guild = g;
         init();
     }
 
@@ -100,6 +107,30 @@ public class AudioEngine {
             // start the next track
             if (endReason.mayStartNext) {
                 sendHandler.next();
+            }
+
+            // if there are no more songs in the queue, start counting down
+            if (queue.isEmpty()) {
+                // sout
+                // System.out.println("queue is empty, starting countdown...");
+                // wait literally 5 seconds
+                new Thread((() -> {
+                    try {
+                        // wait 10 seconds
+                        Thread.sleep(10 * 1000);
+                        // check if anything was added or is playing
+                        if (!isPlaying && queue.isEmpty()) {
+                            // quit the voice channel
+                            guild.getAudioManager().closeAudioConnection();
+                            // sout
+                            System.out.println("audio playback timed out in " + guild.getName());
+                        }
+                    } catch (InterruptedException e) {
+                        // do nothing I guess
+                        System.err.println("encountered an error while waiting to sleep in AudioEngine");
+                        e.printStackTrace();
+                    }
+                })).start();
             }
         }
 

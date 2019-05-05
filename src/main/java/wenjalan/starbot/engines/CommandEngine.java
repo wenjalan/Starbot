@@ -4,6 +4,7 @@ import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.managers.AudioManager;
+import net.dv8tion.jda.core.managers.GuildController;
 import wenjalan.starbot.listeners.MessageListener;
 
 import java.util.Arrays;
@@ -129,6 +130,37 @@ public class CommandEngine {
                 }
             }
         },
+
+//        everyonegetout {
+//            // kicks everyone out of the author's voice channel
+//            // feature not supported by current APIs
+//            @Override
+//            public void run(MessageReceivedEvent e, String[] args) {
+//                // find the voice channel the user is in
+//                Member author = e.getMember();
+//                VoiceChannel channel = author.getVoiceState().getChannel();
+//
+//                // if no voice channel, quit
+//                if (channel == null) {
+//                    e.getTextChannel().sendMessage("fucking how").queue();
+//                    return;
+//                }
+//
+//                // find all the users in the channel
+//                List<Member> members = channel.getMembers();
+//
+//                // get the guild controller
+//                GuildController gc = e.getGuild().getController();
+//
+//                // kick all of them from the voice channel
+//                for (Member m : members) {
+//                    // don't kick the author
+//                    if (m.getUser().getIdLong() != author.getUser().getIdLong()) {
+//
+//                    }
+//                }
+//            }
+//        },
 
         help {
             // sends a link to the source code as "help"
@@ -339,7 +371,8 @@ public class CommandEngine {
 
                 // if none
                 if (handler == null) {
-                    e.getTextChannel().sendMessage("fucking how").queue();
+                    // join up and play
+                    wakeUpAndPlay(e, args[0]);
                     return;
                 }
 
@@ -482,18 +515,12 @@ public class CommandEngine {
             // disconnects the AudioEngine if connected
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if we're in a voice channel
-                if (!voiceChannelConnected(e.getGuild())) {
-                    e.getChannel().sendMessage("fucking how").queue();
-                    return;
-                }
-
-                // get the voice channel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
                 // disconnect the AudioManager
                 AudioManager audioManager = e.getGuild().getAudioManager();
                 audioManager.closeAudioConnection();
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // sout
                 System.out.println("disconnected from " + voiceChannel.getName() + " in " + e.getGuild().getName());
@@ -521,7 +548,7 @@ public class CommandEngine {
         // creates an AudioEngine for a VoiceChannel in a Guild
         public static AudioEngine createAudioEngine(Guild g, VoiceChannel channel) {
             AudioManager manager = g.getAudioManager();
-            AudioEngine engine = new AudioEngine();
+            AudioEngine engine = new AudioEngine(g);
             manager.setSendingHandler(engine.sendHandler());
             manager.openAudioConnection(channel);
             return engine;
