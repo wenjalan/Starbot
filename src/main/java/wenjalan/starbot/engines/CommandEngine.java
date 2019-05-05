@@ -343,6 +343,9 @@ public class CommandEngine {
                 // get the handler
                 AudioEngine.SendHandler handler = getSendHandler(e.getGuild());
 
+                // create query
+                String query = String.join(" ", args);
+
                 // if none
                 if (handler == null) {
                     e.getTextChannel().sendMessage("fucking how").queue();
@@ -356,7 +359,7 @@ public class CommandEngine {
                 }
                 else {
                     // queue the args
-                    handler.queue(args[0]);
+                    handler.queue(query);
                 }
             }
         },
@@ -369,15 +372,18 @@ public class CommandEngine {
                 // get the handler
                 AudioEngine.SendHandler handler = getSendHandler(e.getGuild());
 
+                // create query
+                String query = String.join(" ", args);
+
                 // if none
                 if (handler == null) {
                     // join up and play
-                    wakeUpAndPlay(e, args[0]);
+                    wakeUpAndPlay(e, query);
                     return;
                 }
 
                 // play the song
-                handler.play(args[0]);
+                handler.play(query);
             }
         },
 
