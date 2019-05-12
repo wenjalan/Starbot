@@ -4,6 +4,7 @@ import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.managers.AudioManager;
+import net.dv8tion.jda.core.managers.GuildController;
 import wenjalan.starbot.listeners.MessageListener;
 
 import java.util.Arrays;
@@ -130,6 +131,48 @@ public class CommandEngine {
             }
         },
 
+<<<<<<< HEAD
+=======
+//        everyonegetout {
+//            // kicks everyone out of the author's voice channel
+//            // feature not supported by current APIs
+//            @Override
+//            public void run(MessageReceivedEvent e, String[] args) {
+//                // find the voice channel the user is in
+//                Member author = e.getMember();
+//                VoiceChannel channel = author.getVoiceState().getChannel();
+//
+//                // if no voice channel, quit
+//                if (channel == null) {
+//                    e.getTextChannel().sendMessage("fucking how").queue();
+//                    return;
+//                }
+//
+//                // find all the users in the channel
+//                List<Member> members = channel.getMembers();
+//
+//                // get the guild controller
+//                GuildController gc = e.getGuild().getController();
+//
+//                // kick all of them from the voice channel
+//                for (Member m : members) {
+//                    // don't kick the author
+//                    if (m.getUser().getIdLong() != author.getUser().getIdLong()) {
+//
+//                    }
+//                }
+//            }
+//        },
+
+        help {
+            // sends a link to the source code as "help"
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                e.getTextChannel().sendMessage("good luck: https://github.com/wenjalan/Starbot/blob/master/src/main/java/wenjalan/starbot/engines/CommandEngine.java").queue();
+            }
+        },
+
+>>>>>>> 9f78ea61e6f3411dc242cba601318308e8e38be7
         echo {
             // echoes the message back at the user
             @Override
@@ -177,6 +220,7 @@ public class CommandEngine {
             }
         },
 
+<<<<<<< HEAD
 //        shinydays {
 //            // plays Shiny Days from Yuru Camp
 //            // https://www.youtube.com/watch?v=DCr-r0ZP9P8
@@ -185,6 +229,90 @@ public class CommandEngine {
 //                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=DCr-r0ZP9P8");
 //            }
 //        },
+=======
+        ramen {
+            // plays ramen king, but like, the loli version
+            // https://www.youtube.com/watch?v=7oFI8sJ_o8c
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // play the ramen video (oh dear god)
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=7oFI8sJ_o8c");
+            }
+        },
+
+        dejavu {
+            // plays deja vu from initial d
+            // https://www.youtube.com/watch?v=dv13gl0a-FA
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=dv13gl0a-FA");
+            }
+        },
+
+        badtime {
+            // plays megalovania
+            // https://www.youtube.com/watch?v=ZcoqR9Bwx1Y
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=ZcoqR9Bwx1Y");
+            }
+        },
+
+        bitch {
+            // plays a video of joseph joestar screaming "son of a bitch"
+            // https://www.youtube.com/watch?v=dr_X2GlAbKw
+            // https://cdn.discordapp.com/attachments/559486195214712833/563564995263201282/JoJos_Bizarre_Adventure_-_Joseph_Joestar_-_SON_OF_A_BITCH_1.mp3
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://cdn.discordapp.com/attachments/559486195214712833/563564995263201282/JoJos_Bizarre_Adventure_-_Joseph_Joestar_-_SON_OF_A_BITCH_1.mp3");
+            }
+        },
+
+        omg {
+            // plays a clip of joseph joestar screaming "oh my god"
+            // https://www.youtube.com/watch?v=70utG1L5bfU
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=70utG1L5bfU");
+            }
+        },
+
+        ohno {
+            // plays a clip of joseph joestar screaming "oh no"
+            // https://www.youtube.com/watch?v=vl6gthDSIRU
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=vl6gthDSIRU");
+            }
+        },
+
+        ohshit {
+            // plays a clip of joseph joestar screaming "oh shit"
+            // https://cdn.discordapp.com/attachments/559486195214712833/563566101590573076/oh-shit_2_1.mp3
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://cdn.discordapp.com/attachments/559486195214712833/563566101590573076/oh-shit_2_1.mp3");
+            }
+        },
+
+        chuchuyeah {
+            // plays aozora no rhapsody
+            // https://www.youtube.com/watch?v=maKok2RItxM
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=maKok2RItxM");
+            }
+        },
+
+        shinydays {
+            // plays Shiny Days from Yuru Camp
+            // https://www.youtube.com/watch?v=DCr-r0ZP9P8
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=DCr-r0ZP9P8");
+            }
+        },
+>>>>>>> 9f78ea61e6f3411dc242cba601318308e8e38be7
 
         monstercat {
             // plays the Monstercat Radio 24/7
@@ -229,6 +357,9 @@ public class CommandEngine {
                 // get the handler
                 AudioEngine.SendHandler handler = getSendHandler(e.getGuild());
 
+                // create query
+                String query = String.join(" ", args);
+
                 // if none
                 if (handler == null) {
                     e.getTextChannel().sendMessage("fucking how").queue();
@@ -242,7 +373,7 @@ public class CommandEngine {
                 }
                 else {
                     // queue the args
-                    handler.queue(args[0]);
+                    handler.queue(query);
                 }
             }
         },
@@ -255,17 +386,25 @@ public class CommandEngine {
                 // get the handler
                 AudioEngine.SendHandler handler = getSendHandler(e.getGuild());
 
+                // create query
+                String query = String.join(" ", args);
+
                 // if none
                 if (handler == null) {
-                    e.getTextChannel().sendMessage("fucking how").queue();
+                    // join up and play
+                    wakeUpAndPlay(e, query);
                     return;
                 }
 
                 // play the song
+<<<<<<< HEAD
                 handler.play(args[0]);
 
                 // mention what we're playing
                 e.getChannel().sendMessage("now playing " + handler.playing()).queue();
+=======
+                handler.play(query);
+>>>>>>> 9f78ea61e6f3411dc242cba601318308e8e38be7
             }
         },
 
@@ -424,18 +563,12 @@ public class CommandEngine {
             // disconnects the AudioEngine if connected
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
-                // check if we're in a voice channel
-                if (!voiceChannelConnected(e.getGuild())) {
-                    e.getChannel().sendMessage("fucking how").queue();
-                    return;
-                }
-
-                // get the voice channel
-                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
-
                 // disconnect the AudioManager
                 AudioManager audioManager = e.getGuild().getAudioManager();
                 audioManager.closeAudioConnection();
+
+                // get the voice channel
+                VoiceChannel voiceChannel = e.getGuild().getMember(e.getJDA().getSelfUser()).getVoiceState().getChannel();
 
                 // sout
                 System.out.println("disconnected from " + voiceChannel.getName() + " in " + e.getGuild().getName());
@@ -471,7 +604,7 @@ public class CommandEngine {
         // creates an AudioEngine for a VoiceChannel in a Guild
         public static AudioEngine createAudioEngine(Guild g, VoiceChannel channel) {
             AudioManager manager = g.getAudioManager();
-            AudioEngine engine = new AudioEngine();
+            AudioEngine engine = new AudioEngine(g);
             manager.setSendingHandler(engine.sendHandler());
             manager.openAudioConnection(channel);
             return engine;

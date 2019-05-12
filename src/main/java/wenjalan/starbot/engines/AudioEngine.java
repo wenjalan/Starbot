@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
+import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
@@ -13,6 +14,9 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.sedmelluq.discord.lavaplayer.track.playback.AudioFrame;
 import net.dv8tion.jda.core.audio.AudioSendHandler;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.VoiceChannel;
+import net.dv8tion.jda.core.managers.AudioManager;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -40,8 +44,12 @@ public class AudioEngine {
     // the SendHandler
     protected SendHandler sendHandler;
 
+    // the Guild this instance of AudioManager is playing in
+    protected final Guild guild;
+
     // constructor
-    public AudioEngine() {
+    public AudioEngine(Guild g) {
+        this.guild = g;
         init();
     }
 
@@ -87,7 +95,7 @@ public class AudioEngine {
 
         @Override
         public void onTrackStart(AudioPlayer player, AudioTrack track) {
-            System.out.println("now playing " + track.getInfo().title + " by " + track.getInfo().author);
+            System.out.println("now playing " + track.getInfo().title + " by " + track.getInfo().author + " from " + track.getInfo().uri);
         }
 
         @Override
@@ -100,6 +108,30 @@ public class AudioEngine {
             // start the next track
             if (endReason.mayStartNext) {
                 sendHandler.next();
+            }
+
+            // if there are no more songs in the queue, start counting down
+            if (queue.isEmpty()) {
+                // sout
+                // System.out.println("queue is empty, starting countdown...");
+                // wait literally 5 seconds
+                new Thread((() -> {
+                    try {
+                        // wait 10 seconds
+                        Thread.sleep(10 * 1000);
+                        // check if anything was added or is playing
+                        if (!isPlaying && queue.isEmpty()) {
+                            // quit the voice channel
+                            guild.getAudioManager().closeAudioConnection();
+                            // sout
+                            System.out.println("audio playback timed out in " + guild.getName());
+                        }
+                    } catch (InterruptedException e) {
+                        // do nothing I guess
+                        System.err.println("encountered an error while waiting to sleep in AudioEngine");
+                        e.printStackTrace();
+                    }
+                })).start();
             }
         }
 
@@ -114,6 +146,17 @@ public class AudioEngine {
     // LoadHandler
     public class ResultHandler implements AudioLoadResultHandler {
 
+        // whether we were searching or not
+        final boolean isSearching;
+
+        protected ResultHandler(boolean isSearching) {
+            this.isSearching = isSearching;
+        }
+
+        protected ResultHandler() {
+            this.isSearching = false;
+        }
+
         @Override
         public void trackLoaded(AudioTrack track) {
             // add the track to the queue
@@ -127,9 +170,22 @@ public class AudioEngine {
 
         @Override
         public void playlistLoaded(AudioPlaylist playlist) {
-            // add all the tracks to the queue
-            queue.addAll(playlist.getTracks());
-            System.out.println("loaded playlist" + playlist.getName());
+            // if we weren't searching, add all the tracks to the queue
+            if (!isSearching) {
+                queue.addAll(playlist.getTracks());
+                System.out.println("loaded playlist" + playlist.getName());
+            }
+            else {
+                // otherwise, just add the first result
+                AudioTrack firstResult = playlist.getTracks().get(0);
+                System.out.println("found track " + firstResult.getInfo().title + " by " + firstResult.getInfo().author + "on YouTube");
+                queue.add(firstResult);
+            }
+
+            // play
+            if (!isPlaying) {
+                sendHandler.next();
+            }
         }
 
         @Override
@@ -175,9 +231,10 @@ public class AudioEngine {
         }
 
         // plays a track
-        public void play(String url) {
-            queue(url);
-            next();
+        public void play(String query) {
+            clearQueue();
+            skip();
+            queue(query);
         }
 
         // pauses a track
@@ -198,8 +255,20 @@ public class AudioEngine {
         }
 
         // queues a track given a url
-        public void queue(String url) {
-            audioPlayerManager.loadItem(url, new ResultHandler());
+        public void queue(String query) {
+            // if it's a URL, just play it raw
+            if (query.startsWith("https")) {
+                audioPlayerManager.loadItem(query, new ResultHandler());
+            }
+            // otherwise, search for the song on youtube
+            else {
+                search(query);
+            }
+        }
+
+        // searches for a track given a query
+        public void search(String query) {
+            audioPlayerManager.loadItem("ytsearch:" + query, new ResultHandler(true));
         }
 
         // skips a track
