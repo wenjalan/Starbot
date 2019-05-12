@@ -7,6 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69e2b7c7-ceab-45af-ab2e-49ca11c319a8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -51,25 +56,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="437" column="10" lean-forward="true" selection-start-line="437" selection-start-column="10" selection-end-line="437" selection-end-column="10" />
+            <state relative-caret-position="374">
+              <caret line="448" column="105" lean-forward="true" selection-start-line="448" selection-start-column="105" selection-end-line="448" selection-end-column="105" />
               <folding>
                 <element signature="class#602:3179" />
                 <element signature="class#3195:5290" />
-                <element signature="class#5306:5655" />
                 <element signature="class#5671:5918" />
                 <element signature="class#5937:6382" />
                 <element signature="class#6400:6738" />
                 <element signature="class#6754:7102" />
                 <element signature="class#7120:7493" />
-                <element signature="class#7514:7817" />
                 <element signature="class#7839:8120" />
                 <element signature="class#8138:9210" />
                 <element signature="class#9227:10051" />
-                <element signature="class#10067:10649" />
                 <element signature="class#10666:11181" />
                 <element signature="class#11199:11716" />
                 <element signature="class#11738:12370" />
@@ -77,7 +79,6 @@
                 <element signature="class#12917:14332" />
                 <element signature="class#14351:14965" />
                 <element signature="class#14983:15869" />
-                <element signature="class#15889:16225" />
               </folding>
             </state>
           </provider>
@@ -86,7 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/MessageListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-272">
+            <state relative-caret-position="680">
               <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -98,17 +99,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="83" column="72" lean-forward="true" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/KeyPhraseEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="77" column="64" lean-forward="true" selection-start-line="77" selection-start-column="64" selection-end-line="77" selection-end-column="64" />
+            <state relative-caret-position="-290">
+              <caret line="139" column="67" lean-forward="true" selection-start-line="139" selection-start-column="67" selection-end-line="139" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="class#2654:4490" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,12 +112,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+            <state relative-caret-position="364">
+              <caret line="222" column="13" lean-forward="true" selection-start-line="222" selection-start-column="13" selection-end-line="222" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="class#TrackScheduler#0;class#AudioEngine#0" />
                 <element signature="class#ResultHandler#0;class#AudioEngine#0" />
-                <element signature="class#SendHandler#0;class#AudioEngine#0" />
               </folding>
             </state>
           </provider>
@@ -158,12 +154,12 @@
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/apex/ApexParty.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/ShutdownListener.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/MessageListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/Starbot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/LakesideLounge.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java" />
       </list>
     </option>
   </component>
@@ -181,30 +177,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="starbot" type="b2602c69:ProjectViewProjectNode" />
               <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="starbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="starbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="starbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="Starbot_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="starbot" type="b2602c69:ProjectViewProjectNode" />
@@ -241,30 +221,10 @@
               <item name="starbot" type="462c0819:PsiDirectoryNode" />
               <item name="engines" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="starbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="starbot" type="462c0819:PsiDirectoryNode" />
-              <item name="listeners" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="starbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="starbot" type="462c0819:PsiDirectoryNode" />
-              <item name="servers" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,17 +298,18 @@
       <workItem from="1553708179927" duration="1106000" />
       <workItem from="1554133020820" duration="193000" />
       <workItem from="1554313416807" duration="756000" />
+      <workItem from="1557502785752" duration="1097000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40825000" />
+    <option name="totallyTimeSpent" value="41922000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17449665" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17718121" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -376,7 +337,7 @@
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Google Cloud Storage" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" weight="0.3602866" />
+      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.17516778" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
@@ -434,24 +395,8 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/io/BufferedReader.java" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/entities/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="289" column="9" selection-start-line="289" selection-start-column="9" selection-end-line="289" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/entities/MessageChannel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="1205" column="27" selection-start-line="1205" selection-start-column="27" selection-end-line="1205" selection-end-column="27" />
-          <folding>
-            <element signature="e#70463#70464#0" expanded="true" />
-            <element signature="e#70510#70511#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/entities/Message.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/entities/MessageChannel.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/ServerEventListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -478,20 +423,8 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/time/LocalDateTime.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/time/LocalTime.java" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/managers/ChannelManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="560" column="26" selection-start-line="560" selection-start-column="26" selection-end-line="560" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/entities/MessageHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="161" column="37" selection-start-line="161" selection-start-column="37" selection-end-line="161" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/managers/ChannelManager.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/entities/MessageHistory.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/Users.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -544,41 +477,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/managers/AudioManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="184" column="17" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sedmelluq/lavaplayer/1.3.10/88b249833104b8b3b3b982488844865374d5bdbd/lavaplayer-1.3.10-sources.jar!/com/sedmelluq/discord/lavaplayer/track/AudioTrackEndReason.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/JDA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="1102" column="7" lean-forward="true" selection-start-line="1102" selection-start-column="7" selection-end-line="1102" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/managers/AudioManager.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sedmelluq/lavaplayer/1.3.10/88b249833104b8b3b3b982488844865374d5bdbd/lavaplayer-1.3.10-sources.jar!/com/sedmelluq/discord/lavaplayer/track/AudioTrackEndReason.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/JDA.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/ShutdownListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -589,16 +491,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/events/guild/GenericGuildEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#1424#1425#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/3.8.3_462/1841d76341522c6323028ea1ff3870fe379614cb/JDA-3.8.3_462-sources.jar!/net/dv8tion/jda/core/events/guild/GenericGuildEvent.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/LakesideLounge.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -624,58 +517,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#ResultHandler#0;class#AudioEngine#0" />
-            <element signature="class#SendHandler#0;class#AudioEngine#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="437" column="10" lean-forward="true" selection-start-line="437" selection-start-column="10" selection-end-line="437" selection-end-column="10" />
-          <folding>
-            <element signature="class#602:3179" />
-            <element signature="class#3195:5290" />
-            <element signature="class#5306:5655" />
-            <element signature="class#5671:5918" />
-            <element signature="class#5937:6382" />
-            <element signature="class#6400:6738" />
-            <element signature="class#6754:7102" />
-            <element signature="class#7120:7493" />
-            <element signature="class#7514:7817" />
-            <element signature="class#7839:8120" />
-            <element signature="class#8138:9210" />
-            <element signature="class#9227:10051" />
-            <element signature="class#10067:10649" />
-            <element signature="class#10666:11181" />
-            <element signature="class#11199:11716" />
-            <element signature="class#11738:12370" />
-            <element signature="class#12386:12899" />
-            <element signature="class#12917:14332" />
-            <element signature="class#14351:14965" />
-            <element signature="class#14983:15869" />
-            <element signature="class#15889:16225" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="83" column="72" lean-forward="true" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/MessageListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
+        <state relative-caret-position="680">
           <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -686,7 +530,73 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/KeyPhraseEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="77" column="64" lean-forward="true" selection-start-line="77" selection-start-column="64" selection-end-line="77" selection-end-column="64" />
+          <caret line="77" column="64" selection-start-line="77" selection-start-column="64" selection-end-line="77" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradlew">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/servers/DingusCrew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-290">
+          <caret line="139" column="67" lean-forward="true" selection-start-line="139" selection-start-column="67" selection-end-line="139" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#2654:4490" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sedmelluq/lavaplayer/1.3.13/530b9ea8fc74630ebfcaeb13a5b05314f04fbf70/lavaplayer-1.3.13-sources.jar!/com/sedmelluq/discord/lavaplayer/track/AudioTrack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="43" column="7" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="222" column="13" lean-forward="true" selection-start-line="222" selection-start-column="13" selection-end-line="222" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#TrackScheduler#0;class#AudioEngine#0" />
+            <element signature="class#ResultHandler#0;class#AudioEngine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="448" column="105" lean-forward="true" selection-start-line="448" selection-start-column="105" selection-end-line="448" selection-end-column="105" />
+          <folding>
+            <element signature="class#602:3179" />
+            <element signature="class#3195:5290" />
+            <element signature="class#5671:5918" />
+            <element signature="class#5937:6382" />
+            <element signature="class#6400:6738" />
+            <element signature="class#6754:7102" />
+            <element signature="class#7120:7493" />
+            <element signature="class#7839:8120" />
+            <element signature="class#8138:9210" />
+            <element signature="class#9227:10051" />
+            <element signature="class#10666:11181" />
+            <element signature="class#11199:11716" />
+            <element signature="class#11738:12370" />
+            <element signature="class#12386:12899" />
+            <element signature="class#12917:14332" />
+            <element signature="class#14351:14965" />
+            <element signature="class#14983:15869" />
+          </folding>
         </state>
       </provider>
     </entry>

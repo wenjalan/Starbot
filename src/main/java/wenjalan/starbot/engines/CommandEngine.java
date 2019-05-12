@@ -130,14 +130,6 @@ public class CommandEngine {
             }
         },
 
-        help {
-            // sends a link to the source code as "help"
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                e.getTextChannel().sendMessage("good luck: https://github.com/wenjalan/Starbot/blob/master/src/main/java/wenjalan/starbot/engines/CommandEngine.java").queue();
-            }
-        },
-
         echo {
             // echoes the message back at the user
             @Override
@@ -185,14 +177,14 @@ public class CommandEngine {
             }
         },
 
-        shinydays {
-            // plays Shiny Days from Yuru Camp
-            // https://www.youtube.com/watch?v=DCr-r0ZP9P8
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=DCr-r0ZP9P8");
-            }
-        },
+//        shinydays {
+//            // plays Shiny Days from Yuru Camp
+//            // https://www.youtube.com/watch?v=DCr-r0ZP9P8
+//            @Override
+//            public void run(MessageReceivedEvent e, String[] args) {
+//                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=DCr-r0ZP9P8");
+//            }
+//        },
 
         monstercat {
             // plays the Monstercat Radio 24/7
@@ -271,6 +263,9 @@ public class CommandEngine {
 
                 // play the song
                 handler.play(args[0]);
+
+                // mention what we're playing
+                e.getChannel().sendMessage("now playing " + handler.playing()).queue();
             }
         },
 
@@ -404,6 +399,27 @@ public class CommandEngine {
             }
         },
 
+        seek {
+            // seeks the track to a certain position
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // get the time to seek to
+                int seekTo;
+                try {
+                    seekTo = Integer.parseInt(args[0]);
+                } catch (NumberFormatException ex) {
+                    e.getChannel().sendMessage("try again").queue();
+                    return;
+                }
+
+                // seek to that moment
+                AudioEngine.SendHandler handler = Command.getSendHandler(e.getGuild());
+                if (handler != null && handler.isPlaying()) {
+                    handler.seekTo(seekTo);
+                }
+            }
+        },
+
         getout {
             // disconnects the AudioEngine if connected
             @Override
@@ -423,6 +439,14 @@ public class CommandEngine {
 
                 // sout
                 System.out.println("disconnected from " + voiceChannel.getName() + " in " + e.getGuild().getName());
+            }
+        },
+
+        help {
+            // sends a link to the git
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                e.getChannel().sendMessage("lol good luck: https://github.com/wenjalan/Starbot").queue();
             }
         },
 

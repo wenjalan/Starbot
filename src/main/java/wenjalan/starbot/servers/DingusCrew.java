@@ -133,6 +133,7 @@ public class DingusCrew {
                         Member author = e.getMember();
                         GuildController controller = e.getGuild().getController();
                         if (playCount % 100 == 0) {
+                            e.getChannel().sendMessage("congratulations " + e.getMember().getAsMention() + "! you're !play #" + playCount + "!").queue();
                             controller.kick(author, "#" + playCount).queue();
                         }
                         else {

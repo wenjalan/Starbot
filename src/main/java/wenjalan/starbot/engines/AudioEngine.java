@@ -212,6 +212,17 @@ public class AudioEngine {
             audioPlayer.setVolume(volume);
         }
 
+        // seeks to a certain part of the track
+        public void seekTo(int time) {
+            // get the track
+            AudioTrack track = audioPlayer.getPlayingTrack();
+
+            // if it supports it, seek to the time
+            if (track.isSeekable()) {
+                track.setPosition(time);
+            }
+        }
+
         // returns if we're playing something
         public boolean isPlaying() {
             return isPlaying;
