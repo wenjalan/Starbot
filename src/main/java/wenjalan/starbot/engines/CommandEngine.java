@@ -131,8 +131,6 @@ public class CommandEngine {
             }
         },
 
-<<<<<<< HEAD
-=======
 //        everyonegetout {
 //            // kicks everyone out of the author's voice channel
 //            // feature not supported by current APIs
@@ -164,15 +162,6 @@ public class CommandEngine {
 //            }
 //        },
 
-        help {
-            // sends a link to the source code as "help"
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                e.getTextChannel().sendMessage("good luck: https://github.com/wenjalan/Starbot/blob/master/src/main/java/wenjalan/starbot/engines/CommandEngine.java").queue();
-            }
-        },
-
->>>>>>> 9f78ea61e6f3411dc242cba601318308e8e38be7
         echo {
             // echoes the message back at the user
             @Override
@@ -220,7 +209,6 @@ public class CommandEngine {
             }
         },
 
-<<<<<<< HEAD
 //        shinydays {
 //            // plays Shiny Days from Yuru Camp
 //            // https://www.youtube.com/watch?v=DCr-r0ZP9P8
@@ -229,7 +217,7 @@ public class CommandEngine {
 //                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=DCr-r0ZP9P8");
 //            }
 //        },
-=======
+
         ramen {
             // plays ramen king, but like, the loli version
             // https://www.youtube.com/watch?v=7oFI8sJ_o8c
@@ -303,16 +291,6 @@ public class CommandEngine {
                 wakeUpAndPlay(e, "https://www.youtube.com/watch?v=maKok2RItxM");
             }
         },
-
-        shinydays {
-            // plays Shiny Days from Yuru Camp
-            // https://www.youtube.com/watch?v=DCr-r0ZP9P8
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=DCr-r0ZP9P8");
-            }
-        },
->>>>>>> 9f78ea61e6f3411dc242cba601318308e8e38be7
 
         monstercat {
             // plays the Monstercat Radio 24/7
@@ -397,14 +375,11 @@ public class CommandEngine {
                 }
 
                 // play the song
-<<<<<<< HEAD
                 handler.play(args[0]);
 
                 // mention what we're playing
                 e.getChannel().sendMessage("now playing " + handler.playing()).queue();
-=======
                 handler.play(query);
->>>>>>> 9f78ea61e6f3411dc242cba601318308e8e38be7
             }
         },
 

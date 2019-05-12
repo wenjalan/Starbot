@@ -24,7 +24,10 @@ import java.util.Queue;
 public class AudioEngine {
 
     // the default volume
-    public static final int DEFAULT_VOLUME = 30;
+    public static final int DEFAULT_VOLUME = 50;
+
+    // the default timeout, in seconds
+    public static final int DEFAULT_TIMEOUT = 15 * 60;
 
     // the Queue of Tracks to play
     protected Queue<AudioTrack> queue;
@@ -117,8 +120,8 @@ public class AudioEngine {
                 // wait literally 5 seconds
                 new Thread((() -> {
                     try {
-                        // wait 10 seconds
-                        Thread.sleep(10 * 1000);
+                        // wait DEFAULT_TIMEOUT seconds
+                        Thread.sleep(DEFAULT_TIMEOUT * 1000);
                         // check if anything was added or is playing
                         if (!isPlaying && queue.isEmpty()) {
                             // quit the voice channel
