@@ -228,15 +228,6 @@ public class CommandEngine {
             }
         },
 
-        dejavu {
-            // plays deja vu from initial d
-            // https://www.youtube.com/watch?v=dv13gl0a-FA
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=dv13gl0a-FA");
-            }
-        },
-
         badtime {
             // plays megalovania
             // https://www.youtube.com/watch?v=ZcoqR9Bwx1Y
@@ -374,11 +365,8 @@ public class CommandEngine {
                     return;
                 }
 
-                // play the song
-                handler.play(args[0]);
-
                 // mention what we're playing
-                e.getChannel().sendMessage("now playing " + handler.playing()).queue();
+                // e.getChannel().sendMessage("now playing " + handler.playing()).queue();
                 handler.play(query);
             }
         },
@@ -416,6 +404,27 @@ public class CommandEngine {
 
                 // resume
                 handler.resume();
+            }
+        },
+
+        seek {
+            // seeks the track to a certain position
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // get the time to seek to
+                int seekTo;
+                try {
+                    seekTo = Integer.parseInt(args[0]);
+                } catch (NumberFormatException ex) {
+                    e.getChannel().sendMessage("try again").queue();
+                    return;
+                }
+
+                // seek to that moment
+                AudioEngine.SendHandler handler = Command.getSendHandler(e.getGuild());
+                if (handler != null && handler.isPlaying()) {
+                    handler.seekTo(seekTo);
+                }
             }
         },
 
@@ -513,31 +522,16 @@ public class CommandEngine {
             }
         },
 
-        seek {
-            // seeks the track to a certain position
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                // get the time to seek to
-                int seekTo;
-                try {
-                    seekTo = Integer.parseInt(args[0]);
-                } catch (NumberFormatException ex) {
-                    e.getChannel().sendMessage("try again").queue();
-                    return;
-                }
-
-                // seek to that moment
-                AudioEngine.SendHandler handler = Command.getSendHandler(e.getGuild());
-                if (handler != null && handler.isPlaying()) {
-                    handler.seekTo(seekTo);
-                }
-            }
-        },
-
         getout {
             // disconnects the AudioEngine if connected
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
+                // stop the timeout
+                AudioEngine.SendHandler handler = Command.getSendHandler(e.getGuild());
+                if (handler != null) {
+                    handler.stopTimeout();
+                }
+
                 // disconnect the AudioManager
                 AudioManager audioManager = e.getGuild().getAudioManager();
                 audioManager.closeAudioConnection();

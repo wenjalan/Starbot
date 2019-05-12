@@ -50,6 +50,9 @@ public class AudioEngine {
     // the Guild this instance of AudioManager is playing in
     protected final Guild guild;
 
+    // the timeout thread
+    protected Thread timeout;
+
     // constructor
     public AudioEngine(Guild g) {
         this.guild = g;
@@ -118,7 +121,7 @@ public class AudioEngine {
                 // sout
                 // System.out.println("queue is empty, starting countdown...");
                 // wait literally 5 seconds
-                new Thread((() -> {
+                timeout = new Thread((() -> {
                     try {
                         // wait DEFAULT_TIMEOUT seconds
                         Thread.sleep(DEFAULT_TIMEOUT * 1000);
@@ -131,10 +134,11 @@ public class AudioEngine {
                         }
                     } catch (InterruptedException e) {
                         // do nothing I guess
-                        System.err.println("encountered an error while waiting to sleep in AudioEngine");
-                        e.printStackTrace();
+                        // System.err.println("timeout interrupted");
+                        // e.printStackTrace();
                     }
-                })).start();
+                }));
+                timeout.start();
             }
         }
 
@@ -235,6 +239,7 @@ public class AudioEngine {
 
         // plays a track
         public void play(String query) {
+            stopTimeout();
             clearQueue();
             skip();
             queue(query);
@@ -259,6 +264,7 @@ public class AudioEngine {
 
         // queues a track given a url
         public void queue(String query) {
+            stopTimeout();
             // if it's a URL, just play it raw
             if (query.startsWith("https")) {
                 audioPlayerManager.loadItem(query, new ResultHandler());
@@ -270,7 +276,7 @@ public class AudioEngine {
         }
 
         // searches for a track given a query
-        public void search(String query) {
+        protected void search(String query) {
             audioPlayerManager.loadItem("ytsearch:" + query, new ResultHandler(true));
         }
 
@@ -302,6 +308,7 @@ public class AudioEngine {
 
         // returns the info of the track that's playing
         public String playing() {
+            stopTimeout();
             AudioTrack track = audioPlayer.getPlayingTrack();
             if (track == null) {
                 return "nothing.";
@@ -321,6 +328,13 @@ public class AudioEngine {
                 AudioTrack track = queue.remove();
                 audioPlayer.startTrack(track, false);
                 isPlaying = true;
+            }
+        }
+
+        // stops the timeout
+        public void stopTimeout() {
+            if (timeout != null) {
+                timeout.interrupt();
             }
         }
 

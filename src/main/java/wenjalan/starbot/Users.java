@@ -12,4 +12,7 @@ public class Users {
     // me
     public static final long ALAN = 478706068223164416L;
 
+    // starbot
+    public static final long STARBOT = 470822754262712329L;
+
 }

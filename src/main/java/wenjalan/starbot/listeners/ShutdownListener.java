@@ -13,11 +13,20 @@ public class ShutdownListener extends ListenerAdapter {
         // disconnect all audio adapters
         List<Guild> guilds = e.getJDA().getGuilds();
         for (Guild g : guilds) {
-            g.getAudioManager().closeAudioConnection();
+            try {
+                g.getAudioManager().closeAudioConnection();
+            } catch (Exception ex) {
+                System.err.println("error closing one of the audio connections");
+                ex.printStackTrace();
+            }
         }
+
+        // actually shut down?
+        e.getJDA().shutdown();
 
         // announce
         System.out.println("Starbot shut down successfully.");
+        System.exit(0);
     }
 
 }
