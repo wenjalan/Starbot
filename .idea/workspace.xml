@@ -8,23 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="69e2b7c7-ceab-45af-ab2e-49ca11c319a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/AudioEngine$ResultHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/AudioEngine$ResultHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/AudioEngine$SendHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/AudioEngine$SendHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/AudioEngine$TrackScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/AudioEngine$TrackScheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/AudioEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/AudioEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$22.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$23.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$23.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$24.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$24.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$25.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$25.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$26.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$26.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$27.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$27.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$28.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$28.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command$29.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engines/CommandEngine$Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/CommandEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/ShutdownListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/ShutdownListener.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -61,25 +44,15 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="313" column="34" lean-forward="true" selection-start-line="313" selection-start-column="34" selection-end-line="313" selection-end-column="34" />
+            <state relative-caret-position="3179">
+              <caret line="313" column="34" selection-start-line="313" selection-start-column="34" selection-end-line="313" selection-end-column="34" />
               <folding>
-                <element signature="e#2768#2769#0" expanded="true" />
-                <element signature="e#2807#2808#0" expanded="true" />
                 <element signature="method#onTrackEnd#0;class#TrackScheduler#0;class#AudioEngine#0" />
                 <element signature="class#ResultHandler#0;class#AudioEngine#0" />
-                <element signature="e#8195#8196#0" expanded="true" />
-                <element signature="e#8232#8233#0" expanded="true" />
-                <element signature="e#8922#8923#0" expanded="true" />
-                <element signature="e#8952#8953#0" expanded="true" />
-                <element signature="e#9047#9048#0" expanded="true" />
-                <element signature="e#9100#9101#0" expanded="true" />
-                <element signature="e#9294#9295#0" expanded="true" />
-                <element signature="e#9334#9335#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="21" lean-forward="true" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -110,24 +83,6 @@
                 <element signature="class#8013:8386" />
                 <element signature="e#8389#8410#0" />
                 <element signature="class#8743:9113" />
-                <element signature="class#9450:9739" />
-                <element signature="class#9756:10339" />
-                <element signature="class#10354:10678" />
-                <element signature="class#10694:11014" />
-                <element signature="class#11032:11452" />
-                <element signature="class#11474:11770" />
-                <element signature="class#11792:12073" />
-                <element signature="class#12091:13163" />
-                <element signature="class#14975:15490" />
-                <element signature="class#15508:16025" />
-                <element signature="class#15650:16388" />
-                <element signature="class#16047:16679" />
-                <element signature="class#16695:17208" />
-                <element signature="class#17226:18641" />
-                <element signature="class#18660:19274" />
-                <element signature="class#20046:20875" />
-                <element signature="class#20891:21152" />
-                <element signature="class#21172:21508" />
               </folding>
             </state>
           </provider>
@@ -136,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/ShutdownListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+            <state relative-caret-position="408">
+              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -187,9 +142,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="1297" />
-    <option name="height" value="1398" />
+    <option name="x" value="-9" />
+    <option name="width" value="1298" />
+    <option name="height" value="1399" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -197,6 +152,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,8 +191,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -315,17 +270,19 @@
       <workItem from="1556852365886" duration="651000" />
       <workItem from="1557071951949" duration="4207000" />
       <workItem from="1557077782817" duration="3418000" />
+      <workItem from="1558298150246" duration="24000" />
+      <workItem from="1558481359093" duration="692000" />
+      <workItem from="1558814190495" duration="377000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53926000" />
+    <option name="totallyTimeSpent" value="55019000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="1038" height="1119" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24975026" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26789367" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -636,40 +593,30 @@
     <entry file="file://$PROJECT_DIR$/out/artifacts/Starbot_jar/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3179">
+          <caret line="313" column="34" selection-start-line="313" selection-start-column="34" selection-end-line="313" selection-end-column="34" />
+          <folding>
+            <element signature="method#onTrackEnd#0;class#TrackScheduler#0;class#AudioEngine#0" />
+            <element signature="class#ResultHandler#0;class#AudioEngine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="21" lean-forward="true" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listeners/ShutdownListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        <state relative-caret-position="408">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engines/AudioEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="313" column="34" lean-forward="true" selection-start-line="313" selection-start-column="34" selection-end-line="313" selection-end-column="34" />
-          <folding>
-            <element signature="e#2768#2769#0" expanded="true" />
-            <element signature="e#2807#2808#0" expanded="true" />
-            <element signature="method#onTrackEnd#0;class#TrackScheduler#0;class#AudioEngine#0" />
-            <element signature="class#ResultHandler#0;class#AudioEngine#0" />
-            <element signature="e#8195#8196#0" expanded="true" />
-            <element signature="e#8232#8233#0" expanded="true" />
-            <element signature="e#8922#8923#0" expanded="true" />
-            <element signature="e#8952#8953#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9100#9101#0" expanded="true" />
-            <element signature="e#9294#9295#0" expanded="true" />
-            <element signature="e#9334#9335#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -689,24 +636,6 @@
             <element signature="class#8013:8386" />
             <element signature="e#8389#8410#0" />
             <element signature="class#8743:9113" />
-            <element signature="class#9450:9739" />
-            <element signature="class#9756:10339" />
-            <element signature="class#10354:10678" />
-            <element signature="class#10694:11014" />
-            <element signature="class#11032:11452" />
-            <element signature="class#11474:11770" />
-            <element signature="class#11792:12073" />
-            <element signature="class#12091:13163" />
-            <element signature="class#14975:15490" />
-            <element signature="class#15508:16025" />
-            <element signature="class#15650:16388" />
-            <element signature="class#16047:16679" />
-            <element signature="class#16695:17208" />
-            <element signature="class#17226:18641" />
-            <element signature="class#18660:19274" />
-            <element signature="class#20046:20875" />
-            <element signature="class#20891:21152" />
-            <element signature="class#21172:21508" />
           </folding>
         </state>
       </provider>
