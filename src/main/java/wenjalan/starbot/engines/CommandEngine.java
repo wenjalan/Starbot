@@ -131,37 +131,6 @@ public class CommandEngine {
             }
         },
 
-//        everyonegetout {
-//            // kicks everyone out of the author's voice channel
-//            // feature not supported by current APIs
-//            @Override
-//            public void run(MessageReceivedEvent e, String[] args) {
-//                // find the voice channel the user is in
-//                Member author = e.getMember();
-//                VoiceChannel channel = author.getVoiceState().getChannel();
-//
-//                // if no voice channel, quit
-//                if (channel == null) {
-//                    e.getTextChannel().sendMessage("fucking how").queue();
-//                    return;
-//                }
-//
-//                // find all the users in the channel
-//                List<Member> members = channel.getMembers();
-//
-//                // get the guild controller
-//                GuildController gc = e.getGuild().getController();
-//
-//                // kick all of them from the voice channel
-//                for (Member m : members) {
-//                    // don't kick the author
-//                    if (m.getUser().getIdLong() != author.getUser().getIdLong()) {
-//
-//                    }
-//                }
-//            }
-//        },
-
         echo {
             // echoes the message back at the user
             @Override
@@ -209,14 +178,15 @@ public class CommandEngine {
             }
         },
 
-//        shinydays {
-//            // plays Shiny Days from Yuru Camp
-//            // https://www.youtube.com/watch?v=DCr-r0ZP9P8
-//            @Override
-//            public void run(MessageReceivedEvent e, String[] args) {
-//                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=DCr-r0ZP9P8");
-//            }
-//        },
+        muda {
+            // play's giorno's theme from JoJo's Bizarre Adventure
+            // https://www.youtube.com/watch?v=tLyRpGKWXRs
+            @Override
+            public void run(MessageReceivedEvent e, String[] args) {
+                // play it
+                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=tLyRpGKWXRs");
+            }
+        },
 
         ramen {
             // plays ramen king, but like, the loli version
@@ -225,61 +195,6 @@ public class CommandEngine {
             public void run(MessageReceivedEvent e, String[] args) {
                 // play the ramen video (oh dear god)
                 wakeUpAndPlay(e, "https://www.youtube.com/watch?v=7oFI8sJ_o8c");
-            }
-        },
-
-        badtime {
-            // plays megalovania
-            // https://www.youtube.com/watch?v=ZcoqR9Bwx1Y
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=ZcoqR9Bwx1Y");
-            }
-        },
-
-        bitch {
-            // plays a video of joseph joestar screaming "son of a bitch"
-            // https://www.youtube.com/watch?v=dr_X2GlAbKw
-            // https://cdn.discordapp.com/attachments/559486195214712833/563564995263201282/JoJos_Bizarre_Adventure_-_Joseph_Joestar_-_SON_OF_A_BITCH_1.mp3
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://cdn.discordapp.com/attachments/559486195214712833/563564995263201282/JoJos_Bizarre_Adventure_-_Joseph_Joestar_-_SON_OF_A_BITCH_1.mp3");
-            }
-        },
-
-        omg {
-            // plays a clip of joseph joestar screaming "oh my god"
-            // https://www.youtube.com/watch?v=70utG1L5bfU
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=70utG1L5bfU");
-            }
-        },
-
-        ohno {
-            // plays a clip of joseph joestar screaming "oh no"
-            // https://www.youtube.com/watch?v=vl6gthDSIRU
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=vl6gthDSIRU");
-            }
-        },
-
-        ohshit {
-            // plays a clip of joseph joestar screaming "oh shit"
-            // https://cdn.discordapp.com/attachments/559486195214712833/563566101590573076/oh-shit_2_1.mp3
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://cdn.discordapp.com/attachments/559486195214712833/563566101590573076/oh-shit_2_1.mp3");
-            }
-        },
-
-        chuchuyeah {
-            // plays aozora no rhapsody
-            // https://www.youtube.com/watch?v=maKok2RItxM
-            @Override
-            public void run(MessageReceivedEvent e, String[] args) {
-                wakeUpAndPlay(e, "https://www.youtube.com/watch?v=maKok2RItxM");
             }
         },
 
@@ -408,13 +323,15 @@ public class CommandEngine {
         },
 
         seek {
-            // seeks the track to a certain position
+            // seeks the track to a certain number of seconds
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
                 // get the time to seek to
                 int seekTo;
                 try {
                     seekTo = Integer.parseInt(args[0]);
+                    // multiply by 1000 to get seconds
+                    seekTo *= 1000;
                 } catch (NumberFormatException ex) {
                     e.getChannel().sendMessage("try again").queue();
                     return;

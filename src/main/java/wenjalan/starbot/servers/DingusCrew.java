@@ -1,10 +1,7 @@
 package wenjalan.starbot.servers;
 
 import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.ChannelType;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
@@ -19,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Arrays;
+import java.util.List;
 
 // features specific to the Dingus Crew Server
 public class DingusCrew {
@@ -117,7 +115,7 @@ public class DingusCrew {
         play {
             // extra functionality of the !play command for The Dingus Crew
             // kicks the author if it's 8:00 PM - 8:10 PM
-            // kicks the author if the number of times music has been played (50, 100, 150) is a multiple of 50
+            // kicks the author if the number of times music has been played is a multiple of 100
             @Override
             public void run(MessageReceivedEvent e, String[] args) {
                 // code runs in conjunction with code in CommandEngine

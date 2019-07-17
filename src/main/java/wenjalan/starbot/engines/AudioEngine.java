@@ -290,7 +290,7 @@ public class AudioEngine {
             audioPlayer.setVolume(volume);
         }
 
-        // seeks to a certain part of the track
+        // seeks to a certain part of the track, in milliseconds
         public void seekTo(int time) {
             // get the track
             AudioTrack track = audioPlayer.getPlayingTrack();
