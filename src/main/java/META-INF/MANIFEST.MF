@@ -1,4 +1,0 @@
-Main-Class: wenjalan.starbot.Starbot
-Manifest-Version: 1.0
-
-
