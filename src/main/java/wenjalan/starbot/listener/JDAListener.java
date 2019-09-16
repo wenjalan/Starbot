@@ -11,14 +11,14 @@ public class JDAListener extends ListenerAdapter {
     @Override
     public void onReady(ReadyEvent event) {
         // sout
-        System.out.println("JDA initialized successfully!");
+        System.out.println("Starbot online!");
     }
 
     // on shutdown
     @Override
     public void onShutdown(ShutdownEvent event) {
         // sout
-        System.out.println("JDA shutting down...");
+        System.out.println("Starbot shutting down...");
     }
 
 }

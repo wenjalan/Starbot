@@ -2,6 +2,7 @@ package wenjalan.starbot;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import wenjalan.starbot.listener.JDAListener;
 import wenjalan.starbot.listener.MessageListener;
 
 import javax.security.auth.login.LoginException;
@@ -35,9 +36,6 @@ public class Starbot {
         // initialize JDA
         JDA jda = getJDA(botToken);
 
-        // announce ready
-        System.out.println("Starbot is ready!");
-
         // print invite
         System.out.println("Invite: " + jda.getInviteUrl());
     }
@@ -50,12 +48,12 @@ public class Starbot {
 
         // attach listeners
         builder.addEventListeners(new MessageListener());
+        builder.addEventListeners(new JDAListener());
 
         // build
         JDA instance = null;
         try {
             instance = builder.build().awaitReady();
-            System.out.println("Log in successful!");
         } catch (LoginException | InterruptedException e) {
             // if an error occurs, stop the program
             System.err.println("Encountered an error while trying to build JDA!");
