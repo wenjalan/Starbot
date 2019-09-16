@@ -37,6 +37,9 @@ public class Starbot {
 
         // announce ready
         System.out.println("Starbot is ready!");
+
+        // print invite
+        System.out.println("Invite: " + jda.getInviteUrl());
     }
 
     // returns an instance of the JDA given a bot token

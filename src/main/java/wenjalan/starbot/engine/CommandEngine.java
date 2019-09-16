@@ -1,12 +1,82 @@
 package wenjalan.starbot.engine;
 
-import net.dv8tion.jda.api.entities.ChannelType;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.events.message.GenericMessageEvent;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 
 // handles the parsing and execution of commands
 public class CommandEngine {
+
+    // dm command enum
+    protected enum DMCommand {
+
+        // reports the version of starbot
+        version {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // send the current version
+                event.getChannel().sendMessage("4.0 prerelease").queue();
+            }
+        },
+
+        // sends a link to invite Starbot
+        invite {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // send an invite
+                event.getChannel().sendMessage(event.getJDA().getInviteUrl()).queue();
+            }
+        },
+
+        // shuts down starbot, only usable by me
+        stop {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check that the author is me
+                long id = event.getAuthor().getIdLong();
+
+                // if the author is me
+                if (id == 478706068223164416L) {
+                    // shut down
+                    event.getChannel().sendMessage("you got it boss").complete();
+
+                    // log that we're shutting down because I said to
+                    System.out.println("Shut down initiated by user " + event.getAuthor().getAsTag() +
+                            "\nID: " + event.getAuthor().getIdLong());
+
+                    // actually shut down
+                    event.getJDA().shutdownNow();
+                }
+            }
+        };
+
+        public abstract void execute(PrivateMessageReceivedEvent event);
+
+    }
+
+    // guild command enum
+    protected enum GuildCommand {
+
+        // reports the version of starbot
+        version {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                event.getChannel().sendMessage("4.0 prerelease").queue();
+            }
+        },
+
+        // sends a link to invite Starbot
+        invite {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // send an invite
+                event.getChannel().sendMessage(event.getJDA().getInviteUrl()).queue();
+            }
+        };
+
+        public abstract void execute(GuildMessageReceivedEvent event);
+
+    }
 
     // the global command prefix, used to indicate whether a message is a command
     // can be changed via admin controls
@@ -21,33 +91,40 @@ public class CommandEngine {
         return content.startsWith(globalCommandPrefix);
     }
 
-    // parses a command sent from a direct message
-    public static void parseCommand(MessageReceivedEvent event) {
-        // check what kind of channel we're in
-        // private
-        if (event.isFromType(ChannelType.PRIVATE)) {
-            // handle it
-            parseDMCommand(event);
-        }
-        // guild
-        else if (event.isFromType(ChannelType.TEXT) && event.isFromGuild()) {
-            parseGuildCommand(event);
-        }
-        // something else
-        else {
-            System.err.println("Command sent from an unknown source: " + event.getChannelType() + ":" +
-                    event.getMessage().getContentRaw());
-        }
-    }
-
     // parses a DM-specific command
-    protected static void parseDMCommand(MessageReceivedEvent event) {
+    public static void parseDMCommand(PrivateMessageReceivedEvent event) {
+        // get the command they wanted
+        String commandKeyword = event.getMessage().getContentRaw().split("\\s+")[0].substring(1);
 
+        // find out if it's a valid command
+        for (DMCommand c : DMCommand.values()) {
+            // if the name of the command matches the keyword
+            if (commandKeyword.equalsIgnoreCase(c.name())) {
+                // run that command
+                c.execute(event);
+                // stop executing commands
+                return;
+            }
+        }
+        // do nothing if no commands matched the keyword
     }
 
     // parses a Guild-specific command
-    protected static void parseGuildCommand(MessageReceivedEvent event) {
+    public static void parseGuildCommand(GuildMessageReceivedEvent event) {
+        // get the command they wanted
+        String commandKeyword = event.getMessage().getContentRaw().split("\\s+")[0].substring(1);
 
+        // find out if it's a valid command
+        for (GuildCommand c : GuildCommand.values()) {
+            // if the name of the command matches the keyword
+            if (commandKeyword.equalsIgnoreCase(c.name())) {
+                // run that command
+                c.execute(event);
+                // stop executing commands
+                return;
+            }
+        }
+        // do nothing if no commands matched the keyword
     }
 
     // returns the global command prefix
