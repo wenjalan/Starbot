@@ -190,6 +190,14 @@ public class CommandEngine {
                 return;
             }
         }
+        // find out if it's an AudioCommand
+        for (AudioEngine.AudioCommand c : AudioEngine.AudioCommand.values()) {
+            // if there's a command that matches, run it
+            if (commandKeyword.equalsIgnoreCase(c.name())) {
+                c.execute(event);
+                return;
+            }
+        }
         // do nothing if no commands matched the keyword
     }
 
