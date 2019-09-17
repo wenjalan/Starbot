@@ -143,6 +143,7 @@ public class AudioEngine {
                 // if nothing else is playing, start playing
                 if (queue.isEmpty() && audioPlayer.getPlayingTrack() == null) {
                     audioPlayer.playTrack(track);
+                    sendInfo(track);
                 }
                 // otherwise add to the queuequeue.add(track);
                 else {
@@ -154,21 +155,15 @@ public class AudioEngine {
             public void onTrackStart(AudioPlayer player, AudioTrack track) {
                 // interrupt the timeout
                 timeoutThread.interrupt();
-
-                // send some info about the track
-                AudioTrackInfo info = track.getInfo();
-                long minutes = (info.length / 1000) / 60;
-                long seconds = (info.length / 1000) % 60;
-                lastFeedbackChannel.sendMessage(
-                        info.title + " by " + info.author + " (" + minutes + ":" + seconds + ")"
-                ).queue();
             }
 
             @Override
             public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
                 // if we can start the next track and there is more in the queue, play the next track
                 if (endReason.mayStartNext && !queue.isEmpty()) {
-                    player.playTrack(queue.remove());
+                    AudioTrack nextTrack = queue.remove();
+                    player.playTrack(nextTrack);
+                    sendInfo(nextTrack);
                 }
 
                 // start counting down to timeout
@@ -261,6 +256,17 @@ public class AudioEngine {
                     feedbackChannel.sendMessage("what").queue();
                 }
             });
+        }
+
+        // sends information about a track into the feedbackChannel
+        protected void sendInfo(AudioTrack track) {
+            // send some info about the track
+            AudioTrackInfo info = track.getInfo();
+            long minutes = (info.length / 1000) / 60;
+            long seconds = (info.length / 1000) % 60;
+            lastFeedbackChannel.sendMessage(
+                    info.title + " by " + info.author + " (" + minutes + ":" + seconds + ")"
+            ).queue();
         }
 
     }
