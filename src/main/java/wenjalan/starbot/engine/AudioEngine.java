@@ -22,10 +22,7 @@ import net.dv8tion.jda.api.managers.AudioManager;
 import org.apache.commons.codec.binary.StringUtils;
 
 import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.stream.Collectors;
 
 // handles all the audio playback capability of Starbot, owns the RadioEngine and MusicEngine
@@ -182,6 +179,19 @@ public class AudioEngine {
             }
         },
 
+        // shuffles the queue
+        shuffle {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // handler
+                Player.SendHandler handler = AudioCommand.getSendHandler(event);
+
+                // if it exists, get the queue and shuffle it
+                Queue<AudioTrack> queue = shuffleQueue(handler.player().scheduler.queue());
+                handler.player().scheduler.queue = queue;
+            }
+        },
+
         // seeks to a certain position
         seek {
             @Override
@@ -274,6 +284,17 @@ public class AudioEngine {
             p.load(rawQuery, event.getChannel());
         }
 
+        // shuffles a Queue of AudioTracks
+        private static Queue<AudioTrack> shuffleQueue(Queue<AudioTrack> queue) {
+            ArrayList<AudioTrack> trackList = new ArrayList<>(queue);
+            Queue<AudioTrack> shuffledQueue = new LinkedList<>();
+            Random r = new Random();
+            while (trackList.size() > 0) {
+                shuffledQueue.add(trackList.remove(r.nextInt(trackList.size())));
+            }
+            return shuffledQueue;
+        }
+
     }
 
     // Player represents the LavaPlayer instance, one per guild
@@ -326,6 +347,7 @@ public class AudioEngine {
 
             // create a Scheduler
             this.scheduler = new Scheduler();
+            audioPlayer.addListener(this.scheduler);
 
             // create a SendHandler
             this.sendHandler = new SendHandler(this);
@@ -346,10 +368,9 @@ public class AudioEngine {
             private void queue(AudioTrack track) {
                 // if nothing else is playing, start playing
                 if (queue.isEmpty() && audioPlayer.getPlayingTrack() == null) {
-                    audioPlayer.playTrack(track);
-                    sendInfo(track);
+                    audioPlayer.startTrack(track, false);
                 }
-                // otherwise add to the queuequeue.add(track);
+                // otherwise add to the queue
                 else {
                     queue.add(track);
                 }
@@ -359,6 +380,9 @@ public class AudioEngine {
             public void onTrackStart(AudioPlayer player, AudioTrack track) {
                 // interrupt the timeout
                 timeoutThread.interrupt();
+
+                // print some info
+                sendInfo(track);
             }
 
             @Override
@@ -366,26 +390,26 @@ public class AudioEngine {
                 // if we can start the next track and there is more in the queue, play the next track
                 if (endReason.mayStartNext && !queue.isEmpty()) {
                     AudioTrack nextTrack = queue.remove();
-                    player.playTrack(nextTrack);
-                    sendInfo(nextTrack);
+                    player.startTrack(nextTrack, false);
                 }
+                else {
+                    // start counting down to timeout
+                    timeoutThread = new Thread((() -> {
+                        try {
+                            // wait for the timeout
+                            Thread.sleep(DEFAULT_PLAYBACK_TIMEOUT);
 
-                // start counting down to timeout
-                timeoutThread = new Thread((() -> {
-                    try {
-                        // wait for the timeout
-                        Thread.sleep(DEFAULT_PLAYBACK_TIMEOUT);
-
-                        // if nothing plays after the timeout and nothing's queued, quit
-                        if (player.isPaused() && queue.isEmpty()) {
-                            // shut down the manager
-                            audioPlayerManager.shutdown();
-                            // close the connection
-                            guild.getAudioManager().closeAudioConnection();
-                        }
-                    } catch (InterruptedException e) {} // do nothing I guess
-                }));
-                timeoutThread.start();
+                            // if nothing plays after the timeout and nothing's queued, quit
+                            if (player.isPaused() && queue.isEmpty()) {
+                                // shut down the manager
+                                audioPlayerManager.shutdown();
+                                // close the connection
+                                guild.getAudioManager().closeAudioConnection();
+                            }
+                        } catch (InterruptedException e) {} // do nothing I guess
+                    }));
+                    timeoutThread.start();
+                }
             }
 
             @Override
@@ -508,7 +532,6 @@ public class AudioEngine {
             if (!this.scheduler.queue().isEmpty()) {
                 AudioTrack t = scheduler.queue.remove();
                 audioPlayer.startTrack(t, false);
-                sendInfo(t);
             }
         }
 
@@ -518,8 +541,15 @@ public class AudioEngine {
             AudioTrackInfo info = track.getInfo();
             long minutes = (info.length / 1000) / 60;
             long seconds = (info.length / 1000) % 60;
+
+            // if seconds are a single digit number, add a 0
+            String leadingZero = "";
+            if (seconds < 10) {
+                leadingZero = "0";
+            }
+
             lastFeedbackChannel.sendMessage(
-                    info.title + " by " + info.author + " (" + minutes + ":" + seconds + ")"
+                    info.title + " by " + info.author + " (" + minutes + ":" + leadingZero + seconds + ")"
             ).queue();
         }
 
