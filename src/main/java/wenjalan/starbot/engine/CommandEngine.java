@@ -52,6 +52,27 @@ public class CommandEngine {
                     event.getJDA().shutdownNow();
                 }
             }
+        },
+
+        // reloads the responses data, only usable by me
+        reloadresponses {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check that it's me
+                long id = event.getAuthor().getIdLong();
+
+                // if it was
+                if (id == 478706068223164416L) {
+                    // reload the responses data
+                    String[] args = parseArgs(event.getMessage());
+                    if (args.length == 1) {
+                        DataEngine.reloadResponses();
+                    }
+                    else { // I specified a specific file
+                        DataEngine.reloadResponses(args[1]);
+                    }
+                }
+            }
         };
 
         public abstract void execute(PrivateMessageReceivedEvent event);
@@ -201,7 +222,7 @@ public class CommandEngine {
         // do nothing if no commands matched the keyword
     }
 
-    // parses the arguments of a command into Strings
+    // parses the arguments of a command into Strings, includes the command itself as an arg
     protected static String[] parseArgs(Message m) {
         return m.getContentRaw().split("\\s+");
     }
