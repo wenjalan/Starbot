@@ -43,25 +43,41 @@ public class ChatEngine {
     }
 
     // returns a response for Starbot given a trigger phrase
-    public static String getResponseForPhrase(String phrase) {
+    // returns null if none was found
+    public static String getResponseForPhrase(String query) {
         // if phraseResponses is null, load from disk
         if (phraseResponses == null) {
             phraseResponses = loadPhraseResponses();
         }
 
         // return the proper response
-        return phraseResponses.get(phrase);
+        for (String s : phraseResponses.keySet()) {
+            if (query.contains(s)) {
+                return phraseResponses.get(s);
+            }
+        }
+        return null;
     }
 
-    // returns whether or not a phrase is a trigger phrase
-    public static boolean isTriggerPhrase(String phrase) {
-        return phraseResponses.keySet().contains(phrase);
+    // returns whether or not a query contains a trigger phrase
+    public static boolean containsTriggerPhrase(String query) {
+        // if not loaded, load
+        if (phraseResponses == null) {
+            phraseResponses = loadPhraseResponses();
+        }
+
+        // find out
+        for (String s : phraseResponses.keySet()) {
+            if (query.contains(s)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // loads the phrase responses from DataEngine
     protected static HashMap<String, String> loadPhraseResponses() {
-        // TODO: This
-        return null;
+        return DataEngine.loadTriggerResponses();
     }
 
 }

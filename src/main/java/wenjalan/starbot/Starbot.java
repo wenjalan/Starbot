@@ -7,7 +7,6 @@ import wenjalan.starbot.listener.JDAListener;
 import wenjalan.starbot.listener.MessageListener;
 
 import javax.security.auth.login.LoginException;
-import java.util.HashMap;
 import java.util.Scanner;
 
 // the main Starbot class, the entry point for the program
@@ -15,6 +14,9 @@ public class Starbot {
 
     // program entry point, we require a bot token to start
     public static void main(String[] args) {
+        // run tests
+        // test();
+
         // announce that we're starting
         System.out.println("Starting Starbot 4...");
 
@@ -40,6 +42,22 @@ public class Starbot {
 
         // print invite
         System.out.println("Invite: " + jda.getInviteUrl());
+    }
+
+    // test method, used for when we're trying to do a specific thing with a specific part
+    // after this method finishes, the program will end
+    private static void test() {
+        // force DataEngine to load tbe trigger responses
+        System.out.println(DataEngine.getTriggerResponses());
+
+        // add something
+        DataEngine.addTriggerPhrase("troy" , "twat");
+
+        // save it
+        DataEngine.saveTriggerResponses();
+
+        // end program execution
+        System.exit(0);
     }
 
     // returns an instance of the JDA given a bot token

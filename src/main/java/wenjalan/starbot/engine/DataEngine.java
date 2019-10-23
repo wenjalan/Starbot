@@ -114,7 +114,21 @@ public class DataEngine {
         try {
             // TODO: Reformat how it's printed to include line breaks to make direct editing easier
             FileWriter writer = new FileWriter(new File(file));
-            writer.write(json);
+            for (char c : json.toCharArray()) {
+                // if the character is the ending bracket, insert a newline first
+                if (c == '}') {
+                    writer.write("\n");
+                }
+                writer.write(c);
+                // if it was a bracket, write a newline and a tab
+                if (c == '{') {
+                    writer.write("\n\t");
+                }
+                // if it was a comma, write a newline and a tab
+                else if (c == ',') {
+                    writer.write("\n\t");
+                }
+            }
             writer.close();
         } catch (IOException e) {
             System.err.println("encountered an error while saving trigger phrase responses");

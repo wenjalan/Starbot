@@ -17,6 +17,7 @@ public class MessageListener extends ListenerAdapter {
         if (event.getAuthor().isBot()) {
             return;
         }
+
         // if it's a command, run it
         if (CommandEngine.isCommand(event.getMessage())) {
             CommandEngine.parseDMCommand(event);
@@ -34,14 +35,20 @@ public class MessageListener extends ListenerAdapter {
         if (event.getAuthor().isBot()) {
             return;
         }
+
         // if it's a command, run it
         if (CommandEngine.isCommand(event.getMessage())) {
             CommandEngine.parseGuildCommand(event);
         }
-        // if the command mentions Starbot, send a random response
+        // if the message mentions Starbot, send a random response
         else if (event.getMessage().getMentionedUsers().contains(event.getJDA().getSelfUser())) {
             // send a random response
             event.getChannel().sendMessage(ChatEngine.getRandomResponse()).queue();
+        }
+        // if the message has a trigger phrase in it, send the corresponding response
+        else if (ChatEngine.containsTriggerPhrase(event.getMessage().getContentRaw())) {
+            // send the proper response
+            event.getChannel().sendMessage(ChatEngine.getResponseForPhrase(event.getMessage().getContentRaw())).queue();
         }
     }
 
