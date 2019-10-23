@@ -369,10 +369,17 @@ public class AudioEngine {
                 // if nothing else is playing, start playing
                 if (queue.isEmpty() && audioPlayer.getPlayingTrack() == null) {
                     audioPlayer.startTrack(track, false);
+
+                    // send info into the chat that we've started
+                    sendInfo(track);
                 }
                 // otherwise add to the queue
                 else {
+                    // queue the track
                     queue.add(track);
+
+                    // print the queue to the chat
+                    lastFeedbackChannel.sendMessage(getQueueAsString()).queue();
                 }
             }
 
