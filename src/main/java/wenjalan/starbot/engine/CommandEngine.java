@@ -71,6 +71,9 @@ public class CommandEngine {
                     else { // I specified a specific file
                         DataEngine.reloadResponses(args[1]);
                     }
+
+                    // send feedback
+                    event.getChannel().sendMessage("done boss").queue();
                 }
             }
         };
