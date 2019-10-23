@@ -89,12 +89,53 @@ public class DataEngine {
             // unchecked assignment
             // TODO: Figure out if this poses a security risk
             HashMap<String, String> responses = g.fromJson(new FileReader(file), HashMap.class);
-            return responses;
+
+            // if it's null (empty), complain and return an empty hashmap
+            if (responses == null) {
+                System.err.println("didn't find anything in the " + file + " file");
+                return new HashMap<>();
+            } else {
+                return responses;
+            }
         } catch (FileNotFoundException e) {
             System.err.println("encountered an error while loading trigger phrase responses");
             e.printStackTrace();
             return null;
         }
+    }
+
+    // saves the trigger phrase responses to the disk
+    public static void saveTriggerResponses(String file) {
+        // get the JSON String
+        Gson g = new Gson();
+        String json = g.toJson(triggerResponses);
+
+        // write it to the file
+        try {
+            // TODO: Reformat how it's printed to include line breaks to make direct editing easier
+            FileWriter writer = new FileWriter(new File(file));
+            writer.write(json);
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("encountered an error while saving trigger phrase responses");
+            e.printStackTrace();
+        }
+    }
+
+    // saves the trigger phrase responses to the disk
+    public static void saveTriggerResponses() {
+        saveTriggerResponses(DEFAULT_TRIGGER_RESPONSES_FILE);
+    }
+
+    // adds a response to the trigger phrase responses
+    public static void addTriggerPhrase(String triggerPhrase, String response) {
+        // load the triggerResponses if not already loaded
+        if (triggerResponses == null) {
+            triggerResponses = loadTriggerResponses();
+        }
+
+        // add an entry to the responses
+        triggerResponses.put(triggerPhrase, response);
     }
 
 }
