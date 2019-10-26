@@ -2,11 +2,13 @@ package wenjalan.starbot;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import wenjalan.starbot.engine.DataEngine;
+import wenjalan.starbot.engine.CommandEngine;
+import wenjalan.starbot.guilds.DingusCrew;
 import wenjalan.starbot.listener.JDAListener;
 import wenjalan.starbot.listener.MessageListener;
 
 import javax.security.auth.login.LoginException;
+import java.util.List;
 import java.util.Scanner;
 
 // the main Starbot class, the entry point for the program
@@ -47,14 +49,8 @@ public class Starbot {
     // test method, used for when we're trying to do a specific thing with a specific part
     // after this method finishes, the program will end
     private static void test() {
-        // force DataEngine to load tbe trigger responses
-        System.out.println(DataEngine.getTriggerResponses());
-
-        // add something
-        DataEngine.addTriggerPhrase("troy" , "twat");
-
-        // save it
-        DataEngine.saveTriggerResponses();
+        List<String> strings = CommandEngine.findArgsInString("\"foo\" \"bar\"");
+        System.out.println(strings);
 
         // end program execution
         System.exit(0);
@@ -69,6 +65,9 @@ public class Starbot {
         // attach listeners
         builder.addEventListeners(new MessageListener());
         builder.addEventListeners(new JDAListener());
+
+        // server-specific listeners
+        builder.addEventListeners(new DingusCrew.DingusCrewListener()); // Dingus Crew
 
         // build
         JDA instance = null;

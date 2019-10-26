@@ -10,6 +10,13 @@ import java.util.List;
 // handles all persistent data processing
 public class DataEngine {
 
+    // some constants
+    public static class Constants {
+
+        public static final long OWNER_ID_LONG = 478706068223164416L; // wenton#8946
+
+    }
+
     // the default filename for the responses
     public static final String DEFAULT_RESPONSES_FILE = "assets/responses.txt";
 

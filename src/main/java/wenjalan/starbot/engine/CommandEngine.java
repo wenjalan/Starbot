@@ -6,6 +6,8 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 // handles the parsing and execution of commands
@@ -13,6 +15,19 @@ public class CommandEngine {
 
     // dm command enum
     protected enum DMCommand {
+
+        // TODO: Figure out how to not show the Admin Commands in this
+        // TODO: Until then, the !help command will stay unavailable in DM commands
+//        // help command
+//        help {
+//            @Override
+//            public void execute(PrivateMessageReceivedEvent event) {
+//                // send a list of the commands
+//                StringBuilder sb = new StringBuilder();
+//                Arrays.stream(values()).forEach(s -> sb.append(s.toString() + "\n"));
+//                event.getChannel().sendMessage(sb.toString()).queue();
+//            }
+//        },
 
         // reports the version of starbot
         version {
@@ -40,7 +55,7 @@ public class CommandEngine {
                 long id = event.getAuthor().getIdLong();
 
                 // if the author is me
-                if (id == 478706068223164416L) {
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
                     // shut down
                     event.getChannel().sendMessage("you got it boss").complete();
 
@@ -62,7 +77,7 @@ public class CommandEngine {
                 long id = event.getAuthor().getIdLong();
 
                 // if it was
-                if (id == 478706068223164416L) {
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
                     // reload the responses data
                     String[] args = parseArgs(event.getMessage());
                     if (args.length == 1) {
@@ -76,6 +91,30 @@ public class CommandEngine {
                     event.getChannel().sendMessage("done boss").queue();
                 }
             }
+        },
+
+        // adds a new response to the bank of trigger phrases and responses
+        addresponse {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check that it's me
+                long id = event.getAuthor().getIdLong();
+
+                // if it was
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
+                    // get the phrase and the response
+                    String query = event.getMessage().getContentRaw();
+
+                    // find args in string
+                    List<String> args = findArgsInString(query);
+
+                    // find the phrase
+                    String phrase = args.get(0);
+
+                    // find the response
+                    String response = args.get(1);
+                }
+            }
         };
 
         public abstract void execute(PrivateMessageReceivedEvent event);
@@ -84,6 +123,35 @@ public class CommandEngine {
 
     // guild command enum
     protected enum GuildCommand {
+
+        // help command
+        help {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // if they were asking for audio commands
+                String[] args = parseArgs(event.getMessage());
+                if (args.length > 1) {
+                    // audio
+                    if (args[1].equalsIgnoreCase("audio")) {
+                        // send the audio commands
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("audio commands:\n");
+                        Arrays.stream(AudioEngine.AudioCommand.values()).forEach(s -> sb.append(s.toString() + "\n"));
+                        event.getChannel().sendMessage(sb.toString()).queue();
+                    }
+                }
+                // send them a list of general commands
+                else {
+                    // send a list of the commands
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("available commands:\n" );
+                    Arrays.stream(values()).forEach(s -> sb.append(s.toString() + "\n"));
+                    sb.append("for audio commands do !help audio");
+                    event.getChannel().sendMessage(sb.toString()).queue();
+                }
+
+            }
+        },
 
         // reports the version of starbot
         version {
@@ -238,6 +306,42 @@ public class CommandEngine {
     // sets the global command prefix
     public static void setGlobalCommandPrefix(String newPrefix) {
         globalCommandPrefix = newPrefix;
+    }
+
+    // returns a List of Strings found enclosed within quotes in a given String
+    public static List<String> findArgsInString(String query) {
+        // the list of Strings we found
+        List<String> strings = new ArrayList<>();
+
+        // StringBuilder to build Strings
+        StringBuilder sb = new StringBuilder();
+
+        // whether or not we're currently in a quotation
+        boolean isInside = false;
+
+        // for the entire string
+        for (int x = 0; x < query.length(); x++) {
+            // get the current char
+            char c = query.charAt(x);
+
+            // if it's an ending quote, build and add the string to the list
+            if (c == '"' && isInside) {
+                strings.add(sb.toString());
+                sb = new StringBuilder();
+                isInside = false;
+            }
+            // if it's an opening quote, set isInside to true
+            else if (c == '"' && !isInside) {
+                isInside = true;
+            }
+            // if it's a character and we're inside a quote, add it to the sb
+            else if (isInside) { // isInside == true
+                sb.append(c);
+            }
+        }
+
+        // return
+        return strings;
     }
 
 }
