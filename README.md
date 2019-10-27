@@ -8,3 +8,6 @@ Plays funky fresh music, but only if you're nice
 
 # Bugs
 All of them
+
+# Disclaimer
+This bot is meant for satirical and humorous purposes. The views expressed by this bot are both randomized and do not reflect those of its creator.
