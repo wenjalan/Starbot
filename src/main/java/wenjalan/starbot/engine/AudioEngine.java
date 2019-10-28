@@ -565,6 +565,7 @@ public class AudioEngine {
             else {
                 List<AudioTrack> tracks = new LinkedList<>(scheduler.queue);
                 StringBuilder builder = new StringBuilder();
+                builder.append(tracks.size() + " tracks queued:\n");
                 int pos = 1;
                 for (AudioTrack t : tracks) {
                     AudioTrackInfo info = t.getInfo();
