@@ -2,14 +2,6 @@ plugins {
     id 'java'
 }
 
-jar {
-    manifest {
-        attributes (
-                'Main-Class': 'wenjalan.starbot.Starbot'
-        )
-    }
-}
-
 group 'Starbot4'
 version '4.0'
 

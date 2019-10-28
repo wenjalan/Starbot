@@ -366,9 +366,6 @@ public class AudioEngine {
                 // if nothing else is playing, start playing
                 if (queue.isEmpty() && audioPlayer.getPlayingTrack() == null) {
                     audioPlayer.startTrack(track, false);
-
-                    // send info into the chat that we've started
-                    sendInfo(track);
                 }
                 // otherwise add to the queue
                 else {
