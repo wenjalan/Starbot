@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Starbot4:jar" />
+      <artifact name="Starbot:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Starbot4_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot4_jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot4_jar/Starbot4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot4_jar/assets/phraseresponses.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot4_jar/assets/responses.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -85,8 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="573" column="42" lean-forward="true" selection-start-line="573" selection-start-column="42" selection-end-line="573" selection-end-column="42" />
+            <state relative-caret-position="561">
+              <caret line="575" column="9" lean-forward="true" selection-start-line="575" selection-start-column="9" selection-end-line="575" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#2686:3444" />
@@ -199,6 +205,24 @@
             <path>
               <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
               <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Starbot_jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -212,11 +236,11 @@
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572244619994" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572244959325" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -304,13 +328,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40696000" />
+    <option name="totallyTimeSpent" value="41041000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16383617" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16383617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -319,7 +343,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32997987" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32595575" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32595575" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4016227" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -554,8 +578,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="573" column="42" lean-forward="true" selection-start-line="573" selection-start-column="42" selection-end-line="573" selection-end-column="42" />
+        <state relative-caret-position="561">
+          <caret line="575" column="9" lean-forward="true" selection-start-line="575" selection-start-column="9" selection-end-line="575" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#2686:3444" />
@@ -583,7 +607,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>Starbot4:jar</last-edited>
+          <last-edited>Starbot:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -631,7 +655,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Starbot</last-edited>
+          <last-edited>Starbot4.Starbot</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
