@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import wenjalan.starbot.engine.CommandEngine;
 import wenjalan.starbot.guilds.DingusCrew;
+import wenjalan.starbot.listener.GuildListener;
 import wenjalan.starbot.listener.JDAListener;
 import wenjalan.starbot.listener.MessageListener;
 
@@ -65,6 +66,7 @@ public class Starbot {
         // attach listeners
         builder.addEventListeners(new MessageListener());
         builder.addEventListeners(new JDAListener());
+        builder.addEventListeners(new GuildListener());
 
         // server-specific listeners
         builder.addEventListeners(new DingusCrew.DingusCrewListener()); // Dingus Crew

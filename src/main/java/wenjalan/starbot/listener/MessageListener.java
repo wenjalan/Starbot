@@ -1,14 +1,10 @@
 package wenjalan.starbot.listener;
 
-import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import wenjalan.starbot.engine.ChatEngine;
 import wenjalan.starbot.engine.CommandEngine;
-import wenjalan.starbot.guilds.DingusCrew;
 
 // listens for all Messages, sends data to corresponding engines
 public class MessageListener extends ListenerAdapter {

@@ -14,16 +14,13 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.sedmelluq.discord.lavaplayer.track.playback.AudioFrame;
 import net.dv8tion.jda.api.audio.AudioSendHandler;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
-import org.apache.commons.codec.binary.StringUtils;
 
 import java.nio.ByteBuffer;
 import java.util.*;
-import java.util.stream.Collectors;
 
 // handles all the audio playback capability of Starbot, owns the RadioEngine and MusicEngine
 public class AudioEngine {
@@ -407,7 +404,7 @@ public class AudioEngine {
                             Thread.sleep(DEFAULT_PLAYBACK_TIMEOUT);
 
                             // if nothing plays after the timeout and nothing's queued, quit
-                            if (player.isPaused() && queue.isEmpty()) {
+                            if (player.getPlayingTrack() == null && queue.isEmpty()) {
                                 // shut down the manager
                                 audioPlayerManager.shutdown();
                                 // close the connection
@@ -587,6 +584,12 @@ public class AudioEngine {
         guildAudioManager.setSendingHandler(player.sendHandler());
         guildAudioManager.openAudioConnection(channel);
         return player;
+    }
+
+    // returns a Player given a specific Guild, or null if one wasn't created
+    public static Player getPlayer(Guild g) {
+        Player.SendHandler handler = (Player.SendHandler) g.getAudioManager().getSendingHandler();
+        return handler == null ? null : handler.player();
     }
 
 }
