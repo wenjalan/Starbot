@@ -301,7 +301,7 @@ public class AudioEngine {
         public static final int DEFAULT_VOLUME = 50;
 
         // the default timeout, in seconds
-        public static final int DEFAULT_PLAYBACK_TIMEOUT = 15 * 60; // 15 minutes
+        public static final int DEFAULT_PLAYBACK_TIMEOUT = 1000 * 15 * 60; // 15 minutes
 
         // the AudioPlayerManager
         private AudioPlayerManager audioPlayerManager;
@@ -379,8 +379,10 @@ public class AudioEngine {
 
             @Override
             public void onTrackStart(AudioPlayer player, AudioTrack track) {
-                // interrupt the timeout
-                timeoutThread.interrupt();
+                // interrupt the timeout if it exists
+                if (timeoutThread != null) {
+                    timeoutThread.interrupt();
+                }
 
                 // print some info
                 sendInfo(track);
