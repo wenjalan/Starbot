@@ -6,7 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="" />
+    <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Starbot4_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Starbot4_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot4_jar/Starbot4.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Starbot4_jar/Starbot4.jar" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -38,12 +43,44 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Starbot4" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Starbot4" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Starbot4" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Starbot4" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Starbot4" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Starbot4" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -54,85 +91,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="84" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getResponses#0;class#DataEngine#0" />
+                <element signature="method#loadResponses#0;class#DataEngine#0" />
+                <element signature="method#getTriggerResponses#0;class#DataEngine#0" />
+                <element signature="method#loadTriggerResponses#0;class#DataEngine#0" />
+                <element signature="method#saveTriggerResponses#0;class#DataEngine#0" />
+                <element signature="method#addTriggerPhrase#0;class#DataEngine#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/Starbot.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="270" column="74" lean-forward="true" selection-start-line="270" selection-start-column="74" selection-end-line="270" selection-end-column="74" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
-                <element signature="method#findArgsInString#0;class#CommandEngine#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="108" column="67" selection-start-line="108" selection-start-column="67" selection-end-line="108" selection-end-column="67" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#Constants#0;class#DingusCrew#0" />
-                <element signature="class#DingusCrewCommand#0;class#DingusCrew#0" />
-                <element signature="method#kickPermissionCheck#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
-                <element signature="class#DingusCrewListener#0;class#DingusCrew#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listener/MessageListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2025">
-              <caret line="385" column="21" lean-forward="true" selection-start-line="385" selection-start-column="21" selection-end-line="385" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#1561:2622" />
-                <element signature="class#2686:3444" />
-                <element signature="class#3490:3947" />
-                <element signature="class#3995:4440" />
-                <element signature="class#4491:4888" />
-                <element signature="class#4933:5951" />
-                <element signature="class#6013:6480" />
-                <element signature="class#6547:6948" />
-                <element signature="class#6997:7432" />
-                <element signature="class#7487:9831" />
-                <element signature="class#9898:10414" />
-                <element signature="method#Player#0;class#Player#0;class#AudioEngine#0" />
-                <element signature="method#onTrackEnd#0;class#Scheduler#0;class#Player#0;class#AudioEngine#0" />
-                <element signature="class#SendHandler#0;class#Player#0;class#AudioEngine#0" />
-                <element signature="method#seek#0;class#SendHandler#0;class#Player#0;class#AudioEngine#0" />
-                <element signature="method#load#0;class#Player#0;class#AudioEngine#0" />
-                <element signature="method#skip#0;class#Player#0;class#AudioEngine#0" />
-                <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
-                <element signature="method#getQueueAsString#0;class#Player#0;class#AudioEngine#0" />
-                <element signature="method#connect#0;class#AudioEngine#0" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -186,7 +176,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -195,22 +184,84 @@
               <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
               <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Starbot4_jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="starbot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="starbot" type="462c0819:PsiDirectoryNode" />
+              <item name="engine" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571543217646" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572239917410" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15429688" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
@@ -260,13 +311,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35870000" />
+    <option name="totallyTimeSpent" value="36294000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22416107" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11838162" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -293,7 +344,7 @@
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Google Cloud Storage" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" weight="0.32958034" />
+      <window_info anchor="right" id="Gradle" order="6" weight="0.32917082" />
       <window_info anchor="right" id="Database" order="7" weight="0.3295302" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
@@ -356,8 +407,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="289">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -429,22 +480,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="84" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getResponses#0;class#DataEngine#0" />
-            <element signature="method#loadResponses#0;class#DataEngine#0" />
-            <element signature="method#getTriggerResponses#0;class#DataEngine#0" />
-            <element signature="method#loadTriggerResponses#0;class#DataEngine#0" />
-            <element signature="method#saveTriggerResponses#0;class#DataEngine#0" />
-            <element signature="method#addTriggerPhrase#0;class#DataEngine#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.dv8tion/JDA/4.0.0_39/30845d0bdac763745a7939edb3cc5def8b1abbb4/JDA-4.0.0_39-sources.jar!/net/dv8tion/jda/api/hooks/ListenerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2156">
@@ -492,6 +527,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="84" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getResponses#0;class#DataEngine#0" />
+            <element signature="method#loadResponses#0;class#DataEngine#0" />
+            <element signature="method#getTriggerResponses#0;class#DataEngine#0" />
+            <element signature="method#loadTriggerResponses#0;class#DataEngine#0" />
+            <element signature="method#saveTriggerResponses#0;class#DataEngine#0" />
+            <element signature="method#addTriggerPhrase#0;class#DataEngine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -549,7 +607,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Starbot4.Starbot4</last-edited>
+          <last-edited>test|Starbot4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
