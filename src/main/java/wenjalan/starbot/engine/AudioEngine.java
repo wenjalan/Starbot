@@ -552,7 +552,7 @@ public class AudioEngine {
             }
 
             lastFeedbackChannel.sendMessage(
-                    info.title + " by " + info.author + " (" + minutes + ":" + leadingZero + seconds + ")"
+                    "> Now Playing: " + info.title + " by " + info.author + " (" + minutes + ":" + leadingZero + seconds + ")"
             ).queue();
         }
 
@@ -568,7 +568,7 @@ public class AudioEngine {
                 int pos = 1;
                 for (AudioTrack t : tracks) {
                     AudioTrackInfo info = t.getInfo();
-                    builder.append(pos + ") " + info.title + " by " + info.author + "\n");
+                    builder.append("> " + pos + ": " + info.title + " by " + info.author + "\n");
                     pos++;
                 }
                 return builder.toString();

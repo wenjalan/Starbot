@@ -7,67 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/Starbot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/Starbot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$Scheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$Scheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$SendHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$SendHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/listener/MessageListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/listener/MessageListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$Scheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$Scheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$SendHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$SendHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/listener/MessageListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/listener/MessageListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/Starbot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/core/Starbot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -146,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="384" column="17" lean-forward="true" selection-start-line="384" selection-start-column="17" selection-end-line="384" selection-end-column="17" />
+            <state relative-caret-position="527">
+              <caret line="573" column="42" lean-forward="true" selection-start-line="573" selection-start-column="42" selection-end-line="573" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#2686:3444" />
@@ -273,7 +212,7 @@
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572244146833" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572244619994" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -365,13 +304,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40195000" />
+    <option name="totallyTimeSpent" value="40696000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="1037" height="1118" extended-state="0" />
+    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33572158" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16383617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -380,8 +319,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32997987" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32897383" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4016227" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32595575" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4016227" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -615,8 +554,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="384" column="17" lean-forward="true" selection-start-line="384" selection-start-column="17" selection-end-line="384" selection-end-column="17" />
+        <state relative-caret-position="527">
+          <caret line="573" column="42" lean-forward="true" selection-start-line="573" selection-start-column="42" selection-end-line="573" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#2686:3444" />
