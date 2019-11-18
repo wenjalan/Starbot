@@ -301,7 +301,7 @@ public class AudioEngine {
         public static final int DEFAULT_VOLUME = 50;
 
         // the default timeout, in seconds
-        public static final int DEFAULT_PLAYBACK_TIMEOUT = 1000 * 15 * 60; // 15 minutes
+        public static final int DEFAULT_PLAYBACK_TIMEOUT = 1000 * (60 * 10); // 10 minutes
 
         // the AudioPlayerManager
         private AudioPlayerManager audioPlayerManager;
