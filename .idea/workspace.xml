@@ -7,15 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$Scheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$Scheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -119,8 +110,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="303" column="90" lean-forward="true" selection-start-line="303" selection-start-column="90" selection-end-line="303" selection-end-column="90" />
+            <state relative-caret-position="204">
+              <caret line="375" column="88" selection-start-line="375" selection-start-column="88" selection-end-line="375" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#AudioCommand#0;class#AudioEngine#0" />
@@ -398,12 +389,12 @@
       <workItem from="1572063613372" duration="5099000" />
       <workItem from="1574050367787" duration="487000" />
       <workItem from="1574050878398" duration="576000" />
-      <workItem from="1574051493393" duration="1630000" />
+      <workItem from="1574051493393" duration="2589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43699000" />
+    <option name="totallyTimeSpent" value="44658000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -650,8 +641,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="303" column="90" lean-forward="true" selection-start-line="303" selection-start-column="90" selection-end-line="303" selection-end-column="90" />
+        <state relative-caret-position="204">
+          <caret line="375" column="88" selection-start-line="375" selection-start-column="88" selection-end-line="375" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#AudioCommand#0;class#AudioEngine#0" />

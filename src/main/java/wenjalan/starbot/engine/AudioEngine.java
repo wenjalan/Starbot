@@ -372,8 +372,8 @@ public class AudioEngine {
                     // queue the track
                     queue.add(track);
 
-                    // print the queue to the chat
-                    lastFeedbackChannel.sendMessage(getQueueAsString()).queue();
+                    // announce that we added the track to the queue
+                    lastFeedbackChannel.sendMessage("> Queued " + track.getInfo().title ).queue();
                 }
             }
 
@@ -567,6 +567,11 @@ public class AudioEngine {
                 builder.append(tracks.size() + " tracks queued:\n");
                 int pos = 1;
                 for (AudioTrack t : tracks) {
+                    // if we're about to hit the character limit, truncate the queue
+                    if (builder.length() > 1900) {
+                        builder.append("> ... plus " + (tracks.size() - pos) + " more");
+                        break;
+                    }
                     AudioTrackInfo info = t.getInfo();
                     builder.append("> " + pos + ": " + info.title + " by " + info.author + "\n");
                     pos++;
