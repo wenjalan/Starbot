@@ -2,9 +2,9 @@
 A sassy little chatbot named Starbot.
 
 # Features
-Constantly degrades all members in a server
-Conversational aid to lonely people
-Plays funky fresh music, but only if you're nice
+Constantly degrades all members in a server  
+Conversational aid to lonely people  
+Plays funky fresh music, but only if you're nice  
 
 # Bugs
 All of them
