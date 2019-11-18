@@ -111,6 +111,49 @@ public class DataEngine {
         }
     }
 
+    // returns whether or not a query contains a trigger phrase
+    public static boolean hasTriggerPhrase(String query) {
+        // ignore casing
+        query = query.toLowerCase();
+
+        // load responses if not loaded
+        if (triggerResponses == null) {
+            triggerResponses = loadTriggerResponses(DEFAULT_TRIGGER_RESPONSES_FILE);
+        }
+
+        // return whether or not the query contains a valid trigger phrase
+        for (String phrase : triggerResponses.keySet()) {
+            if (query.contains(phrase)) {
+                return true;
+            }
+        }
+
+        // return false
+        return false;
+    }
+
+    // returns the response for a given trigger phrase
+    // returns null if none was found
+    public static String getTriggerResponseFor(String query) {
+        // ignore casing
+        query = query.toLowerCase();
+
+        // load responses if not loaded
+        if (triggerResponses == null) {
+            triggerResponses = loadTriggerResponses(DEFAULT_TRIGGER_RESPONSES_FILE);
+        }
+
+        // return the proper response
+        for (String phrase : triggerResponses.keySet()) {
+            if (query.contains(phrase)) {
+                return triggerResponses.get(phrase);
+            }
+        }
+
+        // return null
+        return null;
+    }
+
     // saves the trigger phrase responses to the disk
     public static void saveTriggerResponses(String file) {
         // get the JSON String

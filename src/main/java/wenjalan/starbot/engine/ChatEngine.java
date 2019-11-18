@@ -11,9 +11,6 @@ public class ChatEngine {
     // the Stack of responses that Starbot is using
     protected static Stack<String> responses = null;
 
-    // the HashMap of responses for trigger phrases
-    protected static HashMap<String, String> phraseResponses = null;
-
     // returns a random response for when Starbot is mentioned or dm'd
     public static String getRandomResponse() {
         // if responses is null, load them
@@ -45,45 +42,12 @@ public class ChatEngine {
     // returns a response for Starbot given a trigger phrase
     // returns null if none was found
     public static String getResponseForPhrase(String query) {
-        // ignore casing
-        query = query.toLowerCase();
-
-        // if phraseResponses is null, load from disk
-        if (phraseResponses == null) {
-            phraseResponses = loadPhraseResponses();
-        }
-
-        // return the proper response
-        for (String s : phraseResponses.keySet()) {
-            if (query.contains(s)) {
-                return phraseResponses.get(s);
-            }
-        }
-        return null;
+        return DataEngine.getTriggerResponseFor(query);
     }
 
     // returns whether or not a query contains a trigger phrase
     public static boolean containsTriggerPhrase(String query) {
-        // ignore casing
-        query = query.toLowerCase();
-
-        // if not loaded, load
-        if (phraseResponses == null) {
-            phraseResponses = loadPhraseResponses();
-        }
-
-        // find out
-        for (String s : phraseResponses.keySet()) {
-            if (query.contains(s)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // loads the phrase responses from DataEngine
-    protected static HashMap<String, String> loadPhraseResponses() {
-        return DataEngine.loadTriggerResponses();
+        return DataEngine.hasTriggerPhrase(query);
     }
 
 }
