@@ -8,7 +8,10 @@ import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+
+import static wenjalan.starbot.engine.DataEngine.getTriggerResponses;
 
 // handles the parsing and execution of commands
 public class CommandEngine {
@@ -113,6 +116,55 @@ public class CommandEngine {
 
                     // find the response
                     String response = args.get(1);
+
+                    // add it to the list of recognized phrases
+                    DataEngine.addTriggerPhrase(phrase, response);
+                }
+            }
+        },
+
+        // removes a trigger phrase
+        removeresponse {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check that it's me
+                long id = event.getAuthor().getIdLong();
+
+                // if it was
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
+                    // get the trigger phrase to remove
+                    String phrase = findArgsInString(event.getMessage().getContentRaw()).get(0);
+
+                    // if it's not a valid trigger phrase, say so
+                    if (!ChatEngine.containsTriggerPhrase(phrase)) {
+                        event.getChannel().sendMessage("trigger phrase not found").queue();
+                        return;
+                    }
+
+                    // otherwise, remove it from the DataEngine
+                    DataEngine.removeTriggerPhrase(phrase);
+                }
+            }
+        },
+
+        // lists the trigger phrases and their responses
+        listresponses {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check that it's me
+                long id = event.getAuthor().getIdLong();
+
+                // if it was
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
+                    // get the data from DataEngine
+                    HashMap<String, String> map = DataEngine.getTriggerResponses();
+                    // compile them together into a String
+                    StringBuilder sb = new StringBuilder();
+                    for (String phrase : map.keySet()) {
+                        sb.append("\"" + phrase + "\" : \"" + map.get(phrase) + "\"\n");
+                    }
+                    // send that String to me
+                    event.getChannel().sendMessage(sb.toString()).queue();
                 }
             }
         };

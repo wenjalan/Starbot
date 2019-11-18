@@ -157,6 +157,25 @@ public class DataEngine {
 
         // add an entry to the responses
         triggerResponses.put(triggerPhrase, response);
+
+        // save the file
+        saveTriggerResponses();
     }
+
+    // removes a response from the trigger phrase responses
+    public static void removeTriggerPhrase(String triggerPhrase) {
+        // load the triggerResponses if not already loaded
+        if (triggerResponses == null) {
+            triggerResponses = loadTriggerResponses();
+        }
+
+        // add an entry to the responses
+        triggerResponses.remove(triggerPhrase);
+
+        // save the file
+        saveTriggerResponses();
+    }
+
+
 
 }
