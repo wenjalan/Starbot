@@ -13,7 +13,7 @@ public class GuildListener extends ListenerAdapter {
     @Override
     public void onGuildVoiceLeave(GuildVoiceLeaveEvent e) {
         // if we were playing music
-        if (e.getVoiceState().inVoiceChannel()) {
+        if (e.getGuild().getAudioManager().isConnected()) {
             // if we are the last one in this channel now, shut down the player and leave
             List<Member> connected = e.getChannelLeft().getMembers();
             if (connected.size() == 1 && connected.contains(e.getGuild().getSelfMember())) {
