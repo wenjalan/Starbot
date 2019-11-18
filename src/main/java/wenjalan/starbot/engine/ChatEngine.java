@@ -45,6 +45,9 @@ public class ChatEngine {
     // returns a response for Starbot given a trigger phrase
     // returns null if none was found
     public static String getResponseForPhrase(String query) {
+        // ignore casing
+        query = query.toLowerCase();
+
         // if phraseResponses is null, load from disk
         if (phraseResponses == null) {
             phraseResponses = loadPhraseResponses();
@@ -61,6 +64,9 @@ public class ChatEngine {
 
     // returns whether or not a query contains a trigger phrase
     public static boolean containsTriggerPhrase(String query) {
+        // ignore casing
+        query = query.toLowerCase();
+
         // if not loaded, load
         if (phraseResponses == null) {
             phraseResponses = loadPhraseResponses();
