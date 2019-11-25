@@ -3,9 +3,7 @@ package wenjalan.starbot.engine;
 import com.google.gson.Gson;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 // handles all persistent data processing
 public class DataEngine {
@@ -23,11 +21,17 @@ public class DataEngine {
     // the default filename for the trigger phrase responses
     public static final String DEFAULT_TRIGGER_RESPONSES_FILE = "assets/phraseresponses.json";
 
+    // the default filename for the radios phrase responses
+    public static final String DEFAULT_RADIO_URLS_FILE = "assets/radios.json";
+
     // the random responses Starbot has when mentioned
     protected static List<String> responses = null;
 
     // the trigger responses Starbot has when people say dumb things
     protected static HashMap<String, String> triggerResponses = null;
+
+    // the radio URLs mapped to their names
+    protected static Map<String, String> radioUrls = null;
 
     // returns the a copy of the list of responses
     public static List<String> getResponses() {
@@ -160,30 +164,8 @@ public class DataEngine {
         Gson g = new Gson();
         String json = g.toJson(triggerResponses);
 
-        // write it to the file
-        try {
-            // TODO: Reformat how it's printed to include line breaks to make direct editing easier
-            FileWriter writer = new FileWriter(new File(file));
-            for (char c : json.toCharArray()) {
-                // if the character is the ending bracket, insert a newline first
-                if (c == '}') {
-                    writer.write("\n");
-                }
-                writer.write(c);
-                // if it was a bracket, write a newline and a tab
-                if (c == '{') {
-                    writer.write("\n\t");
-                }
-                // if it was a comma, write a newline and a tab
-                else if (c == ',') {
-                    writer.write("\n\t");
-                }
-            }
-            writer.close();
-        } catch (IOException e) {
-            System.err.println("encountered an error while saving trigger phrase responses");
-            e.printStackTrace();
-        }
+        // write it
+        writeJson(json, file);
     }
 
     // saves the trigger phrase responses to the disk
@@ -219,6 +201,123 @@ public class DataEngine {
         saveTriggerResponses();
     }
 
+    // returns the URL of a radio given its keyword
+    // null if none was found
+    public static String getRadioUrl(String name) {
+        // check load
+        if (radioUrls == null) {
+            radioUrls = loadRadioUrls();
+        }
 
+        // return the given url
+        return radioUrls.get(name);
+    }
+
+    // returns the list of radios available
+    public static Set<String> getRadioNames() {
+        // check load
+        if (radioUrls == null) {
+            radioUrls = loadRadioUrls();
+        }
+
+        // return the list of names
+        return radioUrls.keySet();
+    }
+
+    // adds a radio to the map
+    public static void addRadio(String name, String url) {
+        // check load
+        if (radioUrls == null) {
+            radioUrls = loadRadioUrls();
+        }
+
+        // add
+        radioUrls.put(name, url);
+
+        // save
+        saveRadioUrls();
+    }
+
+    // removes a radio from the map
+    public static void removeRadio(String name) {
+        // check load
+        if (radioUrls == null) {
+            radioUrls = loadRadioUrls();
+        }
+
+        // remove
+        radioUrls.remove(name);
+
+        // save
+        saveRadioUrls();
+    }
+
+    // loads the radio URLs from the disk
+    protected static Map<String, String> loadRadioUrls() {
+        // new HashMap
+        Map<String, String> hashMap = new HashMap<>();
+
+        // try to find the file
+        File urlFile = new File(DEFAULT_RADIO_URLS_FILE);
+
+        // if it exists, read from it
+        if (urlFile.exists()) {
+            // new Gson to read in the data
+            Gson g = new Gson();
+
+            // read the data
+            try {
+                // read the data
+                hashMap = g.fromJson(new FileReader(urlFile), HashMap.class);
+                // check null
+                if (hashMap == null) {
+                    hashMap = new HashMap<>();
+                }
+            } catch (FileNotFoundException e) {
+                System.err.println("error reading radio url file");
+                e.printStackTrace();
+            }
+        }
+
+        // return the map
+        return hashMap;
+    }
+
+    // saves the radio URLs to the disk
+    protected static void saveRadioUrls() {
+        Gson g = new Gson();
+        String data = g.toJson(radioUrls);
+
+        // write it
+        writeJson(data, DEFAULT_RADIO_URLS_FILE);
+    }
+
+    // writes JSON data to a file
+    protected static void writeJson(String json, String filename) {
+        // write it to the file
+        try {
+            // TODO: Reformat how it's printed to include line breaks to make direct editing easier
+            FileWriter writer = new FileWriter(new File(filename));
+            for (char c : json.toCharArray()) {
+                // if the character is the ending bracket, insert a newline first
+                if (c == '}') {
+                    writer.write("\n");
+                }
+                writer.write(c);
+                // if it was a bracket, write a newline and a tab
+                if (c == '{') {
+                    writer.write("\n\t");
+                }
+                // if it was a comma, write a newline and a tab
+                else if (c == ',') {
+                    writer.write("\n\t");
+                }
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("encountered an error while saving trigger phrase responses");
+            e.printStackTrace();
+        }
+    }
 
 }

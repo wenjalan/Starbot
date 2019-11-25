@@ -6,10 +6,7 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static wenjalan.starbot.engine.DataEngine.getTriggerResponses;
 
@@ -165,6 +162,49 @@ public class CommandEngine {
                     }
                     // send that String to me
                     event.getChannel().sendMessage(sb.toString()).queue();
+                }
+            }
+        },
+
+        // lists the radios
+        listradios {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check me
+                long id = event.getAuthor().getIdLong();
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
+                    Set<String> radios = DataEngine.getRadioNames();
+                    StringBuilder sb = new StringBuilder();
+                    for (String s : radios) {
+                        sb.append(s + "\n");
+                    }
+                    event.getChannel().sendMessage(sb.toString()).queue();
+                }
+            }
+        },
+
+        // adds a radio
+        addradio {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check me
+                long id = event.getAuthor().getIdLong();
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
+                    List<String> args = findArgsInString(event.getMessage().getContentRaw());
+                    DataEngine.addRadio(args.get(0), args.get(1));
+                }
+            }
+        },
+
+        // removes a radio
+        removeradio {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check me
+                long id = event.getAuthor().getIdLong();
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
+                    List<String> args = findArgsInString(event.getMessage().getContentRaw());
+                    DataEngine.removeRadio(args.get(0));
                 }
             }
         };

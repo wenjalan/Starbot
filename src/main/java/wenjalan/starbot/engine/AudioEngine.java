@@ -17,6 +17,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
 
 import java.nio.ByteBuffer;
@@ -56,6 +57,38 @@ public class AudioEngine {
 
                     // play the query
                     AudioCommand.playQuery(p, event);
+                }
+            }
+        },
+
+        // starts a radio
+        radio {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                String radioName = event.getMessage().getContentRaw().split("\\s+")[1].toLowerCase();
+                // if it was a valid radio
+                if (DataEngine.getRadioNames().contains(radioName)) {
+                    // find the radio they wanted to play
+                    String radioUrl = DataEngine.getRadioUrl(radioName);
+
+                    // play it
+                    Player p = null;
+                    if (!event.getGuild().getAudioManager().isConnected()) {
+                        VoiceChannel vc = event.getMember().getVoiceState().getChannel();
+                        // if the author isn't ocnnected, complain
+                        if (vc == null) {
+                            event.getChannel().sendMessage("fucking where").queue();
+                        }
+                        p = connect(vc);
+                    }
+                    else {
+                        p = AudioCommand.getSendHandler(event).player();
+                    }
+                    AudioCommand.playQuery(p, event.getChannel(), radioUrl);
+                }
+                else {
+                    // complain
+                    event.getChannel().sendMessage("didn't find that radio").queue();
                 }
             }
         },
@@ -243,6 +276,20 @@ public class AudioEngine {
             }
         },
 
+        // lists the radios
+        radios {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // check me
+                StringBuilder sb = new StringBuilder();
+                sb.append("Radios:\n");
+                for (String s : DataEngine.getRadioNames()) {
+                    sb.append("> " + s + "\n");
+                }
+                event.getChannel().sendMessage(sb.toString()).queue();
+            }
+        },
+
         // disconnects the bot from a voice call
         getout {
             @Override
@@ -267,7 +314,7 @@ public class AudioEngine {
             return (Player.SendHandler) event.getGuild().getAudioManager().getSendingHandler();
         }
 
-        // plays a query on a given Player
+        // plays a query on a given Player and an Event
         private static void playQuery(Player p, GuildMessageReceivedEvent event) {
             String rawQuery = event.getMessage().getContentRaw();
             // if there was none
@@ -278,7 +325,12 @@ public class AudioEngine {
             }
             // remove the !play command from the query
             rawQuery = rawQuery.substring(6);
-            p.load(rawQuery, event.getChannel());
+            playQuery(p, event.getChannel(), rawQuery);
+        }
+
+        // plays a query given a Player and a String
+        private static void playQuery(Player p, TextChannel feedbackChannel, String query) {
+            p.load(query, feedbackChannel);
         }
 
         // shuffles a Queue of AudioTracks

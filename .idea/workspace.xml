@@ -6,7 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="" />
+    <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -83,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="176" column="33" selection-start-line="176" selection-start-column="33" selection-end-line="176" selection-end-column="33" />
+            <state relative-caret-position="354">
+              <caret line="168" column="8" lean-forward="true" selection-start-line="168" selection-start-column="8" selection-end-line="183" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
@@ -93,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listener/GuildListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,15 +110,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="377" column="13" selection-start-line="377" selection-start-column="13" selection-end-line="377" selection-end-column="13" />
+            <state relative-caret-position="212">
+              <caret line="284" column="36" selection-start-line="284" selection-start-column="36" selection-end-line="284" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#AudioCommand#0;class#AudioEngine#0" />
                 <element signature="class#1428:2489" />
+                <element signature="class#2532:3344" />
                 <element signature="class#2553:3311" />
                 <element signature="class#3357:3814" />
                 <element signature="class#3862:4307" />
@@ -123,6 +128,7 @@
                 <element signature="class#6414:6815" />
                 <element signature="class#6864:7299" />
                 <element signature="class#7354:9698" />
+                <element signature="class#10620:11136" />
                 <element signature="method#connect#0;class#AudioEngine#0" />
               </folding>
             </state>
@@ -132,16 +138,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/ChatEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="44" column="55" lean-forward="true" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+            <state relative-caret-position="374">
+              <caret line="44" column="55" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getRandomResponse#0;class#ChatEngine#0" />
                 <element signature="method#generateResponses#0;class#ChatEngine#0" />
                 <element signature="e#1371#1372#0" expanded="true" />
-                <element signature="e#1413#1414#0" expanded="true" />
-                <element signature="e#1788#1789#0" expanded="true" />
-                <element signature="e#1824#1825#0" expanded="true" />
+                <element signature="e#1433#1434#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,18 +166,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="135" column="37" selection-start-line="135" selection-start-column="37" selection-end-line="135" selection-end-column="37" />
+            <state relative-caret-position="500">
+              <caret line="251" column="24" selection-start-line="251" selection-start-column="24" selection-end-line="251" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="class#Constants#0;class#DataEngine#0" />
                 <element signature="method#getResponses#0;class#DataEngine#0" />
+                <element signature="method#loadResponses#0;class#DataEngine#0" />
                 <element signature="method#getTriggerResponses#0;class#DataEngine#0" />
                 <element signature="method#loadTriggerResponses#0;class#DataEngine#0" />
-                <element signature="method#loadTriggerResponses#1;class#DataEngine#0" />
-                <element signature="method#saveTriggerResponses#0;class#DataEngine#0" />
+                <element signature="method#hasTriggerPhrase#0;class#DataEngine#0" />
+                <element signature="method#getTriggerResponseFor#0;class#DataEngine#0" />
+                <element signature="e#6363#6364#0" expanded="true" />
                 <element signature="e#6431#6432#0" expanded="true" />
                 <element signature="method#addTriggerPhrase#0;class#DataEngine#0" />
                 <element signature="method#removeTriggerPhrase#0;class#DataEngine#0" />
+                <element signature="method#loadRadioUrls#0;class#DataEngine#0" />
+                <element signature="method#saveRadioUrls#0;class#DataEngine#0" />
+                <element signature="method#writeJson#0;class#DataEngine#0" />
               </folding>
             </state>
           </provider>
@@ -224,18 +234,19 @@
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/Starbot.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/core/Starbot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/listener/GuildListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/ChatEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
+    <option name="y" value="-9" />
     <option name="width" value="978" />
-    <option name="height" value="1039" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -245,7 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -321,6 +331,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -420,11 +431,12 @@
       <workItem from="1574050878398" duration="576000" />
       <workItem from="1574051493393" duration="3602000" />
       <workItem from="1574057085710" duration="794000" />
+      <workItem from="1574642576215" duration="2602000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46465000" />
+    <option name="totallyTimeSpent" value="49067000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -439,7 +451,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22818792" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23154363" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -448,7 +460,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32997987" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32352942" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32352942" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4014706" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -481,13 +493,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java</url>
-          <line>93</line>
+          <line>97</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java</url>
-          <line>365</line>
+          <line>405</line>
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
@@ -603,6 +615,20 @@
     <entry file="file://$PROJECT_DIR$/out/artifacts/Starbot_jar/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/ChatEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="44" column="55" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getRandomResponse#0;class#ChatEngine#0" />
+            <element signature="method#generateResponses#0;class#ChatEngine#0" />
+            <element signature="e#1371#1372#0" expanded="true" />
+            <element signature="e#1433#1434#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/core/Starbot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -623,48 +649,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/ChatEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listener/GuildListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="44" column="55" lean-forward="true" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+        <state relative-caret-position="204">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getRandomResponse#0;class#ChatEngine#0" />
-            <element signature="method#generateResponses#0;class#ChatEngine#0" />
-            <element signature="e#1371#1372#0" expanded="true" />
-            <element signature="e#1413#1414#0" expanded="true" />
-            <element signature="e#1788#1789#0" expanded="true" />
-            <element signature="e#1824#1825#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="135" column="37" selection-start-line="135" selection-start-column="37" selection-end-line="135" selection-end-column="37" />
+        <state relative-caret-position="500">
+          <caret line="251" column="24" selection-start-line="251" selection-start-column="24" selection-end-line="251" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#Constants#0;class#DataEngine#0" />
             <element signature="method#getResponses#0;class#DataEngine#0" />
+            <element signature="method#loadResponses#0;class#DataEngine#0" />
             <element signature="method#getTriggerResponses#0;class#DataEngine#0" />
             <element signature="method#loadTriggerResponses#0;class#DataEngine#0" />
-            <element signature="method#loadTriggerResponses#1;class#DataEngine#0" />
-            <element signature="method#saveTriggerResponses#0;class#DataEngine#0" />
+            <element signature="method#hasTriggerPhrase#0;class#DataEngine#0" />
+            <element signature="method#getTriggerResponseFor#0;class#DataEngine#0" />
+            <element signature="e#6363#6364#0" expanded="true" />
             <element signature="e#6431#6432#0" expanded="true" />
             <element signature="method#addTriggerPhrase#0;class#DataEngine#0" />
             <element signature="method#removeTriggerPhrase#0;class#DataEngine#0" />
+            <element signature="method#loadRadioUrls#0;class#DataEngine#0" />
+            <element signature="method#saveRadioUrls#0;class#DataEngine#0" />
+            <element signature="method#writeJson#0;class#DataEngine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="168" column="8" lean-forward="true" selection-start-line="168" selection-start-column="8" selection-end-line="183" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="377" column="13" selection-start-line="377" selection-start-column="13" selection-end-line="377" selection-end-column="13" />
+        <state relative-caret-position="212">
+          <caret line="284" column="36" selection-start-line="284" selection-start-column="36" selection-end-line="284" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#AudioCommand#0;class#AudioEngine#0" />
             <element signature="class#1428:2489" />
+            <element signature="class#2532:3344" />
             <element signature="class#2553:3311" />
             <element signature="class#3357:3814" />
             <element signature="class#3862:4307" />
@@ -674,28 +711,8 @@
             <element signature="class#6414:6815" />
             <element signature="class#6864:7299" />
             <element signature="class#7354:9698" />
+            <element signature="class#10620:11136" />
             <element signature="method#connect#0;class#AudioEngine#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="176" column="33" selection-start-line="176" selection-start-column="33" selection-end-line="176" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/listener/GuildListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
