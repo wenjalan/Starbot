@@ -1,6 +1,7 @@
 package wenjalan.starbot.engine;
 
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -250,6 +251,17 @@ public class CommandEngine {
             @Override
             public void execute(GuildMessageReceivedEvent event) {
                 event.getChannel().sendMessage("4.0 prerelease").queue();
+            }
+        },
+
+        // @'s a random user in the server
+        someone {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // get a random member of the guild
+                List<Member> members = event.getGuild().getMembers();
+                Member poorSoul = members.get(new Random().nextInt(members.size()));
+                event.getChannel().sendMessage(poorSoul.getAsMention()).queue();
             }
         },
 
