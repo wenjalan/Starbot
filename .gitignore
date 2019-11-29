@@ -1,4 +1,1 @@
-
-*.key
-keys/google.key
-keys/google.key
+keys/*
