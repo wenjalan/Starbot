@@ -1,59 +1,87 @@
-//package wenjalan.starbot.engine;
-//
-//import com.google.api.client.auth.oauth2.Credential;
-//import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-//import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-//import com.google.api.client.http.javanet.NetHttpTransport;
-//import com.google.api.services.youtube.YouTube;
-//
-//import java.io.File;
-//import java.io.IOException;
-//import java.security.GeneralSecurityException;
-//import java.util.Scanner;
-//
-//// handles all the YouTube Data API stuff
-//public class YouTubeEngine {
-//
-//    // the filepath of the text file with the API key
-//    private static final String API_KEY_PATH = "keys/google.key";
-//
-//    // returns a recommended video URL for a given video
-//    public static String getRecommendationFor(String url) {
-//
-//    }
-//
-//    // sets up the YouTube Data API for use
-//    private static void init() {
-//        String key = getKey(API_KEY_PATH);
-//        YouTube yt = getYouTube(key);
-//    }
-//
-//    // returns the key specified in the api key path
-//    private static String getKey(String filepath) {
-//        try {
-//            // the key should be a single-line .key file
-//            Scanner sc = new Scanner(new File(filepath));
-//            return sc.nextLine();
-//        } catch (IOException e) {
-//            System.err.println("encountered an error while finding Google API Key");
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-//
-//    // returns a new instance of YouTube given an API key
-//    private static YouTube getYouTube(String apiKey) {
-//        try {
-//            final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-//            Credential c = authorize(httpTransport);
-//        } catch (GeneralSecurityException | IOException e) {
-//
-//        }
-//    }
-//
-//    // returns an authorized credential object
-//    private static Credential autorize(final NetHttpTransport netHttpTransport) {
-//        GoogleClientSecrets.
-//    }
-//
-//}
+package wenjalan.starbot.engine;
+
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestInitializer;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.model.SearchListResponse;
+import com.google.api.services.youtube.model.SearchResult;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
+
+// handles all the YouTube Data API stuff
+public class YouTubeEngine {
+
+    // the instance of YouTube's Data API
+    private static YouTube youtube = null;
+
+    // returns a new YouTube instance
+    // instance is not OAuth certified
+    private static YouTube getYoutube() {
+        YouTube youTube = null;
+        try {
+            // youTube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, new HttpRequestInitializer() {
+            youTube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new HttpRequestInitializer() {
+                @Override
+                public void initialize(HttpRequest request) throws IOException { }
+            }).setApplicationName("scratchpad").build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return youTube;
+    }
+
+    // returns the next recommended video for a given video
+    public static String getRecommendation(String videoUrl) {
+        return null;
+    }
+
+    // searches for a recommendation based on a video id
+    // returns the recommended video's id
+    private static String getRecommendationFor(String videoId) {
+        // init check
+        if (youtube == null) {
+            youtube = getYoutube();
+        }
+
+        // TODO: do the things with YouTube
+        return null;
+    }
+
+    // example of a search call, from scratchpad
+    // for reference only
+    private static void search() throws IOException {
+        // create a new YouTube instance to use
+        YouTube youTube = youtube;
+
+        // get something to look up
+        System.out.print("enter something to look up: ");
+        String query = new Scanner(System.in).nextLine();
+
+        // create a new Search List
+        YouTube.Search.List search = youTube.search().list("id,snippet");
+
+
+        // search.setKey(/* API KEY GOES HERE */);
+        search.setQ(query);
+
+        search.setType("video");
+
+        search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+        search.setMaxResults(10L);
+
+        SearchListResponse response = search.execute();
+
+        List<SearchResult> responses = response.getItems();
+
+        for (SearchResult r : responses) {
+            System.out.print(r.getSnippet().getTitle());
+            System.out.println(" URL: " + "https://youtu.be/" + r.getId().getVideoId());
+        }
+    }
+
+}
