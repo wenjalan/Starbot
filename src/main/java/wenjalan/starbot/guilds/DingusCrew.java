@@ -11,6 +11,7 @@ import wenjalan.starbot.engine.DataEngine;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -31,10 +32,6 @@ public class DingusCrew {
 
         public static Map<Long, Long> memberToId = new HashMap<>(); // the map of member ids to their roles, stores those of kicked members
 
-        // public static final long SERVER_ASSHOLE_ROLE_ID_LONG = 292906691425730560L; // server asshole
-
-        // public static final long GULLIBLE_RETARD_ID_LONG = 289563937299628032L; // gullible retard
-
     }
 
     // Fields
@@ -43,6 +40,19 @@ public class DingusCrew {
 
     // Command Enum
     public enum DingusCrewCommand {
+
+        // prints out the available Dingus Crew Commands
+        // runs in parallel to the regular help command
+        help {
+            @Override
+            public void execute(GuildMessageReceivedEvent e) {
+                // send a list of the commands
+                StringBuilder sb = new StringBuilder();
+                sb.append("dingus crew commands:\n" );
+                Arrays.stream(values()).forEach(s -> sb.append(s.toString() + "\n"));
+                e.getChannel().sendMessage(sb.toString()).queue();
+            }
+        },
 
         // nword: kicks justin and sends him an invite
         nword {
@@ -143,8 +153,6 @@ public class DingusCrew {
         play {
             @Override
             public void execute(GuildMessageReceivedEvent e) {
-                // sout
-                // System.out.println("caught !play command in dingus crew");
                 // increment totalPlays
                 totalPlays++;
                 // check the time
@@ -202,7 +210,7 @@ public class DingusCrew {
             // reinvite them
             String invite = g.getDefaultChannel().createInvite().setMaxUses(1).complete().getUrl();
             m.getUser().openPrivateChannel().complete().sendMessage(invite).complete();
-            
+
             // kick them
             g.kick(m).reason(reason).queue();
         }
