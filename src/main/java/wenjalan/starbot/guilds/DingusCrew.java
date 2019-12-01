@@ -6,10 +6,13 @@ import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import wenjalan.starbot.engine.CommandEngine;
+import wenjalan.starbot.engine.DataEngine;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 // actions specific to The Dingus Crew
@@ -22,11 +25,15 @@ public class DingusCrew {
 
         public static final long JOSE_ID_LONG = 198889137988698113L; // LORD SHINE YOUR LIGHT ON ME#2430
 
+        public static final long JARED_ID_LONG = 168485668694130688L; // Emuex#5154
+
         public static final long DINGUS_CREW_GUILD_ID_LONG = 175372417194000384L; // Dingus Crew Guild ID
 
-        public static final long SERVER_ASSHOLE_ROLE_ID_LONG = 292906691425730560L; // server asshole
+        public static Map<Long, Long> memberToId = new HashMap<>(); // the map of member ids to their roles, stores those of kicked members
 
-        public static final long GULLIBLE_RETARD_ID_LONG = 289563937299628032L; // gullible retard
+        // public static final long SERVER_ASSHOLE_ROLE_ID_LONG = 292906691425730560L; // server asshole
+
+        // public static final long GULLIBLE_RETARD_ID_LONG = 289563937299628032L; // gullible retard
 
     }
 
@@ -79,6 +86,49 @@ public class DingusCrew {
             }
         },
 
+        // loli: kicks alan (for testing purposes)
+        loli {
+            @Override
+            public void execute(GuildMessageReceivedEvent e) {
+                // check perms
+                if (!kickPermissionCheck(e)) {
+                    return;
+                }
+
+                // get me
+                Member alan = e.getGuild().getMemberById(DataEngine.Constants.OWNER_ID_LONG);
+                // if null complain
+                if (alan == null) {
+                    e.getChannel().sendMessage("couldn't find alan").queue();
+                    return;
+                }
+
+                // kick me
+                DingusCrewCommand.kickAndReinvite(e.getGuild(), alan, "sentenced to ten hours soft loli breathing");
+            }
+        },
+
+        // kicks jared
+        jared {
+            @Override
+            public void execute(GuildMessageReceivedEvent e) {
+                // check perms
+                if (!kickPermissionCheck(e)) {
+                    return;
+                }
+
+                // find jared
+                Member jared = e.getGuild().getMemberById(Constants.JARED_ID_LONG);
+                if (jared == null) {
+                    e.getChannel().sendMessage("couldn't find jared").queue();
+                    return;
+                }
+
+                // kick
+                kickAndReinvite(e.getGuild(), jared, "jared");
+            }
+        },
+
         // prints out the number of times !play has been used since startup
         plays {
             @Override
@@ -94,7 +144,7 @@ public class DingusCrew {
             @Override
             public void execute(GuildMessageReceivedEvent e) {
                 // sout
-                System.out.println("caught !play command in dingus crew");
+                // System.out.println("caught !play command in dingus crew");
                 // increment totalPlays
                 totalPlays++;
                 // check the time
@@ -141,6 +191,11 @@ public class DingusCrew {
 
         // kicks and reinvites a user
         protected static void kickAndReinvite(Guild g, Member m, String reason) {
+            // get their ID and their role to store in the map
+            long id = m.getIdLong();
+            long roleId = m.getRoles().get(0).getIdLong();
+            // put it in the map
+            Constants.memberToId.put(id, roleId);
             // kick them
             g.kick(m).reason(reason).queue();
             // reinvite them
@@ -190,15 +245,12 @@ public class DingusCrew {
                 return;
             }
 
-            // if the user was Justin, give him his role back
-            if (e.getUser().getIdLong() == Constants.JUSTIN_ID_LONG) {
-                Role serverAsshole = e.getGuild().getRoleById(Constants.SERVER_ASSHOLE_ROLE_ID_LONG);
-                e.getGuild().addRoleToMember(e.getMember(), serverAsshole).queue();
-            }
-            // if the user was Jose, give him his role back
-            else if (e.getUser().getIdLong() == Constants.JOSE_ID_LONG) {
-                Role gullibleRetard = e.getGuild().getRoleById(Constants.GULLIBLE_RETARD_ID_LONG);
-                e.getGuild().addRoleToMember(e.getMember(), gullibleRetard).queue();
+            // if the user has an entry in the roles map, give them their role
+            long memberId = e.getMember().getIdLong();
+            if (Constants.memberToId.containsKey(memberId)) {
+                // assign role
+                Role r = e.getGuild().getRoleById(Constants.memberToId.get(memberId));
+                e.getGuild().addRoleToMember(e.getMember(), r).queue();
             }
         }
 
