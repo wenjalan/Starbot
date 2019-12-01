@@ -196,11 +196,15 @@ public class DingusCrew {
             long roleId = m.getRoles().get(0).getIdLong();
             // put it in the map
             Constants.memberToId.put(id, roleId);
-            // kick them
-            g.kick(m).reason(reason).queue();
+
+            // note: bot should reinvite then kick to make sure we still have a mutual server
+
             // reinvite them
             String invite = g.getDefaultChannel().createInvite().setMaxUses(1).complete().getUrl();
-            m.getUser().openPrivateChannel().complete().sendMessage(invite).queue();
+            m.getUser().openPrivateChannel().complete().sendMessage(invite).complete();
+            
+            // kick them
+            g.kick(m).reason(reason).queue();
         }
 
     }

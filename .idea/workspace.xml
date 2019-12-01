@@ -7,33 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Starbot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Starbot_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot_jar/Starbot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Starbot_jar/Starbot.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -86,11 +61,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="146" column="19" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
+            <state relative-caret-position="2159">
+              <caret line="448" column="17" selection-start-line="448" selection-start-column="17" selection-end-line="448" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="class#AudioCommand#0;class#AudioEngine#0" />
+                <element signature="method#connect#0;class#AudioEngine#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,7 +79,25 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/YouTubeEngine.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+              <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="516">
+              <caret line="204" column="12" selection-start-line="204" selection-start-column="12" selection-end-line="204" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="9" selection-start-column="9" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -160,12 +158,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
               <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="keys" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
@@ -206,8 +211,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -315,7 +318,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56805000" />
+    <option name="totallyTimeSpent" value="56869000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -327,10 +330,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-6" y="0" width="1037" height="1118" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23758389" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27840328" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -565,7 +568,7 @@
     <entry file="file://$PROJECT_DIR$/keys/google.key" />
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
+        <state relative-caret-position="2159">
           <caret line="448" column="17" selection-start-line="448" selection-start-column="17" selection-end-line="448" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -585,14 +588,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/YouTubeEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="146" column="19" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
+        <state relative-caret-position="516">
+          <caret line="204" column="12" selection-start-line="204" selection-start-column="12" selection-end-line="204" selection-end-column="12" />
         </state>
       </provider>
     </entry>
