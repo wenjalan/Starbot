@@ -17,7 +17,6 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
 
 import java.nio.ByteBuffer;
@@ -111,6 +110,23 @@ public class AudioEngine {
                     else {
                         event.getChannel().sendMessage("nothing right now").queue();
                     }
+                }
+            }
+        },
+
+        // sets whether the current track should be looped infinitely
+        repeat {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // get SendHandler
+                Player p = getPlayer(event.getGuild());
+
+                // if the player exists
+                if (p != null) {
+                    // announce
+                    event.getChannel().sendMessage(p.isLooping() ? "no longer on repeat" : "now on repeat").queue();
+                    // toggle repeat
+                    p.setLooping(!p.isLooping());
                 }
             }
         },
@@ -376,6 +392,9 @@ public class AudioEngine {
         // the last TextChannel we received a command from
         private TextChannel lastFeedbackChannel = null;
 
+        // whether or not we're looping the current track
+        private boolean isLooping = false;
+
         // returns the SendHandler for JDA
         private AudioSendHandler sendHandler() {
             return this.sendHandler;
@@ -442,8 +461,12 @@ public class AudioEngine {
 
             @Override
             public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
+                // if we're supposed to be looping the track, start playing it again
+                if (endReason.mayStartNext && isLooping) {
+                    player.startTrack(track.makeClone(), false);
+                }
                 // if we can start the next track and there is more in the queue, play the next track
-                if (endReason.mayStartNext && !queue.isEmpty()) {
+                else if (endReason.mayStartNext && !queue.isEmpty()) {
                     AudioTrack nextTrack = queue.remove();
                     player.startTrack(nextTrack, false);
                 }
@@ -568,13 +591,13 @@ public class AudioEngine {
                 @Override
                 public void noMatches() {
                     // complain
-                    feedbackChannel.sendMessage("nothing came up").queue();
+                    lastFeedbackChannel.sendMessage("nothing came up").queue();
                 }
 
                 @Override
                 public void loadFailed(FriendlyException exception) {
                     // complain
-                    feedbackChannel.sendMessage("what").queue();
+                    lastFeedbackChannel.sendMessage("what").queue();
                     System.err.println("error loading audio track:");
                     exception.printStackTrace();
                 }
@@ -590,6 +613,16 @@ public class AudioEngine {
                 AudioTrack t = scheduler.queue.remove();
                 audioPlayer.startTrack(t, false);
             }
+        }
+
+        // sets whether we should loop the current track
+        public void setLooping(boolean loop) {
+            this.isLooping = loop;
+        }
+
+        // gets whether we're looping
+        public boolean isLooping() {
+            return this.isLooping;
         }
 
         // sends information about a track into the feedbackChannel
