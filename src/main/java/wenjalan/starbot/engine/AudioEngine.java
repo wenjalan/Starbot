@@ -575,6 +575,8 @@ public class AudioEngine {
                 public void loadFailed(FriendlyException exception) {
                     // complain
                     feedbackChannel.sendMessage("what").queue();
+                    System.err.println("error loading audio track:");
+                    exception.printStackTrace();
                 }
             });
         }
