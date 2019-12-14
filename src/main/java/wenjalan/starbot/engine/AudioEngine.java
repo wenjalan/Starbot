@@ -470,24 +470,6 @@ public class AudioEngine {
                     AudioTrack nextTrack = queue.remove();
                     player.startTrack(nextTrack, false);
                 }
-                else {
-                    // start counting down to timeout
-                    timeoutThread = new Thread((() -> {
-                        try {
-                            // wait for the timeout
-                            Thread.sleep(DEFAULT_PLAYBACK_TIMEOUT);
-
-                            // if nothing plays after the timeout and nothing's queued, quit
-                            if (player.getPlayingTrack() == null && queue.isEmpty()) {
-                                // shut down the manager
-                                audioPlayerManager.shutdown();
-                                // close the connection
-                                guild.getAudioManager().closeAudioConnection();
-                            }
-                        } catch (InterruptedException e) {} // do nothing I guess
-                    }));
-                    timeoutThread.start();
-                }
             }
 
             @Override
