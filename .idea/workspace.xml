@@ -6,27 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" afterDir="false" />
-    </list>
+    <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -96,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="265" column="45" lean-forward="true" selection-start-line="265" selection-start-column="45" selection-end-line="265" selection-end-column="45" />
+            <state relative-caret-position="136">
+              <caret line="188" lean-forward="true" selection-start-line="188" selection-end-line="188" />
               <folding>
                 <element signature="method#kickPermissionCheck#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
               </folding>
@@ -323,7 +303,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62121000" />
+    <option name="totallyTimeSpent" value="62341000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -658,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="265" column="45" lean-forward="true" selection-start-line="265" selection-start-column="45" selection-end-line="265" selection-end-column="45" />
+        <state relative-caret-position="136">
+          <caret line="188" lean-forward="true" selection-start-line="188" selection-end-line="188" />
           <folding>
             <element signature="method#kickPermissionCheck#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
           </folding>
