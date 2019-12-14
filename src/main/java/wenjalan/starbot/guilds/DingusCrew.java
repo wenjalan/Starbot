@@ -149,7 +149,7 @@ public class DingusCrew {
 
         // play: additional play command kicks people
         // - when its from 8 PM to 4 AM
-        // - 1% chance
+        // - 0.5% chance
         play {
             @Override
             public void execute(GuildMessageReceivedEvent e) {
@@ -161,12 +161,34 @@ public class DingusCrew {
                 // if it's 8 to 4
                 if (now.getHour() > 17 || now.getHour() < 3) {
                     // roll a die
-                    int roll = new Random().nextInt(100);
+                    int roll = new Random().nextInt(200);
                     // if the roll was 0, kick the author
                     if (roll == 0) {
                         // announce their kicking
                         e.getChannel().sendMessage(e.getMember().getAsMention() + " won the lottery on !play #" + totalPlays).queue();
                         kickAndReinvite(e.getGuild(), e.getMember(), "won the !play lottery");
+                    }
+                }
+            }
+        },
+
+        // seek: additional seek command kicks people
+        // same conditions as the !play kick command
+        seek {
+            @Override
+            public void execute(GuildMessageReceivedEvent e) {
+                // check the time
+                ZonedDateTime now = ZonedDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")));
+
+                // if it's 8 to 4
+                if (now.getHour() > 17 || now.getHour() < 3) {
+                    // roll a die
+                    int roll = new Random().nextInt(200);
+                    // if the roll was 0, kick the author
+                    if (roll == 0) {
+                        // announce their kicking
+                        e.getChannel().sendMessage(e.getMember().getAsMention() + " won the lottery for !seek").queue();
+                        kickAndReinvite(e.getGuild(), e.getMember(), "won the !seek lottery");
                     }
                 }
             }

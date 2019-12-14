@@ -7,13 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Starbot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Starbot_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot_jar/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot_jar/Starbot.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -68,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-272">
-              <caret line="477" column="13" lean-forward="true" selection-start-line="477" selection-start-column="13" selection-end-line="477" selection-end-column="13" />
+            <state relative-caret-position="2958">
+              <caret line="542" column="44" lean-forward="true" selection-start-line="542" selection-start-column="44" selection-end-line="542" selection-end-column="44" />
               <folding>
                 <element signature="class#AudioCommand#0;class#AudioEngine#0" />
                 <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
@@ -82,19 +76,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+            <state relative-caret-position="61">
+              <caret line="151" column="16" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
+              <folding>
+                <element signature="method#kickPermissionCheck#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
+                <element signature="method#kickAndReinvite#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,15 +98,6 @@
                 <element signature="class#DMCommand#0;class#CommandEngine#0" />
                 <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -160,10 +140,10 @@
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" />
         <option value="$PROJECT_DIR$/keys/google.key" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/YouTubeEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" />
       </list>
     </option>
   </component>
@@ -326,7 +306,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60633000" />
+    <option name="totallyTimeSpent" value="61143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -562,29 +542,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="236" column="22" lean-forward="true" selection-start-line="236" selection-start-column="22" selection-end-line="236" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#DMCommand#0;class#CommandEngine#0" />
-            <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -645,10 +606,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="236" column="22" lean-forward="true" selection-start-line="236" selection-start-column="22" selection-end-line="236" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#DMCommand#0;class#CommandEngine#0" />
+            <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="477" column="13" lean-forward="true" selection-start-line="477" selection-start-column="13" selection-end-line="477" selection-end-column="13" />
+        <state relative-caret-position="2958">
+          <caret line="542" column="44" lean-forward="true" selection-start-line="542" selection-start-column="44" selection-end-line="542" selection-end-column="44" />
           <folding>
             <element signature="class#AudioCommand#0;class#AudioEngine#0" />
             <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
@@ -659,10 +639,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF">
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="61">
+          <caret line="151" column="16" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
+          <folding>
+            <element signature="method#kickPermissionCheck#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
+            <element signature="method#kickAndReinvite#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
+          </folding>
         </state>
       </provider>
     </entry>
