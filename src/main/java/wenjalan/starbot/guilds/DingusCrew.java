@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 // actions specific to The Dingus Crew
 public class DingusCrew {
@@ -37,6 +38,9 @@ public class DingusCrew {
     // Fields
     // the number of times the !play command has been used since startup
     protected static int totalPlays = 0;
+
+    // the last person to use the !play command
+    protected static Member lastPlayer = null;
 
     // Command Enum
     public enum DingusCrewCommand {
@@ -153,6 +157,9 @@ public class DingusCrew {
         play {
             @Override
             public void execute(GuildMessageReceivedEvent e) {
+                // save the user that last played something
+                lastPlayer = e.getMember();
+
                 // increment totalPlays
                 totalPlays++;
                 // check the time
@@ -190,6 +197,28 @@ public class DingusCrew {
                         e.getChannel().sendMessage(e.getMember().getAsMention() + " won the lottery for !seek").queue();
                         kickAndReinvite(e.getGuild(), e.getMember(), "won the !seek lottery");
                     }
+                }
+            }
+        },
+
+        // fuck: kicks me, jose, justin and jared
+        fuck {
+            @Override
+            public void execute(GuildMessageReceivedEvent e) {
+                nword.execute(e);
+                loli.execute(e);
+                wife.execute(e);
+                jared.execute(e);
+            }
+        },
+
+        // no: kicks the last person that played something
+        no {
+            @Override
+            public void execute(GuildMessageReceivedEvent e) {
+                // kick the last player
+                if (lastPlayer != null) {
+                    kickAndReinvite(e.getGuild(), lastPlayer, "no");
                 }
             }
         };
@@ -230,7 +259,7 @@ public class DingusCrew {
             // note: bot should reinvite then kick to make sure we still have a mutual server
 
             // reinvite them
-            String invite = g.getDefaultChannel().createInvite().setMaxUses(1).complete().getUrl();
+            String invite = g.getDefaultChannel().createInvite().setMaxAge(1L, TimeUnit.HOURS).complete().getUrl();
             m.getUser().openPrivateChannel().complete().sendMessage(invite).complete();
 
             // kick them
