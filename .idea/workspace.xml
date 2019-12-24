@@ -6,7 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="" />
+    <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/UrbanDictionaryEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Starbot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Starbot_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -60,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2958">
-              <caret line="542" column="44" lean-forward="true" selection-start-line="542" selection-start-column="44" selection-end-line="542" selection-end-column="44" />
+            <state relative-caret-position="912">
+              <caret line="524" column="17" selection-start-line="524" selection-start-column="17" selection-end-line="524" selection-end-column="17" />
               <folding>
                 <element signature="class#AudioCommand#0;class#AudioEngine#0" />
                 <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
@@ -74,26 +79,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="188" lean-forward="true" selection-start-line="188" selection-end-line="188" />
+            <state relative-caret-position="185">
+              <caret line="260" column="70" lean-forward="true" selection-start-line="260" selection-start-column="70" selection-end-line="260" selection-end-column="70" />
               <folding>
-                <element signature="method#kickPermissionCheck#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="class#DMCommand#0;class#CommandEngine#0" />
+                <element signature="class#8192:9464" />
+                <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/UrbanDictionaryEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="236" column="22" lean-forward="true" selection-start-line="236" selection-start-column="22" selection-end-line="236" selection-end-column="22" />
+            <state relative-caret-position="1002">
+              <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#DMCommand#0;class#CommandEngine#0" />
-                <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
               </folding>
             </state>
           </provider>
@@ -134,19 +140,20 @@
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/listener/GuildListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/ChatEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" />
         <option value="$PROJECT_DIR$/keys/google.key" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/YouTubeEngine.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/UrbanDictionaryEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
-    <option name="width" value="1299" />
+    <option name="width" value="1300" />
     <option name="height" value="1400" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -157,6 +164,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,42 +176,32 @@
             <path>
               <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
               <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
               <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
               <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Starbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Starbot" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Starbot_jar" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575011840908" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577157692721" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -299,11 +298,12 @@
       <workItem from="1575087435890" duration="1264000" />
       <workItem from="1575093233064" duration="106000" />
       <workItem from="1575170601415" duration="1689000" />
+      <workItem from="1577155234603" duration="2507000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62341000" />
+    <option name="totallyTimeSpent" value="64848000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -315,10 +315,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28255033" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2857143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -327,7 +326,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32997987" />
-      <window_info anchor="bottom" x="49" y="63" width="918" height="608" id="Run" order="2" type="FLOATING" weight="0.32352942" />
+      <window_info anchor="bottom" x="1117" y="147" width="918" height="608" id="Run" order="2" weight="0.39235413" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4014706" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -366,7 +365,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java</url>
-          <line>417</line>
+          <line>440</line>
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
@@ -610,22 +609,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="236" column="22" lean-forward="true" selection-start-line="236" selection-start-column="22" selection-end-line="236" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#DMCommand#0;class#CommandEngine#0" />
-            <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2958">
-          <caret line="542" column="44" lean-forward="true" selection-start-line="542" selection-start-column="44" selection-end-line="542" selection-end-column="44" />
+        <state relative-caret-position="912">
+          <caret line="524" column="17" selection-start-line="524" selection-start-column="17" selection-end-line="524" selection-end-column="17" />
           <folding>
             <element signature="class#AudioCommand#0;class#AudioEngine#0" />
             <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
@@ -638,10 +625,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="188" lean-forward="true" selection-start-line="188" selection-end-line="188" />
+        <state relative-caret-position="374">
+          <caret line="221" column="17" selection-start-line="221" selection-start-column="17" selection-end-line="221" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/UrbanDictionaryEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1002">
+          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
           <folding>
-            <element signature="method#kickPermissionCheck#0;class#DingusCrewCommand#0;class#DingusCrew#0" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="260" column="70" lean-forward="true" selection-start-line="260" selection-start-column="70" selection-end-line="260" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#DMCommand#0;class#CommandEngine#0" />
+            <element signature="class#8192:9464" />
+            <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
           </folding>
         </state>
       </provider>

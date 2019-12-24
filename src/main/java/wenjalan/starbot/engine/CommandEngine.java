@@ -250,7 +250,30 @@ public class CommandEngine {
         version {
             @Override
             public void execute(GuildMessageReceivedEvent event) {
-                event.getChannel().sendMessage("4.0 prerelease").queue();
+                event.getChannel().sendMessage("4.0 release").queue();
+            }
+        },
+
+        // defines a query on urban dictionary
+        define {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                if (event.getMessage().getContentRaw().length() > 7) {
+                    String query = event.getMessage().getContentRaw().substring(8);
+                    // replace any spaces with +
+                    query = query.replaceAll(" ", "+");
+                    List<String> definitions = UrbanDictionaryEngine.define(query);
+                    if (definitions.isEmpty()) {
+                        event.getChannel().sendMessage("nothing found").queue();
+                    }
+                    else {
+                        String def = definitions.get(0);
+                        if (def.length() > 2000) {
+                            def = def.substring(0, 2000);
+                        }
+                        event.getChannel().sendMessage(def).queue();
+                    }
+                }
             }
         },
 
