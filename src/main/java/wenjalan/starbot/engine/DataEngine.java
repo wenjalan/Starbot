@@ -3,6 +3,7 @@ package wenjalan.starbot.engine;
 import com.google.gson.Gson;
 
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
 // handles all persistent data processing
@@ -24,6 +25,12 @@ public class DataEngine {
     // the default filename for the radios phrase responses
     public static final String DEFAULT_RADIO_URLS_FILE = "assets/radios.json";
 
+    // the name of the resources file
+    public static final String PROPERTIES_FILEPATH = "starbot.properties";
+
+    // the map of properties
+    protected static Map<String, String> properties;
+
     // the random responses Starbot has when mentioned
     protected static List<String> responses = null;
 
@@ -32,6 +39,34 @@ public class DataEngine {
 
     // the radio URLs mapped to their names
     protected static Map<String, String> radioUrls = null;
+
+    // returns the value of a property
+    // throws an exception if no property with the given name is found
+    public static String getProperty(String name) {
+        if (properties == null) {
+            properties = loadProperties(PROPERTIES_FILEPATH);
+        }
+        if (!properties.containsKey(name)) {
+            throw new IllegalArgumentException("no property found with the name " + name);
+        }
+        return properties.get(name);
+    }
+
+    // loads the properties into a map for use
+    protected static Map<String, String> loadProperties(String filepath) {
+        Map<String, String> properties = new TreeMap<>();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(ClassLoader.getSystemClassLoader().getResource(filepath).openStream()))) {
+            for (String line; (line = reader.readLine()) != null;) {
+                String[] keyAndValue = line.split("=");
+                properties.put(keyAndValue[0], keyAndValue[1]);
+            }
+        } catch (IOException e) {
+            System.err.println("error loading properties file: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+        return properties;
+    }
 
     // returns the a copy of the list of responses
     public static List<String> getResponses() {

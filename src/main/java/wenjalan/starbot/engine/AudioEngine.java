@@ -543,6 +543,14 @@ public class AudioEngine {
                 query = "ytsearch:" + query;
                 isSearch = true;
             }
+            // spotify playlist
+            else if (query.startsWith("https://open.spotify.com/playlist/")) {
+                List<String> queries = SpotifyEngine.getNamesOfTracks(query);
+                for (String q : queries) {
+                    load(q, feedbackChannel);
+                }
+                return;
+            }
             else {
                 isSearch = false;
             }
