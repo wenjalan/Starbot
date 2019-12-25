@@ -546,6 +546,10 @@ public class AudioEngine {
             // spotify playlist
             else if (query.startsWith("https://open.spotify.com/playlist/")) {
                 List<String> queries = SpotifyEngine.getNamesOfTracks(query);
+                if (queries == null) {
+                    feedbackChannel.sendMessage("there was a problem, go tell alan").queue();
+                    return;
+                }
                 for (String q : queries) {
                     load(q, feedbackChannel);
                 }

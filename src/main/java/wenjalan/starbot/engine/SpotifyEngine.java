@@ -20,21 +20,23 @@ public class SpotifyEngine {
     public static final String CLIENT_ID = "95c8df5c1ed841bfb35c542c3776b6fa";
 
     // the instance of the Spotify Web API
-    private static SpotifyApi spotify;
+    private static SpotifyApi spotify = null;
 
     // returns a list of Strings representing the names of the songs in a playlist given a URL
     public static List<String> getNamesOfTracks(String playlistUrl) {
-        List<String> trackNamesAndArtists = new ArrayList<>();
         // if we need to (re)initialize the spotify API
         try {
-            if (spotify == null || spotify.clientCredentials().build().execute().getExpiresIn() == 0) {
-                spotify = initSpotify();
+            if (spotify == null || spotify.clientCredentials().build().execute().getExpiresIn() < 30) {
+                initSpotify();
             }
         } catch (SpotifyWebApiException | IOException e) {
             System.err.println("error refreshing spotify api");
             e.printStackTrace();
             return null;
         }
+
+        // create queriable Strings
+        List<String> trackNamesAndArtists = new ArrayList<>();
         String playlistId = playlistUrl.replace("https://open.spotify.com/playlist/", "").substring(0, 22);
         try {
             Playlist playlist = spotify.getPlaylist(playlistId).build().execute();
@@ -58,21 +60,20 @@ public class SpotifyEngine {
     }
 
     // initializes an instance of the Spotify Web API for use
-    private static SpotifyApi initSpotify() {
-        SpotifyApi api = new SpotifyApi.Builder()
+    private static void initSpotify() {
+        spotify = new SpotifyApi.Builder()
                 .setClientId(CLIENT_ID)
                 .setClientSecret(DataEngine.getProperty("spotify-web-api-secret"))
                 .build();
-        ClientCredentialsRequest clientCredentialsRequest = api.clientCredentials().build();
+        ClientCredentialsRequest clientCredentialsRequest = spotify.clientCredentials().build();
         try {
             ClientCredentials credentials = clientCredentialsRequest.execute();
-            api.setAccessToken(credentials.getAccessToken());
+            spotify.setAccessToken(credentials.getAccessToken());
+            System.out.println("refreshed Spotify token, expires in " + credentials.getExpiresIn());
         } catch (SpotifyWebApiException | IOException e) {
             System.err.println("error getting client credentials: " + e.getMessage());
             e.printStackTrace();
-            return null;
         }
-        return api;
     }
 
 }
