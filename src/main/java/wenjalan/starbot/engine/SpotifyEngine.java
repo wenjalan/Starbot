@@ -8,6 +8,7 @@ import com.wrapper.spotify.model_objects.specification.Playlist;
 import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
+import wenjalan.starbot.core.Starbot;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +16,12 @@ import java.util.List;
 
 // the Spotify Engine handles the processing of Spotify playlists for audio playback
 public class SpotifyEngine {
+
+    // the time we last refreshed the spotify token
+    private static long lastTokenRefresh;
+
+    // the refresh interval for the spotify token, in seconds
+    public static final int REFRESH_INTERVAL = 3000;
 
     // the Spotify Client ID
     public static final String CLIENT_ID = "95c8df5c1ed841bfb35c542c3776b6fa";
@@ -24,15 +31,10 @@ public class SpotifyEngine {
 
     // returns a list of Strings representing the names of the songs in a playlist given a URL
     public static List<String> getNamesOfTracks(String playlistUrl) {
-        // if we need to (re)initialize the spotify API
-        try {
-            if (spotify == null || spotify.clientCredentials().build().execute().getExpiresIn() < 30) {
-                initSpotify();
-            }
-        } catch (SpotifyWebApiException | IOException e) {
-            System.err.println("error refreshing spotify api");
-            e.printStackTrace();
-            return null;
+        // start Spotify token refresh loop if not already started
+        if (spotify == null || (System.currentTimeMillis() - lastTokenRefresh) / 1000 >= REFRESH_INTERVAL) {
+            lastTokenRefresh = System.currentTimeMillis();
+            initSpotify();
         }
 
         // create queriable Strings
@@ -69,7 +71,7 @@ public class SpotifyEngine {
         try {
             ClientCredentials credentials = clientCredentialsRequest.execute();
             spotify.setAccessToken(credentials.getAccessToken());
-            System.out.println("refreshed Spotify token, expires in " + credentials.getExpiresIn());
+            System.out.println("refreshed Spotify token");
         } catch (SpotifyWebApiException | IOException e) {
             System.err.println("error getting client credentials: " + e.getMessage());
             e.printStackTrace();
