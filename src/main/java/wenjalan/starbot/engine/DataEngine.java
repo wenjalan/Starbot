@@ -26,7 +26,7 @@ public class DataEngine {
     public static final String DEFAULT_RADIO_URLS_FILE = "assets/radios.json";
 
     // the name of the resources file
-    public static final String PROPERTIES_FILEPATH = "starbot.properties";
+    public static final String PROPERTIES_FILEPATH = "assets/starbot.properties";
 
     // the map of properties
     protected static Map<String, String> properties;
@@ -55,7 +55,7 @@ public class DataEngine {
     // loads the properties into a map for use
     protected static Map<String, String> loadProperties(String filepath) {
         Map<String, String> properties = new TreeMap<>();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(ClassLoader.getSystemClassLoader().getResource(filepath).openStream()))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filepath)))) {
             for (String line; (line = reader.readLine()) != null;) {
                 String[] keyAndValue = line.split("=");
                 properties.put(keyAndValue[0], keyAndValue[1]);
