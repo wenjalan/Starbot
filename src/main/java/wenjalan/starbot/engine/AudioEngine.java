@@ -448,6 +448,34 @@ public class AudioEngine {
                 }
             }
 
+            // adds a series of AudioTracks to the queue
+            private void queue(List<AudioTrack> tracks) {
+                int size = tracks.size();
+                // if nothing is playing, play the first track
+                if (queue.isEmpty() && audioPlayer.getPlayingTrack() == null) {
+                    audioPlayer.startTrack(tracks.remove(0), false);
+                }
+                // enqueue the rest of the songs
+                queue.addAll(tracks);
+                // announce that we added the songs
+                lastFeedbackChannel.sendMessage("> Queued " + size + " tracks to the queue").queue();
+            }
+
+            // adds an AudioTrack retrieved from a Spotify playlist
+            private void spotifyQueue(AudioTrack t, int finalSize) {
+                // if nothing is playing, play this song
+                if (queue.isEmpty() && audioPlayer.getPlayingTrack() == null) {
+                    audioPlayer.startTrack(t, false);
+                }
+                // enqueue the track otherwise
+                queue.add(t);
+                // if this was the last track we needed to add, announce that we're done
+                // minus one in case we played the first song
+                if (queue.size() == finalSize - 1) {
+                    lastFeedbackChannel.sendMessage("> Queued " + finalSize + " tracks to the queue").queue();
+                }
+            }
+
             @Override
             public void onTrackStart(AudioPlayer player, AudioTrack track) {
                 // interrupt the timeout if it exists
@@ -537,30 +565,39 @@ public class AudioEngine {
             // set the feedback channel so we have somewhere to complain to
             this.lastFeedbackChannel = feedbackChannel;
 
+            // the size of the playlist to use if it's a spotify playlist
+            final int playlistSize;
+
             // if it's not a url, append the search tag
             final boolean isSearch;
+            final boolean isPlaylist;
+            List<String> queries = null;
+            final int queriesSize;
             if (!query.startsWith("https")) {
                 query = "ytsearch:" + query;
                 isSearch = true;
+                isPlaylist = false;
+                queriesSize = -1;
             }
             // spotify playlist
             else if (query.startsWith("https://open.spotify.com/playlist/")) {
-                List<String> queries = SpotifyEngine.getNamesOfTracks(query);
+                queries = SpotifyEngine.getNamesOfTracks(query);
                 if (queries == null) {
                     feedbackChannel.sendMessage("there was a problem, go tell alan").queue();
                     return;
                 }
-                for (String q : queries) {
-                    load(q, feedbackChannel);
-                }
-                return;
+                queriesSize = queries.size();
+                isSearch = true;
+                isPlaylist = true;
             }
             else {
+                queriesSize = -1;
                 isSearch = false;
+                isPlaylist = false;
             }
 
-            // load the query
-            this.audioPlayerManager.loadItem(query, new AudioLoadResultHandler() {
+            // create an AudioResultHandler
+            AudioLoadResultHandler resultHandler = new AudioLoadResultHandler() {
                 @Override
                 public void trackLoaded(AudioTrack track) {
                     // queue the track
@@ -571,14 +608,18 @@ public class AudioEngine {
                 public void playlistLoaded(AudioPlaylist playlist) {
                     // if it was a search, only add the first track
                     if (isSearch) {
-                        scheduler.queue(playlist.getTracks().get(0));
+                        AudioTrack t = playlist.getTracks().get(0);
+                        if (isPlaylist) {
+                            scheduler.spotifyQueue(t, queriesSize);
+                        }
+                        else {
+                            scheduler.queue(t);
+                        }
                     }
                     // otherwise, add all of the tracks
                     else {
-                        // queue all the tracks from the playlist
-                        for (AudioTrack track : playlist.getTracks()) {
-                            scheduler.queue(track);
-                        }
+                        List<AudioTrack> tracks = playlist.getTracks();
+                        scheduler.queue(tracks);
                     }
                 }
 
@@ -595,7 +636,17 @@ public class AudioEngine {
                     System.err.println("error loading audio track:");
                     exception.printStackTrace();
                 }
-            });
+            };
+
+            // if this was a spotify playlist
+            if (!isPlaylist) {
+                this.audioPlayerManager.loadItem(query, resultHandler);
+            }
+            else {
+                for (String q : queries) {
+                    this.audioPlayerManager.loadItem("ytsearch:" + q, resultHandler);
+                }
+            }
         }
 
         // skips the currently playing track

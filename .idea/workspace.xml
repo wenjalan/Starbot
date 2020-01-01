@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Starbot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Starbot_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot_jar/Starbot.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/SpotifyEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/SpotifyEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -61,36 +60,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3162">
-              <caret line="554" column="17" selection-start-line="554" selection-start-column="17" selection-end-line="554" selection-end-column="17" />
+            <state relative-caret-position="279">
+              <caret line="646" column="85" lean-forward="true" selection-start-line="646" selection-start-column="85" selection-end-line="646" selection-end-column="85" />
               <folding>
                 <element signature="class#AudioCommand#0;class#AudioEngine#0" />
+                <element signature="class#1428:2489" />
+                <element signature="class#SendHandler#0;class#Player#0;class#AudioEngine#0" />
+                <element signature="class#22942:24422" />
+                <element signature="e#25507#25508#0" expanded="true" />
+                <element signature="e#25628#25629#0" expanded="true" />
                 <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
                 <element signature="method#getQueueAsString#0;class#Player#0;class#AudioEngine#0" />
                 <element signature="method#connect#0;class#AudioEngine#0" />
                 <element signature="method#getPlayer#0;class#AudioEngine#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/SpotifyEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -139,8 +125,8 @@
         <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java" />
         <option value="$PROJECT_DIR$/assets/starbot.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/SpotifyEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" />
       </list>
     </option>
   </component>
@@ -159,7 +145,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -220,6 +205,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,11 +321,12 @@
       <workItem from="1577265340526" duration="447000" />
       <workItem from="1577304443170" duration="1203000" />
       <workItem from="1577305692255" duration="111000" />
+      <workItem from="1577855631106" duration="3392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73438000" />
+    <option name="totallyTimeSpent" value="76830000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -352,8 +339,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30402684" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3080537" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -362,7 +350,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32997987" />
-      <window_info anchor="bottom" x="110" y="150" width="918" height="608" id="Run" order="2" type="FLOATING" weight="0.3722334" />
+      <window_info anchor="bottom" x="516" y="164" width="918" height="608" id="Run" order="2" type="FLOATING" weight="0.3722334" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40140846" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -628,19 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="283" column="51" selection-start-line="283" selection-start-column="51" selection-end-line="283" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#DMCommand#0;class#CommandEngine#0" />
-            <element signature="class#8192:9464" />
-            <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/UrbanDictionaryEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -672,20 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3162">
-          <caret line="554" column="17" selection-start-line="554" selection-start-column="17" selection-end-line="554" selection-end-column="17" />
-          <folding>
-            <element signature="class#AudioCommand#0;class#AudioEngine#0" />
-            <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
-            <element signature="method#getQueueAsString#0;class#Player#0;class#AudioEngine#0" />
-            <element signature="method#connect#0;class#AudioEngine#0" />
-            <element signature="method#getPlayer#0;class#AudioEngine#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -697,6 +658,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2373">
+          <caret line="283" column="51" selection-start-line="283" selection-start-column="51" selection-end-line="283" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#DMCommand#0;class#CommandEngine#0" />
+            <element signature="class#8192:9464" />
+            <element signature="method#parseDMCommand#0;class#CommandEngine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="646" column="85" lean-forward="true" selection-start-line="646" selection-start-column="85" selection-end-line="646" selection-end-column="85" />
+          <folding>
+            <element signature="class#AudioCommand#0;class#AudioEngine#0" />
+            <element signature="class#1428:2489" />
+            <element signature="class#SendHandler#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="class#22942:24422" />
+            <element signature="e#25507#25508#0" expanded="true" />
+            <element signature="e#25628#25629#0" expanded="true" />
+            <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="method#getQueueAsString#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="method#connect#0;class#AudioEngine#0" />
+            <element signature="method#getPlayer#0;class#AudioEngine#0" />
+          </folding>
         </state>
       </provider>
     </entry>
