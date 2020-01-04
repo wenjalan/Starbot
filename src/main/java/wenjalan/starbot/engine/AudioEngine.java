@@ -363,7 +363,7 @@ public class AudioEngine {
     }
 
     // Player represents the LavaPlayer instance, one per guild
-    protected static class Player {
+    public static class Player {
 
         // the default volume
         public static final int DEFAULT_VOLUME = 50;
@@ -513,7 +513,7 @@ public class AudioEngine {
         }
 
         // the SendHandler, for JDA
-        protected class SendHandler implements AudioSendHandler {
+        public class SendHandler implements AudioSendHandler {
 
             // the Player this SendHandler is sending for
             private Player player;
@@ -560,8 +560,40 @@ public class AudioEngine {
 
         }
 
+        // plays a track immediately
+        public void forcePlay(String query, final TextChannel feedbackChannel) {
+            // change the last feedback channel
+            lastFeedbackChannel = feedbackChannel;
+            // generate the query
+            if (!query.startsWith("http")) {
+                query = "ytsearch:" + query;
+            }
+            // load and play it
+            this.audioPlayerManager.loadItem(query, new AudioLoadResultHandler() {
+                @Override
+                public void trackLoaded(AudioTrack track) {
+                    audioPlayer.startTrack(track, false);
+                }
+
+                @Override
+                public void playlistLoaded(AudioPlaylist playlist) {
+                    audioPlayer.startTrack(playlist.getTracks().get(0), false);
+                }
+
+                @Override
+                public void noMatches() {
+                    lastFeedbackChannel.sendMessage("nothing came up").queue();
+                }
+
+                @Override
+                public void loadFailed(FriendlyException exception) {
+                    lastFeedbackChannel.sendMessage("what").queue();
+                }
+            });
+        }
+
         // loads a track to play given a String query and a channel to send the results to
-        protected void load(String query, final TextChannel feedbackChannel) {
+        public void load(String query, final TextChannel feedbackChannel) {
             // set the feedback channel so we have somewhere to complain to
             this.lastFeedbackChannel = feedbackChannel;
 
@@ -715,7 +747,7 @@ public class AudioEngine {
     }
 
     // connects Starbot to a VoiceChannel, ready to play music
-    protected static Player connect(VoiceChannel channel) {
+    public static Player connect(VoiceChannel channel) {
         AudioManager guildAudioManager = channel.getGuild().getAudioManager();
         Player player = new Player(guildAudioManager.getGuild());
         guildAudioManager.setSendingHandler(player.sendHandler());

@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import wenjalan.starbot.engine.AudioEngine;
 import wenjalan.starbot.engine.CommandEngine;
 import wenjalan.starbot.engine.DataEngine;
 
@@ -140,6 +141,29 @@ public class DingusCrew {
 
                 // kick
                 kickAndReinvite(e.getGuild(), jared, "jared");
+            }
+        },
+
+        // plays the ezekiel scream
+        // source: https://cdn.discordapp.com/attachments/175372417194000384/662916674290188291/ezekiel_death.mp3
+        zeke {
+            @Override
+            public void execute(GuildMessageReceivedEvent e) {
+                String query = "https://cdn.discordapp.com/attachments/175372417194000384/662916674290188291/ezekiel_death.mp3";
+                // if we're not connected, connect
+                if (!e.getGuild().getAudioManager().isConnected()) {
+                    // connect
+                    VoiceChannel channel = e.getMember().getVoiceState().getChannel();
+                    if (channel == null) {
+                        e.getChannel().sendMessage("fucking where").queue();
+                        return;
+                    }
+                    AudioEngine.connect(channel);
+                }
+
+                // immediately play it
+                AudioEngine.Player p = AudioEngine.getPlayer(e.getGuild());
+                p.forcePlay(query, e.getChannel());
             }
         },
 
