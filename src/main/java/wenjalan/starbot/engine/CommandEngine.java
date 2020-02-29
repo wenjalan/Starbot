@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
+import wenjalan.starbot.guilds.WholesomeDegenerates;
 
 import java.util.*;
 
@@ -35,7 +36,7 @@ public class CommandEngine {
             @Override
             public void execute(PrivateMessageReceivedEvent event) {
                 // send the current version
-                event.getChannel().sendMessage("4.0 prerelease").queue();
+                event.getChannel().sendMessage("fuck if I know dude it's been like months since this command was updated").queue();
             }
         },
 
@@ -206,6 +207,19 @@ public class CommandEngine {
                 if (id == DataEngine.Constants.OWNER_ID_LONG) {
                     List<String> args = findArgsInString(event.getMessage().getContentRaw());
                     DataEngine.removeRadio(args.get(0));
+                }
+            }
+        },
+
+        // sets the banned letter in the banned letter channel
+        setbannedletter {
+            @Override
+            public void execute(PrivateMessageReceivedEvent event) {
+                // check the author is me
+                long id = event.getAuthor().getIdLong();
+                if (id == DataEngine.Constants.OWNER_ID_LONG) {
+                    char c = event.getMessage().getContentRaw().split(" ")[1].charAt(0);
+                    WholesomeDegenerates.WDListener.setBannedLetterChannelLetter(c);
                 }
             }
         };

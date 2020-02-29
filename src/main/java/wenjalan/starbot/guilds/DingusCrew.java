@@ -37,8 +37,6 @@ public class DingusCrew {
     }
 
     // Fields
-    // the number of times the !play command has been used since startup
-    protected static int totalPlays = 0;
 
     // the last person to use the !play command
     protected static Member lastPlayer = null;
@@ -167,14 +165,6 @@ public class DingusCrew {
             }
         },
 
-        // prints out the number of times !play has been used since startup
-        plays {
-            @Override
-            public void execute(GuildMessageReceivedEvent e) {
-                e.getChannel().sendMessage("!play has been used " + totalPlays + " times").queue();
-            }
-        },
-
         // play: additional play command kicks people
         // - when its from 8 PM to 4 AM
         // - 0.5% chance
@@ -184,19 +174,17 @@ public class DingusCrew {
                 // save the user that last played something
                 lastPlayer = e.getMember();
 
-                // increment totalPlays
-                totalPlays++;
                 // check the time
                 ZonedDateTime now = ZonedDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")));
 
-                // if it's 8 to 4
+                // if it's 6 to 4
                 if (now.getHour() > 17 || now.getHour() < 3) {
                     // roll a die
                     int roll = new Random().nextInt(200);
                     // if the roll was 0, kick the author
                     if (roll == 0) {
                         // announce their kicking
-                        e.getChannel().sendMessage(e.getMember().getAsMention() + " won the lottery on !play #" + totalPlays).queue();
+                        e.getChannel().sendMessage(e.getMember().getAsMention() + " won the lottery").queue();
                         kickAndReinvite(e.getGuild(), e.getMember(), "won the !play lottery");
                     }
                 }

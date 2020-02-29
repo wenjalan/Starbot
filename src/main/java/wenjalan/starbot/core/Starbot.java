@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import wenjalan.starbot.engine.CommandEngine;
 import wenjalan.starbot.guilds.DingusCrew;
+import wenjalan.starbot.guilds.WholesomeDegenerates;
 import wenjalan.starbot.listener.GuildListener;
 import wenjalan.starbot.listener.JDAListener;
 import wenjalan.starbot.listener.MessageListener;
@@ -70,6 +71,7 @@ public class Starbot {
 
         // server-specific listeners
         builder.addEventListeners(new DingusCrew.DingusCrewListener()); // Dingus Crew
+        builder.addEventListeners(new WholesomeDegenerates.WDListener());
 
         // build
         JDA instance = null;
