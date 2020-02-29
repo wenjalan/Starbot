@@ -74,7 +74,7 @@ public class WholesomeDegenerates {
             // if the channel was the banned letter channel
             if (e.getChannel().getIdLong() == BANNED_LETTER_CHANNEL_ID) {
                 // if the message contained the banned letter, delete it
-                if (e.getMessage().getContentDisplay().contains("" + bannedLetterChannelLetter)) {
+                if (e.getMessage().getContentDisplay().toLowerCase().contains("" + bannedLetterChannelLetter)) {
                     e.getMessage().delete().queue();
                 }
             }
