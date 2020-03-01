@@ -268,6 +268,20 @@ public class CommandEngine {
             }
         },
 
+        // starts a new poll
+        poll {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // get the options
+                List<String> args = findArgsInString(event.getMessage().getContentRaw());
+                String question = args.get(0);
+                List<String> options = args.subList(1, args.size());
+
+                PollEngine.Poll poll = new PollEngine.Poll(question, options);
+                poll.sendPoll(event.getChannel());
+            }
+        },
+
         // defines a query on urban dictionary
         define {
             @Override
