@@ -5,6 +5,7 @@ A sassy little chatbot named Starbot.
 Constantly degrades all members in a server who say dumb things  
 Conversational aid for lonely people  
 Plays funky fresh music, but only if you're nice  
+Can hold polls for all of your wrong opinions  
 
 # Commands
 !help
