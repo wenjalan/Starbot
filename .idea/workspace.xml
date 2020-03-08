@@ -7,9 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/test/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/YouTubeEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/YouTubeEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -113,11 +111,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/test/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            <state relative-caret-position="252">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="525" column="17" lean-forward="true" selection-start-line="525" selection-start-column="17" selection-end-line="525" selection-end-column="17" />
+              <folding>
+                <element signature="method#Player#0;class#Player#0;class#AudioEngine#0" />
+                <element signature="e#21202#21203#0" expanded="true" />
+                <element signature="class#SendHandler#0;class#Player#0;class#AudioEngine#0" />
+                <element signature="method#forcePlay#0;class#Player#0;class#AudioEngine#0" />
+                <element signature="method#load#0;class#Player#0;class#AudioEngine#0" />
+                <element signature="method#skip#0;class#Player#0;class#AudioEngine#0" />
+                <element signature="e#27337#27338#0" expanded="true" />
+                <element signature="e#27383#27384#0" expanded="true" />
+                <element signature="e#26778#26779#0" expanded="true" />
+                <element signature="e#26823#26824#0" expanded="true" />
+                <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
+                <element signature="method#getPlayer#0;class#AudioEngine#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,7 +183,6 @@
         <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/SpotifyEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/core/Starbot.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/WholesomeDegenerates.java" />
@@ -171,6 +191,7 @@
         <option value="$PROJECT_DIR$/assets/starbot.properties" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/YouTubeEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/test/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" />
       </list>
     </option>
   </component>
@@ -270,7 +291,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.Starbot">
     <configuration name="Starbot" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="wenjalan.starbot.core.Starbot" />
       <module name="Starbot4.Starbot.main" />
@@ -393,12 +414,12 @@
       <workItem from="1582935989803" duration="3299000" />
       <workItem from="1582952649948" duration="227000" />
       <workItem from="1583044787153" duration="2664000" />
-      <workItem from="1583623876523" duration="1445000" />
+      <workItem from="1583623876523" duration="2239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87932000" />
+    <option name="totallyTimeSpent" value="88726000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -571,16 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-748">
-          <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
-          <folding>
-            <element signature="method#getPlayer#0;class#AudioEngine#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -762,8 +773,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/test/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        <state relative-caret-position="252">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="525" column="17" lean-forward="true" selection-start-line="525" selection-start-column="17" selection-end-line="525" selection-end-column="17" />
+          <folding>
+            <element signature="method#Player#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="e#21202#21203#0" expanded="true" />
+            <element signature="class#SendHandler#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="method#forcePlay#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="method#load#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="method#skip#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="e#27337#27338#0" expanded="true" />
+            <element signature="e#27383#27384#0" expanded="true" />
+            <element signature="e#26778#26779#0" expanded="true" />
+            <element signature="e#26823#26824#0" expanded="true" />
+            <element signature="method#sendInfo#0;class#Player#0;class#AudioEngine#0" />
+            <element signature="method#getPlayer#0;class#AudioEngine#0" />
+          </folding>
         </state>
       </provider>
     </entry>

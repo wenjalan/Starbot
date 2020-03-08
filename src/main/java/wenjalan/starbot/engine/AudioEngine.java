@@ -131,6 +131,23 @@ public class AudioEngine {
             }
         },
 
+        // toggles the automatic playback of videos based on related videos
+        autoplay {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // get handler
+                Player p = getPlayer(event.getGuild());
+
+                // if it exists
+                if (p != null) {
+                    // announce
+                    event.getChannel().sendMessage(p.isAutoPlaying() ? "autoplay off" : "autoplay on").queue();
+                    // toggle autoplay
+                    p.setAutoPlay(!p.isAutoPlaying());
+                }
+            }
+        },
+
         // pauses the player
         pause {
             @Override
@@ -395,6 +412,9 @@ public class AudioEngine {
         // whether or not we're looping the current track
         private boolean isLooping = false;
 
+        // whether or not we're auto playing tracks
+        private boolean isAutoPlay = false;
+
         // returns the SendHandler for JDA
         private AudioSendHandler sendHandler() {
             return this.sendHandler;
@@ -497,6 +517,12 @@ public class AudioEngine {
                 else if (endReason.mayStartNext && !queue.isEmpty()) {
                     AudioTrack nextTrack = queue.remove();
                     player.startTrack(nextTrack, false);
+                }
+                // if auto play is turned on, play a recommended track
+                else if (endReason.mayStartNext && isAutoPlay) {
+                    String id = YouTubeEngine.getRecommendation(track.getInfo().uri);
+                    String recommendation = "https://youtube.com/watch?v=" + id;
+                    forcePlay(recommendation, lastFeedbackChannel);
                 }
             }
 
@@ -692,9 +718,27 @@ public class AudioEngine {
             }
         }
 
+        // sets whether we should auto play tracks
+        public void setAutoPlay(boolean autoPlay) {
+            this.isAutoPlay = autoPlay;
+            // if auto play is turned on while looping is on, turn off looping
+            if (autoPlay && isLooping) {
+                isLooping = false;
+            }
+        }
+
+        // returns whether we're autoplaying
+        public boolean isAutoPlaying() {
+            return this.isAutoPlay;
+        }
+
         // sets whether we should loop the current track
         public void setLooping(boolean loop) {
             this.isLooping = loop;
+            // if repeat mode is turned on while auto play is on, turn off auto play
+            if (loop && isAutoPlay) {
+                isAutoPlay = false;
+            }
         }
 
         // gets whether we're looping
