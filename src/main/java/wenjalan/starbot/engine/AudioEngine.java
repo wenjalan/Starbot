@@ -131,22 +131,22 @@ public class AudioEngine {
             }
         },
 
-        // toggles the automatic playback of videos based on related videos
-        autoplay {
-            @Override
-            public void execute(GuildMessageReceivedEvent event) {
-                // get handler
-                Player p = getPlayer(event.getGuild());
-
-                // if it exists
-                if (p != null) {
-                    // announce
-                    event.getChannel().sendMessage(p.isAutoPlaying() ? "autoplay off" : "autoplay on").queue();
-                    // toggle autoplay
-                    p.setAutoPlay(!p.isAutoPlaying());
-                }
-            }
-        },
+//        // toggles the automatic playback of videos based on related videos
+//        autoplay {
+//            @Override
+//            public void execute(GuildMessageReceivedEvent event) {
+//                // get handler
+//                Player p = getPlayer(event.getGuild());
+//
+//                // if it exists
+//                if (p != null) {
+//                    // announce
+//                    event.getChannel().sendMessage(p.isAutoPlaying() ? "autoplay off" : "autoplay on").queue();
+//                    // toggle autoplay
+//                    p.setAutoPlay(!p.isAutoPlaying());
+//                }
+//            }
+//        },
 
         // pauses the player
         pause {
@@ -415,6 +415,9 @@ public class AudioEngine {
         // whether or not we're auto playing tracks
         private boolean isAutoPlay = false;
 
+        // the YouTube Video URI beginning, without the video id
+        public static final String YT_VID_STUB = "https://www.youtube.com/watch?v=";
+
         // returns the SendHandler for JDA
         private AudioSendHandler sendHandler() {
             return this.sendHandler;
@@ -447,9 +450,13 @@ public class AudioEngine {
             // the queue of tracks
             private Queue<AudioTrack> queue;
 
+            // the history of track uris we've played
+            private Queue<String> history;
+
             // constructor
             private Scheduler() {
                 this.queue = new LinkedList<>();
+                this.history = new LinkedList<>();
             }
 
             // adds an AudioTrack to the queue
@@ -509,6 +516,14 @@ public class AudioEngine {
 
             @Override
             public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
+                // add the track to the history (capped at 50)
+                // shave the history
+                while (history.size() >= 50) {
+                    history.remove();
+                }
+                history.add(track.getInfo().uri);
+                System.out.println("added " + track.getInfo().uri + " to the history");
+
                 // if we're supposed to be looping the track, start playing it again
                 if (endReason.mayStartNext && isLooping) {
                     player.startTrack(track.makeClone(), false);
@@ -520,15 +535,26 @@ public class AudioEngine {
                 }
                 // if auto play is turned on, play a recommended track
                 else if (endReason.mayStartNext && isAutoPlay) {
-                    String id = YouTubeEngine.getRecommendation(track.getInfo().uri);
-                    String recommendation = "https://youtube.com/watch?v=" + id;
-                    forcePlay(recommendation, lastFeedbackChannel);
+                    List<String> recs = YouTubeEngine.getRecommendation(track.getInfo().uri, 50);
+                    String url = "";
+                    System.out.println("got recommendations: " + recs);
+                    for (String rec : recs) {
+                        // if this uri isn't in the history, play it
+                        String uri = YT_VID_STUB + rec;
+                        if (!history.contains(uri)) {
+                            System.out.println("found unique url " + uri);
+                            url = uri;
+                            break;
+                        }
+                    }
+                    forcePlay(url, lastFeedbackChannel);
                 }
             }
 
             @Override
             public void onTrackException(AudioPlayer player, AudioTrack track, FriendlyException exception) {
                 lastFeedbackChannel.sendMessage("uhhhhhhhh there was a problem").queue();
+                lastFeedbackChannel.sendMessage(exception.getMessage()).queue();
             }
 
             // returns the Queue of tracks

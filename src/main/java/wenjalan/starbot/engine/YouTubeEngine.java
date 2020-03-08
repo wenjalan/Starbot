@@ -11,6 +11,7 @@ import com.google.api.services.youtube.model.SearchResult;
 import com.google.api.services.youtube.model.Video;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,39 +39,42 @@ public class YouTubeEngine {
     }
 
     // returns the next recommended video for a given video
-    public static String getRecommendation(String videoUrl) {
+    // count: the number of recommendations to retrieve, max 50 due to YT's restrictions
+    public static List<String> getRecommendation(String videoUrl, int count) {
         String id = videoUrl.replace("https://www.youtube.com/watch?v=", "");
-        return getRecommendationFor(id);
+        return getRecommendationsFor(id, count);
     }
 
     // searches for a recommendation based on a video id
     // returns the recommended video's id
-    private static String getRecommendationFor(String videoId) {
+    private static List<String> getRecommendationsFor(String videoId, long count) {
         // init check
         if (youtube == null) {
             youtube = getYoutube();
         }
 
         // return the first related video we find
+        List<String> recs = new ArrayList<>();
         try {
             List<SearchResult> related = youtube.search().list("snippet")
                     .setRelatedToVideoId(videoId)
                     .setType("video")
                     .setKey(DataEngine.getProperty("youtube-data-api-secret"))
+                    .setMaxResults(count)
                     .execute().getItems();
             for (SearchResult result : related) {
                 // System.out.println(result.toPrettyString());
                 ResourceId resId = result.getId();
                 if (resId.getKind().equalsIgnoreCase("youtube#video")) {
                     String id = resId.getVideoId();
-                    return id;
+                    recs.add(id);
                 }
             }
         } catch (IOException e) {
             System.err.println("error getting recommendations for video id " + videoId + ": " + e.getMessage());
             e.printStackTrace();
         }
-        return null;
+        return recs;
     }
 
 //    // example of a search call, from scratchpad
