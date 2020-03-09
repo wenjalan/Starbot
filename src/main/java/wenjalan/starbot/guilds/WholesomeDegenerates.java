@@ -31,37 +31,38 @@ public class WholesomeDegenerates {
         public void onReady(ReadyEvent e) {
             jda = e.getJDA();
 
-            // set channel desc
-            updateChannelLetter(bannedLetterChannelLetter);
-
-            // start update thread for banned letter channel
-            new Thread() {
-                @Override
-                public void run() {
-                    // coding genius
-                    final boolean EVER = true;
-                    int lastUpdate = 0; // last day we updated
-                    for (;EVER;) {
-                        // check if it's time to update
-                        ZonedDateTime now = ZonedDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")));
-                        // time is 6 AM and we haven't updated today
-                        if (now.getHour() == 6 && lastUpdate != now.getDayOfMonth()) {
-                            // change the letter
-                            bannedLetterChannelLetter = getRandomChar();
-                            lastUpdate = now.getDayOfMonth();
-
-                            // change the channel desc
-                            updateChannelLetter(bannedLetterChannelLetter);
-                        }
-                        // sleep for 30 minutes
-                        try {
-                            Thread.sleep(30 * 60 * 60);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }.start();
+            // deprecated: banned letter channel
+//            // set channel desc
+//            updateChannelLetter(bannedLetterChannelLetter);
+//
+//            // start update thread for banned letter channel
+//            new Thread() {
+//                @Override
+//                public void run() {
+//                    // coding genius
+//                    final boolean EVER = true;
+//                    int lastUpdate = 0; // last day we updated
+//                    for (;EVER;) {
+//                        // check if it's time to update
+//                        ZonedDateTime now = ZonedDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST")));
+//                        // time is 6 AM and we haven't updated today
+//                        if (now.getHour() == 6 && lastUpdate != now.getDayOfMonth()) {
+//                            // change the letter
+//                            bannedLetterChannelLetter = getRandomChar();
+//                            lastUpdate = now.getDayOfMonth();
+//
+//                            // change the channel desc
+//                            updateChannelLetter(bannedLetterChannelLetter);
+//                        }
+//                        // sleep for 30 minutes
+//                        try {
+//                            Thread.sleep(30 * 60 * 60);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//            }.start();
         }
 
         // message received

@@ -23,7 +23,7 @@ public class MessageListener extends ListenerAdapter {
         }
         // otherwise, send a random response
         else {
-            event.getChannel().sendMessage(ChatEngine.getRandomResponse()).queue();
+            event.getChannel().sendMessage(ChatEngine.getPresetResponse()).queue();
         }
     }
 
@@ -42,7 +42,7 @@ public class MessageListener extends ListenerAdapter {
         // if the message mentions Starbot, send a random response
         else if (event.getMessage().getMentionedUsers().contains(event.getJDA().getSelfUser())) {
             // send a random response
-            event.getChannel().sendMessage(ChatEngine.getRandomResponse()).queue();
+            event.getChannel().sendMessage(ChatEngine.getRandomResponse(event.getGuild())).queue();
         }
         // if the message has a trigger phrase in it, send the corresponding response
         else if (ChatEngine.containsTriggerPhrase(event.getMessage().getContentRaw())) {

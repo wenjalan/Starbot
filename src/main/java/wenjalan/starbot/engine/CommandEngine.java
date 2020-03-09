@@ -264,7 +264,15 @@ public class CommandEngine {
         version {
             @Override
             public void execute(GuildMessageReceivedEvent event) {
-                event.getChannel().sendMessage("4.0 release").queue();
+                event.getChannel().sendMessage("heh").queue();
+            }
+        },
+
+        // sends a link to Starbot's GitHub
+        github {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                event.getChannel().sendMessage("https://github.com/wenjalan/Starbot").queue();
             }
         },
 
@@ -322,6 +330,34 @@ public class CommandEngine {
             public void execute(GuildMessageReceivedEvent event) {
                 // send an invite
                 event.getChannel().sendMessage(event.getJDA().getInviteUrl()).queue();
+            }
+        },
+
+        // makes Starbot learn the speaking patterns of all the channels in a guild
+        // usable only by me
+        learn {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // learn from the guild
+                event.getChannel().sendMessage("learning your ways...").queue();
+                MarkovEngine.learn(event.getGuild());
+                event.getChannel().sendMessage("done.").queue();
+            }
+        },
+
+        // toggles the sending of markov or preset responses when mentioning Starbot
+        // only if !learn was used before in the server
+        markov {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // if it is a markov guild, turn it back to normal
+                if (ChatEngine.isMarkov(event.getGuild())) {
+                    ChatEngine.disableMarkov(event.getGuild());
+                }
+                // otherwise, enable it
+                else {
+                    ChatEngine.enableMarkov(event.getGuild());
+                }
             }
         },
 
