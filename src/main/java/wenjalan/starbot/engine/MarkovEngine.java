@@ -2,13 +2,13 @@ package wenjalan.starbot.engine;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
-
-import javax.naming.InsufficientResourcesException;
 import java.util.*;
 
 // handles the generation of responses based on Markov chains
 public class MarkovEngine {
+
+    // a list of Engines associated with guild ids
+    private static Map<Long, MarkovModel> models = new TreeMap<>();
 
     // represents a Markov Model used to generate sentences
     public static class MarkovModel {
@@ -153,29 +153,35 @@ public class MarkovEngine {
             // create a new model
             MarkovModel model = new MarkovModel();
 
+            // learn the words from the sentences
+            model.learn(sentences);
+
+            // return the model
+            return model;
+        }
+
+        // adds more messages to this model
+        public void learn(List<String> sentences) {
             // for each sentence, get the words and the words that follow
             for (String sentence : sentences) {
                 // get the words
                 String[] words = sentence.split("\\s+");
 
                 // for the beginning of sentence node, add the first word
-                model.startNode.addNextWord(words[0]);
+                this.startNode.addNextWord(words[0]);
 
                 // for each word in the sentence
                 for (int i = 0; i < words.length - 1; i++) {
                     String word = words[i];
-                    model.words.putIfAbsent(word, new MarkovNode(word));
-                    model.words.get(word).addNextWord(words[i + 1]);
+                    this.words.putIfAbsent(word, new MarkovNode(word));
+                    this.words.get(word).addNextWord(words[i + 1]);
                 }
 
                 // for the last word, add the EOS sequence "" as the next word
                 String lastWord = words[words.length - 1];
-                model.words.putIfAbsent(lastWord, new MarkovNode(lastWord));
-                model.words.get(lastWord).addNextWord(EOS_SEQUENCE);
+                this.words.putIfAbsent(lastWord, new MarkovNode(lastWord));
+                this.words.get(lastWord).addNextWord(EOS_SEQUENCE);
             }
-
-            // return the model
-            return model;
         }
 
         // returns a new sentence given a random int seed
@@ -187,24 +193,27 @@ public class MarkovEngine {
         private String generateSentence(MarkovNode node) {
             // if the node is the end of sentence node, return nothing
             if (node instanceof MarkovNode.EndNode) {
-                return node.getWord();
+                return "";
             }
             // otherwise, return this word plus whatever the next word is
             else {
-                String word = node.getWord();
+                String word = "";
+                if (!(node instanceof MarkovNode.StartNode)) {
+                    word = node.getWord() + " ";
+                }
                 String nextWord = node.getNextWord();
                 MarkovNode nextNode = words.get(nextWord);
-                return word + " " + generateSentence(nextNode);
+                return word + generateSentence(nextNode);
             }
         }
 
     }
 
-    // the MarkovModel instance that the Engine is currently using
-    private static MarkovModel model = null;
-
     // returns a random response generated from a MarkovModel
-    public static String generate() {
+    public static String generate(Guild g) {
+        // find the guild's model
+        MarkovModel model = models.get(g.getIdLong());
+
         // if we haven't learned anything, return that
         if (model == null) {
             return "haven't learned anything yet, use !learn first";
@@ -216,35 +225,65 @@ public class MarkovEngine {
     }
 
     // loads all messages ever sent in a Guild into the MarkovEngine
-    public static void learn(Guild guild) {
+    public static void learn(Guild guild, TextChannel feedback) {
         // a list containing every message ever sent in all channels of this guild
         List<String> messages = new ArrayList<>();
         // for all channels
-        System.out.println("learning from guild " + guild.getName() + " with " + guild.getTextChannels().size() + " channels");
+        feedback.sendMessage("learning from guild " + guild.getName() + " with " + guild.getTextChannels().size() + " channels").queue();
         for (TextChannel channel : guild.getTextChannels()) {
-            System.out.println("learning from channel " + channel.getName());
+            feedback.sendMessage("learning from channel " + channel.getName()).queue();
             // load all messages ever sent in that channel
-            List<String> channelMessages = loadMessageContent(channel);
+            List<String> channelMessages = loadMessageContent(channel, feedback);
             // add the channel's messages to the overall messages
             messages.addAll(channelMessages);
-            System.out.println("finished learning from channel " + channel.getName() + ", learned " + channelMessages.size() + " messages");
+            feedback.sendMessage("finished learning from channel " + channel.getName() + ", learned " + channelMessages.size() + " messages").queue();
         }
-        System.out.println("found " + messages.size() + " messages to learn from");
+        feedback.sendMessage("learning complete, found " + messages.size() + " messages to learn from").queue();
         // learn from all the messages gathered
-        model = MarkovModel.from(messages);
+        // if the model doesn't exist, create it, otherwise add the messages
+        // add a new model if one doesn't exist for this guild
+        if (!models.containsKey(guild.getIdLong())) {
+            models.put(guild.getIdLong(), MarkovModel.from(messages));
+        }
+        else {
+            models.get(guild.getIdLong()).learn(messages);
+        }
+    }
+
+    // clears the model
+    public static void clear(Guild g) {
+        models.remove(g.getIdLong());
     }
 
     // loads all the messages ever sent in a TextChannel
-    public static List<String> loadMessageContent(TextChannel channel) {
+    protected static List<String> loadMessageContent(TextChannel channel, TextChannel feedback) {
         // all the messages sent in this channel
         List<String> messages = new ArrayList<>();
         try {
             // retrieve all the messages
             channel.getIterableHistory().cache(false).forEach((message) -> {
-                messages.add(message.getContentRaw());
+                // filter: bot sent the message
+                if (message.getAuthor().isBot()) {
+                    return;
+                }
+
+                // get the content
+                String content = message.getContentRaw();
+
+                // filter: check if empty
+                if (content.isEmpty()) {
+                    return;
+                }
+                // filter: message was command
+                if (content.startsWith("!")) {
+                    return;
+                }
+
+                // add the content
+                messages.add(content);
             });
         } catch (Exception e) {
-            System.err.println("couldn't retrieve messages of channel " + channel.getName() + ": " + e.getMessage());
+            feedback.sendMessage("error: couldn't retrieve messages of channel " + channel.getName() + ": " + e.getMessage()).queue();
         }
         // return the messages
         return messages;

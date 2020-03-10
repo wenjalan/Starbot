@@ -522,7 +522,7 @@ public class AudioEngine {
                     history.remove();
                 }
                 history.add(track.getInfo().uri);
-                System.out.println("added " + track.getInfo().uri + " to the history");
+                // System.out.println("added " + track.getInfo().uri + " to the history");
 
                 // if we're supposed to be looping the track, start playing it again
                 if (endReason.mayStartNext && isLooping) {
@@ -537,12 +537,12 @@ public class AudioEngine {
                 else if (endReason.mayStartNext && isAutoPlay) {
                     List<String> recs = YouTubeEngine.getRecommendation(track.getInfo().uri, 50);
                     String url = "";
-                    System.out.println("got recommendations: " + recs);
+                    // System.out.println("got recommendations: " + recs);
                     for (String rec : recs) {
                         // if this uri isn't in the history, play it
                         String uri = YT_VID_STUB + rec;
                         if (!history.contains(uri)) {
-                            System.out.println("found unique url " + uri);
+                            // System.out.println("found unique url " + uri);
                             url = uri;
                             break;
                         }

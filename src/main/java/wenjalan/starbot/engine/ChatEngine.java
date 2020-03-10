@@ -18,7 +18,7 @@ public class ChatEngine {
         // if this is a markov guild, send a markov response
         if (markovGuilds.contains(g.getId())) {
             // send a markov response
-            return MarkovEngine.generate();
+            return MarkovEngine.generate(g);
         }
         return getPresetResponse();
     }

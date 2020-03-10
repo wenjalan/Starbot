@@ -10,8 +10,6 @@ import wenjalan.starbot.guilds.WholesomeDegenerates;
 
 import java.util.*;
 
-import static wenjalan.starbot.engine.DataEngine.getTriggerResponses;
-
 // handles the parsing and execution of commands
 public class CommandEngine {
 
@@ -338,10 +336,33 @@ public class CommandEngine {
         learn {
             @Override
             public void execute(GuildMessageReceivedEvent event) {
-                // learn from the guild
-                event.getChannel().sendMessage("learning your ways...").queue();
-                MarkovEngine.learn(event.getGuild());
-                event.getChannel().sendMessage("done.").queue();
+                // only if the author was me
+                if (event.getAuthor().getIdLong() == DataEngine.Constants.OWNER_ID_LONG) {
+                    // learn from the guild
+                    event.getChannel().sendMessage("learning your ways...").queue();
+                    MarkovEngine.learn(event.getGuild(), event.getChannel());
+                    event.getChannel().sendMessage("done.").queue();
+                }
+                else {
+                    event.getChannel().sendMessage("you're not my sensei").queue();
+                }
+            }
+        },
+
+        // makes Starbot forget all the speaking patterns he's learned
+        // usable only by me
+        forget {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // only if the author was me
+                if (event.getAuthor().getIdLong() == DataEngine.Constants.OWNER_ID_LONG) {
+                    // clear the model
+                    MarkovEngine.clear(event.getGuild());
+                    event.getChannel().sendMessage("self-induced amnesia done").queue();
+                }
+                else {
+                    event.getChannel().sendMessage("you're not my sensei").queue();
+                }
             }
         },
 
@@ -353,10 +374,12 @@ public class CommandEngine {
                 // if it is a markov guild, turn it back to normal
                 if (ChatEngine.isMarkov(event.getGuild())) {
                     ChatEngine.disableMarkov(event.getGuild());
+                    event.getChannel().sendMessage("no longer in markov mode").queue();
                 }
                 // otherwise, enable it
                 else {
                     ChatEngine.enableMarkov(event.getGuild());
+                    event.getChannel().sendMessage("now in markov mode, everything I say is now your guys' fault").queue();
                 }
             }
         },
