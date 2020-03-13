@@ -65,21 +65,21 @@ public class WholesomeDegenerates {
 //            }.start();
         }
 
-        // message received
-        @Override
-        public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
-            // if the guild wasn't WD or the message was sent by a bot, quit
-            if (e.getGuild().getIdLong() != ID || e.getAuthor().isBot()) {
-                return;
-            }
-            // if the channel was the banned letter channel
-            if (e.getChannel().getIdLong() == BANNED_LETTER_CHANNEL_ID) {
-                // if the message contained the banned letter, delete it
-                if (e.getMessage().getContentDisplay().toLowerCase().contains("" + bannedLetterChannelLetter)) {
-                    e.getMessage().delete().queue();
-                }
-            }
-        }
+//        // message received
+//        @Override
+//        public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
+//            // if the guild wasn't WD or the message was sent by a bot, quit
+//            if (e.getGuild().getIdLong() != ID || e.getAuthor().isBot()) {
+//                return;
+//            }
+//            // if the channel was the banned letter channel
+//            if (e.getChannel().getIdLong() == BANNED_LETTER_CHANNEL_ID) {
+//                // if the message contained the banned letter, delete it
+//                if (e.getMessage().getContentDisplay().toLowerCase().contains("" + bannedLetterChannelLetter)) {
+//                    e.getMessage().delete().queue();
+//                }
+//            }
+//        }
 
         // updates the letter displayed in the channel description
         private static void updateChannelLetter(char c) {

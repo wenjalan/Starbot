@@ -68,13 +68,13 @@ public class ChatEngine {
 
     // returns a response for Starbot given a trigger phrase
     // returns null if none was found
-    public static String getResponseForPhrase(String query) {
-        return DataEngine.getTriggerResponseFor(query);
+    public static String getResponseForPhrase(long guildId, String query) {
+        return DataEngine.getTriggerResponseFor(guildId, query);
     }
 
     // returns whether or not a query contains a trigger phrase
-    public static boolean containsTriggerPhrase(String query) {
-        return DataEngine.hasTriggerPhrase(query);
+    public static boolean containsTriggerPhrase(long guildId, String query) {
+        return DataEngine.hasTriggerPhrase(guildId, query);
     }
 
 }

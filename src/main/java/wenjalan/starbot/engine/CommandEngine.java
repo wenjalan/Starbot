@@ -93,79 +93,6 @@ public class CommandEngine {
             }
         },
 
-        // adds a new response to the bank of trigger phrases and responses
-        addresponse {
-            @Override
-            public void execute(PrivateMessageReceivedEvent event) {
-                // check that it's me
-                long id = event.getAuthor().getIdLong();
-
-                // if it was
-                if (id == DataEngine.Constants.OWNER_ID_LONG) {
-                    // get the phrase and the response
-                    String query = event.getMessage().getContentRaw();
-
-                    // find args in string
-                    List<String> args = findArgsInString(query);
-
-                    // find the phrase
-                    String phrase = args.get(0);
-
-                    // find the response
-                    String response = args.get(1);
-
-                    // add it to the list of recognized phrases
-                    DataEngine.addTriggerPhrase(phrase, response);
-                }
-            }
-        },
-
-        // removes a trigger phrase
-        removeresponse {
-            @Override
-            public void execute(PrivateMessageReceivedEvent event) {
-                // check that it's me
-                long id = event.getAuthor().getIdLong();
-
-                // if it was
-                if (id == DataEngine.Constants.OWNER_ID_LONG) {
-                    // get the trigger phrase to remove
-                    String phrase = findArgsInString(event.getMessage().getContentRaw()).get(0);
-
-                    // if it's not a valid trigger phrase, say so
-                    if (!ChatEngine.containsTriggerPhrase(phrase)) {
-                        event.getChannel().sendMessage("trigger phrase not found").queue();
-                        return;
-                    }
-
-                    // otherwise, remove it from the DataEngine
-                    DataEngine.removeTriggerPhrase(phrase);
-                }
-            }
-        },
-
-        // lists the trigger phrases and their responses
-        listresponses {
-            @Override
-            public void execute(PrivateMessageReceivedEvent event) {
-                // check that it's me
-                long id = event.getAuthor().getIdLong();
-
-                // if it was
-                if (id == DataEngine.Constants.OWNER_ID_LONG) {
-                    // get the data from DataEngine
-                    HashMap<String, String> map = DataEngine.getTriggerResponses();
-                    // compile them together into a String
-                    StringBuilder sb = new StringBuilder();
-                    for (String phrase : map.keySet()) {
-                        sb.append("\"" + phrase + "\" : \"" + map.get(phrase) + "\"\n");
-                    }
-                    // send that String to me
-                    event.getChannel().sendMessage(sb.toString()).queue();
-                }
-            }
-        },
-
         // lists the radios
         listradios {
             @Override
@@ -339,9 +266,9 @@ public class CommandEngine {
                 // only if the author was me
                 if (event.getAuthor().getIdLong() == DataEngine.Constants.OWNER_ID_LONG) {
                     // learn from the guild
-                    event.getChannel().sendMessage("learning your ways...").queue();
-                    MarkovEngine.learn(event.getGuild(), event.getChannel());
-                    event.getChannel().sendMessage("done.").queue();
+                    String[] args = parseArgs(event.getMessage());
+                    boolean verbose = Boolean.parseBoolean(args.length > 1 ? args[1].toLowerCase() : "false");
+                    MarkovEngine.learn(event.getGuild(), event.getChannel(), verbose);
                 }
                 else {
                     event.getChannel().sendMessage("you're not my sensei").queue();
@@ -381,6 +308,92 @@ public class CommandEngine {
                     ChatEngine.enableMarkov(event.getGuild());
                     event.getChannel().sendMessage("now in markov mode, everything I say is now your guys' fault").queue();
                 }
+            }
+        },
+
+
+
+        // adds a new response to the bank of trigger phrases and responses
+        addresponse {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // check if the author is an admin
+                if (!event.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+                    event.getChannel().sendMessage("you don't have perms").queue();
+                    return;
+                }
+
+                // get the phrase and the response
+                String query = event.getMessage().getContentRaw();
+
+                // find args in string
+                List<String> args = findArgsInString(query);
+
+                // find the phrase
+                String phrase = args.get(0);
+
+                // find the response
+                String response = args.get(1);
+
+                // add it to the list of recognized phrases
+                DataEngine.addTriggerPhrase(event.getGuild().getIdLong(), phrase, response);
+
+                // mention that we did it
+                event.getChannel().sendMessage("added the trigger phrase \"" + phrase + "\" and the response \"" + response + "\"").queue();
+            }
+        },
+
+        // removes a trigger phrase
+        removeresponse {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // check if the author is an admin
+                if (!event.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+                    event.getChannel().sendMessage("you don't have perms").queue();
+                    return;
+                }
+
+                // get the trigger phrase to remove
+                String phrase = findArgsInString(event.getMessage().getContentRaw()).get(0);
+
+                // if it's not a valid trigger phrase, say so
+                if (!ChatEngine.containsTriggerPhrase(event.getGuild().getIdLong(), phrase)) {
+                    event.getChannel().sendMessage("trigger phrase not found").queue();
+                    return;
+                }
+
+                // otherwise, remove it from the DataEngine
+                DataEngine.removeTriggerPhrase(event.getGuild().getIdLong(), phrase);
+
+                event.getChannel().sendMessage("removed response for \"" + phrase + "\"").queue();
+            }
+        },
+
+        // lists the trigger phrases and their responses
+        listresponses {
+            @Override
+            public void execute(GuildMessageReceivedEvent event) {
+                // check if the author is an admin
+                if (!event.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+                    event.getChannel().sendMessage("you don't have perms").queue();
+                    return;
+                }
+
+                // get the data from DataEngine
+                Map<String, String> map = DataEngine.getTriggerResponses(event.getGuild().getIdLong());
+                // if the map doesn't exist, say so
+                if (map == null) {
+                    event.getChannel().sendMessage("there's nothing yet").queue();
+                    return;
+                }
+                // compile them together into a String
+                StringBuilder sb = new StringBuilder();
+                for (String phrase : map.keySet()) {
+                    sb.append("\"" + phrase + "\" : \"" + map.get(phrase) + "\"\n");
+                }
+                // send that String
+                String str = sb.toString();
+                event.getChannel().sendMessage(str.isEmpty() ? "there's nothing yet" : str).queue();
             }
         },
 

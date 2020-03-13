@@ -1,58 +1,10 @@
 Manifest-Version: 1.0
 Main-Class: wenjalan.starbot.core.Starbot
-Implementation-Title: Google HTTP Client Library for Java
-Bundle-Description: Google HTTP Client Library for Java. Functionality
-  that works on all supported Java platforms,    including Java 5 (or 
- higher) desktop (SE) and web (EE), Android, and Google App Engine.
-Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
-Bundle-SymbolicName: com.google.http-client.google-http-client
-Implementation-Version: 1.25.0
-Archiver-Version: Plexus Archiver
-Built-By: Google
-Bnd-LastModified: 1534982556283
-Bundle-ManifestVersion: 2
-Implementation-Vendor-Id: com.google.http-client
-Bundle-DocURL: http://www.google.com/
-Bundle-Vendor: Google
-Import-Package: com.google.common.base;version="[20.0,21)",javax.net.s
- sl,org.apache.commons.codec.binary;version="[1.6,2)",org.apache.http,
- org.apache.http.client,org.apache.http.client.methods,org.apache.http
- .conn,org.apache.http.conn.params,org.apache.http.conn.routing,org.ap
- ache.http.conn.scheme,org.apache.http.conn.ssl,org.apache.http.entity
- ,org.apache.http.impl.client,org.apache.http.impl.conn,org.apache.htt
- p.impl.conn.tsccm,org.apache.http.message,org.apache.http.params,org.
- apache.http.protocol
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.6))"
-Tool: Bnd-2.4.1.201501161923
-Implementation-Vendor: Google
-Ant-Version: Apache Ant 1.8.1
-Export-Package: com.google.api.client.testing.json;uses:="com.google.a
- pi.client.json";version="1.25.0",com.google.api.client.testing.json.w
- ebtoken;uses:="com.google.api.client.json.webtoken,javax.net.ssl";ver
- sion="1.25.0",com.google.api.client.testing.http;uses:="com.google.ap
- i.client.http,com.google.api.client.util";version="1.25.0",com.google
- .api.client.testing.http.apache;uses:="org.apache.http,org.apache.htt
- p.client,org.apache.http.conn,org.apache.http.conn.routing,org.apache
- .http.impl.client,org.apache.http.params,org.apache.http.protocol";ve
- rsion="1.25.0",com.google.api.client.testing.http.javanet;version="1.
- 25.0",com.google.api.client.testing.util;uses:="com.google.api.client
- .util";version="1.25.0",com.google.api.client.json;uses:="com.google.
- api.client.util";version="1.25.0",com.google.api.client.json.rpc2;use
- s:="com.google.api.client.util";version="1.25.0",com.google.api.clien
- t.json.webtoken;uses:="com.google.api.client.json,com.google.api.clie
- nt.util,javax.net.ssl";version="1.25.0",com.google.api.client.http;us
- es:="com.google.api.client.util";version="1.25.0",com.google.api.clie
- nt.http.apache;uses:="com.google.api.client.http,org.apache.http,org.
- apache.http.client,org.apache.http.conn.ssl,org.apache.http.impl.clie
- nt,org.apache.http.params";version="1.25.0",com.google.api.client.htt
- p.javanet;uses:="com.google.api.client.http,javax.net.ssl";version="1
- .25.0",com.google.api.client.http.json;uses:="com.google.api.client.h
- ttp,com.google.api.client.json";version="1.25.0",com.google.api.clien
- t.util;uses:="javax.net.ssl";version="1.25.0",com.google.api.client.u
- til.escape;version="1.25.0",com.google.api.client.util.store;version=
- "1.25.0"
-Bundle-Name: Google HTTP Client Library for Java
-Bundle-Version: 1.25.0
-Created-By: Apache Maven Bundle Plugin
-Build-Jdk: 1.6.x
+Ant-Version: Apache Ant 1.8.2
+Implementation-Title: Trove
+Implementation-Version: 3.0.3
+Built-By: root
+Sealed: false
+Created-By: 1.6.0_31-b04-415-11M3646 (Apple Inc.)
+Implementation-URL: http://trove4j.sourceforge.net/
 

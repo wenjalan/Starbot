@@ -1,8 +1,10 @@
 package wenjalan.starbot.engine;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.*;
 
@@ -13,6 +15,32 @@ public class DataEngine {
     public static class Constants {
 
         public static final long OWNER_ID_LONG = 478706068223164416L; // wenton#8946
+
+    }
+
+    // the wrapper class of a Guild Specific Keyphrases object, for JSON conversion
+    public static class GuildKeyPhrases {
+
+        // the id of the guild
+        private long guildId;
+
+        // the map of phrases to responses
+        private Map<String, String> phrasesToResponses;
+
+        // constructor
+        public GuildKeyPhrases(long guildId, Map<String, String> phrasesToResponses) {
+            this.guildId = guildId;
+            this.phrasesToResponses = phrasesToResponses;
+        }
+
+        // accessors //
+        public long getGuildId() {
+            return guildId;
+        }
+
+        public Map<String, String> getPhrasesToResponses() {
+            return phrasesToResponses;
+        }
 
     }
 
@@ -35,7 +63,7 @@ public class DataEngine {
     protected static List<String> responses = null;
 
     // the trigger responses Starbot has when people say dumb things
-    protected static HashMap<String, String> triggerResponses = null;
+    protected static Map<Long, Map<String, String>> triggerResponses = null;
 
     // the radio URLs mapped to their names
     protected static Map<String, String> radioUrls = null;
@@ -112,36 +140,50 @@ public class DataEngine {
         reloadResponses(DEFAULT_RESPONSES_FILE);
     }
 
-    // returns a HashMap of the trigger phrase responses
-    public static HashMap<String, String> getTriggerResponses() {
+    // returns a HashMap of the trigger phrase responses for a guild
+    public static Map<String, String> getTriggerResponses(long guildId) {
         // if null, load first
         if (triggerResponses == null) {
             triggerResponses = loadTriggerResponses();
         }
 
         // return a copy
-        return new HashMap<>(triggerResponses);
+        Map<String, String> gkf = triggerResponses.get(guildId);
+        return gkf;
     }
 
     // loads the trigger phrase responses from the disk
-    protected static HashMap<String, String> loadTriggerResponses() {
+    // returns a map of guild ids associated with their respective keys phrases and responses
+    protected static Map<Long, Map<String, String>> loadTriggerResponses() {
         return loadTriggerResponses(DEFAULT_TRIGGER_RESPONSES_FILE);
     }
 
     // loads the trigger phrase responses from the disk
-    protected static HashMap<String, String> loadTriggerResponses(String file) {
+    // returns a map of guild ids associated with their respective keys phrases and responses
+    protected static Map<Long, Map<String, String>> loadTriggerResponses(String file) {
         Gson g = new Gson();
         try {
-            // unchecked assignment
-            // TODO: Figure out if this poses a security risk
-            HashMap<String, String> responses = g.fromJson(new FileReader(file), HashMap.class);
+            // fuck around with type stuff
+            Type listOfGKF = new TypeToken<ArrayList<GuildKeyPhrases>>() {}.getType();
+            List<GuildKeyPhrases> phrases = g.fromJson(new FileReader(file), listOfGKF);
 
             // if it's null (empty), complain and return an empty hashmap
-            if (responses == null) {
+            if (phrases == null) {
                 System.err.println("didn't find anything in the " + file + " file");
                 return new HashMap<>();
             } else {
-                return responses;
+                // announce what we've loaded
+                System.out.println("loaded " + phrases.size() + " guild key phrase pairs from disk");
+                // map to return
+                Map<Long, Map<String, String>> map = new HashMap<>();
+                // for every entry
+                for (GuildKeyPhrases gkf : phrases) {
+                    // add it to the overall map
+                    map.put(gkf.getGuildId(), gkf.getPhrasesToResponses());
+                    System.out.println("loaded phrases for guild id " + gkf.getGuildId());
+                }
+                // return the map
+                return map;
             }
         } catch (FileNotFoundException e) {
             System.err.println("encountered an error while loading trigger phrase responses");
@@ -151,7 +193,7 @@ public class DataEngine {
     }
 
     // returns whether or not a query contains a trigger phrase
-    public static boolean hasTriggerPhrase(String query) {
+    public static boolean hasTriggerPhrase(long guildId, String query) {
         // ignore casing
         query = query.toLowerCase();
 
@@ -160,8 +202,16 @@ public class DataEngine {
             triggerResponses = loadTriggerResponses(DEFAULT_TRIGGER_RESPONSES_FILE);
         }
 
+        // find the proper guild
+        Map<String, String> gkf = triggerResponses.get(guildId);
+
+        // if the gkf doesn't exist, return false
+        if (gkf == null) {
+            return false;
+        }
+
         // return whether or not the query contains a valid trigger phrase
-        for (String phrase : triggerResponses.keySet()) {
+        for (String phrase : gkf.keySet()) {
             if (query.contains(phrase)) {
                 return true;
             }
@@ -173,7 +223,7 @@ public class DataEngine {
 
     // returns the response for a given trigger phrase
     // returns null if none was found
-    public static String getTriggerResponseFor(String query) {
+    public static String getTriggerResponseFor(long guildId, String query) {
         // ignore casing
         query = query.toLowerCase();
 
@@ -182,10 +232,18 @@ public class DataEngine {
             triggerResponses = loadTriggerResponses(DEFAULT_TRIGGER_RESPONSES_FILE);
         }
 
+        // get the guild's map
+        Map<String, String> gkf = triggerResponses.get(guildId);
+
+        // if the gkf doesn't exist, return null
+        if (gkf == null) {
+            return null;
+        }
+
         // return the proper response
-        for (String phrase : triggerResponses.keySet()) {
+        for (String phrase : gkf.keySet()) {
             if (query.contains(phrase)) {
-                return triggerResponses.get(phrase);
+                return gkf.get(phrase);
             }
         }
 
@@ -197,7 +255,16 @@ public class DataEngine {
     public static void saveTriggerResponses(String file) {
         // get the JSON String
         Gson g = new Gson();
-        String json = g.toJson(triggerResponses);
+
+        // make a whole bunch of Guild Key Phrase objects
+        List<GuildKeyPhrases> guildKeyPhrases = new ArrayList<>();
+        for (long id : triggerResponses.keySet()) {
+            Map<String, String> responses = triggerResponses.get(id);
+            guildKeyPhrases.add(new GuildKeyPhrases(id, responses));
+        }
+
+        // create a json string
+        String json = g.toJson(guildKeyPhrases);
 
         // write it
         writeJson(json, file);
@@ -209,31 +276,70 @@ public class DataEngine {
     }
 
     // adds a response to the trigger phrase responses
-    public static void addTriggerPhrase(String triggerPhrase, String response) {
+    public static void addTriggerPhrase(long guildId, String triggerPhrase, String response) {
+        // ignore casing
+        triggerPhrase = triggerPhrase.toLowerCase();
+
         // load the triggerResponses if not already loaded
         if (triggerResponses == null) {
             triggerResponses = loadTriggerResponses();
         }
 
+        // find the guild's map
+        Map<String, String> gkf = triggerResponses.get(guildId);
+
+        // if no such map exists, create a new one
+        if (gkf == null) {
+            gkf = new HashMap<>();
+            triggerResponses.put(guildId, gkf);
+        }
+
         // add an entry to the responses
-        triggerResponses.put(triggerPhrase, response);
+        gkf.put(triggerPhrase, response);
 
         // save the file
         saveTriggerResponses();
     }
 
     // removes a response from the trigger phrase responses
-    public static void removeTriggerPhrase(String triggerPhrase) {
+    public static void removeTriggerPhrase(long guildId, String triggerPhrase) {
         // load the triggerResponses if not already loaded
         if (triggerResponses == null) {
             triggerResponses = loadTriggerResponses();
         }
 
-        // add an entry to the responses
-        triggerResponses.remove(triggerPhrase);
+        // get the guild's map
+        Map<String, String> gkf = triggerResponses.get(guildId);
+
+        // remove an entry to the responses
+        gkf.remove(triggerPhrase);
 
         // save the file
         saveTriggerResponses();
+    }
+
+    // saves a MarkovModel to the disk
+    public static void saveModel(long guildId, MarkovEngine.MarkovModel model) {
+        final String filename = "assets/markov/" + guildId + ".json";
+        Gson gson = new Gson();
+        final String json = gson.toJson(model);
+        writeJson(json, filename);
+        System.out.println("saved markov model for guild id " + guildId + " to " + filename);
+    }
+
+    // loads a MarkovModel from the disk
+    public static MarkovEngine.MarkovModel loadModel(long guildId) {
+        final String filename = "assets/markov/" + guildId + ".json";
+        Gson gson = new Gson();
+        try {
+            MarkovEngine.MarkovModel model = gson.fromJson(new FileReader(filename), MarkovEngine.MarkovModel.class);
+            if (model != null) System.out.println("loaded markov model for guild id " + guildId);
+            else System.err.println("loaded null markov model for guild id " + guildId);
+            return model;
+        } catch (IOException e) {
+            System.err.println("error loading markov model for guild id " + guildId + ": " + e.getMessage());
+            return null;
+        }
     }
 
     // returns the URL of a radio given its keyword
@@ -329,6 +435,18 @@ public class DataEngine {
 
     // writes JSON data to a file
     protected static void writeJson(String json, String filename) {
+        // get the file
+        File file = new File(filename);
+
+        // create the file
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            System.err.println("error creating file " + filename + ": " + e.getMessage());
+            e.printStackTrace();
+            return;
+        }
+
         // write it to the file
         try {
             // TODO: Reformat how it's printed to include line breaks to make direct editing easier
@@ -352,6 +470,7 @@ public class DataEngine {
         } catch (IOException e) {
             System.err.println("encountered an error while saving trigger phrase responses");
             e.printStackTrace();
+            return;
         }
     }
 

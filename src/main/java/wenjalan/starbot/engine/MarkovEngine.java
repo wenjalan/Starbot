@@ -1,8 +1,15 @@
 package wenjalan.starbot.engine;
 
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.User;
+
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 // handles the generation of responses based on Markov chains
 public class MarkovEngine {
@@ -211,42 +218,66 @@ public class MarkovEngine {
 
     // returns a random response generated from a MarkovModel
     public static String generate(Guild g) {
+        long guildId = g.getIdLong();
         // find the guild's model
-        MarkovModel model = models.get(g.getIdLong());
+        MarkovModel model = models.get(guildId);
 
-        // if we haven't learned anything, return that
+        // if we haven't learned anything, attempt to load from disk
         if (model == null) {
-            return "haven't learned anything yet, use !learn first";
+//            model = DataEngine.loadModel(guildId);
+//            models.put(guildId, model);
+            // if still null
+            if (model == null) {
+                return "haven't learned anything yet, use !learn first";
+            }
         }
-        // otherwise return a generated sentence
-        else {
-            return model.generateSentence();
-        }
+        // return a generated sentence
+        return model.generateSentence();
     }
 
     // loads all messages ever sent in a Guild into the MarkovEngine
-    public static void learn(Guild guild, TextChannel feedback) {
-        // a list containing every message ever sent in all channels of this guild
-        List<String> messages = new ArrayList<>();
+    public static void learn(Guild guild, TextChannel feedback, boolean verbose) {
+        // announce learning
+        final int totalChannels = guild.getTextChannels().size();
+        feedback.sendMessage("learning from guild " + guild.getName() + " with " + totalChannels + " channels...").queue();
+
+        // create a new model for this guild
+        final MarkovModel model = new MarkovModel();
+        models.put(guild.getIdLong(), model);
+
         // for all channels
-        feedback.sendMessage("learning from guild " + guild.getName() + " with " + guild.getTextChannels().size() + " channels").queue();
-        for (TextChannel channel : guild.getTextChannels()) {
-            feedback.sendMessage("learning from channel " + channel.getName()).queue();
+        final AtomicLong messageCount = new AtomicLong(0L);
+        final AtomicInteger channelsLearned = new AtomicInteger(0);
+        for (int i = 0; i < totalChannels; i++) {
+            // get a channel
+            TextChannel channel = guild.getTextChannels().get(i);
+
             // load all messages ever sent in that channel
-            List<String> channelMessages = loadMessageContent(channel, feedback);
-            // add the channel's messages to the overall messages
-            messages.addAll(channelMessages);
-            feedback.sendMessage("finished learning from channel " + channel.getName() + ", learned " + channelMessages.size() + " messages").queue();
-        }
-        feedback.sendMessage("learning complete, found " + messages.size() + " messages to learn from").queue();
-        // learn from all the messages gathered
-        // if the model doesn't exist, create it, otherwise add the messages
-        // add a new model if one doesn't exist for this guild
-        if (!models.containsKey(guild.getIdLong())) {
-            models.put(guild.getIdLong(), MarkovModel.from(messages));
-        }
-        else {
-            models.get(guild.getIdLong()).learn(messages);
+            Consumer<List<String>> callback = (response) -> {
+                // learn all the messages sent
+                model.learn(response);
+
+                // count the messages
+                messageCount.addAndGet(response.size());
+
+                // count the learned channels
+                channelsLearned.getAndIncrement();
+
+                // logging
+                if (verbose) {
+                    feedback.sendMessage("finished learning from channel " + channel.getName() + ", learned " + response.size() + " messages").queue();
+                }
+
+                // if this was the last channel, say so
+                if (channelsLearned.get() == totalChannels) {
+                    feedback.sendMessage("learning complete! found " + messageCount.get() + " total messages").queue();
+                    // save the model to disk
+                    // DataEngine.saveModel(guild.getIdLong(), model);
+                }
+            };
+
+            // load the content
+            loadMessageContent(channel, feedback, callback);
         }
     }
 
@@ -256,37 +287,42 @@ public class MarkovEngine {
     }
 
     // loads all the messages ever sent in a TextChannel
-    protected static List<String> loadMessageContent(TextChannel channel, TextChannel feedback) {
+    protected static void loadMessageContent(TextChannel channel, TextChannel feedback, Consumer<List<String>> callback) {
         // all the messages sent in this channel
         List<String> messages = new ArrayList<>();
         try {
             // retrieve all the messages
-            channel.getIterableHistory().cache(false).forEach((message) -> {
-                // filter: bot sent the message
-                if (message.getAuthor().isBot()) {
-                    return;
+            channel.getIterableHistory().cache(false).forEachAsync((message) -> {
+                // pre-content checks:
+                // 1. Author is Bot
+                // 2. Message pings a bot
+                if (message.getAuthor().isBot()) return true;
+                List<User> mentionedUsers = message.getMentionedUsers();
+                for (User u : mentionedUsers) {
+                    if (u.isBot()) return true;
                 }
 
-                // get the content
-                String content = message.getContentRaw();
+                // content checks:
+                // 1. Empty message
+                // 2. Message was command
+                // 3. Mention is only a ping (@User)
+                String contentDisplay = message.getContentDisplay();
+                if (contentDisplay.isEmpty()) return true;
+                if (contentDisplay.startsWith(CommandEngine.getGlobalCommandPrefix())) return true;
+                if (contentDisplay.startsWith("@") && !contentDisplay.contains(" ")) return true;
 
-                // filter: check if empty
-                if (content.isEmpty()) {
-                    return;
-                }
-                // filter: message was command
-                if (content.startsWith("!")) {
-                    return;
-                }
+                // add the message after all the filters
+                messages.add(contentDisplay);
 
-                // add the content
-                messages.add(content);
+                // continue iterating
+                return true;
+            }).thenRun(() -> {
+                callback.accept(messages);
             });
         } catch (Exception e) {
+            callback.accept(Collections.emptyList());
             feedback.sendMessage("error: couldn't retrieve messages of channel " + channel.getName() + ": " + e.getMessage()).queue();
         }
-        // return the messages
-        return messages;
     }
 
 }

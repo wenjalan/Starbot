@@ -45,9 +45,9 @@ public class MessageListener extends ListenerAdapter {
             event.getChannel().sendMessage(ChatEngine.getRandomResponse(event.getGuild())).queue();
         }
         // if the message has a trigger phrase in it, send the corresponding response
-        else if (ChatEngine.containsTriggerPhrase(event.getMessage().getContentRaw())) {
+        else if (ChatEngine.containsTriggerPhrase(event.getGuild().getIdLong(), event.getMessage().getContentRaw())) {
             // send the proper response
-            event.getChannel().sendMessage(ChatEngine.getResponseForPhrase(event.getMessage().getContentRaw())).queue();
+            event.getChannel().sendMessage(ChatEngine.getResponseForPhrase(event.getGuild().getIdLong(), event.getMessage().getContentRaw())).queue();
         }
     }
 
