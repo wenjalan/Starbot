@@ -3,6 +3,7 @@ package wenjalan.starbot.guilds;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import wenjalan.starbot.engine.AudioEngine;
@@ -12,10 +13,7 @@ import wenjalan.starbot.engine.DataEngine;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 // actions specific to The Dingus Crew
@@ -32,7 +30,12 @@ public class DingusCrew {
 
         public static final long DINGUS_CREW_GUILD_ID_LONG = 175372417194000384L; // Dingus Crew Guild ID
 
-        public static Map<Long, Long> memberToId = new HashMap<>(); // the map of member ids to their roles, stores those of kicked members
+        public static final List<Long> DUMBASS_ROLES = Arrays.asList(
+                687534404490362904L, // K-Pop Star
+                289563937299628032L, // Gullible Retard
+                292906691425730560L, // Server Asshole
+                337012870376062976L // The Batmans
+        );
 
     }
 
@@ -213,16 +216,17 @@ public class DingusCrew {
             }
         },
 
-        // fuck: kicks me, jose, justin and jared
-        fuck {
-            @Override
-            public void execute(GuildMessageReceivedEvent e) {
-                nword.execute(e);
-                loli.execute(e);
-                wife.execute(e);
-                jared.execute(e);
-            }
-        },
+        // disabled as of 3/17/2020
+//        // fuck: kicks me, jose, justin and jared
+//        fuck {
+//            @Override
+//            public void execute(GuildMessageReceivedEvent e) {
+//                nword.execute(e);
+//                loli.execute(e);
+//                wife.execute(e);
+//                jared.execute(e);
+//            }
+//        },
 
         // no: kicks the last person that played something
         no {
@@ -262,14 +266,6 @@ public class DingusCrew {
 
         // kicks and reinvites a user
         protected static void kickAndReinvite(Guild g, Member m, String reason) {
-            // get their ID and their role to store in the map
-            long id = m.getIdLong();
-            long roleId = m.getRoles().get(0).getIdLong();
-            // put it in the map
-            Constants.memberToId.put(id, roleId);
-
-            // note: bot should reinvite then kick to make sure we still have a mutual server
-
             // reinvite them
             String invite = g.getDefaultChannel().createInvite().setMaxAge(1L, TimeUnit.HOURS).complete().getUrl();
             m.getUser().openPrivateChannel().complete().sendMessage(invite).complete();
@@ -282,6 +278,9 @@ public class DingusCrew {
 
     // Listener
     public static class DingusCrewListener extends ListenerAdapter {
+
+        // a map of user IDs to their roles
+        private Map<Long, Long> roles = new TreeMap<>();
 
         // public message listening method
         @Override
@@ -312,7 +311,7 @@ public class DingusCrew {
             }
         }
 
-        // guild event
+        // guild member join event
         @Override
         public void onGuildMemberJoin(GuildMemberJoinEvent e) {
             // if the guild wasn't Dingus Crew, return
@@ -320,15 +319,79 @@ public class DingusCrew {
                 return;
             }
 
+            // debug logging
+            // System.out.println("user " + e.getUser().getName() + " joined");
+
             // if the user has an entry in the roles map, give them their role
             long memberId = e.getMember().getIdLong();
-            if (Constants.memberToId.containsKey(memberId)) {
+            Role memberRole;
+            if (this.roles.containsKey(memberId)) {
                 // assign role
-                Role r = e.getGuild().getRoleById(Constants.memberToId.get(memberId));
-                e.getGuild().addRoleToMember(e.getMember(), r).queue();
+                memberRole = e.getGuild().getRoleById(this.roles.get(memberId));
+                e.getGuild().addRoleToMember(e.getMember(), memberRole).queue();
+
+                // debug logging
+                // System.out.println("gave them the " + memberRole.getName() + " role");
+
+                // if the user was one of the dumbasses
+                if (Constants.DUMBASS_ROLES.contains(memberRole.getIdLong())) {
+                    // find the position of the highest dumbass role
+                    List<Role> roleOrder = e.getGuild().modifyRolePositions().getCurrentOrder();
+
+                    // debug logging
+                    // System.out.println("found role order up to " + roleOrder.size());
+
+                    Role highestRole = roleOrder.get(0);
+                    for (Role role : roleOrder) {
+                        if (Constants.DUMBASS_ROLES.contains(role.getIdLong())) {
+                            if (role.getPosition() > highestRole.getPosition()) {
+                                highestRole = role;
+                            }
+                        }
+                    }
+
+                    // debug logging
+                    // System.out.println("got highest role position of a dumbass as " + highestRole.getPosition());
+
+                    // set the member's dumbass role as the highest one
+                    // int amount = highestRole.getPosition() - memberRole.getPosition();
+                    int position = highestRole.getPosition();
+                    e.getGuild().modifyRolePositions().selectPosition(memberRole).moveTo(position).queue();
+
+                    // debug logging
+                    // System.out.println("moved role");
+                }
             }
         }
 
+        // guild member kick event
+        @Override
+        public void onGuildMemberLeave(GuildMemberLeaveEvent e) {
+            // if the guild wasn't dingus crew, return
+            if (e.getGuild().getIdLong() != Constants.DINGUS_CREW_GUILD_ID_LONG) return;
+
+            // debug logging
+            System.out.println("user " + e.getUser().getName() + " left");
+
+            // save their role
+            long memberId = e.getMember().getIdLong();
+            List<Role> roles = e.getMember().getRoles();
+
+            // if no roles, return
+            if (roles.isEmpty()) return;
+
+            // debug logging
+            System.out.println("saved their role as " + roles.get(0).getName());
+
+            // get their role id
+            long roleId = roles.get(0).getIdLong();
+
+            // save in map
+            this.roles.put(memberId, roleId);
+        }
+
     }
+
+
 
 }

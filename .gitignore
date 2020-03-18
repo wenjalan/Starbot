@@ -3,3 +3,4 @@ src/main/resources/starbot.properties
 *.properties
 assets/markov/683817154117763097.json
 assets/markov/419598386933530636.json
+.gradle/*
