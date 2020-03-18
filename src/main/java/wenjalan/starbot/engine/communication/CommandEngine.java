@@ -525,7 +525,7 @@ public class CommandEngine {
     }
 
     // parses the arguments of a command into Strings, includes the command itself as an arg
-    protected static String[] parseArgs(Message m) {
+    public static String[] parseArgs(Message m) {
         return m.getContentRaw().split("\\s+");
     }
 

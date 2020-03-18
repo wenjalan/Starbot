@@ -22,7 +22,7 @@ public class Starbot {
         // test();
 
         // announce that we're starting
-        System.out.println("Starting Starbot 4...");
+        System.out.println("Starting Starbot...");
 
         // find the discord bot token from args or ask for one
         String token = null;

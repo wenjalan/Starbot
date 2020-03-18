@@ -7,20 +7,175 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="451780cd-3ed1-495f-ae78-3f8f6e116387" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/core/Starbot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/core/Starbot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AdminEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$AudioCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$Scheduler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player$SendHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine$Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/AudioEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/ChatEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$DMCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine$GuildCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/CommandEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/DataEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/DataEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/MarkovEngine$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/MarkovEngine$MarkovModel$MarkovNode$EndNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/MarkovEngine$MarkovModel$MarkovNode$StartNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/MarkovEngine$MarkovModel$MarkovNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/MarkovEngine$MarkovModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/MarkovEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/SpotifyEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/UrbanDictionaryEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/YouTubeEngine$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/engine/YouTubeEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/guilds/DingusCrew.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/listener/MessageListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/listener/MessageListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/test/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/wenjalan/starbot/test/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Starbot_jar/Starbot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Starbot_jar/Starbot.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/core/Starbot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AdminEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$AudioCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$Scheduler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player$SendHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine$Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/AudioEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/ChatEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$DMCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine$GuildCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/CommandEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/DataEngine$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/DataEngine$Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/DataEngine$GuildKeyPhrases.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/DataEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/MarkovEngine$MarkovModel$MarkovNode$EndNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/MarkovEngine$MarkovModel$MarkovNode$StartNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/MarkovEngine$MarkovModel$MarkovNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/MarkovEngine$MarkovModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/MarkovEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/PollEngine$Poll.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/PollEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/SpotifyEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/UrbanDictionaryEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/YouTubeEngine$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/engine/YouTubeEngine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew$DingusCrewListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/DingusCrew.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/WholesomeDegenerates$WDListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/guilds/WholesomeDegenerates.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/listener/GuildListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/listener/JDAListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/listener/MessageListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/wenjalan/starbot/test/Test.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/core/Starbot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/core/Starbot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AdminEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/AudioEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/media/AudioEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/ChatEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/communication/ChatEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/CommandEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/communication/CommandEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/DataEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/MarkovEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/communication/MarkovEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/SpotifyEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/media/SpotifyEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/UrbanDictionaryEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/media/UrbanDictionaryEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/YouTubeEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/media/YouTubeEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/guilds/DingusCrew.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/listener/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/listener/MessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/test/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/communication/CommandEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wenjalan/starbot/engine/communication/CommandEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,16 +238,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>privatemess</find>
-      <find>com.sedmelluq.discord.lavaplayer.track.AudioTrack</find>
-      <find>Voice</find>
-      <find>sendInfo(</find>
-      <find>voiceleave</find>
-      <find>ytsearch</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -264,6 +409,7 @@
       <workItem from="1584070922765" duration="7519000" />
       <workItem from="1584489167762" duration="1996000" />
       <workItem from="1584505670418" duration="1991000" />
+      <workItem from="1584516442471" duration="339000" />
     </task>
     <servers />
   </component>
@@ -288,38 +434,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="472" y="99" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1584077534874" />
-    <state width="1152" height="620" key="GridCell.Tab.0.bottom" timestamp="1584507426785">
+    <state width="1481" height="284" key="GridCell.Tab.0.bottom" timestamp="1584516356978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1152" height="620" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584507426785" />
-    <state width="1152" height="620" key="GridCell.Tab.0.center" timestamp="1584507426784">
+    <state width="1481" height="284" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584516356978" />
+    <state width="1481" height="284" key="GridCell.Tab.0.center" timestamp="1584516356978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1152" height="620" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584507426784" />
-    <state width="1152" height="620" key="GridCell.Tab.0.left" timestamp="1584507426783">
+    <state width="1481" height="284" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584516356978" />
+    <state width="1481" height="284" key="GridCell.Tab.0.left" timestamp="1584516356978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1152" height="620" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584507426783" />
-    <state width="1152" height="620" key="GridCell.Tab.0.right" timestamp="1584507426784">
+    <state width="1481" height="284" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584516356978" />
+    <state width="1481" height="284" key="GridCell.Tab.0.right" timestamp="1584516356978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1152" height="620" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584507426784" />
-    <state width="1481" height="245" key="GridCell.Tab.1.bottom" timestamp="1584078950134">
+    <state width="1481" height="284" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584516356978" />
+    <state width="1481" height="284" key="GridCell.Tab.1.bottom" timestamp="1584516356978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="245" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584078950134" />
-    <state width="1481" height="245" key="GridCell.Tab.1.center" timestamp="1584078950134">
+    <state width="1481" height="284" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584516356978" />
+    <state width="1481" height="284" key="GridCell.Tab.1.center" timestamp="1584516356978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="245" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584078950134" />
-    <state width="1481" height="245" key="GridCell.Tab.1.left" timestamp="1584078950133">
+    <state width="1481" height="284" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584516356978" />
+    <state width="1481" height="284" key="GridCell.Tab.1.left" timestamp="1584516356978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="245" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584078950133" />
-    <state width="1481" height="245" key="GridCell.Tab.1.right" timestamp="1584078950134">
+    <state width="1481" height="284" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584516356978" />
+    <state width="1481" height="284" key="GridCell.Tab.1.right" timestamp="1584516356978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="245" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584078950134" />
+    <state width="1481" height="284" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584516356978" />
+    <state x="246" y="93" key="IDE.errors.dialog" timestamp="1584516290567">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="246" y="93" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1584516290567" />
     <state x="160" y="0" key="SettingsEditor" timestamp="1584077538004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
