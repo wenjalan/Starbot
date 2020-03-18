@@ -1,4 +1,4 @@
-package wenjalan.starbot.engine;
+package wenjalan.starbot.engine.communication;
 
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
@@ -6,6 +6,10 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
+import wenjalan.starbot.engine.DataEngine;
+import wenjalan.starbot.engine.PollEngine;
+import wenjalan.starbot.engine.media.AudioEngine;
+import wenjalan.starbot.engine.media.UrbanDictionaryEngine;
 import wenjalan.starbot.guilds.WholesomeDegenerates;
 
 import java.util.*;

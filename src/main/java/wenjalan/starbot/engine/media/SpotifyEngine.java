@@ -1,4 +1,4 @@
-package wenjalan.starbot.engine;
+package wenjalan.starbot.engine.media;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -9,6 +9,7 @@ import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 import wenjalan.starbot.core.Starbot;
+import wenjalan.starbot.engine.DataEngine;
 
 import java.io.IOException;
 import java.util.ArrayList;

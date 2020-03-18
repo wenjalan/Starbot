@@ -1,7 +1,6 @@
-package wenjalan.starbot.engine;
+package wenjalan.starbot.engine.communication;
 
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
 
@@ -9,7 +8,6 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 // handles the generation of responses based on Markov chains
 public class MarkovEngine {

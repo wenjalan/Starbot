@@ -2,7 +2,7 @@ package wenjalan.starbot.core;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import wenjalan.starbot.engine.CommandEngine;
+import wenjalan.starbot.engine.communication.CommandEngine;
 import wenjalan.starbot.guilds.DingusCrew;
 import wenjalan.starbot.guilds.WholesomeDegenerates;
 import wenjalan.starbot.listener.GuildListener;

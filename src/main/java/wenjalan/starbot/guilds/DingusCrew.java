@@ -6,11 +6,10 @@ import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import wenjalan.starbot.engine.AudioEngine;
-import wenjalan.starbot.engine.CommandEngine;
+import wenjalan.starbot.engine.media.AudioEngine;
+import wenjalan.starbot.engine.communication.CommandEngine;
 import wenjalan.starbot.engine.DataEngine;
 
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;

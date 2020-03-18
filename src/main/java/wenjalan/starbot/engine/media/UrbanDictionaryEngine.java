@@ -1,4 +1,4 @@
-package wenjalan.starbot.engine;
+package wenjalan.starbot.engine.media;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package wenjalan.starbot.engine;
+package wenjalan.starbot.engine.media;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
@@ -18,6 +18,8 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
+import wenjalan.starbot.engine.communication.CommandEngine;
+import wenjalan.starbot.engine.DataEngine;
 
 import java.nio.ByteBuffer;
 import java.util.*;

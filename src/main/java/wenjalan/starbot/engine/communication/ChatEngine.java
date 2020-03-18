@@ -1,6 +1,7 @@
-package wenjalan.starbot.engine;
+package wenjalan.starbot.engine.communication;
 
 import net.dv8tion.jda.api.entities.Guild;
+import wenjalan.starbot.engine.DataEngine;
 
 import java.util.*;
 
