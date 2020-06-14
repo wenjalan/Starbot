@@ -43,5 +43,11 @@ All of them
 Why would you ever do this?  
 https://discordapp.com/oauth2/authorize?scope=bot&client_id=470822754262712329  
 
+# Supporters  
+To support Starbot and other projects I work on, check out my kofi: https://ko-fi.com/wenton  
+<ul>
+<li>Jimothy Bowser</li>
+</ul>
+
 # Disclaimer
 Starbot was made for humor and satirical purposes. The views expressed by this bot do not reflect the views of its creator, and are meant to be pure satirical in nature.
