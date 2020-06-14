@@ -44,7 +44,7 @@ Why would you ever do this?
 https://discordapp.com/oauth2/authorize?scope=bot&client_id=470822754262712329  
 
 # Supporters  
-To support Starbot and other projects I work on, check out my kofi: https://ko-fi.com/wenton  
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D21TFVF)  
 <ul>
 <li>Jimothy Bowser</li>
 </ul>
