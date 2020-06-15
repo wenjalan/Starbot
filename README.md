@@ -46,7 +46,8 @@ https://discordapp.com/oauth2/authorize?scope=bot&client_id=470822754262712329
 # Supporters  
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D21TFVF)  
 <ul>
-<li>Jimothy Bowser</li>
+  <li>Jimothy Bowser</li>  
+  <li>Cass</li>
 </ul>
 
 # Disclaimer
