@@ -1,5 +1,7 @@
 keys/*
 .gradle/*
+build/*
 *.properties
 *.corpus
 *.jar
+*.log
