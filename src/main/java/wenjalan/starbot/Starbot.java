@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import wenjalan.starbot.listener.LifeCycleEventListener;
+import wenjalan.starbot.listener.MessageListener;
 
 import javax.security.auth.login.LoginException;
 import java.util.Scanner;
@@ -47,6 +48,7 @@ public class Starbot {
 
         // append all listeners
         builder.addEventListeners(new LifeCycleEventListener());
+        builder.addEventListeners(new MessageListener());
 
         // initialize the bot
         try {

@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
 public class LifeCycleEventListener extends ListenerAdapter {
 
     // Logger
-    Logger logger = LogManager.getLogger();
+    private Logger logger = LogManager.getLogger();
 
     @Override
     public void onReady(@Nonnull ReadyEvent event) {
@@ -27,21 +27,25 @@ public class LifeCycleEventListener extends ListenerAdapter {
 
     @Override
     public void onResume(@Nonnull ResumedEvent event) {
-        super.onResume(event);
+        // report that Starbot resumed
+        logger.info("Starbot resumed!");
     }
 
     @Override
     public void onReconnect(@Nonnull ReconnectedEvent event) {
-        super.onReconnect(event);
+        // report that Starbot reconnected
+        logger.info("Starbot reconnected!");
     }
 
     @Override
     public void onDisconnect(@Nonnull DisconnectEvent event) {
-        super.onDisconnect(event);
+        // report
+        logger.info("Starbot disconnected!");
     }
 
     @Override
     public void onShutdown(@Nonnull ShutdownEvent event) {
-        super.onShutdown(event);
+        // report
+        logger.info("Starbot shutdown!");
     }
 }
