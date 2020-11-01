@@ -4,7 +4,7 @@ import net.dv8tion.jda.api.entities.Message;
 import wenjalan.starbot.engine.CommandEngine;
 
 // reports the version information about Starbot
-public class Version implements Command {
+public class VersionCommand implements Command {
 
     @Override
     public String getName() {

@@ -3,7 +3,7 @@ package wenjalan.starbot.engine.command;
 import net.dv8tion.jda.api.entities.Message;
 
 // responds with a link to invite Starbot to a server
-public class Invite implements Command {
+public class InviteCommand implements Command {
 
     @Override
     public String getName() {
