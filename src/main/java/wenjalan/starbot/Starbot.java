@@ -12,6 +12,9 @@ import java.util.Scanner;
 // main program entry point
 public class Starbot {
 
+    // whether the program should be forced to ask for the token
+    private final static boolean FORCE_ASK_TOKEN = true;
+
     // the instance of Starbot
     private static Starbot instance;
 
@@ -19,11 +22,10 @@ public class Starbot {
     public static final Logger logger = LogManager.getLogger();
 
     // program entry point
-    // args[0]: the token for the bot account to run on
     public static void main(String[] args) {
         // grab token
         String token = null;
-        if (args.length == 0) {
+        if (args.length == 0 || FORCE_ASK_TOKEN) {
             logger.info("Enter bot token:");
             token = new Scanner(System.in).nextLine();
         }

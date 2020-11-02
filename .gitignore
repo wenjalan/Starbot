@@ -4,4 +4,5 @@ build/*
 *.properties
 *.corpus
 *.jar
+.idea/*
 *.log
