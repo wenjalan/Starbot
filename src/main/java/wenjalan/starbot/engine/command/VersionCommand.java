@@ -32,6 +32,11 @@ public class VersionCommand implements Command {
     }
 
     @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
+
+    @Override
     public void run(Message msg) {
         // respond with some version information
         msg.getChannel().sendMessage(

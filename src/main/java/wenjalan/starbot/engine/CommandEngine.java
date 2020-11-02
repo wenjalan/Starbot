@@ -1,9 +1,7 @@
 package wenjalan.starbot.engine;
 
 import net.dv8tion.jda.api.entities.Message;
-import wenjalan.starbot.engine.command.Command;
-import wenjalan.starbot.engine.command.InviteCommand;
-import wenjalan.starbot.engine.command.VersionCommand;
+import wenjalan.starbot.engine.command.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +33,8 @@ public class CommandEngine {
         ArrayList<Command> commands = new ArrayList<>();
         commands.add(new VersionCommand());
         commands.add(new InviteCommand());
+        commands.add(new ReloadCommand());
+        commands.add(new SaveCommand());
         return commands;
     }
 

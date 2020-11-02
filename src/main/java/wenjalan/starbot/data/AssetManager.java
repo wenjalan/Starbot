@@ -6,10 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +35,7 @@ public class AssetManager {
 
     // loads all hot loaded assets from disk
     public void loadAssets() {
+        // load all assets from disk
         try {
             responses = loadResponses();
         } catch (IOException e) {
@@ -48,7 +46,13 @@ public class AssetManager {
 
     // saves all hot loaded assets to disk
     public void saveAssets() {
-
+        // save all assets to disk
+        try {
+            saveResponses(responses);
+        } catch (IOException e) {
+            logger.error("Encountered an error saving assets: " + e.getMessage());
+        }
+        logger.info("Saved assets to disk");
     }
 
     // loads the responses from disk
@@ -59,6 +63,21 @@ public class AssetManager {
         TypeToken<List<String>> type = new TypeToken<List<String>>() {};
         List<String> responses = gson.fromJson(fr, type.getType());
         return responses;
+    }
+
+    // saves the responses to the disk, overwrites old responses.json
+    private void saveResponses(List<String> responses) throws IOException {
+        // convert to json and write to disk
+        Gson gson = new Gson();
+        String json = gson.toJson(responses);
+        writeJsonToFile(new File(DEFAULT_ASSETS_DIRECTORY + "responses.json"), json);
+    }
+
+    // writes json to a specified file
+    private void writeJsonToFile(File file, String json) throws IOException {
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(json);
+        fileWriter.flush();
     }
 
     // accessors //

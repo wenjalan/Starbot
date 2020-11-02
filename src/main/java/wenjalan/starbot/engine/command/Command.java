@@ -20,6 +20,9 @@ public interface Command {
     // returns whether this Command can be run in a dm
     boolean isDmCommand();
 
+    // returns whether this Command can only be used by me
+    boolean isAdminCommand();
+
     // runs this command
     void run(Message msg);
 

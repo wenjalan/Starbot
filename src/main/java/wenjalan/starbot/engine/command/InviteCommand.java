@@ -31,6 +31,11 @@ public class InviteCommand implements Command {
     }
 
     @Override
+    public boolean isAdminCommand() {
+        return false;
+    }
+
+    @Override
     public void run(Message msg) {
         // get and send the url
         String url = msg.getJDA().getInviteUrl();
