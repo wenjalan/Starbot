@@ -122,6 +122,8 @@ public class CommandEngine {
         commands.add(new InviteCommand());
         commands.add(new ReloadCommand());
         commands.add(new SaveCommand());
+        commands.add(new PlayCommand());
+        commands.add(new StopCommand());
         return commands;
     }
 

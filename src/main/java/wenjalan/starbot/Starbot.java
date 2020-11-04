@@ -1,5 +1,6 @@
 package wenjalan.starbot;
 
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +15,9 @@ public class Starbot {
 
     // whether the program should be forced to ask for the token
     private final static boolean FORCE_ASK_TOKEN = true;
+
+    // the held instance of JDA, use only if there's no other way to access JDA
+    private static JDA jda;
 
     // the instance of Starbot
     private static Starbot instance;
@@ -54,7 +58,7 @@ public class Starbot {
 
         // initialize the bot
         try {
-            builder.build().awaitReady();
+            jda = builder.build().awaitReady();
         } catch (InterruptedException | LoginException e) {
             logger.error("Encountered an error during JDA initialization: " + e.getMessage());
         }
@@ -63,6 +67,11 @@ public class Starbot {
     // instance accessor
     public static Starbot getInstance() {
         return instance;
+    }
+
+    // jda accessor
+    public static JDA getJda() {
+        return jda;
     }
 
 }

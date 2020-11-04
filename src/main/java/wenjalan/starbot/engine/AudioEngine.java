@@ -37,15 +37,22 @@ public class AudioEngine {
         VoiceChannel voiceChannel = member.getVoiceState().getChannel();
 
         // check that the user is in a voice channel
-        if (!m.isConnected() || !member.getVoiceState().inVoiceChannel()) {
+        if (voiceChannel == null) {
             textChannel.sendMessage("You aren't in a voice channel.").queue();
             return;
         }
 
         // if Starbot isn't connected yet, connect first
         if (!m.isConnected()) {
-            m.setSendingHandler(new MusicHandler(msg));
+            MusicHandler handler = new MusicHandler(msg);
+            m.setSendingHandler(handler);
             m.openAudioConnection(voiceChannel);
+
+            // create the controller channel
+            handler.createController(g);
+
+            // if there was a query to play, play
+            handler.playTrack(msg);
         }
         // if he is, play the track needed
         else {
@@ -61,6 +68,10 @@ public class AudioEngine {
         // get guild items
         Guild g = msg.getGuild();
         AudioManager m = g.getAudioManager();
+
+        // delete the controller
+        MusicHandler handler = (MusicHandler) m.getSendingHandler();
+        handler.destoryController(g);
 
         // force disconnect
         m.closeAudioConnection();
