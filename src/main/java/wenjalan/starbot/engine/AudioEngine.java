@@ -1,6 +1,5 @@
 package wenjalan.starbot.engine;
 
-import net.dv8tion.jda.api.audio.AudioSendHandler;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.managers.AudioManager;
 import wenjalan.starbot.engine.audio.MusicHandler;
@@ -44,7 +43,7 @@ public class AudioEngine {
 
         // if Starbot isn't connected yet, connect first
         if (!m.isConnected()) {
-            MusicHandler handler = new MusicHandler(msg);
+            MusicHandler handler = new MusicHandler();
             m.setSendingHandler(handler);
             m.openAudioConnection(voiceChannel);
 
@@ -71,7 +70,7 @@ public class AudioEngine {
 
         // delete the controller
         MusicHandler handler = (MusicHandler) m.getSendingHandler();
-        handler.destoryController(g);
+        handler.destroyController(g);
 
         // force disconnect
         m.closeAudioConnection();

@@ -2,12 +2,14 @@ package wenjalan.starbot.listener;
 
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import wenjalan.starbot.engine.ChatEngine;
 import wenjalan.starbot.engine.CommandEngine;
+import wenjalan.starbot.utils.ReactionControllerManager;
 
 import javax.annotation.Nonnull;
 
@@ -71,4 +73,18 @@ public class MessageListener extends ListenerAdapter {
         }
     }
 
+    // guild message react add
+    @Override
+    public void onGuildMessageReactionAdd(@Nonnull GuildMessageReactionAddEvent event) {
+        // if it was from a bot ignore it
+        if (event.getUser().isBot()) {
+            return;
+        }
+        long msgId = event.getMessageIdLong();
+        if (ReactionControllerManager.isController(msgId)) {
+            String reaction = event.getReaction().getReactionEmote().getEmoji();
+            ReactionControllerManager.handleReaction(msgId, reaction);
+            event.getReaction().removeReaction(event.getUser()).queue();
+        }
+    }
 }

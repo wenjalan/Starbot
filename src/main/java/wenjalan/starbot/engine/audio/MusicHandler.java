@@ -19,11 +19,14 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import wenjalan.starbot.Starbot;
+import wenjalan.starbot.utils.ReactionControllerManager;
 
 import javax.annotation.Nullable;
 import java.awt.*;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 // handles the sending of music
@@ -52,7 +55,7 @@ public class MusicHandler implements AudioSendHandler {
 
     // constructor
     // msg: the Message object that invoked the creation of this MusicHandler
-    public MusicHandler(Message msg) {
+    public MusicHandler() {
         // create AudioManager
         playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
@@ -75,8 +78,7 @@ public class MusicHandler implements AudioSendHandler {
 
             @Override
             public void onTrackStart(AudioPlayer player, AudioTrack track) {
-                super.onTrackStart(player, track);
-                updateController(track);
+                updateController();
             }
 
             @Override
@@ -85,6 +87,7 @@ public class MusicHandler implements AudioSendHandler {
                 if (endReason.mayStartNext && !queue.isEmpty()) {
                     player.playTrack(queue.poll());
                 }
+                updateController();
             }
 
             @Override
@@ -92,12 +95,6 @@ public class MusicHandler implements AudioSendHandler {
                 super.onTrackException(player, track, exception);
             }
         });
-
-        // if there was a request to play something, play something
-        String[] args = msg.getContentRaw().split("\\s+");
-        if (args.length > 1) {
-            playTrack(msg);
-        }
 
         // create Queue
         queue = new LinkedList<>();
@@ -124,19 +121,19 @@ public class MusicHandler implements AudioSendHandler {
         }
 
         // load the track
-        // todo: find out why wake-up-and-play commands both play and execute the playlistLoaded twice
         String finalQuery = query;
         playerManager.loadItem(query, new AudioLoadResultHandler() {
             @Override
             public void trackLoaded(AudioTrack track) {
-                // if the player is playing something, add it to the queue
-                if (audioPlayer.getPlayingTrack() != null) {
-                    queue.add(track);
-                }
-                // otherwise, play the track immediately
-                else {
+                // if the player is not playing something, start playing this track
+                if (audioPlayer.getPlayingTrack() == null) {
                     audioPlayer.playTrack(track);
                 }
+                // otherwise, queue the track for later playback
+                else {
+                    queue.add(track);
+                }
+                updateController();
             }
 
             @Override
@@ -165,6 +162,9 @@ public class MusicHandler implements AudioSendHandler {
                 channel.sendMessage(exception.getMessage()).queue();
             }
         });
+
+        // delete the message
+        msg.delete().queue();
     }
 
     // creates a controller channel for a guild
@@ -177,34 +177,91 @@ public class MusicHandler implements AudioSendHandler {
             embed.setTitle("N/A");
             embed.setDescription("N/A");
             channel.sendMessage(embed.build()).queue(msg -> {
+                // add the reaction controller
                 controllerMessageId = msg.getIdLong();
-                // todo: add reaction buttons here
+                final String PAUSE_PLAY = "\u23EF";
+                final String SKIP_BUTTON = "\u23ED";
+                List<String> buttons = new ArrayList<>();
+                buttons.add(PAUSE_PLAY);
+                buttons.add(SKIP_BUTTON);
+
+                // add to controller manager
+                ReactionControllerManager.addController(msg, buttons, emojiRegex -> {
+                    if (emojiRegex.equalsIgnoreCase(PAUSE_PLAY)) {
+                        togglePlayback();
+                    }
+                    else if (emojiRegex.equalsIgnoreCase(SKIP_BUTTON)) {
+                        skipTrack();
+                    }
+                });
             });
         });
     }
 
+    // toggles the pause-play status of the player
+    public void togglePlayback() {
+        audioPlayer.setPaused(!audioPlayer.isPaused());
+    }
+
+    // skips the currently playing track
+    public void skipTrack() {
+        AudioTrack t = audioPlayer.getPlayingTrack();
+        t.setPosition(t.getDuration());
+    }
+
     // updates the controller with track info
-    private void updateController(AudioTrack track) {
+    private void updateController() {
         // get JDA from Starbot and the channel
         JDA jda = Starbot.getJda();
-        AudioTrackInfo info = track.getInfo();
-        String trackTitle = info.title;
-        String trackAuthor = info.author;
+        AudioTrack track = audioPlayer.getPlayingTrack();
+
+        // get track info
+        String trackTitle = "N/A";
+        String trackAuthor = "N/A";
+        String queueText = "Nothing";
+        if (track != null) {
+            AudioTrackInfo info = track.getInfo();
+            trackTitle = info.title;
+            trackAuthor = info.author;
+            queueText = getQueueAsString();
+        }
+        String finalTrackTitle = trackTitle;
+        String finalTrackAuthor = trackAuthor;
+        String finalQueueText = queueText;
+
+        // update info
         jda.getTextChannelById(controllerChannelId).retrieveMessageById(controllerMessageId).queue(controller -> {
             EmbedBuilder embedBuilder = new EmbedBuilder();
             embedBuilder.setColor(Color.GREEN);
-            embedBuilder.setTitle(trackTitle);
-            embedBuilder.setDescription(trackAuthor);
+            embedBuilder.setTitle(finalTrackTitle);
+            embedBuilder.setDescription(finalTrackAuthor);
+            embedBuilder.addField("Queue", finalQueueText, false);
             controller.editMessage(embedBuilder.build()).queue();
         });
     }
 
+    // returns a String representing the current queue
+    private String getQueueAsString() {
+        if (queue.isEmpty()) {
+            return "Nothing";
+        }
+        StringBuilder str = new StringBuilder();
+        for (AudioTrack audioTrack : queue) {
+            str.append(audioTrack.getInfo().title).append("\n");
+        }
+        return str.substring(0, str.length() - 1);
+    }
+
     // destroys a controller channel for a guild
-    public void destoryController(Guild g) {
+    public void destroyController(Guild g) {
         // if no controller, return
         if (controllerMessageId == -1) {
             return;
         }
+
+        // delist the controller
+        ReactionControllerManager.removeController(controllerMessageId);
+
         // find the channel
         JDA jda = g.getJDA();
         TextChannel controllerChannel = jda.getTextChannelById(controllerChannelId);
