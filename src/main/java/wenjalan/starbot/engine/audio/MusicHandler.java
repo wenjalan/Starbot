@@ -107,22 +107,10 @@ public class MusicHandler implements AudioSendHandler {
         TextChannel channel = msg.getTextChannel();
         String rawContent = msg.getContentRaw();
         String[] args = rawContent.split("\\s+");
+        final String query = rawContent.substring("!play ".length());
 
-        // verify that they actually asked to play something
-        if (args.length <= 1) {
-            channel.sendMessage("Play what.").queue();
-            return;
-        }
-
-        // process query
-        String query = rawContent.substring("!play ".length());
-        if (!query.startsWith("http")) {
-            query = "ytsearch:" + query;
-        }
-
-        // load the track
-        String finalQuery = query;
-        playerManager.loadItem(query, new AudioLoadResultHandler() {
+        // result handler
+        AudioLoadResultHandler resultHandler = new AudioLoadResultHandler() {
             @Override
             public void trackLoaded(AudioTrack track) {
                 // if the player is not playing something, start playing this track
@@ -153,15 +141,42 @@ public class MusicHandler implements AudioSendHandler {
 
             @Override
             public void noMatches() {
-                channel.sendMessage("No results for " + finalQuery).queue();
+                channel.sendMessage("No results for " + query).queue();
             }
 
             @Override
             public void loadFailed(FriendlyException exception) {
-                channel.sendMessage("Failed to load track " + finalQuery).queue();
+                channel.sendMessage("Failed to load track " + query).queue();
                 channel.sendMessage(exception.getMessage()).queue();
             }
-        });
+        };
+
+        // verify that they actually asked to play something
+        if (args.length <= 1) {
+            channel.sendMessage("Play what.").queue();
+            return;
+        }
+
+        // process query
+        // if Spotify link, load all items and queue each
+        if (query.startsWith("https://open.spotify.com/")) {
+            // get the queries
+            SpotifyHelper spotifyHelper = SpotifyHelper.get();
+            List<String> queries = spotifyHelper.getSearchQueries(query);
+            for (String spotifyQuery : queries) {
+                playerManager.loadItem("ytsearch:" + spotifyQuery, resultHandler);
+            }
+        }
+        // is direct link
+        else if (query.startsWith("http")) {
+            // load the track
+            playerManager.loadItem(query, resultHandler);
+        }
+        // is search
+        else {
+            // search
+            playerManager.loadItem("ytsearch:" + query, resultHandler);
+        }
 
         // delete the message
         msg.delete().queue();
