@@ -17,7 +17,7 @@ public class PlayCommand implements Command {
 
     @Override
     public String getUsage() {
-        return "!play <query>";
+        return "!play <search query | YouTube, SoundCloud, or direct mp3 URL>";
     }
 
     @Override
