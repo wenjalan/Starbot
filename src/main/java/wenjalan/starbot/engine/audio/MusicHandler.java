@@ -250,7 +250,7 @@ public class MusicHandler implements AudioSendHandler {
             embedBuilder.setColor(Color.GREEN);
             embedBuilder.setTitle(finalTrackTitle);
             embedBuilder.setDescription(finalTrackAuthor);
-            embedBuilder.addField("Queue", finalQueueText, false);
+            embedBuilder.addField("Queue (" + queue.size() + ")", finalQueueText, false);
             controller.editMessage(embedBuilder.build()).queue();
         });
     }
@@ -262,6 +262,12 @@ public class MusicHandler implements AudioSendHandler {
         }
         StringBuilder str = new StringBuilder();
         for (AudioTrack audioTrack : queue) {
+            String nextTitle = audioTrack.getInfo().title;
+            // if adding this title would put us over th charlimit (1024, stop adding)
+            if (nextTitle.length() + str.length() >= 1021) {
+                str.append("...\n");
+                break;
+            }
             str.append(audioTrack.getInfo().title).append("\n");
         }
         return str.substring(0, str.length() - 1);

@@ -6,3 +6,4 @@ build/*
 *.jar
 .idea/*
 *.log
+assets/properties.json

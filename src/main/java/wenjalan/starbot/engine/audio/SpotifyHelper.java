@@ -6,6 +6,7 @@ import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.model_objects.specification.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import wenjalan.starbot.data.AssetManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -145,7 +146,7 @@ public class SpotifyHelper {
 
         // build auth request
         ClientCredentials credentials = api.clientCredentials().build().execute();
-        spotify.setAccessToken(credentials.getAccessToken());
+        api.setAccessToken(credentials.getAccessToken());
         lastRefresh = System.currentTimeMillis();
 
         // return the instance
@@ -155,9 +156,9 @@ public class SpotifyHelper {
     // returns the instance of SpotifyHelper
     public static SpotifyHelper get() {
         if (instance == null) {
-            // todo: get Spotify clientId and clientSecret
-            String id = "";
-            String secret = "";
+            AssetManager assets = AssetManager.get();
+            String id = assets.getProperty("spotify-client-id");
+            String secret = assets.getProperty("spotify-client-secret");
             instance = new SpotifyHelper(id, secret);
         }
         return instance;

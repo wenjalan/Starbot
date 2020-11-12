@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 // handles the loading and preprocessing of data assets on disk
 public class AssetManager {
@@ -25,6 +26,9 @@ public class AssetManager {
     // the list of default responses
     private List<String> responses = null;
 
+    // the map of properties to their values
+    private Map<String, String> properties = null;
+
     // private constructor
     private AssetManager() {
         if (instance != null) {
@@ -38,6 +42,7 @@ public class AssetManager {
         // load all assets from disk
         try {
             responses = loadResponses();
+            properties = loadProperties();
         } catch (IOException e) {
             logger.error("Encountered an error hot loading assets: " + e.getMessage());
         }
@@ -63,6 +68,16 @@ public class AssetManager {
         TypeToken<List<String>> type = new TypeToken<List<String>>() {};
         List<String> responses = gson.fromJson(fr, type.getType());
         return responses;
+    }
+
+    // reloads properties from disk
+    private Map<String, String> loadProperties() throws FileNotFoundException {
+        // initialize and read from GSON
+        FileReader fr = new FileReader(new File(DEFAULT_ASSETS_DIRECTORY + "properties.json"));
+        Gson gson = new Gson();
+        TypeToken<Map<String, String>> type = new TypeToken<Map<String, String>>() {};
+        Map<String, String> properties = gson.fromJson(fr, type.getType());
+        return properties;
     }
 
     // saves the responses to the disk, overwrites old responses.json
@@ -92,6 +107,17 @@ public class AssetManager {
     // loads Starbot's default responses from the disk
     public List<String> getResponses() {
         return new ArrayList<>(responses);
+    }
+
+    // loads a property from the asset directory
+    public String getProperty(String propertyKey) {
+        if (properties == null) {
+            throw new IllegalStateException("Properties file could not be loaded!");
+        }
+        else if (!properties.containsKey(propertyKey)) {
+            throw new IllegalArgumentException("Property " + propertyKey + " does not exist");
+        }
+        return properties.get(propertyKey);
     }
 
 }
