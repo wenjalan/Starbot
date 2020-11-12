@@ -19,6 +19,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import wenjalan.starbot.Starbot;
+import wenjalan.starbot.engine.AudioEngine;
 import wenjalan.starbot.utils.ReactionControllerManager;
 
 import javax.annotation.Nullable;
@@ -196,9 +197,11 @@ public class MusicHandler implements AudioSendHandler {
                 controllerMessageId = msg.getIdLong();
                 final String PAUSE_PLAY = "\u23EF";
                 final String SKIP_BUTTON = "\u23ED";
+                final String STOP = "\u23F9";
                 List<String> buttons = new ArrayList<>();
                 buttons.add(PAUSE_PLAY);
                 buttons.add(SKIP_BUTTON);
+                buttons.add(STOP);
 
                 // add to controller manager
                 ReactionControllerManager.addController(msg, buttons, emojiRegex -> {
@@ -207,6 +210,10 @@ public class MusicHandler implements AudioSendHandler {
                     }
                     else if (emojiRegex.equalsIgnoreCase(SKIP_BUTTON)) {
                         skipTrack();
+                    }
+                    else if (emojiRegex.equalsIgnoreCase(STOP)) {
+                        AudioEngine audio = AudioEngine.getInstance();
+                        audio.stopPlayback(msg);
                     }
                 });
             });
