@@ -19,8 +19,9 @@ public class MarkovLanguageTests {
 
     @Test
     public void createLanguageModel() {
-        List<String> sentence = Arrays.asList("hello world");
+        List<String> sentence = Arrays.asList("hello world", "hello alan", "hello fran", "hello elbert");
         MarkovLanguageModel model = MarkovLanguageModel.from(sentence);
+        System.out.println(model.exportToJson());
     }
 
 }
