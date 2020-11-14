@@ -1,5 +1,6 @@
 package wenjalan.starbot.data;
 
+import com.google.gson.GsonBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -83,7 +84,7 @@ public class AssetManager {
     // saves the responses to the disk, overwrites old responses.json
     private void saveResponses(List<String> responses) throws IOException {
         // convert to json and write to disk
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(responses);
         writeJsonToFile(new File(DEFAULT_ASSETS_DIRECTORY + "responses.json"), json);
     }
