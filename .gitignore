@@ -4,6 +4,8 @@ build/*
 *.properties
 *.corpus
 *.jar
+out/*
 .idea/*
 *.log
 assets/properties.json
+*.MF
