@@ -231,6 +231,13 @@ public class MusicHandler implements AudioSendHandler {
         t.setPosition(t.getDuration());
     }
 
+    // clears the queue
+    public void clearQueue(Message msg) {
+        queue.clear();
+        updateController();
+        msg.delete().queue();
+    }
+
     // updates the controller with track info
     private void updateController() {
         // get JDA from Starbot and the channel

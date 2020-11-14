@@ -124,6 +124,7 @@ public class CommandEngine {
         commands.add(new SaveCommand());
         commands.add(new PlayCommand());
         commands.add(new StopCommand());
+        commands.add(new ClearQueueCommand());
         return commands;
     }
 
