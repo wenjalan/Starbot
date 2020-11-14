@@ -1,2 +1,3 @@
 rootProject.name = 'Starbot'
+include 'test'
 
