@@ -18,8 +18,8 @@ import java.util.*;
 public class MarkovLanguageModel {
 
     // sentence start and end sentinels
-    private static final String END_SENTENCE_SENTINEL = "" + (char) 3;
-    private static final String START_SENTENCE_SENTINEL = "" + (char) 2;
+    public static final String END_SENTENCE_SENTINEL = "" + (char) 3;
+    public static final String START_SENTENCE_SENTINEL = "" + (char) 2;
 
     // logger
     private final Logger logger = LogManager.getLogger();

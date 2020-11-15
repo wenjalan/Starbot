@@ -3,11 +3,14 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import wenjalan.starbot.engine.language.MarkovLanguageModel;
+import wenjalan.starbot.engine.language.SentenceGenerator;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MarkovLanguageTests {
+
+    List<String> shortCorpus = Arrays.asList("hello world", "hello alan", "hello fran", "hello elbert");
 
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(MarkovLanguageTests.class);
@@ -19,9 +22,18 @@ public class MarkovLanguageTests {
 
     @Test
     public void createLanguageModel() {
-        List<String> sentence = Arrays.asList("hello world", "hello alan", "hello fran", "hello elbert");
-        MarkovLanguageModel model = MarkovLanguageModel.from(sentence);
+        MarkovLanguageModel model = MarkovLanguageModel.from(shortCorpus);
         System.out.println(model.exportToJson());
+    }
+
+    @Test
+    public void createSentenceGenerator() {
+        MarkovLanguageModel model = MarkovLanguageModel.from(shortCorpus);
+        SentenceGenerator generator = new SentenceGenerator(model);
+        // try it ten times
+        for (int i = 0; i < 10; i++) {
+            System.out.println(generator.nextSentence());
+        }
     }
 
 }
