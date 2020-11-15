@@ -9,9 +9,7 @@ import opennlp.tools.tokenize.TokenizerModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 
 // a language model based off of Markov Chains
@@ -41,12 +39,37 @@ public class MarkovLanguageModel {
     }
 
     // factory: creates a model from a list of sentences
-    public static MarkovLanguageModel from(List<String> sentences) {
+    public static MarkovLanguageModel fromSentences(List<String> sentences) {
         MarkovLanguageModel model = new MarkovLanguageModel();
         for (String sentence : sentences) {
             model.addSentenceToModel(sentence);
         }
         return model;
+    }
+
+    // factory: creates a model from a list of corpus files
+    public static MarkovLanguageModel fromFiles(List<File> corpi) throws IOException {
+        // list to store all the sentences
+        List<String> sentences = new ArrayList<>();
+
+        // read each file and add the lines to the sentences
+        for (File f : corpi) {
+            // if f doesn't exist skip it
+            if (!f.exists()) {
+                System.err.println("Corpus file " + f.getName() + " does not exist");
+                continue;
+            }
+
+            // read the entire file and add each line to our sentences
+            BufferedReader br = new BufferedReader(new FileReader(f));
+            for (String s = br.readLine(); s != null; s = br.readLine()) {
+                // todo: filter bad sentences
+                sentences.add(s);
+            }
+        }
+
+        // call fromSentences
+        return fromSentences(sentences);
     }
 
     // processes a sentence and adds it to the model
