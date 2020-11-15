@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;
 import wenjalan.starbot.Starbot;
+import wenjalan.starbot.engine.language.MarkovLanguageEngine;
 
 import javax.annotation.Nonnull;
 
@@ -19,6 +20,9 @@ public class LifeCycleEventListener extends ListenerAdapter {
     public void onReady(@Nonnull ReadyEvent event) {
         // report that Starbot started successfully
         logger.info("Starbot online!");
+
+        // load NLI models from disk
+        MarkovLanguageEngine.get().loadModels();
 
         // retrieve the bot's invite url and send it to the logger
         String inviteUrl = event.getJDA().getInviteUrl();

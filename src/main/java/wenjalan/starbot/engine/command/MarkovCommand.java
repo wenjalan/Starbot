@@ -53,6 +53,7 @@ public class MarkovCommand implements Command {
         TextChannel channel = msg.getTextChannel();
         if (rawContent.length() <= "!markov ".length()) {
             channel.sendMessage("Provide an argument (see !help markov)").queue();
+            return;
         }
         String arg = msg.getContentRaw().substring("!markov ".length()).split("\\s+")[0];
 

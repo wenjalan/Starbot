@@ -5,9 +5,9 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,10 +24,10 @@ public class MarkovLanguageEngine {
     private static MarkovLanguageEngine instance = null;
 
     // a map of guild ids to their markov models
-    private Map<Long, MarkovLanguageModel> models;
+    private final Map<Long, MarkovLanguageModel> models;
 
     // a map of guild ids to their sentence generators
-    private Map<Long, SentenceGenerator> generators;
+    private final Map<Long, SentenceGenerator> generators;
 
     // private constructor
     private MarkovLanguageEngine() {
@@ -40,20 +40,32 @@ public class MarkovLanguageEngine {
 
     // creates a language model for a guild
     public void createGuildModel(Guild g, TextChannel callbackChannel) {
+        // report we're starting
+        callbackChannel.sendMessage("Initializing Markov Model...").queue();
+
+        // log
+        logger.info("Creating new Markov Language Model for Guild ID " + g.getIdLong() + "...");
+
         // list of messages to model off of
         List<String> sentences = new ArrayList<>();
         // get a list of text channels
-        g.getTextChannels().stream()
+        g.getTextChannels().parallelStream()
                 // filter any we can't read or talk in
                 .filter(TextChannel::canTalk)
                 // collect messages from each channel
                 .forEach(channel -> {
+                    // log
+                    logger.info("> Reading channel " + channel.getName() + "(id:" + channel.getIdLong() + ")");
                     // for all the messages
-                    channel.getIterableHistory().stream()
+                    channel.getIterableHistory().parallelStream()
+                            // todo: add more filters as messages we shouldn't consider are discovered
                             // filter any empty messages
                             .filter(msg -> !msg.getContentRaw().isEmpty())
                             // filter any bot-sent messages
                             .filter(msg -> !msg.getAuthor().isBot())
+                            // filter any commands
+                            .filter(msg -> !msg.getContentRaw().startsWith("!"))
+                            .filter(msg -> !msg.getContentRaw().startsWith("."))
                             // modify and add to sentences
                             .forEach(msg -> {
                                 String content = msg.getContentDisplay();
@@ -63,6 +75,9 @@ public class MarkovLanguageEngine {
                                 sentences.add(content);
                             });
                 });
+
+        // log
+        logger.info("Finished reading channels, forming model...");
 
         // create a new model and generator
         MarkovLanguageModel model = MarkovLanguageModel.fromSentences(sentences);
@@ -78,23 +93,23 @@ public class MarkovLanguageEngine {
 
         // respond
         callbackChannel.sendMessage("Markov Model initialized successfully").queue();
+        logger.info("Markov Language Model for Guild ID " + g.getIdLong() + " created successfully");
     }
 
     // saves a model to disk
     private void saveModel(Long guildId, MarkovLanguageModel model) throws IOException {
-        File f = new File(guildId + ".mkv");
-        FileWriter writer = new FileWriter(f);
+        File f = new File(MODELS_ASSET_DIRECTORY + guildId + ".mkv");
+        OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(f), StandardCharsets.UTF_16);
         writer.write(model.exportToJson());
         writer.flush();
-        writer.close();
     }
 
     // loads existing models from disk
     public void loadModels() {
         // load all .mkv files
         File modelsDirectory = new File(MODELS_ASSET_DIRECTORY);
-        List<File> modelFiles = Arrays.stream(modelsDirectory.list((dir, name) -> name.startsWith(".mkv")))
-                .map(File::new)
+        List<File> modelFiles = Arrays.stream(modelsDirectory.list((dir, name) -> name.endsWith(".mkv")))
+                .map(name -> new File(MODELS_ASSET_DIRECTORY + name))
                 .collect(Collectors.toList());
 
         // create a model from each .mkv
