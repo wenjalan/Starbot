@@ -8,10 +8,8 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 // handles the Markov implementation of the Starbot Natural Language Initiative
 public class MarkovLanguageEngine {
@@ -41,7 +39,7 @@ public class MarkovLanguageEngine {
     }
 
     // creates a language model for a guild
-    public void createGuildModel(Guild g) {
+    public void createGuildModel(Guild g, TextChannel callbackChannel) {
         // list of messages to model off of
         List<String> sentences = new ArrayList<>();
         // get a list of text channels
@@ -53,7 +51,9 @@ public class MarkovLanguageEngine {
                     // for all the messages
                     channel.getIterableHistory().stream()
                             // filter any empty messages
-                            .filter(msg -> msg.getContentRaw().isEmpty())
+                            .filter(msg -> !msg.getContentRaw().isEmpty())
+                            // filter any bot-sent messages
+                            .filter(msg -> !msg.getAuthor().isBot())
                             // modify and add to sentences
                             .forEach(msg -> {
                                 String content = msg.getContentDisplay();
@@ -67,8 +67,6 @@ public class MarkovLanguageEngine {
         // create a new model and generator
         MarkovLanguageModel model = MarkovLanguageModel.fromSentences(sentences);
         models.put(g.getIdLong(), model);
-        SentenceGenerator generator = new SentenceGenerator(model);
-        generators.put(g.getIdLong(), generator);
 
         // save the model to disk
         try {
@@ -77,6 +75,9 @@ public class MarkovLanguageEngine {
             logger.error("Error saving Markov model for guild id " + g.getIdLong());
             logger.error(e.getMessage());
         }
+
+        // respond
+        callbackChannel.sendMessage("Markov Model initialized successfully").queue();
     }
 
     // saves a model to disk
@@ -89,13 +90,49 @@ public class MarkovLanguageEngine {
     }
 
     // loads existing models from disk
-    private void loadModels() {
-        
+    public void loadModels() {
+        // load all .mkv files
+        File modelsDirectory = new File(MODELS_ASSET_DIRECTORY);
+        List<File> modelFiles = Arrays.stream(modelsDirectory.list((dir, name) -> name.startsWith(".mkv")))
+                .map(File::new)
+                .collect(Collectors.toList());
+
+        // create a model from each .mkv
+        for (File f : modelFiles) {
+            long guildId = Long.parseLong(f.getName().substring(0, f.getName().length() - 4));
+            MarkovLanguageModel model = null;
+            try {
+                model = MarkovLanguageModel.importFromJson(f);
+            } catch (IOException e) {
+                logger.error("Couldn't read .mkv file for guild id " + guildId);
+                logger.error(e.getMessage());
+            }
+            models.put(guildId, model);
+        }
+
+        // report done
+        logger.info("Loaded " + modelFiles.size() + " Markov language models from disk");
     }
 
     // returns a sentence generator given a guild
     public SentenceGenerator getSentenceGenerator(long guildId) {
+        // if this guild hadn't been modeled yet, complain
+        if (!models.containsKey(guildId)) {
+            throw new IllegalArgumentException("Guild id " + guildId + " has not been modeled");
+        }
+
+        // if no generator was created yet, create one
+        if (!generators.containsKey(guildId)) {
+            generators.put(guildId, new SentenceGenerator(models.get(guildId)));
+        }
+
+        // return the generator
         return generators.get(guildId);
+    }
+
+    // returns whether a guild has a model in the system
+    public boolean hasModel(long guildId) {
+        return models.containsKey(guildId);
     }
 
     // instance accessor
@@ -106,4 +143,11 @@ public class MarkovLanguageEngine {
         return instance;
     }
 
+    // returns information about a guild's model
+    public String getInfo(long guildId) {
+        if (!hasModel(guildId)) {
+            throw new IllegalArgumentException("Guild id " + guildId + " has not been modeled");
+        }
+        return models.get(guildId).getInfo();
+    }
 }

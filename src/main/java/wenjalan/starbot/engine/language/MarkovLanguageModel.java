@@ -72,6 +72,16 @@ public class MarkovLanguageModel {
         return fromSentences(sentences);
     }
 
+    // reads a .mkv file and turns it into a model
+    public static MarkovLanguageModel importFromJson(File f) throws IOException {
+        StringBuilder json = new StringBuilder();
+        BufferedReader br = new BufferedReader(new FileReader(f));
+        for (String s = br.readLine(); s != null; s = br.readLine()) {
+            json.append(s);
+        }
+        return importFromJson(json.toString());
+    }
+
     // processes a sentence and adds it to the model
     private void addSentenceToModel(String sentence) {
         // get the tokens
@@ -143,4 +153,16 @@ public class MarkovLanguageModel {
         return model.get(word);
     }
 
+    // returns some basic information about this model
+    public String getInfo() {
+        long vocabSize = model.keySet().size();
+        long corpusSize = 0;
+        for (Map<String, Long> nextWords : model.values()) {
+            for (long l : nextWords.values()) {
+                corpusSize += l;
+            }
+        }
+        return "vocabSize=" + vocabSize + "\n" +
+                "corpusSize=" + corpusSize;
+    }
 }
