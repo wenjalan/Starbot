@@ -115,4 +115,9 @@ public class MarkovLanguageModel {
         return new MarkovLanguageModel(map);
     }
 
+    // returns the map of next words for a given word
+    public Map<String, Long> getNextWords(String word) {
+        return model.get(word);
+    }
+
 }

@@ -11,6 +11,8 @@ import java.util.List;
 public class MarkovLanguageTests {
 
     List<String> shortCorpus = Arrays.asList("hello world", "hello alan", "hello fran", "hello elbert");
+    List<String> screamingCorpus = Arrays.asList("a a a a a");
+    List<String> alternatingCorpus = Arrays.asList("a b", "a c");
 
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(MarkovLanguageTests.class);
@@ -28,7 +30,7 @@ public class MarkovLanguageTests {
 
     @Test
     public void createSentenceGenerator() {
-        MarkovLanguageModel model = MarkovLanguageModel.from(shortCorpus);
+        MarkovLanguageModel model = MarkovLanguageModel.from(alternatingCorpus);
         SentenceGenerator generator = new SentenceGenerator(model);
         // try it ten times
         for (int i = 0; i < 10; i++) {
