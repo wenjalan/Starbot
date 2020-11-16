@@ -48,7 +48,7 @@ public class AudioEngine {
             m.openAudioConnection(voiceChannel);
 
             // create the controller channel
-            handler.createController(g);
+            handler.createController(g, msg.getTextChannel());
 
             // if there was a query to play, play
             handler.playTrack(msg);

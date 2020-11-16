@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
+import net.dv8tion.jda.api.exceptions.ContextException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -82,9 +83,10 @@ public class MessageListener extends ListenerAdapter {
         }
         long msgId = event.getMessageIdLong();
         if (ReactionControllerManager.isController(msgId)) {
+            // remove the reaction
+            event.getReaction().removeReaction(event.getUser()).queue();
             String reaction = event.getReaction().getReactionEmote().getEmoji();
             ReactionControllerManager.handleReaction(msgId, reaction);
-            event.getReaction().removeReaction(event.getUser()).queue();
         }
     }
 }

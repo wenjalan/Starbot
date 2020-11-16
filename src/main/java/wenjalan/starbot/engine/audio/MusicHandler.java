@@ -184,38 +184,36 @@ public class MusicHandler implements AudioSendHandler {
     }
 
     // creates a controller channel for a guild
-    public void createController(Guild g) {
+    public void createController(Guild g, TextChannel channel) {
         // create the channel and create an embed as a controller
-        g.createTextChannel("music").queue(channel -> {
-            controllerChannelId = channel.getIdLong();
-            EmbedBuilder embed = new EmbedBuilder();
-            embed.setColor(Color.GREEN);
-            embed.setTitle("N/A");
-            embed.setDescription("N/A");
-            channel.sendMessage(embed.build()).queue(msg -> {
-                // add the reaction controller
-                controllerMessageId = msg.getIdLong();
-                final String PAUSE_PLAY = "\u23EF";
-                final String SKIP_BUTTON = "\u23ED";
-                final String STOP = "\u23F9";
-                List<String> buttons = new ArrayList<>();
-                buttons.add(PAUSE_PLAY);
-                buttons.add(SKIP_BUTTON);
-                buttons.add(STOP);
+        controllerChannelId = channel.getIdLong();
+        EmbedBuilder embed = new EmbedBuilder();
+        embed.setColor(Color.GREEN);
+        embed.setTitle("N/A");
+        embed.setDescription("N/A");
+        channel.sendMessage(embed.build()).queue(msg -> {
+            // add the reaction controller
+            controllerMessageId = msg.getIdLong();
+            final String PAUSE_PLAY = "\u23EF";
+            final String SKIP_BUTTON = "\u23ED";
+            final String STOP = "\u23F9";
+            List<String> buttons = new ArrayList<>();
+            buttons.add(PAUSE_PLAY);
+            buttons.add(SKIP_BUTTON);
+            buttons.add(STOP);
 
-                // add to controller manager
-                ReactionControllerManager.addController(msg, buttons, emojiRegex -> {
-                    if (emojiRegex.equalsIgnoreCase(PAUSE_PLAY)) {
-                        togglePlayback();
-                    }
-                    else if (emojiRegex.equalsIgnoreCase(SKIP_BUTTON)) {
-                        skipTrack();
-                    }
-                    else if (emojiRegex.equalsIgnoreCase(STOP)) {
-                        AudioEngine audio = AudioEngine.getInstance();
-                        audio.stopPlayback(msg);
-                    }
-                });
+            // add to controller manager
+            ReactionControllerManager.addController(msg, buttons, emojiRegex -> {
+                if (emojiRegex.equalsIgnoreCase(PAUSE_PLAY)) {
+                    togglePlayback();
+                }
+                else if (emojiRegex.equalsIgnoreCase(SKIP_BUTTON)) {
+                    skipTrack();
+                }
+                else if (emojiRegex.equalsIgnoreCase(STOP)) {
+                    AudioEngine audio = AudioEngine.getInstance();
+                    audio.stopPlayback(msg);
+                }
             });
         });
     }
@@ -297,11 +295,11 @@ public class MusicHandler implements AudioSendHandler {
         // delist the controller
         ReactionControllerManager.removeController(controllerMessageId);
 
-        // find the channel
+        // delete the message
         JDA jda = g.getJDA();
-        TextChannel controllerChannel = jda.getTextChannelById(controllerChannelId);
-        if (controllerChannel != null) {
-            controllerChannel.delete().queue();
+        Message controllerMessage = jda.getTextChannelById(controllerChannelId).retrieveMessageById(controllerMessageId).complete();
+        if (controllerMessage != null) {
+            controllerMessage.delete().queue();
         }
     }
 
