@@ -96,6 +96,13 @@ public class MarkovCommand implements Command {
             ChatEngine.get().setNLIEnabled(guildId, true);
         }
 
+        // reload
+        else if (arg.equalsIgnoreCase("reload")) {
+            // reload the models
+            MarkovLanguageEngine.get().loadModels();
+            channel.sendMessage("Reloaded Markov Models").queue();
+        }
+
         // invalid
         else {
             channel.sendMessage("Invalid argument: " + arg).queue();

@@ -9,10 +9,15 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 // handles the Markov implementation of the Starbot Natural Language Initiative
 public class MarkovLanguageEngine {
+
+    // the charset to encode JSON in
+    public static final Charset JSON_CHARSET = StandardCharsets.UTF_16;
 
     // the directory to save models to
     public static final String MODELS_ASSET_DIRECTORY = "assets/models/";
@@ -48,60 +53,102 @@ public class MarkovLanguageEngine {
 
         // list of messages to model off of
         List<String> sentences = new ArrayList<>();
+
         // get a list of text channels
-        g.getTextChannels().parallelStream()
+        List<TextChannel> channels = g.getTextChannels().parallelStream()
                 // filter any we can't read or talk in
                 .filter(TextChannel::canTalk)
-                // collect messages from each channel
-                .forEach(channel -> {
-                    // log
-                    logger.info("> Reading channel " + channel.getName() + "(id:" + channel.getIdLong() + ")");
-                    // for all the messages
-                    channel.getIterableHistory().parallelStream()
-                            // todo: add more filters as messages we shouldn't consider are discovered
-                            // filter any empty messages
-                            .filter(msg -> !msg.getContentRaw().isEmpty())
-                            // filter any bot-sent messages
-                            .filter(msg -> !msg.getAuthor().isBot())
-                            // filter any commands
-                            .filter(msg -> !msg.getContentRaw().startsWith("!"))
-                            .filter(msg -> !msg.getContentRaw().startsWith("."))
-                            // modify and add to sentences
-                            .forEach(msg -> {
-                                String content = msg.getContentDisplay();
-                                // convert to lowercase to conserve on vocab space
-                                content = content.toLowerCase();
-                                // add to sentences
-                                sentences.add(content);
-                            });
-                });
+                .collect(Collectors.toList());
 
+        // todo: figure out if there's a better way to check if all channels have been read
+        // retrieve all messages from each channel
+        final int[] channelsRead = {0};
+
+        // callback for message loads
+        Consumer<List<String>> callback = strings -> {
+            // add the messages to the sentences list
+            sentences.addAll(strings);
+            channelsRead[0]++;
+
+            // if we've read all the channels
+            if (channelsRead[0] == channels.size()) {
+                // log
+                logger.info("Finished reading channels, forming model...");
+
+                // create a new model and generator
+                MarkovLanguageModel model = MarkovLanguageModel.fromSentences(sentences);
+                models.put(g.getIdLong(), model);
+
+                // save the model to disk
+                try {
+                    saveModel(g.getIdLong(), model);
+                } catch (IOException e) {
+                    logger.error("Error saving Markov model for guild id " + g.getIdLong());
+                    logger.error(e.getMessage());
+                }
+
+                // respond
+                callbackChannel.sendMessage("Markov Model initialized successfully").queue();
+                logger.info("Markov Language Model for Guild ID " + g.getIdLong() + " created successfully");
+            }
+        };
+
+        // load all messages
+        for (TextChannel channel : channels) {
+            loadMessagesAsync(channel, callback);
+        }
+    }
+
+    // loads messages from a TextChannel asynchronously
+    private void loadMessagesAsync(TextChannel channel, Consumer<List<String>> callback) {
         // log
-        logger.info("Finished reading channels, forming model...");
-
-        // create a new model and generator
-        MarkovLanguageModel model = MarkovLanguageModel.fromSentences(sentences);
-        models.put(g.getIdLong(), model);
-
-        // save the model to disk
+        logger.info("> Reading channel " + channel.getName() + " (id " + channel.getId() + ")");
+        // messages in this channel
+        List<String> messages = new ArrayList<>();
+        AtomicLong totalRead = new AtomicLong();
         try {
-            saveModel(g.getIdLong(), model);
-        } catch (IOException e) {
-            logger.error("Error saving Markov model for guild id " + g.getIdLong());
+            // read the history
+            channel.getIterableHistory()
+                    .cache(false)
+                    // for each message
+                    .forEachAsync((msg) -> {
+                        // make sure we know we're not in limbo
+                        totalRead.getAndIncrement();
+                        if (totalRead.get() % 1000 == 0) {
+                            logger.info(">> Read " + totalRead.get() + " messages in " + channel.getName() + " so far...");
+                        }
+
+                        // do content checks to see if it's a valid sentence
+                        String content = msg.getContentDisplay();
+                        // is empty
+                        if (content.isEmpty()) return true;
+                        // is bot sent
+                        if (msg.getAuthor().isBot()) return true;
+                        // is a command
+                        if (content.startsWith("!") || content.startsWith(".")) return true;
+                        // is a link
+                        if (content.startsWith("http")) return true;
+
+                        // add the message and continue
+                        messages.add(content);
+                        return true;
+                    })
+                    .thenRun(() -> {
+                        logger.info("> Finished reading channel " + channel.getName());
+                        callback.accept(messages);
+                    });
+        } catch (Exception e) {
+            callback.accept(Collections.emptyList());
+            logger.error("Error while reading channel " + channel.getName() + " (id " + channel.getId() + ")");
             logger.error(e.getMessage());
         }
-
-        // respond
-        callbackChannel.sendMessage("Markov Model initialized successfully").queue();
-        logger.info("Markov Language Model for Guild ID " + g.getIdLong() + " created successfully");
     }
 
     // saves a model to disk
     private void saveModel(Long guildId, MarkovLanguageModel model) throws IOException {
         File f = new File(MODELS_ASSET_DIRECTORY + guildId + ".mkv");
-        OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(f), StandardCharsets.UTF_16);
-        writer.write(model.exportToJson());
-        writer.flush();
+        model.exportToJson(f);
+        logger.info("Saved model info for guild ID " + guildId);
     }
 
     // loads existing models from disk

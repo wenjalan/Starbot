@@ -10,6 +10,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 // a language model based off of Markov Chains
@@ -74,16 +76,18 @@ public class MarkovLanguageModel {
 
     // reads a .mkv file and turns it into a model
     public static MarkovLanguageModel importFromJson(File f) throws IOException {
-        StringBuilder json = new StringBuilder();
-        BufferedReader br = new BufferedReader(new FileReader(f));
-        for (String s = br.readLine(); s != null; s = br.readLine()) {
-            json.append(s);
-        }
-        return importFromJson(json.toString());
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        InputStreamReader is = new InputStreamReader(new FileInputStream(f), MarkovLanguageEngine.JSON_CHARSET);
+        TypeToken<Map<String, Map<String, Long>>> type = new TypeToken<Map<String, Map<String, Long>>>() {};
+        Map<String, Map<String, Long>> map = gson.fromJson(is, type.getType());
+        return new MarkovLanguageModel(map);
     }
 
     // processes a sentence and adds it to the model
     private void addSentenceToModel(String sentence) {
+        // clean sentence for processing
+        sentence = sentence.toLowerCase();
+
         // get the tokens
         String[] rawTokens = getTokens(sentence);
 
@@ -113,8 +117,13 @@ public class MarkovLanguageModel {
     private String[] getTokens(String sentence) {
         // create a tokenizer to process the sentence
         try {
-            Tokenizer tokenizer = getTokenizer(false);
-            return tokenizer.tokenize(sentence);
+            // todo: find a solution that allows emojis to be encoded
+             Tokenizer tokenizer = getTokenizer(false);
+            // String[] rawTokens = tokenizer.tokenize(sentence);
+
+            // todo: make less primitive
+            String[] rawTokens = sentence.split("\\s+");
+            return rawTokens;
         } catch (IOException e) {
             logger.error("Encountered an error while processing sentence");
             logger.error(e.getMessage());
@@ -133,19 +142,12 @@ public class MarkovLanguageModel {
     }
 
     // returns a String of JSON representing this model for export
-    public String exportToJson() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    public void exportToJson(File f) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+        OutputStreamWriter ow = new OutputStreamWriter(new FileOutputStream(f), MarkovLanguageEngine.JSON_CHARSET);
         TypeToken<Map<String, Map<String, Long>>> type = new TypeToken<Map<String, Map<String, Long>>>() {};
-        String json = gson.toJson(model, type.getType());
-        return json;
-    }
-
-    // imports a model from JSON
-    public static MarkovLanguageModel importFromJson(String json) {
-        Gson gson = new Gson();
-        TypeToken<Map<String, Map<String, Long>>> type = new TypeToken<Map<String, Map<String, Long>>>() {};
-        Map<String, Map<String, Long>> map = gson.fromJson(json, type.getType());
-        return new MarkovLanguageModel(map);
+        gson.toJson(model, type.getType(), ow);
+        ow.flush();
     }
 
     // returns the map of next words for a given word
@@ -164,5 +166,12 @@ public class MarkovLanguageModel {
         }
         return "vocabSize=" + vocabSize + "\n" +
                 "corpusSize=" + corpusSize;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+        return gson.toJson(model);
     }
 }
