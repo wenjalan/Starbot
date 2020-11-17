@@ -1,6 +1,6 @@
 # Starbot
-A sassy little chatbot named Starbot.
-https://discord.com/oauth2/authorize?scope=bot&client_id=470822754262712329&permissions=234056768
+A sassy little chatbot named Starbot.  
+https://discord.com/oauth2/authorize?scope=bot&client_id=470822754262712329&permissions=234056768  
 
 # Features
 Constantly degrades all members in a server who say dumb things  
