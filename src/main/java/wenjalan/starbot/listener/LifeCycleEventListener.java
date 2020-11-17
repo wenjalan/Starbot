@@ -10,6 +10,8 @@ import wenjalan.starbot.engine.language.MarkovLanguageEngine;
 
 import javax.annotation.Nonnull;
 
+import static wenjalan.starbot.Starbot.DEFAULT_PERMISSIONS;
+
 // listens for all life cycle related events
 public class LifeCycleEventListener extends ListenerAdapter {
 
@@ -25,7 +27,7 @@ public class LifeCycleEventListener extends ListenerAdapter {
         MarkovLanguageEngine.get().loadModels();
 
         // retrieve the bot's invite url and send it to the logger
-        String inviteUrl = event.getJDA().getInviteUrl();
+        String inviteUrl = event.getJDA().getInviteUrl(DEFAULT_PERMISSIONS);
         logger.info("Invite: " + inviteUrl);
     }
 
