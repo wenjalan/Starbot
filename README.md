@@ -1,5 +1,6 @@
 # Starbot
 A sassy little chatbot named Starbot.
+https://discord.com/oauth2/authorize?scope=bot&client_id=470822754262712329&permissions=234056768
 
 # Features
 Constantly degrades all members in a server who say dumb things  
@@ -13,10 +14,6 @@ A !help command with little to no support or documentation
 
 # Issues
 All of them  
-
-# Invite
-Why would you ever do this?  
-  
 
 # Supporters  
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D21TFVF)  
