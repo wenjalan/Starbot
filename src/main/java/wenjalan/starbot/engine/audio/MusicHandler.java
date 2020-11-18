@@ -212,7 +212,7 @@ public class MusicHandler implements AudioSendHandler {
                 }
                 else if (emojiRegex.equalsIgnoreCase(STOP)) {
                     AudioEngine audio = AudioEngine.getInstance();
-                    audio.stopPlayback(msg);
+                    audio.stopPlayback(g);
                 }
             });
         });

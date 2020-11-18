@@ -63,9 +63,8 @@ public class AudioEngine {
 
     // disconnects the bot from the voice channel
     // msg: the Message which asked to play
-    public void stopPlayback(Message msg) {
+    public void stopPlayback(Guild g) {
         // get guild items
-        Guild g = msg.getGuild();
         AudioManager m = g.getAudioManager();
 
         // delete the controller

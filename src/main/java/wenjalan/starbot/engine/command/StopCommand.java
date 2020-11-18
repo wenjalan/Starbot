@@ -38,6 +38,6 @@ public class StopCommand implements Command {
     @Override
     public void run(Message msg) {
         AudioEngine audio = AudioEngine.getInstance();
-        audio.stopPlayback(msg);
+        audio.stopPlayback(msg.getGuild());
     }
 }
