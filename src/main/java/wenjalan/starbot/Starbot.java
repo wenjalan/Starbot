@@ -1,112 +1,104 @@
 package wenjalan.starbot;
 
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.entities.SelfUser;
-import wenjalan.starbot.engines.KeyPhraseEngine;
-import wenjalan.starbot.engines.ResponseEngine;
-import wenjalan.starbot.listeners.MessageListener;
-import wenjalan.starbot.listeners.ServerEventListener;
-import wenjalan.starbot.listeners.ShutdownListener;
-import wenjalan.starbot.servers.DingusCrew;
-import wenjalan.starbot.servers.LakesideLounge;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import wenjalan.starbot.listener.LifeCycleEventListener;
+import wenjalan.starbot.listener.MessageListener;
 
+import javax.security.auth.login.LoginException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-// the main Starbot class, contains main() and the JDA setup
+// main program entry point
 public class Starbot {
 
-    // the filepath to the responses
-    public static final String RESPONSES_FILEPATH = "responses.txt";
+    // list of default permissions Starbot will ask for
+    public static final List<Permission> DEFAULT_PERMISSIONS = Arrays.asList(
+            Permission.NICKNAME_CHANGE,
+            Permission.NICKNAME_MANAGE,
+            Permission.VIEW_CHANNEL,
 
-    // the JDA object
-    protected JDA jda;
+            Permission.MESSAGE_WRITE,
+            Permission.MESSAGE_READ,
+            Permission.MESSAGE_MANAGE,
+            Permission.MESSAGE_EMBED_LINKS,
+            // Permission.MESSAGE_ATTACH_FILES,
+            Permission.MESSAGE_HISTORY,
+            Permission.MESSAGE_MENTION_EVERYONE,
+            // Permission.MESSAGE_EXT_EMOJI,
+            Permission.MESSAGE_ADD_REACTION,
 
-    // the KeyPhraseEngine, for responding to funny things with other funny things
-    protected KeyPhraseEngine keyPhraseEngine;
+            Permission.VOICE_CONNECT,
+            Permission.VOICE_SPEAK,
+            Permission.VOICE_MUTE_OTHERS,
+            Permission.VOICE_DEAF_OTHERS,
+            Permission.VOICE_MOVE_OTHERS
+    );
 
-    // the ResponseEngine, for responding to mentions with witty comments
-    protected ResponseEngine responseEngine;
+    // whether the program should be forced to ask for the token
+    private final static boolean FORCE_ASK_TOKEN = true;
 
-    // main
+    // the held instance of JDA, use only if there's no other way to access JDA
+    private static JDA jda;
+
+    // the instance of Starbot
+    private static Starbot instance;
+
+    // Logger
+    public static final Logger logger = LogManager.getLogger();
+
+    // program entry point
     public static void main(String[] args) {
-        // the bot token
-        String token;
-
-        // if args is empty
-        if (args.length == 0) {
-            // ask the user for the token
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter bot token: ");
-            token = scanner.next();
-            scanner.close();
+        // grab token
+        String token = null;
+        if (args.length == 0 || FORCE_ASK_TOKEN) {
+            logger.info("Enter bot token:");
+            token = new Scanner(System.in).nextLine();
         }
         else {
-            // get the key from args
             token = args[0];
         }
 
-        // check if a valid key is there
-        if (token == null || token.isEmpty()) {
-            System.out.println("Error Initializing Starbot: Token not specified");
-        }
-        else {
-            try {
-                new Starbot(token);
-            } catch (Exception e) {
-                System.err.println("Error Starting Starbot: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
+        // create a new Starbot
+        instance = new Starbot(token);
     }
 
     // constructor
-    protected Starbot(String token) throws Exception {
-        // get a builder
-        JDABuilder builder = new JDABuilder(token);
+    public Starbot(String token) {
+        // if an instance of Starbot already exists, complain
+        if (instance != null) {
+            logger.error("An instance of Starbot is already running");
+            return;
+        }
 
-        // initialize engines
-        this.keyPhraseEngine = new KeyPhraseEngine();
-        this.responseEngine = new ResponseEngine(RESPONSES_FILEPATH);
+        // create the bot
+        JDABuilder builder = JDABuilder.createDefault(token);
 
-        // build the JDA with our listeners
-        this.jda = builder
-                // default listeners
-                .addEventListener(new MessageListener(this))
-                .addEventListener(new ServerEventListener(this))
-                .addEventListener(new ShutdownListener())
+        // append all listeners
+        builder.addEventListeners(new LifeCycleEventListener());
+        builder.addEventListeners(new MessageListener());
 
-                // dingus crew listeners
-                .addEventListener(new DingusCrew.DingusCrewMessageListener(this))
-                .addEventListener(new DingusCrew.DingusCrewEventListener(this))
-
-                // lakeside listeners
-                .addEventListener(new LakesideLounge.FireplaceListener())
-
-                .build()
-                .awaitReady();
-
-        // start a-sync stuff
-        // Lakeside Lounge //
-        // Channel topic updater
-        new Thread(new LakesideLounge.ChannelDescriptionUpdater(this)).start();
-
-        // announce that Starbot is ready and print an invite
-        System.out.println("Starbot started successfully!");
-        System.out.println("Invite: " + jda.asBot().getInviteUrl());
+        // initialize the bot
+        try {
+            jda = builder.build().awaitReady();
+        } catch (InterruptedException | LoginException e) {
+            logger.error("Encountered an error during JDA initialization: " + e.getMessage());
+        }
     }
 
-    // accessors
-    public JDA jda() {
-        return this.jda;
+    // instance accessor
+    public static Starbot getInstance() {
+        return instance;
     }
 
-    public KeyPhraseEngine getKeyPhraseEngine() {
-        return this.keyPhraseEngine;
-    }
-
-    public ResponseEngine getResponseEngine() {
-        return this.responseEngine;
+    // jda accessor
+    public static JDA getJda() {
+        return jda;
     }
 
 }
