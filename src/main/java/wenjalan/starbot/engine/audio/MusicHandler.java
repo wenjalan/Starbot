@@ -25,10 +25,8 @@ import wenjalan.starbot.utils.ReactionControllerManager;
 import javax.annotation.Nullable;
 import java.awt.*;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.Queue;
 
 // handles the sending of music
 public class MusicHandler implements AudioSendHandler {
@@ -331,5 +329,17 @@ public class MusicHandler implements AudioSendHandler {
     // seeks to a certain position in the currently playing track
     public void seekTo(long pos) {
         audioPlayer.getPlayingTrack().setPosition(pos);
+    }
+
+    // shuffles the currently queued tracks
+    public void shuffle() {
+        if (queue.isEmpty()) {
+            return;
+        }
+        List<AudioTrack> items = new LinkedList<>(queue);
+        Collections.shuffle(items);
+        queue.clear();
+        queue.addAll(items);
+        updateController();
     }
 }
