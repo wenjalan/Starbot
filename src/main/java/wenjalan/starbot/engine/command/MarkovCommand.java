@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
+import wenjalan.starbot.data.Users;
 import wenjalan.starbot.engine.ChatEngine;
 import wenjalan.starbot.engine.language.MarkovLanguageEngine;
 
@@ -76,6 +77,12 @@ public class MarkovCommand implements Command {
 
         // on
         else if (arg.equalsIgnoreCase("on")) {
+            // check if this guild has a model
+            if (!markov.hasModel(guildId)) {
+                channel.sendMessage("This guild has not been modeled, contact Wenton to have a model created").queue();
+                return;
+            }
+
             // enable markov
             ChatEngine.get().setNLIEnabled(guildId, true);
             channel.sendMessage("Enabled Markov").queue();
@@ -83,6 +90,12 @@ public class MarkovCommand implements Command {
 
         // off
         else if (arg.equalsIgnoreCase("off")) {
+            // check if this guild has a model
+            if (!markov.hasModel(guildId)) {
+                channel.sendMessage("This guild has not been modeled, contact Wenton to have a model created").queue();
+                return;
+            }
+
             // disable markov
             ChatEngine.get().setNLIEnabled(guildId, false);
             channel.sendMessage("Disabled Markov").queue();
@@ -98,6 +111,10 @@ public class MarkovCommand implements Command {
 
         // reload
         else if (arg.equalsIgnoreCase("reload")) {
+            // check if it's me
+            if (msg.getAuthor().getIdLong() != Users.WENTON_ID_LONG) {
+                return;
+            }
             // reload the models
             MarkovLanguageEngine.get().loadModels();
             channel.sendMessage("Reloaded Markov Models").queue();
