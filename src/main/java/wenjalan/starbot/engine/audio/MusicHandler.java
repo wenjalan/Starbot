@@ -327,4 +327,9 @@ public class MusicHandler implements AudioSendHandler {
         }
         audioPlayer.setVolume(volume);
     }
+
+    // seeks to a certain position in the currently playing track
+    public void seekTo(long pos) {
+        audioPlayer.getPlayingTrack().setPosition(pos);
+    }
 }
