@@ -128,7 +128,8 @@ public class CommandEngine {
         commands.add(new MarkovCommand());
         commands.add(new VolumeCommand());
         commands.add(new SeekCommand());
-        // commands.add(new ShuffleCommand());
+        commands.add(new ShuffleCommand());
+        commands.add(new RepeatCommand());
         return commands;
     }
 

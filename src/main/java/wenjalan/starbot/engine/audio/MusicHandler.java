@@ -52,6 +52,9 @@ public class MusicHandler implements AudioSendHandler {
     // the Queue of tracks
     private final Queue<AudioTrack> queue;
 
+    // whether the player is currently repeating itself
+    private boolean isRepeating = false;
+
     // constructor
     // msg: the Message object that invoked the creation of this MusicHandler
     public MusicHandler() {
@@ -82,8 +85,13 @@ public class MusicHandler implements AudioSendHandler {
 
             @Override
             public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
+                // if we're repeating repeat
+                if (isRepeating) {
+                    // replay the track that ended
+                    player.playTrack(track.makeClone());
+                }
                 // if there are more tracks in the queue, start the next
-                if (endReason.mayStartNext && !queue.isEmpty()) {
+                else if (endReason.mayStartNext && !queue.isEmpty()) {
                     player.playTrack(queue.poll());
                 }
                 updateController();
@@ -240,14 +248,17 @@ public class MusicHandler implements AudioSendHandler {
         JDA jda = Starbot.getJda();
         AudioTrack track = audioPlayer.getPlayingTrack();
 
+        // fixme: clean this up
         // get track info
         String trackTitle = "N/A";
         String trackAuthor = "N/A";
         String queueText = "Nothing";
+        String uri = null;
         if (track != null) {
             AudioTrackInfo info = track.getInfo();
             trackTitle = info.title;
             trackAuthor = info.author;
+            uri = info.uri;
             queueText = getQueueAsString();
         }
         String finalTrackTitle = trackTitle;
@@ -255,10 +266,11 @@ public class MusicHandler implements AudioSendHandler {
         String finalQueueText = queueText;
 
         // update info
+        String finalUri = uri;
         jda.getTextChannelById(controllerChannelId).retrieveMessageById(controllerMessageId).queue(controller -> {
             EmbedBuilder embedBuilder = new EmbedBuilder();
             embedBuilder.setColor(Color.GREEN);
-            embedBuilder.setTitle(finalTrackTitle);
+            embedBuilder.setTitle(isRepeating ? "(Repeat) " + finalTrackTitle : finalTrackTitle, finalUri);
             embedBuilder.setDescription(finalTrackAuthor);
             embedBuilder.addField("Queue (" + queue.size() + ")", finalQueueText, false);
             controller.editMessage(embedBuilder.build()).queue();
@@ -342,4 +354,16 @@ public class MusicHandler implements AudioSendHandler {
         queue.addAll(items);
         updateController();
     }
+
+    // returns whether the player is repeating
+    public boolean isRepeat() {
+        return isRepeating;
+    }
+
+    // sets whether the player is repeating
+    public void setRepeating(boolean repeating) {
+        this.isRepeating = repeating;
+        updateController();
+    }
+
 }
