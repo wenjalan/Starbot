@@ -319,4 +319,12 @@ public class MusicHandler implements AudioSendHandler {
     public boolean isOpus() {
         return true;
     }
+
+    // sets the volume of the player
+    public void setVolume(int volume) {
+        if (volume < 0 || volume > 100) {
+            throw new IllegalArgumentException("Invalid volume passed to MusicHandler: " + volume);
+        }
+        audioPlayer.setVolume(volume);
+    }
 }

@@ -126,6 +126,7 @@ public class CommandEngine {
         commands.add(new StopCommand());
         commands.add(new ClearQueueCommand());
         commands.add(new MarkovCommand());
+        commands.add(new VolumeCommand());
         return commands;
     }
 
