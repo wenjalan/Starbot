@@ -43,9 +43,9 @@ public class MarkovCommand implements Command {
 
     @Override
     public void run(Message msg) {
-        // check if this person is an admin
+        // check if this person is an admin or is a dev
         Member author = msg.getMember();
-        if (!author.hasPermission(Permission.ADMINISTRATOR)) {
+        if (!Users.isDeveloper(author.getIdLong()) && !author.hasPermission(Permission.ADMINISTRATOR)) {
             return;
         }
 

@@ -118,6 +118,7 @@ public class MarkovLanguageEngine {
                             logger.info(">> Read " + totalRead.get() + " messages in " + channel.getName() + " so far...");
                         }
 
+                        // return early if the content shouldn't be learned
                         // do content checks to see if it's a valid sentence
                         String content = msg.getContentDisplay();
                         // is empty
@@ -125,7 +126,7 @@ public class MarkovLanguageEngine {
                         // is bot sent
                         if (msg.getAuthor().isBot()) return true;
                         // is a command
-                        if (content.startsWith("!") || content.startsWith(".")) return true;
+                        if (content.startsWith("!") || content.startsWith(".") || content.startsWith("-")) return true;
                         // is a link
                         if (content.startsWith("http")) return true;
 

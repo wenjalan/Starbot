@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.ChannelType;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
+import wenjalan.starbot.data.Users;
 import wenjalan.starbot.engine.command.*;
 
 import java.awt.*;
@@ -53,18 +54,30 @@ public class CommandEngine {
             String[] args = msg.getContentRaw().split("\\s+");
             MessageChannel channel = msg.getChannel();
             boolean isPrivate = msg.getChannelType().equals(ChannelType.PRIVATE);
+            boolean isDeveloper = Users.isDeveloper(msg.getAuthor().getIdLong());
 
             // if no args, send list of commands
             if (args.length <= 1) {
                 // get commands that are either guild or dm commands
-                String commandsList = commands.stream().filter(command -> {
+                String commandsList = commands.stream()
+                // if the user isn't a dev, filter all dev commands
+                .filter(command -> {
+                    if (command.isAdminCommand()) {
+                        return isDeveloper;
+                    }
+                    return true;
+                })
+                // sort dm or guild commands
+                .filter(command -> {
                     if (isPrivate) {
                         return command.isDmCommand();
                     }
                     else {
                         return command.isGuildCommand();
                     }
-                }).map(Command::getName).collect(Collectors.joining("\n"));
+                })
+                .map(Command::getName)
+                .collect(Collectors.joining("\n"));
                 EmbedBuilder embed = new EmbedBuilder();
                 embed.setColor(Color.GREEN);
                 embed.setTitle((isPrivate ? "DM" : "Server") + " Commands");
@@ -130,6 +143,7 @@ public class CommandEngine {
         commands.add(new SeekCommand());
         commands.add(new ShuffleCommand());
         commands.add(new RepeatCommand());
+        commands.add(new StatusCommand());
         return commands;
     }
 
