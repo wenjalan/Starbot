@@ -120,7 +120,9 @@ public class MarkovLanguageEngine {
 
                         // return early if the content shouldn't be learned
                         // do content checks to see if it's a valid sentence
+                        // ignore messages that mention another user
                         String content = msg.getContentDisplay();
+                        if (!msg.getMentionedUsers().isEmpty()) return true;
                         // is empty
                         if (content.isEmpty()) return true;
                         // is bot sent
