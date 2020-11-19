@@ -23,7 +23,7 @@ public class MarkovCommand implements Command {
 
     @Override
     public String getUsage() {
-        return "!markov <on|off|info>";
+        return "!markov <on|off|info|init|reload>";
     }
 
     @Override
