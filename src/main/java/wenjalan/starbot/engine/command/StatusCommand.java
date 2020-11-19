@@ -57,6 +57,7 @@ public class StatusCommand implements Command {
                 presence.setActivity(Activity.watching(activityString));
             }
             else if (activityQuery.equalsIgnoreCase("s")) {
+                // note: the streaming endpoint still ends up as playing, idk if it's supported properly
                 presence.setActivity(Activity.streaming(activityString, "https://ko-fi.com/wenton"));
             }
             else if (activityQuery.equalsIgnoreCase("l")) {
