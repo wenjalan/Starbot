@@ -144,6 +144,7 @@ public class CommandEngine {
         commands.add(new ShuffleCommand());
         commands.add(new RepeatCommand());
         commands.add(new StatusCommand());
+        commands.add(new SomeoneCommand());
         return commands;
     }
 
