@@ -80,6 +80,11 @@ public class Starbot {
         // create the bot
         JDABuilder builder = JDABuilder.createDefault(token);
 
+        // set Gateway intents
+        builder.enableIntents(
+            GatewayIntent.GUILD_MEMBERS
+        );
+
         // append all listeners
         builder.addEventListeners(new LifeCycleEventListener());
         builder.addEventListeners(new MessageListener());

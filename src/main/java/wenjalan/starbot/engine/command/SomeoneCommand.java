@@ -1,5 +1,6 @@
 package wenjalan.starbot.engine.command;
 
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
 
 import java.util.List;
@@ -39,21 +40,26 @@ public class SomeoneCommand implements Command {
 
     @Override
     public void run(Message msg) {
-        // get the Guild to find members in
+        // get the Guild and TextChannel to send to
         Guild g = msg.getGuild();
-
-        // get the TextChannel to mention in
         TextChannel channel = msg.getTextChannel();
 
-        // for some reason TextChannel#getMembers() doesn't always return everyone who can read the channel
+        // TextChannel#getMembers() only returns cached members
         // List<Member> members = channel.getMembers();
-        List<Member> members = g.getMembers();
 
-        // roll a die to choose a random member
-        int roll = ThreadLocalRandom.current().nextInt(members.size());
-        Member choice = members.get(roll);
+        // use Guild#findMembers() to filter to people in this TextChannel
+        g.findMembers(member -> member.hasPermission(channel, Permission.MESSAGE_READ))
+        .onSuccess(members -> {
+            // roll a die to choose a random member
+            int roll = ThreadLocalRandom.current().nextInt(members.size());
+            Member choice = members.get(roll);
 
-        // reply to the original message with the random member mentioned
-        msg.reply(choice.getAsMention()).queue();
+            // debug: reply with all the members we found
+            // String memberNames = members.stream().map(Member::getEffectiveName).collect(Collectors.joining("\n"));
+            // msg.reply("Found " + members.size() + " members in channel " + channel.getName() + ":\n" + memberNames).queue();
+
+            // reply to the original message with the random member mentioned
+            msg.reply(choice.getAsMention()).queue();
+        });
     }
 }
