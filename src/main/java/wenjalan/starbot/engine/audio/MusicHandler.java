@@ -221,6 +221,9 @@ public class MusicHandler implements AudioSendHandler {
                     audio.stopPlayback(g);
                 }
             });
+
+            // update the controller
+            updateController();
         });
     }
 
@@ -366,4 +369,9 @@ public class MusicHandler implements AudioSendHandler {
         updateController();
     }
 
+    // recreates the controller and sends it to the channel again
+    public void recreateController(TextChannel channel) {
+        destroyController(channel.getGuild());
+        createController(channel.getGuild(), channel);
+    }
 }
