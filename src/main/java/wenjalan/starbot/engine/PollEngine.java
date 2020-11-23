@@ -3,6 +3,7 @@ package wenjalan.starbot.engine;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.internal.utils.EncodingUtil;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -134,17 +135,22 @@ public class PollEngine {
         List<String> items = poll.items;
 
         // create poll content
-        // todo: emojis.remove() throws UnsupportedOperation
-        String pollContent = items.stream()
-                .map(item -> emojis.remove(0) + " " + item)
-                .collect(Collectors.joining("\n"));
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < items.size(); i++) {
+            String item = items.get(i);
+            String emoji = emojis.get(i);
+            if (emoji.startsWith("U+")) {
+                emoji = EncodingUtil.decodeCodepoint(emoji);
+            }
+            sb.append(emoji).append(" ").append(item).append("\n");
+        }
+        String pollContent = sb.toString().substring(0, sb.length() - 1);
 
         // create an embed and send it
         EmbedBuilder embed = new EmbedBuilder();
-        embed.setColor(Color.BLUE);
+        embed.setColor(Color.ORANGE);
         embed.setTitle(prompt);
-        embed.setDescription("Asked by " + author);
-        embed.addField(null, pollContent, false);
+        embed.setDescription("Asked by " + author + "\n" + pollContent);
         channel.sendMessage(embed.build()).queue(msg -> {
             // react to the message with each of the used emojis
             List<String> emojisAgain = poll.emojiSet.getEmojis();

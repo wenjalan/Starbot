@@ -21,7 +21,8 @@ public class PollCommand implements Command {
 
     @Override
     public String getUsage() {
-        return "!poll <-n|-l|-c> \"<prompt>\" \"<option1>\" \"<option2>\" ... \"<option8>\"";
+//        return "!poll <-n|-l|-c> \"<prompt>\" \"<option1>\" \"<option2>\" ... \"<option8>\"";
+        return "!poll \"<prompt>\" \"<option1>\" \"<option2>\" ... \"<option8>\"";
     }
 
     @Override
@@ -53,32 +54,33 @@ public class PollCommand implements Command {
         query = query.substring("!poll".length()).trim();
 
         // if there was an emoji option specified, take it
+        // todo: make the custom emojis thing work again
         PollEngine.Poll.EmojiSet emojiSet = PollEngine.Poll.EmojiSet.LETTERS;
-        if (query.startsWith("-")) {
-            // chop off the -
-            query = query.substring(1);
-
-            // if it was numbers
-            if (query.startsWith("n")) {
-                emojiSet = PollEngine.Poll.EmojiSet.NUMBERS;
-            }
-            // if it was letters
-            else if (query.startsWith("l")) {
-                emojiSet = PollEngine.Poll.EmojiSet.LETTERS;
-            }
-            // if it was colors
-            else if (query.startsWith("c")) {
-                emojiSet = PollEngine.Poll.EmojiSet.COLORS;
-            }
-            // if it was none
-            else {
-                channel.sendMessage(query.charAt(0) + " is not a valid emoji option").queue();
-                return;
-            }
-
-            // chop off the next letter
-            query = query.substring(1).trim();
-        }
+//        if (query.startsWith("-")) {
+//            // chop off the -
+//            query = query.substring(1);
+//
+//            // if it was numbers
+//            if (query.startsWith("n")) {
+//                emojiSet = PollEngine.Poll.EmojiSet.NUMBERS;
+//            }
+//            // if it was letters
+//            else if (query.startsWith("l")) {
+//                emojiSet = PollEngine.Poll.EmojiSet.LETTERS;
+//            }
+//            // if it was colors
+//            else if (query.startsWith("c")) {
+//                emojiSet = PollEngine.Poll.EmojiSet.COLORS;
+//            }
+//            // if it was none
+//            else {
+//                channel.sendMessage(query.charAt(0) + " is not a valid emoji option").queue();
+//                return;
+//            }
+//
+//            // chop off the next letter
+//            query = query.substring(1).trim();
+//        }
 
         // get the poll strings
         if (query.length() <= 0) {
@@ -90,8 +92,15 @@ public class PollCommand implements Command {
         // make the poll
         String prompt = pollStrings.remove(0);
         PollEngine.Poll poll = new PollEngine.Poll(prompt, msg.getMember());
+        poll.useEmojiSet(emojiSet);
         for (String option : pollStrings) {
             poll.addItem(option);
+        }
+
+        // if no items are in the poll, complain
+        if (poll.getItems().isEmpty()) {
+            channel.sendMessage("include an option").queue();
+            return;
         }
 
         // start the poll
