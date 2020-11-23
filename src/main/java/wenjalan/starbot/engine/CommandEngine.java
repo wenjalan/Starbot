@@ -145,6 +145,7 @@ public class CommandEngine {
         commands.add(new RepeatCommand());
         commands.add(new StatusCommand());
         commands.add(new SomeoneCommand());
+        commands.add(new PollCommand());
         return commands;
     }
 

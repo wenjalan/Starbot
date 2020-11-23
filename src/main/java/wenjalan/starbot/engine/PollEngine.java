@@ -85,6 +85,7 @@ public class PollEngine {
         public Poll(String prompt, Member author) {
             this.prompt = prompt;
             this.authorMention = author.getAsMention();
+            this.items = new LinkedList<>();
         }
 
         // adds an item to the poll
@@ -133,6 +134,7 @@ public class PollEngine {
         List<String> items = poll.items;
 
         // create poll content
+        // todo: emojis.remove() throws UnsupportedOperation
         String pollContent = items.stream()
                 .map(item -> emojis.remove(0) + " " + item)
                 .collect(Collectors.joining("\n"));
