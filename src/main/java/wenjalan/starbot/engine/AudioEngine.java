@@ -1,5 +1,6 @@
 package wenjalan.starbot.engine;
 
+import net.dv8tion.jda.api.audio.AudioSendHandler;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.managers.AudioManager;
 import wenjalan.starbot.engine.audio.MusicHandler;
@@ -42,9 +43,12 @@ public class AudioEngine {
         }
 
         // if Starbot isn't connected yet, connect first
-        if (!m.isConnected()) {
+        // if the sendhandler isn't a musichandler, reassign send and receive handlers
+        AudioSendHandler sendHandler = m.getSendingHandler();
+        if (!m.isConnected() || !(sendHandler instanceof MusicHandler)) {
             MusicHandler handler = new MusicHandler();
             m.setSendingHandler(handler);
+            m.setReceivingHandler(null);
             m.openAudioConnection(voiceChannel);
 
             // create the controller channel
