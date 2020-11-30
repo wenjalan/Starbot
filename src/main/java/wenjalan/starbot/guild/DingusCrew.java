@@ -147,8 +147,11 @@ public class DingusCrew {
             if (roles.containsKey(member.getIdLong())) {
                 // assign them their roles
                 roles.get(member.getIdLong()).forEach(roleId -> {
+                    // get the role
                     Role r = g.getRoleById(roleId);
+                    // move it to the third-highest role in the server
                     if (r != null) {
+                        g.modifyRolePositions(false).selectPosition(r).moveTo(2).queue();
                         g.addRoleToMember(member, r).queue();
                     }
                 });
@@ -231,7 +234,7 @@ public class DingusCrew {
                 privateChannel.sendMessage(inviteUrl).complete();
 
                 // kick the victim
-                victim.kick(author.getNickname() + " used !" + commandName).queue();
+                victim.kick(author.getUser().getName() + " used !" + commandName).queue();
             }
         }
 
