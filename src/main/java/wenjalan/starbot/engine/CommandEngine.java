@@ -148,6 +148,7 @@ public class CommandEngine {
         commands.add(new PollCommand());
         commands.add(new ControllerCommand());
         commands.add(new MegaphoneCommand());
+        commands.add(new ClearCommand());
         return commands;
     }
 
