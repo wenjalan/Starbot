@@ -43,7 +43,7 @@ public class VersionCommand implements Command {
     public void run(Message msg) {
         // respond with some version information
         EmbedBuilder embed = new EmbedBuilder();
-        embed.setTitle("Starbot Beta 5.2", "https://github.com/wenjalan/Starbot");
+        embed.setTitle("Starbot Beta 5.3", "https://github.com/wenjalan/Starbot");
         embed.setDescription("For latest info, visit the GitHub Repo");
         embed.setColor(Color.CYAN);
         msg.getChannel().sendMessage(embed.build()).queue();

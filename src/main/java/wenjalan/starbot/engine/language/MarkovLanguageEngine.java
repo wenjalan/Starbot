@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import wenjalan.starbot.engine.ChatEngine;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -173,6 +174,12 @@ public class MarkovLanguageEngine {
                 logger.error(e.getMessage());
             }
             models.put(guildId, model);
+        }
+
+        // enable Markov for all these guilds by default
+        ChatEngine chatEngine = ChatEngine.get();
+        for (long guildId : models.keySet()) {
+            chatEngine.setNLIEnabled(guildId, true);
         }
 
         // report done
