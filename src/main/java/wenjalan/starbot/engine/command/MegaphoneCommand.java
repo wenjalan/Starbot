@@ -1,12 +1,11 @@
 package wenjalan.starbot.engine.command;
 
 import net.dv8tion.jda.api.audio.AudioReceiveHandler;
-import net.dv8tion.jda.api.entities.GuildVoiceState;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.entities.VoiceChannel;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.managers.AudioManager;
 import wenjalan.starbot.engine.audio.MegaphoneHandler;
+
+import java.util.stream.Collectors;
 
 public class MegaphoneCommand implements Command {
 
@@ -59,26 +58,44 @@ public class MegaphoneCommand implements Command {
                 manager.closeAudioConnection();
             }
             else {
-                // if it was the same user, disconnect
+                // if it was the same user and no args were provided, disconnect
                 MegaphoneHandler megaphoneHandler = (MegaphoneHandler) receivingHandler;
                 long userId = megaphoneHandler.getUserId();
-                if (msg.getAuthor().getIdLong() == userId) {
+                if (msg.getAuthor().getIdLong() == userId && msg.getContentRaw().split("\\s+").length == 1) {
                     manager.closeAudioConnection();
                     return;
                 }
             }
         }
 
-        // get the specified volume
+        // get the specified volume, and/or person that was mentioned
+        // todo: less spaghet
         String rawContent = msg.getContentRaw();
         String[] tokens = rawContent.split("\\s+");
+        long targetId = msg.getAuthor().getIdLong();
         float volume = 2.0f;
         if (tokens.length > 1) {
-            volume = Float.parseFloat(tokens[1]);
+            // if the message contained a mention, assume the first token was a @
+            if (msg.getMentionedUsers().size() > 0) {
+                targetId = msg.getMentionedUsers().get(0).getIdLong();
+                // if the target isn't in the channel, complain
+                if (!voiceChannel.getMembers().stream().map(ISnowflake::getIdLong).collect(Collectors.toList()).contains(targetId)) {
+                    textChannel.sendMessage("that person isn't in voice").queue();
+                    return;
+                }
+
+                // if there was another token after that, get the volume
+                if (tokens.length > 2) {
+                    volume = Float.parseFloat(tokens[2]);
+                }
+            }
+            else {
+                volume = Float.parseFloat(tokens[1]);
+            }
         }
 
         // set up megaphone handler
-        MegaphoneHandler megaphoneHandler = new MegaphoneHandler(msg.getAuthor().getIdLong(), volume);
+        MegaphoneHandler megaphoneHandler = new MegaphoneHandler(targetId, volume);
         manager.setSendingHandler(megaphoneHandler);
         manager.setReceivingHandler(megaphoneHandler);
         manager.openAudioConnection(voiceChannel);

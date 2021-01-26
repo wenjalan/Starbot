@@ -114,6 +114,7 @@ public class MusicHandler implements AudioSendHandler {
         TextChannel channel = msg.getTextChannel();
         String rawContent = msg.getContentRaw();
         String[] args = rawContent.split("\\s+");
+        if (rawContent.length() <= "!play ".length()) return;
         final String query = rawContent.substring("!play ".length());
 
         // result handler
