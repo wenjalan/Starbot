@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import wenjalan.starbot.guild.DingusCrew;
+import wenjalan.starbot.guild.DirhamHalib;
 import wenjalan.starbot.listener.GuildEventListener;
 import wenjalan.starbot.listener.LifeCycleEventListener;
 import wenjalan.starbot.listener.MessageListener;
@@ -93,6 +94,7 @@ public class Starbot {
 
         // server specifics
         builder.addEventListeners(new DingusCrew.DingusCrewEventListener());
+        builder.addEventListeners(new DirhamHalib.DirhamHalibEventListener());
 
         // initialize the bot
         try {

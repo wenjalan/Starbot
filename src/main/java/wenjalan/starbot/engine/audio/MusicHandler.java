@@ -6,6 +6,8 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
+import com.sedmelluq.discord.lavaplayer.source.soundcloud.SoundCloudAudioSourceManager;
+import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
@@ -18,8 +20,10 @@ import net.dv8tion.jda.api.audio.AudioSendHandler;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.exceptions.ErrorResponseException;
 import wenjalan.starbot.Starbot;
 import wenjalan.starbot.engine.AudioEngine;
+import wenjalan.starbot.engine.command.SeekCommand;
 import wenjalan.starbot.utils.ReactionControllerManager;
 
 import javax.annotation.Nullable;
@@ -27,6 +31,7 @@ import java.awt.*;
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 // handles the sending of music
 public class MusicHandler implements AudioSendHandler {
@@ -258,27 +263,49 @@ public class MusicHandler implements AudioSendHandler {
         String trackAuthor = "N/A";
         String queueText = "Nothing";
         String uri = null;
+        String timestamp = "0:00/0:00";
         if (track != null) {
             AudioTrackInfo info = track.getInfo();
             trackTitle = info.title;
             trackAuthor = info.author;
             uri = info.uri;
             queueText = getQueueAsString();
+            timestamp = millisToTimestamp(track.getPosition()) + "/" + millisToTimestamp(track.getDuration());
         }
         String finalTrackTitle = trackTitle;
         String finalTrackAuthor = trackAuthor;
         String finalQueueText = queueText;
+        String finalUri = uri;
+        String finalTimestamp = timestamp;
 
         // update info
-        String finalUri = uri;
         jda.getTextChannelById(controllerChannelId).retrieveMessageById(controllerMessageId).queue(controller -> {
+            if (controller == null) {
+                // there is no controller, return
+                return;
+            }
             EmbedBuilder embedBuilder = new EmbedBuilder();
             embedBuilder.setColor(Color.GREEN);
+            embedBuilder.setAuthor(finalTrackAuthor);
             embedBuilder.setTitle(isRepeating ? "(Repeat) " + finalTrackTitle : finalTrackTitle, finalUri);
-            embedBuilder.setDescription(finalTrackAuthor);
-            embedBuilder.addField("Queue (" + queue.size() + ")", finalQueueText, false);
+            embedBuilder.setDescription("[" + finalTimestamp + "]");
+            if (!queue.isEmpty()) embedBuilder.addField("Queue (" + queue.size() + ")", finalQueueText, false);
             controller.editMessage(embedBuilder.build()).queue();
         });
+    }
+
+    // converts a number of milliseconds to a timestamp of the format hh:mm:ss
+    private String millisToTimestamp(long millis) {
+        // convert to minutes
+        long minutes = TimeUnit.MINUTES.convert(millis, TimeUnit.MILLISECONDS);
+
+        // find leftover seconds
+        long leftOverMillis = millis - TimeUnit.MILLISECONDS.convert(minutes, TimeUnit.MINUTES);
+        long seconds = TimeUnit.SECONDS.convert(leftOverMillis, TimeUnit.MILLISECONDS);
+
+        // return the timestamp
+        String timestamp = "" + minutes + ":" + (seconds < 10L ? "0" + seconds : seconds);
+        return timestamp;
     }
 
     // returns a String representing the current queue
@@ -311,10 +338,22 @@ public class MusicHandler implements AudioSendHandler {
 
         // delete the message
         JDA jda = g.getJDA();
-        Message controllerMessage = jda.getTextChannelById(controllerChannelId).retrieveMessageById(controllerMessageId).complete();
-        if (controllerMessage != null) {
-            controllerMessage.delete().queue();
+        TextChannel channel = jda.getTextChannelById(controllerChannelId);
+        if (channel != null) {
+            channel.retrieveMessageById(controllerMessageId)
+                    .onErrorFlatMap(err -> {
+                        // do nothing lmao
+                        return null;
+                    })
+                    .queue(msg -> {
+                        if (msg != null) {
+                            msg.delete().queue();
+                        }
+                    });
         }
+
+        // set controller message id to -1 to prevent redeletion
+        controllerMessageId = -1;
     }
 
     @Override
@@ -326,6 +365,11 @@ public class MusicHandler implements AudioSendHandler {
     @Nullable
     @Override
     public ByteBuffer provide20MsAudio() {
+        // update the controller, mostly for timestamp reasons, if a whole 5 seconds have passed
+        // we can't do second-to-second updates because Discord doesn't handle updates that fast
+        if (audioPlayer.getPlayingTrack().getPosition() % 2000 == 0) {
+            updateController();
+        }
         return ByteBuffer.wrap(lastFrame.getData());
     }
 
