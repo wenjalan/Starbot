@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import wenjalan.starbot.engine.ChatEngine;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -118,14 +119,17 @@ public class MarkovLanguageEngine {
                             logger.info(">> Read " + totalRead.get() + " messages in " + channel.getName() + " so far...");
                         }
 
+                        // return early if the content shouldn't be learned
                         // do content checks to see if it's a valid sentence
+                        // ignore messages that mention another user
                         String content = msg.getContentDisplay();
+                        if (!msg.getMentionedUsers().isEmpty()) return true;
                         // is empty
                         if (content.isEmpty()) return true;
                         // is bot sent
                         if (msg.getAuthor().isBot()) return true;
                         // is a command
-                        if (content.startsWith("!") || content.startsWith(".")) return true;
+                        if (content.startsWith("!") || content.startsWith(".") || content.startsWith("-")) return true;
                         // is a link
                         if (content.startsWith("http")) return true;
 
@@ -170,6 +174,12 @@ public class MarkovLanguageEngine {
                 logger.error(e.getMessage());
             }
             models.put(guildId, model);
+        }
+
+        // enable Markov for all these guilds by default
+        ChatEngine chatEngine = ChatEngine.get();
+        for (long guildId : models.keySet()) {
+            chatEngine.setNLIEnabled(guildId, true);
         }
 
         // report done

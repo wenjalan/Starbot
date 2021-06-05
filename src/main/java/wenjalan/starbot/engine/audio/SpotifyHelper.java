@@ -54,7 +54,7 @@ public class SpotifyHelper {
         }
     }
 
-    // returns a list of search queries that correspond with a Spotify Playlist or Album URL
+    // returns a list of search queries that correspond with a Spotify Playlist, Spotify Track, or Album URL
     public List<String> getSearchQueries(String spotifyUrl) {
         // refresh Spotify if we need to
         if (System.currentTimeMillis() - lastRefresh >= REFRESH_INTERVAL) {
@@ -85,6 +85,21 @@ public class SpotifyHelper {
                             .collect(Collectors.joining(" "));
                     queries.add(artistNames + " " + trackName);
                 }
+            }
+
+            // URL is a track
+            else if (spotifyUrl.contains("/track/")) {
+                // get track id
+                String trackId = spotifyUrl.substring("https://open.spotify.com/track/".length()).substring(0, 22);
+
+                // get track
+                Track t = spotify.getTrack(trackId).build().execute();
+
+                // get the title and the track artist
+                String query = t.getName() + " " + Arrays.stream(t.getArtists()).map(ArtistSimplified::getName).collect(Collectors.joining(" "));
+
+                // return the query
+                return Collections.singletonList(query);
             }
 
             // playlist is an album

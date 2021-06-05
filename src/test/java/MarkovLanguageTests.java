@@ -2,11 +2,13 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
+import wenjalan.starbot.engine.language.MarkovLanguageEngine;
 import wenjalan.starbot.engine.language.MarkovLanguageModel;
 import wenjalan.starbot.engine.language.SentenceGenerator;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MarkovLanguageTests {
@@ -51,6 +53,16 @@ public class MarkovLanguageTests {
         // load from file
         MarkovLanguageModel imported = MarkovLanguageModel.importFromJson(new File("test.mkv"));
         System.out.println(imported);
+    }
+
+    @Test
+    public void modelFiftyShades() throws IOException {
+        MarkovLanguageModel model = MarkovLanguageModel.fromFiles(Collections.singletonList(new File("assets/corpi/fiftyshades.txt")));
+        model.exportToJson(new File("fiftyshades.mkv"));
+        SentenceGenerator generator = new SentenceGenerator(model);
+        for (int i = 0; i < 50; i++) {
+            System.out.println(generator.nextSentence());
+        }
     }
 
 }

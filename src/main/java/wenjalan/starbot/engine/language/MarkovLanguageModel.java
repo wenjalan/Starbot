@@ -66,6 +66,7 @@ public class MarkovLanguageModel {
             BufferedReader br = new BufferedReader(new FileReader(f));
             for (String s = br.readLine(); s != null; s = br.readLine()) {
                 // todo: filter bad sentences
+                if (s.isEmpty()) continue;
                 sentences.add(s);
             }
         }

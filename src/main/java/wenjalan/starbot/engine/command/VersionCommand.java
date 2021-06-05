@@ -1,7 +1,10 @@
 package wenjalan.starbot.engine.command;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
 import wenjalan.starbot.engine.CommandEngine;
+
+import java.awt.*;
 
 // reports the version information about Starbot
 public class VersionCommand implements Command {
@@ -39,9 +42,10 @@ public class VersionCommand implements Command {
     @Override
     public void run(Message msg) {
         // respond with some version information
-        msg.getChannel().sendMessage(
-                "Starbot Beta 5.0\n" +
-                "For latest updates, visit GitHub: https://github.com/wenjalan/Starbot"
-        ).queue();
+        EmbedBuilder embed = new EmbedBuilder();
+        embed.setTitle("Starbot Beta 5.3", "https://github.com/wenjalan/Starbot");
+        embed.setDescription("For latest info, visit the GitHub Repo");
+        embed.setColor(Color.CYAN);
+        msg.getChannel().sendMessage(embed.build()).queue();
     }
 }

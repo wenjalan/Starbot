@@ -1,5 +1,6 @@
 package wenjalan.starbot.engine;
 
+import net.dv8tion.jda.api.audio.AudioSendHandler;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.managers.AudioManager;
 import wenjalan.starbot.engine.audio.MusicHandler;
@@ -42,9 +43,12 @@ public class AudioEngine {
         }
 
         // if Starbot isn't connected yet, connect first
-        if (!m.isConnected()) {
+        // if the sendhandler isn't a musichandler, reassign send and receive handlers
+        AudioSendHandler sendHandler = m.getSendingHandler();
+        if (!m.isConnected() || !(sendHandler instanceof MusicHandler)) {
             MusicHandler handler = new MusicHandler();
             m.setSendingHandler(handler);
+            m.setReceivingHandler(null);
             m.openAudioConnection(voiceChannel);
 
             // create the controller channel
@@ -63,9 +67,8 @@ public class AudioEngine {
 
     // disconnects the bot from the voice channel
     // msg: the Message which asked to play
-    public void stopPlayback(Message msg) {
+    public void stopPlayback(Guild g) {
         // get guild items
-        Guild g = msg.getGuild();
         AudioManager m = g.getAudioManager();
 
         // delete the controller
@@ -75,5 +78,4 @@ public class AudioEngine {
         // force disconnect
         m.closeAudioConnection();
     }
-
 }

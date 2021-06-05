@@ -10,3 +10,4 @@ out/*
 *.log
 assets/properties.json
 *.MF
+*.mkv
