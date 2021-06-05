@@ -12,6 +12,12 @@ Can mock how you and your friends talk using markov chains
 <s>Teaches kids bad words using urban dictionary</s>  
 A !help command with little to no support or documentation  
 
+# Bugs
+All of them
+
+# Disclaimer
+This bot is meant for satirical and humorous purposes. The views expressed by this bot are both randomized and do not reflect those of its creator.
+
 # Issues
 All of them  
 
