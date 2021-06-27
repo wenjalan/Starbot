@@ -7,10 +7,10 @@
 |-|-|-|
 | `!poll "<prompt>" "<option 1>" "<option 2>" ... "<option 4>"` | Sends a poll to the channel. | A prompt to poll and up to 4 options. |
 | `!gallery` | Creates a webpage containing a gallery of all the images in the channel. | |
-| `!invite` | Generates a Starbot invite. | |
-| `!version` | Prints information about this version of Starbot. | |
+| `!invite` | Generates a wenjalan.Starbot invite. | |
+| `!version` | Prints information about this version of wenjalan.Starbot. | |
 | `!someone` | Mentions a random member in the channel. | |
-| `!help <command>` | Sends help. | A command to get help for. |
+| `!help <wenjalan.command>` | Sends help. | A wenjalan.command to get help for. |
 
 ## Music & Audio
 | Command | Description | Arguments |

@@ -1,5 +1,5 @@
-# Starbot
-Starbot is a sassy Discord bot.
+# wenjalan.Starbot
+wenjalan.Starbot is a sassy Discord bot.
 
 ## Main Features
 - Will cyberbully your friends for you
@@ -13,4 +13,4 @@ All of them.
 Antisocial Personality Disorder
 
 ## Disclaimer
-Starbot was made purely for satirical purposes. The views expressed by bot do not reflect the views of its creator, and should not be taken seriously in any manner.
+wenjalan.Starbot was made purely for satirical purposes. The views expressed by bot do not reflect the views of its creator, and should not be taken seriously in any manner.

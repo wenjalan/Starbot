@@ -1,5 +1,5 @@
 import org.junit.Test;
-import services.openai.OpenAIManager;
+import wenjalan.openai.OpenAIManager;
 
 public class OpenAIManagerTest {
 

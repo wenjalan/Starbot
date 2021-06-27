@@ -1,4 +1,4 @@
-package services.openai;
+package wenjalan.openai;
 
 import com.theokanning.openai.OpenAiService;
 

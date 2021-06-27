@@ -1,7 +1,12 @@
+package wenjalan;
+
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import wenjalan.command.CommandListener;
+import wenjalan.command.SlashCommand;
+import wenjalan.command.VersionCommand;
 
 import javax.annotation.Nonnull;
 import javax.security.auth.login.LoginException;
@@ -18,22 +23,30 @@ public class Starbot extends ListenerAdapter {
             System.err.println("Provide a bot token");
             System.exit(1);
         }
-        final String TOKEN = args[1];
+        final String TOKEN = args[0];
 
         // initialize the bot
         JDA jda = JDABuilder.createLight(TOKEN)
                 .addEventListeners(new Starbot())
                 .build();
 
-        // todo: add slash commands here
-        // jda.upsertCommand()
+        // create a command listener and register commands
+        CommandListener commandListener = new CommandListener();
+        jda.addEventListener(commandListener);
+        commandListener.addCommand(new VersionCommand());
+
+        // register all commands with Discord
+        for (SlashCommand c : commandListener.getRegisteredCommands()) {
+            System.out.println("Registered command '" + c.getName() + "'");
+            jda.upsertCommand(c.getData()).queue();
+        }
     }
 
     // on bot ready
     @Override
     public void onReady(@Nonnull ReadyEvent event) {
         // print the bot invite to the console
-        System.out.println("Starbot 6.0 online!");
+        System.out.println("Starbot online!");
         String inviteUrl = event.getJDA().getInviteUrl();
         System.out.println("Invite: " + inviteUrl);
     }
