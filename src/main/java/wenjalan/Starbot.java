@@ -36,6 +36,8 @@ public class Starbot extends ListenerAdapter {
         commandListener.addCommand(new VersionCommand());
         commandListener.addCommand(new PollCommand());
         commandListener.addCommand(new SomeoneCommand());
+        commandListener.addCommand(new InviteCommand());
+        commandListener.addCommand(new ClearCommand());
 
         // register all commands with Discord
         for (SlashCommand c : commandListener.getRegisteredCommands()) {

@@ -30,6 +30,9 @@ public class SlashCommandTest {
         commandListener.addCommand(new VersionCommand());
         commandListener.addCommand(new PollCommand());
         commandListener.addCommand(new SomeoneCommand());
+        commandListener.addCommand(new InviteCommand());
+        commandListener.addCommand(new ClearCommand());
+
 
         // register commands with Discord on Lakeside Lounge
         Guild lakeside = jda.getGuildById(LAKESIDE_ID);
