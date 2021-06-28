@@ -2,11 +2,9 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.junit.Test;
-import wenjalan.command.CommandListener;
-import wenjalan.command.PollCommand;
-import wenjalan.command.SlashCommand;
-import wenjalan.command.VersionCommand;
+import wenjalan.command.*;
 
 import javax.security.auth.login.LoginException;
 import java.util.List;
@@ -21,13 +19,17 @@ public class SlashCommandTest {
         String token = System.getenv("rin");
 
         // set up bot
-        JDA jda = JDABuilder.createLight(token).build().awaitReady();
+        JDA jda = JDABuilder.createLight(token)
+                .enableIntents(GatewayIntent.GUILD_MEMBERS)
+                .build()
+                .awaitReady();
 
         // create new Command Listener and register some commands
         CommandListener commandListener = new CommandListener();
         jda.addEventListener(commandListener);
         commandListener.addCommand(new VersionCommand());
         commandListener.addCommand(new PollCommand());
+        commandListener.addCommand(new SomeoneCommand());
 
         // register commands with Discord on Lakeside Lounge
         Guild lakeside = jda.getGuildById(LAKESIDE_ID);

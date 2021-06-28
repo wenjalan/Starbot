@@ -4,9 +4,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import wenjalan.command.CommandListener;
-import wenjalan.command.SlashCommand;
-import wenjalan.command.VersionCommand;
+import wenjalan.command.*;
 
 import javax.annotation.Nonnull;
 import javax.security.auth.login.LoginException;
@@ -33,7 +31,11 @@ public class Starbot extends ListenerAdapter {
         // create a command listener and register commands
         CommandListener commandListener = new CommandListener();
         jda.addEventListener(commandListener);
+
+        // this is where all slash commands are registered //
         commandListener.addCommand(new VersionCommand());
+        commandListener.addCommand(new PollCommand());
+        commandListener.addCommand(new SomeoneCommand());
 
         // register all commands with Discord
         for (SlashCommand c : commandListener.getRegisteredCommands()) {
